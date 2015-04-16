@@ -1,3 +1,4 @@
 #! /bin/bash
 
+cd "$(dirname $0)/.."
 git subtree pull --prefix bin https://github.com/Neson/dotfiles-bin.git master --squash
