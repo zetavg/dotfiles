@@ -2,6 +2,7 @@
 
 time_stamp=$(date +%Y%m%d_%H%M%S)
 
+# Function to create symbolic link and made a backup if target exists
 link_file() {
   source="$1"
   target="$2"
@@ -15,10 +16,15 @@ link_file() {
   ln -sf "$source" "$target"
 }
 
-
+# Switch to the dotfiles directory
 p=$(cd "$(dirname "$0")"; pwd)
 cd "$p"
 
+if [[ "${PWD##*/}" == 'bin' ]]; then
+  cd ..
+fi
+
+# Check if git exists
 if ! git rev-parse --git-dir > /dev/null 2>&1; then
   echo "Error: can't find git."
   exit -1
@@ -32,7 +38,9 @@ git submodule init
 git submodule update
 
 
-# Dotfiles
+# Create symbolic links for dotfiles
+echo "Linking all dotfiles..."
+
 for i in _*
 do
   source="$p/$i"
@@ -41,43 +49,42 @@ do
 done
 
 
-# Profanity
-source="$p/profanity"
-target="$HOME/.config/profanity"
-link_file "$source" "$target"
-
-
-# Sublime Text 2
-source="$p/subl2"
-if [[ $(uname) == "Darwin" ]]; then
-  test ! -e "$HOME/Library/Application Support/Sublime Text 2/Packages" && mkdir -p "$HOME/Library/Application Support/Sublime Text 2/Packages"
-  target="$HOME/Library/Application Support/Sublime Text 2/Packages/User"
-else
-  test ! -e "$HOME/.config/sublime-text-2/Packages" && mkdir -p "$HOME/.config/sublime-text-2/Packages"
-  target="$HOME/.config/sublime-text-2/Packages/User"
+# Create symbolic links for Sublime Text 2
+if [[ -e "$p/subl2" ]]; then
+  source="$p/subl2"
+  if [[ $(uname) == "Darwin" ]]; then
+    test ! -e "$HOME/Library/Application Support/Sublime Text 2/Packages" && mkdir -p "$HOME/Library/Application Support/Sublime Text 2/Packages"
+    target="$HOME/Library/Application Support/Sublime Text 2/Packages/User"
+  else
+    test ! -e "$HOME/.config/sublime-text-2/Packages" && mkdir -p "$HOME/.config/sublime-text-2/Packages"
+    target="$HOME/.config/sublime-text-2/Packages/User"
+  fi
+  if [[ -e "$target" ]]; then
+    echo "Backing up old settings for subl2 ..."
+    mv -f "$target" "$target.$time_stamp.bak"
+  fi
+  echo "Restoring subl2 settings to $target"
+  cp -rf "$source" "$target"
 fi
-if [[ -e "$target" ]]; then
-  echo "Backing up old settings for subl2 ..."
-  mv -f "$target" "$target.$time_stamp.bak"
+
+
+# Create symbolic links for Sublime Text 3
+if [[ -e "$p/subl3" ]]; then
+  source="$p/subl3"
+  if [[ $(uname) == "Darwin" ]]; then
+    test ! -e "$HOME/Library/Application Support/Sublime Text 3/Packages" && mkdir -p "$HOME/Library/Application Support/Sublime Text 3/Packages"
+    target="$HOME/Library/Application Support/Sublime Text 3/Packages/User"
+  else
+    test ! -e "$HOME/.config/sublime-text-3/Packages" && mkdir -p "$HOME/.config/sublime-text-3/Packages"
+    target="$HOME/.config/sublime-text-3/Packages/User"
+  fi
+  link_file "$source" "$target"
 fi
-echo "Restoring subl2 settings to $target"
-cp -rf "$source" "$target"
 
 
-# Sublime Text 3
-source="$p/subl3"
-if [[ $(uname) == "Darwin" ]]; then
-  test ! -e "$HOME/Library/Application Support/Sublime Text 3/Packages" && mkdir -p "$HOME/Library/Application Support/Sublime Text 3/Packages"
-  target="$HOME/Library/Application Support/Sublime Text 3/Packages/User"
-else
-  test ! -e "$HOME/.config/sublime-text-3/Packages" && mkdir -p "$HOME/.config/sublime-text-3/Packages"
-  target="$HOME/.config/sublime-text-3/Packages/User"
-fi
-link_file "$source" "$target"
-
-
-# Secret
+# Deal with secret files
 if [[ -e "$p/secret" ]]; then
+
   echo "Chmod..."
   chmod -R o-r "$p/secret"
   chmod -R o-w "$p/secret"
@@ -85,18 +92,19 @@ if [[ -e "$p/secret" ]]; then
   chmod -R g-r "$p/secret"
   chmod -R g-w "$p/secret"
   chmod -R g-x "$p/secret"
+
   echo "Copying private profiles..."
 
   if [[ -e "$p/secret/subl2" ]]; then
     source="$p/secret/subl2/*"
-      if [[ $(uname) == "Darwin" ]]; then
-        test ! -e "$HOME/Library/Application Support/Sublime Text 2/Packages" && mkdir -p "$HOME/Library/Application Support/Sublime Text 2/Packages/User"
-        target="$HOME/Library/Application Support/Sublime Text 2/Packages/User"
-      else
-        test ! -e "$HOME/.config/sublime-text-2/Packages" && mkdir -p "$HOME/.config/sublime-text-2/Packages/User"
-        target="$HOME/.config/sublime-text-2/Packages/User"
-      fi
-      cp -f $source "$target/"
+    if [[ $(uname) == "Darwin" ]]; then
+      test ! -e "$HOME/Library/Application Support/Sublime Text 2/Packages" && mkdir -p "$HOME/Library/Application Support/Sublime Text 2/Packages/User"
+      target="$HOME/Library/Application Support/Sublime Text 2/Packages/User"
+    else
+      test ! -e "$HOME/.config/sublime-text-2/Packages" && mkdir -p "$HOME/.config/sublime-text-2/Packages/User"
+      target="$HOME/.config/sublime-text-2/Packages/User"
+    fi
+    cp -f "$source" "$target/"
   fi
 
   if [[ -e "$p/secret/subl3" ]]; then
@@ -108,7 +116,7 @@ if [[ -e "$p/secret" ]]; then
         test ! -e "$HOME/.config/sublime-text-3/Packages" && mkdir -p "$HOME/.config/sublime-text-3/Packages/User"
         target="$HOME/.config/sublime-text-3/Packages/User"
       fi
-      cp -f $source "$target/"
+      cp -f "$source" "$target/"
   fi
 
   if [[ -e "$p/secret/gitcfg" ]]; then
@@ -121,14 +129,7 @@ if [[ -e "$p/secret" ]]; then
     cp -rf "$source" "$target"
   fi
 
-  mkdir -p "$HOME/.local/share/profanity/"
-  source="$p/secret/profanity-data/accounts"
-  target="$HOME/.local/share/profanity/accounts"
-  if [[ -e "$target" ]]; then
-    mv -f "$target" "$target.$time_stamp.bak"
-  fi
-  link_file "$source" "$target"
-
+  echo "Linking secret dotfiles..."
   for i in secret/_*
   do
     source="$p/$i"
@@ -138,4 +139,5 @@ if [[ -e "$p/secret" ]]; then
 fi
 
 
+# Done
 echo "Done."
