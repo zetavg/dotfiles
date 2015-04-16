@@ -1,0 +1,28 @@
+.DS_Store
+secret/
+_bin/subl
+.git_cache_meta
+
+_vim/.netrwhist
+_oh-my-zsh
+
+# Sublime Text
+subl*/*.cache
+subl*/Package Control.last-run
+subl*/Package Control.system-ca-bundle
+subl*/Gist.sublime-settings
+subl*/Side Bar Folders.sublime-settings
+subl*/Side Bar Folders/
+subl*/.SublimeREPLHistory
+subl*/YAML.sublime-settings
+subl*/ApplySyntax.ext-list
+subl*/ApplySyntax.sublime-settings
+subl*/Package Control.merged-ca-bundle
+subl*/Package Control.user-ca-bundle
+subl*/PHP.sublime-settings
+subl*/Python.sublime-settings
+subl*/Ruby Haml.sublime-settings
+subl*/Ruby Slim.sublime-settings
+subl*/Ruby.sublime-settings
+subl*/Shell-Unix-Generic.sublime-settings
+subl*/XML.sublime-settings
