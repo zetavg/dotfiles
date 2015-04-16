@@ -1,0 +1,32 @@
+# This script configures git
+
+# Colors, colors everywhere
+git config --global color.ui true
+
+# Alias
+git config --global alias.c checkout
+git config --global alias.co checkout
+git config --global alias.a add
+git config --global alias.aa 'add --update'
+git config --global alias.stage 'add'
+git config --global alias.unstage 'reset HEAD'
+git config --global alias.cm 'commit --verbose'
+git config --global alias.amend 'commit --verbose --amend'
+git config --global alias.s status
+git config --global alias.b branch
+git config --global alias.d diff
+git config --global alias.r remote
+git config --global alias.f fetch
+git config --global alias.pm pull
+git config --global alias.pr 'pull --rebase'
+git config --global alias.rs 'reset --soft'
+git config --global alias.rh 'reset --hard'
+git config --global alias.l 'log --pretty=format:"[%h] %s  -- %an, %ar" --graph'
+
+# Use ksdiff as the default diff & merge tool if it's available
+if $(type ksdiff >/dev/null 2>&1); then
+	git config --global difftool.Kaleidoscope.cmd 'ksdiff --partial-changeset --relative-path "$MERGED" -- "$LOCAL" "$REMOTE"'
+	git config --global mergetool.Kaleidoscope.cmd 'ksdiff --merge --output "$MERGED" --base "$BASE" -- "$LOCAL" --snapshot "$REMOTE" --snapshot'
+	git config --global diff.tool 'Kaleidoscope'
+	git config --global merge.tool 'Kaleidoscope'
+fi

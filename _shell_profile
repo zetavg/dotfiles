@@ -1,0 +1,190 @@
+####################################
+# neson's shell profile 2014-10-03 #
+####################################
+
+## Add `. "$HOME/.shell_profile"` to the main .profile or .bash_profile ##
+
+
+# SET DEFAULT CONSTANTS
+DEFAULT_NVM='0.10.32'
+DEFAULT_RVM='2.1.5'
+
+
+# PATH
+PATH="$HOME/.bin:$PATH"
+PATH="$HOME/.bin/script:$PATH"
+PATH="$HOME/.sbin:$PATH"
+PATH="$HOME/.sbin/script:$PATH"
+
+
+# LOAD CONFIG SCRIPT
+if type "git" > /dev/null 2> /dev/null; then
+  if type "git_config" > /dev/null 2> /dev/null; then
+    git_config
+  fi
+fi
+
+
+# ALIAS
+alias repro='source $HOME/.shell_profile'
+alias cls='cd;clear;test -e /etc/motd && cat /etc/motd;repro'
+alias bye='exit'
+
+alias l='ls -CF'
+alias ll='ls -lFh'
+if [[ `uname` == "Darwin" ]]; then
+  alias lll='ls -alFh -G | less'
+else
+   alias lll='ls -alFh --color=always | less'
+fi
+alias la='ls -alFh'
+alias lz='ls -lSrh'
+alias lt='ls -ltrh'
+alias lx='ls -lXBh'
+alias up='cd ../'
+
+alias cg="newgrp"
+
+alias m='more'
+alias s='less'
+
+alias j='jobs'
+
+alias sr='screen -r'
+alias scr='screen -x scr'
+alias irc='screen -x irc'
+alias job='screen -x job'
+alias fbchat='screen -x fbchat'
+alias startscr='screen -S scr'
+alias startirc='screen -S irc irssi'
+alias startjob='screen -S job'
+alias startfbchat='screen -S fbchat'
+fbchatinit() {
+  while true; do
+  profanity --account facebook
+  done
+}
+alias newwin='screen -X screen -t'
+alias roots='screen -X screen -t root 10 su'
+alias sudosus='screen -X screen -t root 10 sudo su'
+alias tops='screen -X screen -t top 9 top'
+alias ptts='screen -X screen -t BBS 8 ssh bbsu@ptt.cc'
+alias zshs='screen -X screen -t zsh zsh'
+alias vis='screen -X screen -t vim vim'
+
+alias gs='git status'
+alias gss='git status --short --branch'
+alias gsm='git status | more'
+
+alias st='subl'
+alias ss='subl'
+
+alias trr='touch tmp/restart.txt'
+alias ttr='touch tmp/restart.txt'
+alias tdl='tail -f log/development.log'
+
+alias geeknote='python $HOME/.bin/geeknote/geeknote.py'
+alias gnsync='python $HOME/.bin/geeknote/gnsync.py'
+
+alias pg8='ping 8.8.8.8'
+alias ptt='ssh bbsu@ptt.cc'
+
+
+# COMMANDS FOR COMPRESS AND DECOMPRESSESING
+# Usage:
+# mk* OutputFileName.* InputDirName
+# do* InputFileName
+# un* InputFileName.*
+#
+# tar
+alias mktar='tar cvf'
+alias untar='tar xvf'
+# gz
+alias dogz='gzip'
+alias ungz='gzip -d'
+# tar.gz
+alias mktar.gz='tar zcvf'
+alias untar.gz='tar zxvf'
+# bz
+alias mkbz='echo "no mkbz"'
+alias unbz='bzip2 -d'
+# tar.bz
+alias mktar.bz='echo "no mktar.bz"'
+alias untar.bz='tar jxvf'
+# bz2
+alias dobz2='bzip2 -z'
+alias unbz2='bzip2 -d'
+# tar.bz2
+alias mktar.bz2='tar jcvf'
+alias untar.bz2='tar jxvf'
+# tgz
+alias mktgz='tar zcvf'
+alias untgz='tar zxvf'
+# tar.tgz
+alias mktar.tgz='tar zcvf'
+alias untar.tgz='tar zxvf'
+# xz
+alias mkxz='xz -z'
+alias unxz='xz -d'
+# tar.xz
+alias mktar.xz='tar Jcvf'
+alias untar.xz='tar Jxvf'
+# Z
+alias doZ='compress'
+alias unZ='uncompress'
+# tar.Z
+alias mktar.Z='tar Zcvf'
+alias untar.Z='tar Zxvf'
+# 7z
+alias mk7z='7z a'
+alias un7z='7z x'
+# rar
+alias mkrar='rar'
+alias unrar='rar e'
+# lha
+alias mklha='lha -a'
+alias unlha='lha -e'
+
+
+# FUNCTIONS
+function mkcd() {
+  mkdir "$1"
+  cd "$1"
+}
+
+function scd() {
+  echo "$(pwd)" > $HOME/.scd_$1
+}
+function rcd() {
+  [[ -s "$HOME/.scd_$1" ]] && cd "$(cat $HOME/.scd_$1)"
+}
+function cscd() {
+  rm "$HOME/.scd_*"
+}
+
+
+# OSX
+if [[ `uname` == "Darwin" ]]; then
+  function mou() {
+    set -m
+    /Applications/Mou.app/Contents/MacOS/mou $1 &
+    sleep 1
+    osascript -e "tell app \"mou\" to activate"
+    fg %+
+  }
+fi
+
+
+# ZSH
+if [ -n "$ZSH_VERSION" ]; then
+  printf "\033[1A"
+fi
+
+
+# OTHER
+if [ -f "$HOME/.profile_other" ]; then
+  . "$HOME/.profile_other"
+fi
+if [ -f "$HOME/.profile_after_initialized" ]; then
+  . "$HOME/.profile_after_initialized"
+fi

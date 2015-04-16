@@ -1,0 +1,75 @@
+# EditorConfig helps developers define and maintain consistent
+# coding styles between different editors and IDEs
+# http://EditorConfig.org
+
+# top-most EditorConfig file
+root = true
+
+# Unix-style newlines with a newline ending every file
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+
+# 2 space indentation by default
+[*]
+indent_style = space
+indent_size = 2
+
+# 4 space indentation for Python and Java
+[**.py]
+indent_style = space
+indent_size = 4
+
+[**.java]
+indent_style = space
+indent_size = 4
+
+[**.groovy]
+indent_style = space
+indent_size = 4
+
+# Tab indentation (no size specified)
+[**.sublime-settings]
+indent_style = tab
+indent_size = 4
+tab_size = 4
+
+[**.tmTheme]
+indent_style = tab
+indent_size = 4
+tab_size = 4
+
+[**.json]
+indent_style = space
+indent_size = 4
+tab_size = 4
+
+[**.css]
+indent_style = tab
+indent_size = 4
+tab_size = 4
+
+[**.scss]
+indent_style = tab
+indent_size = 4
+tab_size = 4
+
+# Don't trim trailing whitespace for markdown files
+[**.md]
+trim_trailing_whitespace = false
+
+[**.markdown]
+trim_trailing_whitespace = false
+
+[**.slim]
+trim_trailing_whitespace = false
+
+[**.erb]
+trim_trailing_whitespace = false
+
+# 4 space indentation and don't trim trailing whitespace for API Blueprint
+[**.apib]
+indent_style = space
+indent_size = 4
+trim_trailing_whitespace = false

@@ -1,0 +1,11 @@
+#! /bin/bash
+# killsync - Close sync apps
+#
+
+if [[ `uname` != "Darwin" ]]; then
+  echo "Sorry, killsync runs only on Mac."
+  exit -1
+else
+  killall -15 "BitTorrent Sync"
+  killall -15 "Google Drive"
+fi

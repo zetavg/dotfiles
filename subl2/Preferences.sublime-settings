@@ -1,0 +1,26 @@
+// Neson's Sublime Setting
+
+{
+	// Encoding
+	"default_encoding": "UTF-8",
+
+	// Layout
+	"color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
+	"font_face": "Consolas",
+	"font_size": 18.0,
+	"line_numbers": true,
+	"highlight_line": false,
+	"word_wrap": "true",
+	"scroll_past_end": true,
+	"open_files_in_new_window": false,
+
+	// Editing
+	"auto_indent": true,
+
+	// Saving
+	"ensure_newline_at_eof_on_save": true,
+	"trim_trailing_white_space_on_save": true,
+
+	// Packages
+	"ignored_packages": []
+}

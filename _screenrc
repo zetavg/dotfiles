@@ -1,0 +1,59 @@
+################################
+# neson's .screenrc 2013-04-10 #
+################################
+
+
+# General Settings
+shell -$SHELL
+startup_message off
+vbell off
+autodetach on
+defencoding utf8
+altscreen on
+defscrollback 5000
+
+
+# Logging
+logfile screenlog/screenlog_%H_%t_%Y-%m-%d_%0c:%s
+logtstamp on
+deflog on
+
+
+# Display
+attrcolor b ".I"
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+defbce "on"
+term screen-256color-bce
+# this is configured in ~/bin/scrinit now.
+
+
+# Bind Keys
+bindkey -k F1 prev
+bindkey -k F2 next
+bindkey "^[j" prev
+bindkey "^[k" next
+bindkey "^[`" other
+bindkey "^[f" focus
+bindkey "^[m" split
+bindkey "^[," only
+bindkey "^[n" screen
+bindkey "^[l" title
+bindkey "^[;" number
+bindkey "^[c" copy
+bindkey "^[v" paste .
+
+bindkey "^[!" select 1
+bindkey "^[@" select 2
+bindkey "^[#" select 3
+bindkey "^[$" select 4
+bindkey "^[%" select 5
+bindkey "^[\^" select 6
+bindkey "^[&" select 7
+bindkey "^[*" select 8
+bindkey "^[(" select 9
+bindkey "^[)" select 0
+bindkey "^[_" select 10
+
+bind b encoding big5 utf8
+bind u encoding utf8 utf8
+

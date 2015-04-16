@@ -1,0 +1,32 @@
+#! /bin/bash
+# gitcfg - Change the .gitconfig with profile sets
+# Usage: gitcfg [profile name]
+#
+# The profile sets are stored in $HOME/.config/gitcfg/[profile name].gitconfig
+#
+
+if [[ "$1" == "" ]]; then
+	echo "usage: gitcfg profile_name"
+	exit -1
+fi
+
+if [[ ! -f $HOME/.config/gitcfg/$1.gitconfig ]]; then
+	read -p "Create new git profile set: $1 [yN]? " yn
+	if [[ "$yn" == "y" ]] || [[ "$yn" == "Y" ]]; then
+		[[ ! -d $HOME/.config/gitcfg ]] && echo "Creating directory: $HOME/.config/gitcfg" && mkdir -p "$HOME/.config/gitcfg"
+		echo "Creating: $HOME/.config/gitcfg/$1.gitconfig"
+		touch "$HOME/.config/gitcfg/$1.gitconfig"
+	else
+		echo "gitcfg: No such profile set: $1"
+		exit -1
+	fi
+fi
+
+echo "Setting git configuration to $1"
+ln -f -s "$HOME/.config/gitcfg/$1.gitconfig" "$HOME/.gitconfig"
+
+
+if type "git_config" > /dev/null 2> /dev/null; then
+	echo "Running git_config script"
+	git_config
+fi

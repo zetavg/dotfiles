@@ -1,0 +1,45 @@
+[
+	/* Fast switch tabs */
+	{ "keys": ["super+j"], "command": "prev_view" },
+	{ "keys": ["super+k"], "command": "next_view" },
+
+	/* Paste and Indent */
+	{ "keys": ["super+alt+v"], "command": "paste_and_indent" },
+
+	/* Fast Browser Refresh */
+	{ "keys": ["command+shift+a"], "command": "browser_refresh", "args": { "auto_save": true, "delay": 1.0, "activate_browser": true, "browser_name" : "all" } },
+
+	/* 自動對 HTML 縮排 */
+	{ "keys": ["ctrl+shift+r"], "command": "reindent" , "args": {"single_line": false} },
+
+	/* New File */
+	{ "keys": ["command+t"], "command": "new_file" },
+
+	/* Replace ⌘K with ⌘. */
+	{ "keys": ["super+.", "super+b"], "command": "toggle_side_bar" },
+	{ "keys": ["super+.", "super+d"], "command": "find_under_expand_skip" },
+	{ "keys": ["super+.", "super+u"], "command": "upper_case" },
+	{ "keys": ["super+.", "super+l"], "command": "lower_case" },
+	{ "keys": ["super+.", "super+space"], "command": "set_mark" },
+	{ "keys": ["super+.", "super+a"], "command": "select_to_mark" },
+	{ "keys": ["super+.", "super+w"], "command": "delete_to_mark" },
+	{ "keys": ["super+.", "super+x"], "command": "swap_with_mark" },
+	{ "keys": ["super+.", "super+g"], "command": "clear_bookmarks", "args": {"name": "mark"} },
+	{ "keys": ["super+.", "super+1"], "command": "fold_by_level", "args": {"level": 1} },
+	{ "keys": ["super+.", "super+2"], "command": "fold_by_level", "args": {"level": 2} },
+	{ "keys": ["super+.", "super+3"], "command": "fold_by_level", "args": {"level": 3} },
+	{ "keys": ["super+.", "super+4"], "command": "fold_by_level", "args": {"level": 4} },
+	{ "keys": ["super+.", "super+5"], "command": "fold_by_level", "args": {"level": 5} },
+	{ "keys": ["super+.", "super+6"], "command": "fold_by_level", "args": {"level": 6} },
+	{ "keys": ["super+.", "super+7"], "command": "fold_by_level", "args": {"level": 7} },
+	{ "keys": ["super+.", "super+8"], "command": "fold_by_level", "args": {"level": 8} },
+	{ "keys": ["super+.", "super+9"], "command": "fold_by_level", "args": {"level": 9} },
+	{ "keys": ["super+.", "super+0"], "command": "unfold_all" },
+	{ "keys": ["super+.", "super+j"], "command": "unfold_all" },
+	{ "keys": ["super+.", "super+t"], "command": "fold_tag_attributes" },
+	{ "keys": ["super+.", "super+y"], "command": "yank" },
+	{ "keys": ["super+.", "super+."], "command": "run_macro_file", "args": {"file": "Packages/Default/Delete to Hard EOL.sublime-macro"} },
+	{ "keys": ["super+.", "super+backspace"], "command": "run_macro_file", "args": {"file": "Packages/Default/Delete to Hard BOL.sublime-macro"} },
+	{ "keys": ["super+.", "super+c"], "command": "show_at_center" },
+	{ "keys": ["super+.", "super+j"], "command": "join_lines" }
+]

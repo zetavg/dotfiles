@@ -1,0 +1,5 @@
+#! /bin/bash
+# randw - grabs a random word from Urban Dictionary
+#
+
+echo $(curl --silent www.urbandictionary.com/random.php? | grep -o 'term=[^ ^"]*' | sed s/term=//g | sed s/+//g)

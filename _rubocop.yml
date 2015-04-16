@@ -1,0 +1,20 @@
+AbcSize:
+  Max: 32
+
+LineLength:
+  Enabled: false
+
+ClassLength:
+  Max: 2000
+
+MethodLength:
+  Max: 200
+
+StringLiterals:
+  Enabled: false
+
+HashSyntax:
+  Enabled: false
+
+Documentation:
+  Enabled: false

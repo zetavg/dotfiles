@@ -1,0 +1,46 @@
+# Neson's mutt keybindings
+
+# Editor
+set editor="vim \"+set spell\""
+
+
+# Sent
+set record="~/Mail/=sent-mail-`date +%Y-%m`"
+
+
+# Keybindings for Moves
+bind index <up> previous-entry
+bind index <down> next-entry
+macro index <right> <display-message>
+macro index <left> <sync-mailbox><change-folder>? "Go to the folder menu"
+
+bind index - previous-page
+bind index <space> next-page
+
+macro pager   <left>     <exit>
+macro pager   <right>    <noop>
+macro pager   <up>       <previous-line>
+macro pager   <down>     <next-line>
+macro pager   k          <previous-line>
+macro pager   j          <next-line>
+macro pager   u          <previous-page>
+macro pager   d          <next-page>
+macro pager   p          <previous-entry>
+macro pager   n          <next-entry>
+
+macro index   <tab>      <next-unread><enter>
+
+macro browser <space>    <check-new>
+
+macro browser <right>    <select-entry>
+macro browser <left>     <home><return> "Goto previous folder"
+
+
+# Keybindings to get me out off there
+macro index Q   ":set quit=yes\nqy"  "Quit mutt without asking"
+macro browser Q ":set quit=yes\nqqy" "Quit mutt without asking"
+
+
+# Address Book
+source ~/.mutt.alias
+set alias_file="~/.mutt.alias"

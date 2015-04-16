@@ -1,0 +1,4 @@
+{
+	"cmd": ["gcc $file -o $file_base_name & chmod 755 $file_base_name & osascript -e 'tell app \"Terminal\" to do script \"cd $file_path \n ./$file_base_name\" \n delay 1 \n tell app \"Terminal\" to activate' "],
+	"shell": "true"
+}

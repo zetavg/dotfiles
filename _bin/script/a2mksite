@@ -1,0 +1,70 @@
+#! /bin/bash
+# a2mksite
+# Creates visual host for apache2 automatically, including awstats config file.
+# usage: a2mksite UserName SiteDomain
+# by Neson 2013/5
+#
+# for Apache2(apache2-mpm-itk, AssignUserId) on Debian 6/7.
+#
+# locations:
+# Site: ~UserName/site/SiteDomain/
+# Site logs: ~UserName/site/log/SiteDomain/
+# Apache2 config: /etc/apache2/sites-available/SiteDomain
+# AWStats config: /etc/awstats/awstats.SiteDomain.conf
+#
+# notice: you might need to set file permissions manually using chmod or
+# `setfacl -R -m u:www-data:rwx directoryName # add acl permissions for www-data to all the files in the directory`
+# `setfacl -R -m d:u:www-data:rwx directoryName # and files added in the future too`
+#
+
+if [ "$1" == "" ] || [ "$2" == "" ]; then
+	echo "Error: missing parameter(s)."
+	exit -1
+
+else
+	echo "Creating site "$2" for user "$1"..."
+
+	test -e /etc/apache2/sites-available/$2 && echo "Error: site "$2" already exits!" && exit -1
+	test ! -e /home/$1 && echo "Error: can't find user directory: "$1 && exit -1
+
+	echo "creating directory \"/home/"$1"/sites/"$2"\""
+	mkdir -p /home/$1/sites/$2/
+
+	echo "creating directory \"/home/"$1"/sites/logs/"$2"\""
+	mkdir -p /home/$1/sites/logs/$2/
+
+	echo "creating log files..."
+	touch /home/$1/sites/logs/$2/error.log
+	touch /home/$1/sites/logs/$2/access.log
+
+	echo "chown..."
+	chown $1 -R /home/$1/sites/$2/
+	chown $1 -R /home/$1/sites/logs/$2/
+
+	echo "Writing into /etc/apache2/sites-available/"$2
+	printf "<VirtualHost *:80>
+  ServerAdmin $1@localhost
+
+  DocumentRoot /home/$1/sites/$2/
+  ServerName $2
+  ServerAlias 
+  AssignUserId $1 $1
+  <Directory /home/$1/sites/$2>
+    Options Indexes FollowSymLinks MultiViews
+    AllowOverride All
+    Order allow,deny
+    allow from all
+  </Directory>
+
+  ErrorLog /home/$1/sites/logs/$2/error.log
+  LogLevel warn
+  CustomLog /home/$1/sites/logs/$2/access.log combined
+</VirtualHost>\n" >> /etc/apache2/sites-available/$2
+
+	if [ -e /etc/awstats/ ]; then
+		echo "setting up awstats..."
+		printf "Include \"awstats.conf\"\nLogFile=\"/home/$1/sites/logs/$2/access.log\"\nSiteDomain=\"$2\"\nDirData=\"/var/lib/awstats\"\nHostAliases=\"\"\n" >> /etc/awstats/awstats.$2.conf
+	fi
+
+	echo "Run a2ensite "$2" ; service apache2 reload to take effects!"
+fi

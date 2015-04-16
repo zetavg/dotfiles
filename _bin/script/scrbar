@@ -1,0 +1,4 @@
+#! /bin/bash
+
+screen -X caption splitonly "%{=u .w} %n %t"
+screen -X hardstatus alwayslastline "%{= KW} %-w%{= wW}[%{-}%{= wk}%n %t%{-}%{= wW}]%{-}%+w %= | %l | %0c:%s %{-}"

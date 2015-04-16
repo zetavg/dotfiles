@@ -1,0 +1,8 @@
+[general]
+mouse = 1
+shadow = 1
+wm = irssi.so
+
+[GntEntry::remap]
+w = c
+e = a

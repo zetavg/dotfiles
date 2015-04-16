@@ -1,0 +1,105 @@
+#!/bin/bash
+# sysBackup - full system backup for linux.
+#
+# Usage: sysBackup [-o output_location]
+#
+# To recovery from backup, follow the steps below:
+# 1. Do a clean installation of the same linux distribution.
+# 2. Put the backup file under /tmp.
+# 3. execute
+#    tar -zx -P --preserve-permissions --exclude=/etc/fstab -f /tmp/...full-backup.tar.gz
+#    with root permission.
+# 4. done. Make sure the grub/fstab/networking config are currect, then reboot.
+#
+
+# PREPARE
+###############################################################################
+
+rnd=$RANDOM
+date=$(date "+%Y-%m-%d_%H.%M.%S")
+datetime=$(date "+%Y-%m-%d %H:%M:%S")
+uname=$(uname --all)
+hostname=$(hostname)
+backup_to="/tmp/"
+
+if [[ $(id -u) = 0 ]] ; then
+  echo "sysBackup: this script must run with root permissions."
+fi
+
+if [[ "$1" == "-o" ]];
+  if [[ -d "$2" ]]; then
+    backup_to="$2"
+  else
+    echo "sysBackup: no such directory: $2 . aborting."
+    exit -1
+  fi
+fi
+
+# START
+###############################################################################
+
+echo -n "Today is $datetime. Preparing for backup."
+echo -n "Building excluded list: /tmp/$rnd-sysBackup-exclude-file-list ... "
+echo "lost+found"            > /tmp/$rnd-sysBackup-exclude-file-list
+echo "/mnt/*"               >> /tmp/$rnd-sysBackup-exclude-file-list
+echo "/media/*"             >> /tmp/$rnd-sysBackup-exclude-file-list
+echo "/proc/*"              >> /tmp/$rnd-sysBackup-exclude-file-list
+echo "/dev/*"               >> /tmp/$rnd-sysBackup-exclude-file-list
+echo "/sys/*"               >> /tmp/$rnd-sysBackup-exclude-file-list
+echo "/tmp/*"               >> /tmp/$rnd-sysBackup-exclude-file-list
+echo "/var/spool/squid/*"   >> /tmp/$rnd-sysBackup-exclude-file-list
+
+echo "/etc/etc/network/*"   >> /tmp/$rnd-sysBackup-exclude-file-list
+echo "/etc/fstab"           >> /tmp/$rnd-sysBackup-exclude-file-list
+echo "/etc/boot/*"          >> /tmp/$rnd-sysBackup-exclude-file-list
+echo "/boot/*"              >> /tmp/$rnd-sysBackup-exclude-file-list
+echo "/etc/grub.d/*"        >> /tmp/$rnd-sysBackup-exclude-file-list
+echo "/etc/default/grub/*"  >> /tmp/$rnd-sysBackup-exclude-file-list
+
+echo "done."
+echo ""
+
+# TAR
+###############################################################################
+
+datetime=$(date "+%Y-%m-%d %H:%M:%S")
+echo "Backup job started at $datetime"
+
+###############################################################################
+tar -cf "$backup_to/$hostname-$date-full-backup.tar" / --totals --absolute-names \
+    --ignore-failed-read --exclude-from=/tmp/$rnd-sysBackup-exclude-file-list
+if [[ "${?}" != 0 ]] ; then
+    echo "Backup failed."
+    rm -f /tmp/$rnd-sysBackup-exclude-file-list
+    exit -1
+fi
+rm -f /tmp/$rnd-sysBackup-exclude-file-list
+###############################################################################
+
+datetime=$(date "+%Y-%m-%d %H:%M:%S")
+echo "Backup job ended at $datetime"
+echo ""
+
+
+# GZIP COMPRESS
+###############################################################################
+
+datetime=$(date "+%Y-%m-%d %H:%M:%S")
+echo "Compressing job started at $datetime"
+
+###############################################################################
+gzip --best --rsyncable "$backup_to/$hostname-$date-full-backup.tar"
+if [ "${?}" != 0 ] ; then
+    echo "Gzip failed."
+    exit -1
+fi
+
+gzip --test "$backup_to/$hostname-$date-full-backup.tar.gz"
+if [ "${?}" != 0 ] ; then
+    echo "Check the compressed file integrity failed."
+    exit -1
+fi
+###############################################################################
+
+datetime=$(date "+%Y-%m-%d %H:%M:%S")
+echo "Compressing job ended at $datetime"

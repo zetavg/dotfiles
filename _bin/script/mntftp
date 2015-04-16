@@ -1,0 +1,16 @@
+#! /bin/bash
+# mntftp - Use curlftpfs to mount disk on ~/mnt
+# Usage: mntftp [-r] username@server
+#
+
+if [[ "$1" == "" ]]; then
+	echo "usage: mntftp user@server"
+	exit -1
+fi
+
+user=`echo $1 | sed "s/@.*//g"`
+server=`echo $1 | sed "s/${user}@//g"`
+mkdir -p $HOME/mnt/$1
+[ "$(ls -A $HOME/mnt/$1)" ] && echo "mntftp: Mount point in use" && exit -1
+sshfs $1:/home/$user $HOME/mnt/$1
+curlftpfs -o codepage=utf8 ftp://$user@$server $HOME/mnt/$1

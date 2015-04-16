@@ -1,0 +1,20 @@
+#! /bin/bash
+# zsht - Start zsh with a theme
+# Usage: zsht theme_name
+#
+# Place the themes in ~/.zsh/themes
+#
+
+if [[ ! -n "$1" ]]; then
+  echo "zsht - Start zsh with a theme"
+  echo "Usage: zsht theme_name"
+  exit -1
+elif [[ ! -s "$HOME/.zsh/themes/$1.zsh-theme" ]]; then
+  echo "zsht: theme '$1' dosen't exists!"
+  echo "Please make sure '$1.zsh-theme' is in your '~/.zsh/themes'"
+  exit -1
+else
+  cp "$HOME/.zsh/themes/$1.zsh-theme" "$HOME/.zsh/usethis.zsh-theme"
+  [[ -s "$HOME/.zsh/themes/$1.zsh" ]] && cp "$HOME/.zsh/themes/$1.zsh" "$HOME/.zsh/runthis.zsh"
+  zsh
+fi

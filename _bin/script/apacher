@@ -1,0 +1,116 @@
+#! /bin/bash
+# apacher - Get website up on OS X
+# Usage: apacher link|unlink
+#
+
+if [[ $(uname) != "Darwin" ]]; then
+  echo "Sorry, apacher runs only on Mac."
+  exit -1
+else
+  sudo mv /etc/apache2/httpd.conf /etc/apache2/httpd.conf.bak
+  sudo sh -c 'sed "s/#Include \/private\/etc\/apache2\/extra\/httpd-vhosts.conf/Include \/etc\/apache2\/extra\/httpd-vhosts.conf/g" /etc/apache2/httpd.conf.bak > /etc/apache2/httpd.conf.bak2'
+  sudo sh -c 'sed "s/#LoadModule php5_module libexec\/apache2\/libphp5.so/LoadModule php5_module libexec\/apache2\/libphp5.so/g" /etc/apache2/httpd.conf.bak2 > /etc/apache2/httpd.conf.bak3'
+  sudo sh -c 'tr "\n" ";" < /etc/apache2/httpd.conf.bak3 > /etc/apache2/httpd.conf.bak4'
+  sudo sh -c 'sed "s/Listen 80;;/Listen 80;Listen 8080;;/g" /etc/apache2/httpd.conf.bak4 > /etc/apache2/httpd.conf.bak5'
+  sudo sh -c 'tr ";" "\n" < /etc/apache2/httpd.conf.bak5 > /etc/apache2/httpd.conf'
+  if [[ ! -d /etc/apache2/extra/vhosts ]]; then
+    sudo mkdir -p /etc/apache2/extra/vhosts
+    sudo mv /etc/apache2/extra/httpd-vhosts.conf /etc/apache2/extra/httpd-vhosts.conf.bak
+    sudo sh -c "sed 's/NameVirtualHost \*:80/NameVirtualHost \*:80;;Listen 8080;NameVirtualHost *:8080;;Include \/private\/etc\/apache2\/extra\/vhosts\/*.conf;/g' /etc/apache2/extra/httpd-vhosts.conf.bak > /etc/apache2/extra/httpd-vhosts.conf.bak2"
+   # sudo sh -c "cat /etc/apache2/extra/httpd-vhosts.conf.bak2 | tr ',' '\012' > /etc/apache2/extra/httpd-vhosts.conf"
+    sudo sh -c 'tr ";" "\n" < /etc/apache2/extra/httpd-vhosts.conf.bak2 > /etc/apache2/extra/httpd-vhosts.conf'
+  fi
+fi
+
+site_name="$(basename $(pwd) | tr '[:upper:]' '[:lower:]' | sed -e 's/_/-/g')"
+
+if [[ "$1" == "link" ]]; then
+  mkdir -p "$(pwd)/tmp/log"
+  touch "$(pwd)/tmp/log/error.log"
+  touch "$(pwd)/tmp/log/access.log"
+  sudo sh -c "printf '<VirtualHost *:80 *:8080>
+    ServerAdmin webmaster@$site_name.dev
+    DocumentRoot \"$(pwd)\"
+    ServerName $site_name.dev
+    ErrorLog \"$(pwd)/tmp/log/error.log\"
+    CustomLog \"$(pwd)/tmp/log/access.log\" common
+    <Directory \"$(pwd)\">
+        SetEnv downgrade-1.0 true
+        SetEnv force-response-1.0 true
+        Options Indexes MultiViews FollowSymLinks ExecCGI
+        AllowOverride All
+        Order allow,deny
+        Allow from all
+    </Directory>
+</VirtualHost>' > /private/etc/apache2/extra/vhosts/$site_name.dev.conf"
+  if [[ -d /Library/Server/Web/Config/apache2/sites ]]; then
+    sudo sh -c "printf '<VirtualHost *:80 *:8080>
+    ServerAdmin webmaster@$site_name.dev
+    DocumentRoot \"$(pwd)\"
+    ServerName $site_name.dev
+    ErrorLog \"$(pwd)/tmp/log/error.log\"
+    CustomLog \"$(pwd)/tmp/log/access.log\" common
+    <Directory \"$(pwd)\">
+        SetEnv downgrade-1.0 true
+        SetEnv force-response-1.0 true
+        Options Indexes MultiViews FollowSymLinks ExecCGI
+        AllowOverride All
+        Order allow,deny
+        Allow from all
+    </Directory>
+</VirtualHost>' > /Library/Server/Web/Config/apache2/sites/$site_name.dev.conf"  # For Server.app
+  fi
+  sudo sh -c "printf '\n127.0.0.1 $site_name.dev' >> /etc/hosts"
+  sudo apachectl restart
+  if [[ -d ~/.pow ]]; then
+    ln -s "$(pwd)" ~/".pow/$site_name"
+    echo "require \"net/http\"
+
+class ProxyApp
+  def call(env)
+    begin
+      request = Rack::Request.new(env)
+      headers = {}
+      dir = \"\"
+      env.each do |key, value|
+        if key =~ /^http_(.*)/i
+          headers[\$1] = value
+        end
+
+        if key == \"HTTP_HOST\"
+          dir = value.chomp(\".dev\")
+        end
+
+      end
+      http = Net::HTTP.new(\"$site_name.dev\", 8080)
+      http.start do |http|
+        response = http.send_request(request.request_method, request.fullpath, request.body.read, headers)
+        [response.code, response.to_hash, [response.body]]
+      end
+      rescue Errno::ECONNREFUSED
+      [500, {}, [\"Server is down, try $ sudo apachectl start\"]]
+    end
+  end
+end
+
+run ProxyApp.new" > 'config.ru'
+  fi
+  echo "Your site is now available at http://$site_name.dev/"
+
+elif [[ "$1" == "unlink" ]]; then
+  sudo rm "/private/etc/apache2/extra/vhosts/$site_name.dev.conf"
+  if [[ -d /Library/Server/Web/Config/apache2/sites ]]; then
+    sudo rm "/Library/Server/Web/Config/apache2/sites/$site_name.dev.conf"
+  fi
+  sudo mv /etc/hosts /etc/hosts.bak
+  sudo sh -c "sed '/127.0.0.1 $site_name.dev/d' /etc/hosts.bak > /etc/hosts"
+  sudo apachectl restart
+  rm -f config.ru
+  rm -f ~/".pow/$site_name"
+  echo "Successfully removed http://$site_name.dev/"
+
+else
+  echo "apacher - Get website up on OS X
+Usage: apacher link|unlink"
+  exit -1
+fi

@@ -1,0 +1,109 @@
+# Path to your oh-my-zsh configuration.
+ZSH=$HOME/.oh-my-zsh
+
+# Set name of the theme to load.
+# Look in ~/.oh-my-zsh/themes/
+# Optionally, if you set this to "random", it'll load a random theme each
+# time that oh-my-zsh is loaded.
+if [[ -s "$HOME/.zsh/usethis.zsh-theme" ]]; then
+  mv $HOME/.zsh/usethis.zsh-theme $HOME/.oh-my-zsh/themes/default.zsh-theme && ZSH_THEME="default"
+else
+  [[ -s "$HOME/.zsh/default.zsh-theme" ]] && cp $HOME/.zsh/default.zsh-theme $HOME/.oh-my-zsh/themes/ && ZSH_THEME="default"
+fi
+
+# Plugins
+[[ -d "$HOME/.zsh/plugins" ]] && cp -a "$HOME/.zsh/plugins/." "$HOME/.oh-my-zsh/plugins/"
+
+# Functions
+[[ -d "$HOME/.zsh/functions" ]] && cp -a "$HOME/.zsh/functions/." "$HOME/.oh-my-zsh/functions/"
+
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# Set to this to use case-sensitive completion
+# CASE_SENSITIVE="true"
+
+# Comment this out to disable bi-weekly auto-update checks
+DISABLE_AUTO_UPDATE="true"
+
+# Uncomment to change how many often would you like to wait before auto-updates occur? (in days)
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment following line if you want to disable colors in ls
+# DISABLE_LS_COLORS="true"
+
+# Uncomment following line if you want to disable autosetting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment following line if you want red dots to be displayed while waiting for completion
+# COMPLETION_WAITING_DOTS="true"
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+plugins=(battery brew bundler cake cloudapp coffee colorize cp debian encode64 fasd forklift gem git git-extras git-flow gitignore gnu-utils go golang heroku history jruby mosh node npm nvm osx perl pip pow powder powify pyenv pylint python rails rake rand-quote rsync ruby rvm python pyenv django screen sudo svn terminalapp urltools wd web-search yum zsh-syntax-highlighting)
+
+source $ZSH/oh-my-zsh.sh
+
+# zsh-syntax-highlighting
+if [[ -n $ZSH_HIGHLIGHT_HIGHLIGHTERS ]]; then
+  ZSH_HIGHLIGHT_STYLES[default]='none'
+  ZSH_HIGHLIGHT_STYLES[unknown-token]='none'
+  ZSH_HIGHLIGHT_STYLES[reserved-word]='none'
+  ZSH_HIGHLIGHT_STYLES[alias]='none'
+  ZSH_HIGHLIGHT_STYLES[builtin]='none'
+  ZSH_HIGHLIGHT_STYLES[function]='none'
+  ZSH_HIGHLIGHT_STYLES[command]='none'
+  ZSH_HIGHLIGHT_STYLES[precommand]='none'
+  ZSH_HIGHLIGHT_STYLES[commandseparator]='none'
+  ZSH_HIGHLIGHT_STYLES[hashed-command]='none'
+  ZSH_HIGHLIGHT_STYLES[path]='none'
+  ZSH_HIGHLIGHT_STYLES[path_prefix]='none'
+  ZSH_HIGHLIGHT_STYLES[path_approx]='none'
+  ZSH_HIGHLIGHT_STYLES[globbing]='none'
+  ZSH_HIGHLIGHT_STYLES[history-expansion]='none'
+  ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='none'
+  ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='none'
+  ZSH_HIGHLIGHT_STYLES[back-quoted-argument]='none'
+  ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='none'
+  ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='none'
+  ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]='none'
+  ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]='none'
+  ZSH_HIGHLIGHT_STYLES[assign]='none'
+fi
+
+# zsh-history-substring-search
+source $HOME/.zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+zmodload zsh/terminfo
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
+
+# zaw
+source $HOME/.zsh/plugins/zaw/zaw.zsh
+bindkey '^R' zaw-history
+bindkey -M filterselect '^R' down-line-or-history
+bindkey -M filterselect '^S' up-line-or-history
+bindkey -M filterselect '^E' accept-search
+zstyle ':filter-select:highlight' matched fg=green
+zstyle ':filter-select' max-lines 3
+zstyle ':filter-select' case-insensitive yes # enable case-insensitive
+zstyle ':filter-select' extended-search yes # see below
+
+# RVM, NVM
+[[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh # This loads NVM
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+[[ -s "/usr/local/rvm/scripts/rvm" ]] && . "/usr/local/rvm/scripts/rvm"
+
+# Run ?
+if [[ -s "$HOME/.zsh/runthis.zsh" ]]; then
+  source "$HOME/.zsh/runthis.zsh"
+  rm -f "$HOME/.zsh/runthis.zsh"
+fi
+
+# Customize to your needs...
+. "$HOME/.shell_profile"
+
