@@ -1,0 +1,19 @@
+[submodule "_oh-my-zsh"]
+	path = _oh-my-zsh
+	url = https://github.com/robbyrussell/oh-my-zsh.git
+	ignore = dirty
+[submodule "_zsh/plugins/zsh-syntax-highlighting"]
+	path = _zsh/plugins/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "_zsh/plugins/zsh-history-substring-search"]
+	path = _zsh/plugins/zsh-history-substring-search
+	url = https://github.com/zsh-users/zsh-history-substring-search.git
+[submodule "_zsh/plugins/zaw"]
+	path = _zsh/plugins/zaw
+	url = https://github.com/zsh-users/zaw.git
+[submodule "_vim/bundle/vim-powerline"]
+	path = _vim/bundle/vim-powerline
+	url = https://github.com/Lokaltog/vim-powerline.git
+[submodule "_vim/bundle/nerdtree"]
+	path = _vim/bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
