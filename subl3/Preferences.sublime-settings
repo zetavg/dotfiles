@@ -31,7 +31,9 @@
 	"font_face": "InputMono-ExtraLight",
 	"font_size": 15.5,
 	"highlight_line": false,
-	"ignored_packages": [],
+	"ignored_packages":
+	[
+	],
 	"line_numbers": true,
 	"line_padding_bottom": 3,
 	"line_padding_top": 3,
