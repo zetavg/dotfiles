@@ -30,3 +30,6 @@ if $(type ksdiff >/dev/null 2>&1); then
 	git config --global diff.tool 'Kaleidoscope'
 	git config --global merge.tool 'Kaleidoscope'
 fi
+
+# Defaults to the more conservative 'simple' behavior
+git config --global push.default simple
