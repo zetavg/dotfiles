@@ -4,7 +4,19 @@
 	],
 	"installed_packages":
 	[
+		"AdvancedNewFile",
+		"ColorPicker",
+		"EditorConfig",
+		"Gist",
+		"GitGutter",
+		"Haml",
+		"Hasher",
 		"Package Control",
-		"Theme - Spacegray"
+		"Ruby Slim",
+		"Sass",
+		"SCSS",
+		"Theme - Spacegray",
+		"TrailingSpaces",
+		"WordCount"
 	]
 }
