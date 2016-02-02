@@ -6,7 +6,7 @@
 
 
 # SET DEFAULT CONSTANTS
-DEFAULT_NVM='0.10.32'
+DEFAULT_NVM='5.5.0'
 DEFAULT_RVM='2.2.0'
 
 
@@ -76,8 +76,12 @@ alias gs='git status'
 alias gss='git status --short --branch'
 alias gsm='git status | more'
 
+alias RR='rails'
+alias RN='react-native'
+
 alias st='subl'
 alias ss='subl'
+alias gt='gittower'
 
 alias trr='touch tmp/restart.txt'
 alias ttr='touch tmp/restart.txt'

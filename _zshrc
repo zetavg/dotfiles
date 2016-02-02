@@ -92,12 +92,6 @@ zstyle ':filter-select' max-lines 3
 zstyle ':filter-select' case-insensitive yes # enable case-insensitive
 zstyle ':filter-select' extended-search yes # see below
 
-# RVM, NVM
-[[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh # This loads NVM
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
-[[ -s "/usr/local/rvm/scripts/rvm" ]] && . "/usr/local/rvm/scripts/rvm"
-
 # Run ?
 if [[ -s "$HOME/.zsh/runthis.zsh" ]]; then
   source "$HOME/.zsh/runthis.zsh"
@@ -106,4 +100,3 @@ fi
 
 # Customize to your needs...
 . "$HOME/.shell_profile"
-
