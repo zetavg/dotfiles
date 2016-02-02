@@ -1,0 +1,21 @@
+#! /bin/bash
+
+time_stamp=$(date +%Y%m%d_%H%M%S)
+
+# Function to create symbolic link and made a backup if target exists
+link_file() {
+  source="$1"
+  target="$2"
+  if [[ -e "$target" ]] && [[ ! -L "$target" ]]; then
+    echo "Creating backup for $target: $target.$time_stamp.bak"
+    mv -f "$target" "$target.$time_stamp.bak"
+  elif [[ -L "$target" ]]; then
+    rm "$target"
+  fi
+  echo "Linking $source to $target"
+  ln -sf "$source" "$target"
+}
+
+test ! -e "$HOME/Dropbox/Apps/Safari/Extensions" && mkdir -p "$HOME/Dropbox/Apps/Safari/Extensions"
+
+link_file "$HOME/Dropbox/Apps/Safari/Extensions" "$HOME/Library/Safari/Extensions"
