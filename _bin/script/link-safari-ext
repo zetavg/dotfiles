@@ -19,3 +19,11 @@ link_file() {
 test ! -e "$HOME/Dropbox/Apps/Safari/Extensions" && mkdir -p "$HOME/Dropbox/Apps/Safari/Extensions"
 
 link_file "$HOME/Dropbox/Apps/Safari/Extensions" "$HOME/Library/Safari/Extensions"
+
+# cd "$HOME/Dropbox/Apps/Safari/Extensions/"
+# for i in *.safariextz
+# do
+#   open "$i"
+# done
+
+open "$HOME/Dropbox/Apps/Safari/Extensions/"
