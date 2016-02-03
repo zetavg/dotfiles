@@ -6,6 +6,7 @@
 	[
 		"AdvancedNewFile",
 		"AutoBackups",
+		"Babel",
 		"ColorPicker",
 		"EditorConfig",
 		"Gist",
@@ -17,6 +18,10 @@
 		"Sass",
 		"SCSS",
 		"SideBarEnhancements",
+		"SublimeLinter",
+		"SublimeLinter-contrib-eslint",
+		"SublimeLinter-rubocop",
+		"SublimeLinter-shellcheck",
 		"Theme - Spacegray",
 		"TrailingSpaces",
 		"WordCount"

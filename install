@@ -95,7 +95,7 @@ if [[ -e "$BASEDIR/secret" ]]; then
   echo "Copying private profiles..."
 
   if [[ -e "$BASEDIR/secret/subl2" ]]; then
-    source="$BASEDIR/secret/subl2/*"
+    source="$BASEDIR/secret/subl2"
     if [[ $(uname) == "Darwin" ]]; then
       test ! -e "$HOME/Library/Application Support/Sublime Text 2/Packages" && mkdir -p "$HOME/Library/Application Support/Sublime Text 2/Packages/User"
       target="$HOME/Library/Application Support/Sublime Text 2/Packages/User"
@@ -103,11 +103,11 @@ if [[ -e "$BASEDIR/secret" ]]; then
       test ! -e "$HOME/.config/sublime-text-2/Packages" && mkdir -p "$HOME/.config/sublime-text-2/Packages/User"
       target="$HOME/.config/sublime-text-2/Packages/User"
     fi
-    cp -f "$source" "$target/"
+    cp -f "$source"/* "$target"/
   fi
 
   if [[ -e "$BASEDIR/secret/subl3" ]]; then
-    source="$BASEDIR/secret/subl3/*"
+    source="$BASEDIR/secret/subl3"
       if [[ $(uname) == "Darwin" ]]; then
         test ! -e "$HOME/Library/Application Support/Sublime Text 3/Packages" && mkdir -p "$HOME/Library/Application Support/Sublime Text 3/Packages/User"
         target="$HOME/Library/Application Support/Sublime Text 3/Packages/User"
@@ -115,7 +115,7 @@ if [[ -e "$BASEDIR/secret" ]]; then
         test ! -e "$HOME/.config/sublime-text-3/Packages" && mkdir -p "$HOME/.config/sublime-text-3/Packages/User"
         target="$HOME/.config/sublime-text-3/Packages/User"
       fi
-      cp -f "$source" "$target/"
+      cp -f "$source"/* "$target"/
   fi
 
   if [[ -e "$BASEDIR/secret/gitcfg" ]]; then
