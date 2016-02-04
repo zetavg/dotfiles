@@ -1,0 +1,1657 @@
+{
+  "scope": "source.js",
+  "completions": [
+    {
+      "trigger": "React",
+      "contents": "React"
+    },
+    {
+      "trigger": "ActivityIndicatorIOS",
+      "contents": "ActivityIndicatorIOS"
+    },
+    {
+      "trigger": "ART",
+      "contents": "ART"
+    },
+    {
+      "trigger": "DatePickerIOS",
+      "contents": "DatePickerIOS"
+    },
+    {
+      "trigger": "DrawerLayoutAndroid",
+      "contents": "DrawerLayoutAndroid"
+    },
+    {
+      "trigger": "Image",
+      "contents": "Image"
+    },
+    {
+      "trigger": "ImageEditor",
+      "contents": "ImageEditor"
+    },
+    {
+      "trigger": "ImageStore",
+      "contents": "ImageStore"
+    },
+    {
+      "trigger": "ListView",
+      "contents": "ListView"
+    },
+    {
+      "trigger": "MapView",
+      "contents": "MapView"
+    },
+    {
+      "trigger": "Modal",
+      "contents": "Modal"
+    },
+    {
+      "trigger": "Navigator",
+      "contents": "Navigator"
+    },
+    {
+      "trigger": "NavigatorIOS",
+      "contents": "NavigatorIOS"
+    },
+    {
+      "trigger": "Picker",
+      "contents": "Picker"
+    },
+    {
+      "trigger": "PickerIOS",
+      "contents": "PickerIOS"
+    },
+    {
+      "trigger": "ProgressBarAndroid",
+      "contents": "ProgressBarAndroid"
+    },
+    {
+      "trigger": "ProgressViewIOS",
+      "contents": "ProgressViewIOS"
+    },
+    {
+      "trigger": "ScrollView",
+      "contents": "ScrollView"
+    },
+    {
+      "trigger": "SegmentedControlIOS",
+      "contents": "SegmentedControlIOS"
+    },
+    {
+      "trigger": "SliderIOS",
+      "contents": "SliderIOS"
+    },
+    {
+      "trigger": "SnapshotViewIOS",
+      "contents": "SnapshotViewIOS"
+    },
+    {
+      "trigger": "Switch",
+      "contents": "Switch"
+    },
+    {
+      "trigger": "PullToRefreshViewAndroid",
+      "contents": "PullToRefreshViewAndroid"
+    },
+    {
+      "trigger": "RecyclerViewBackedScrollView",
+      "contents": "RecyclerViewBackedScrollView"
+    },
+    {
+      "trigger": "RefreshControl",
+      "contents": "RefreshControl"
+    },
+    {
+      "trigger": "SwitchAndroid",
+      "contents": "SwitchAndroid"
+    },
+    {
+      "trigger": "SwitchIOS",
+      "contents": "SwitchIOS"
+    },
+    {
+      "trigger": "TabBarIOS",
+      "contents": "TabBarIOS"
+    },
+    {
+      "trigger": "Text",
+      "contents": "Text"
+    },
+    {
+      "trigger": "TextInput",
+      "contents": "TextInput"
+    },
+    {
+      "trigger": "ToastAndroid",
+      "contents": "ToastAndroid"
+    },
+    {
+      "trigger": "ToolbarAndroid",
+      "contents": "ToolbarAndroid"
+    },
+    {
+      "trigger": "Touchable",
+      "contents": "Touchable"
+    },
+    {
+      "trigger": "TouchableHighlight",
+      "contents": "TouchableHighlight"
+    },
+    {
+      "trigger": "TouchableNativeFeedback",
+      "contents": "TouchableNativeFeedback"
+    },
+    {
+      "trigger": "TouchableOpacity",
+      "contents": "TouchableOpacity"
+    },
+    {
+      "trigger": "TouchableWithoutFeedback",
+      "contents": "TouchableWithoutFeedback"
+    },
+    {
+      "trigger": "View",
+      "contents": "View"
+    },
+    {
+      "trigger": "ViewPagerAndroid",
+      "contents": "ViewPagerAndroid"
+    },
+    {
+      "trigger": "WebView",
+      "contents": "WebView"
+    },
+    {
+      "trigger": "ActionSheetIOS",
+      "contents": "ActionSheetIOS"
+    },
+    {
+      "trigger": "AdSupportIOS",
+      "contents": "AdSupportIOS"
+    },
+    {
+      "trigger": "Alert",
+      "contents": "Alert"
+    },
+    {
+      "trigger": "AlertIOS",
+      "contents": "AlertIOS"
+    },
+    {
+      "trigger": "Animated",
+      "contents": "Animated"
+    },
+    {
+      "trigger": "AppRegistry",
+      "contents": "AppRegistry"
+    },
+    {
+      "trigger": "AppState",
+      "contents": "AppState"
+    },
+    {
+      "trigger": "AppStateIOS",
+      "contents": "AppStateIOS"
+    },
+    {
+      "trigger": "AsyncStorage",
+      "contents": "AsyncStorage"
+    },
+    {
+      "trigger": "BackAndroid",
+      "contents": "BackAndroid"
+    },
+    {
+      "trigger": "CameraRoll",
+      "contents": "CameraRoll"
+    },
+    {
+      "trigger": "Clipboard",
+      "contents": "Clipboard"
+    },
+    {
+      "trigger": "Dimensions",
+      "contents": "Dimensions"
+    },
+    {
+      "trigger": "Easing",
+      "contents": "Easing"
+    },
+    {
+      "trigger": "ImagePickerIOS",
+      "contents": "ImagePickerIOS"
+    },
+    {
+      "trigger": "IntentAndroid",
+      "contents": "IntentAndroid"
+    },
+    {
+      "trigger": "InteractionManager",
+      "contents": "InteractionManager"
+    },
+    {
+      "trigger": "LayoutAnimation",
+      "contents": "LayoutAnimation"
+    },
+    {
+      "trigger": "LinkingIOS",
+      "contents": "LinkingIOS"
+    },
+    {
+      "trigger": "NetInfo",
+      "contents": "NetInfo"
+    },
+    {
+      "trigger": "PanResponder",
+      "contents": "PanResponder"
+    },
+    {
+      "trigger": "PixelRatio",
+      "contents": "PixelRatio"
+    },
+    {
+      "trigger": "PushNotificationIOS",
+      "contents": "PushNotificationIOS"
+    },
+    {
+      "trigger": "Settings",
+      "contents": "Settings"
+    },
+    {
+      "trigger": "StatusBarIOS",
+      "contents": "StatusBarIOS"
+    },
+    {
+      "trigger": "StyleSheet",
+      "contents": "StyleSheet"
+    },
+    {
+      "trigger": "UIManager",
+      "contents": "UIManager"
+    },
+    {
+      "trigger": "VibrationIOS",
+      "contents": "VibrationIOS"
+    },
+    {
+      "trigger": "DeviceEventEmitter",
+      "contents": "DeviceEventEmitter"
+    },
+    {
+      "trigger": "NativeAppEventEmitter",
+      "contents": "NativeAppEventEmitter"
+    },
+    {
+      "trigger": "NativeModules",
+      "contents": "NativeModules"
+    },
+    {
+      "trigger": "Platform",
+      "contents": "Platform"
+    },
+    {
+      "trigger": "processColor",
+      "contents": "processColor"
+    },
+    {
+      "trigger": "requireNativeComponent",
+      "contents": "requireNativeComponent"
+    },
+    {
+      "trigger": "ColorPropType",
+      "contents": "ColorPropType"
+    },
+    {
+      "trigger": "EdgeInsetsPropType",
+      "contents": "EdgeInsetsPropType"
+    },
+    {
+      "trigger": "PointPropType",
+      "contents": "PointPropType"
+    },
+    {
+      "trigger": "addons",
+      "contents": "addons"
+    },
+    {
+      "trigger": "hasReactNativeInitialized",
+      "contents": "hasReactNativeInitialized"
+    },
+    {
+      "trigger": "Children",
+      "contents": "Children"
+    },
+    {
+      "trigger": "Component",
+      "contents": "Component"
+    },
+    {
+      "trigger": "PropTypes",
+      "contents": "PropTypes"
+    },
+    {
+      "trigger": "createClass",
+      "contents": "createClass"
+    },
+    {
+      "trigger": "createElement",
+      "contents": "createElement"
+    },
+    {
+      "trigger": "createFactory",
+      "contents": "createFactory"
+    },
+    {
+      "trigger": "cloneElement",
+      "contents": "cloneElement"
+    },
+    {
+      "trigger": "_augmentElement",
+      "contents": "_augmentElement"
+    },
+    {
+      "trigger": "findNodeHandle",
+      "contents": "findNodeHandle"
+    },
+    {
+      "trigger": "render",
+      "contents": "render"
+    },
+    {
+      "trigger": "unmountComponentAtNode",
+      "contents": "unmountComponentAtNode"
+    },
+    {
+      "trigger": "unstable_batchedUpdates",
+      "contents": "unstable_batchedUpdates"
+    },
+    {
+      "trigger": "__spread",
+      "contents": "__spread"
+    },
+    {
+      "trigger": "unmountComponentAtNodeAndRemoveContainer",
+      "contents": "unmountComponentAtNodeAndRemoveContainer"
+    },
+    {
+      "trigger": "isValidClass",
+      "contents": "isValidClass"
+    },
+    {
+      "trigger": "isValidElement",
+      "contents": "isValidElement"
+    },
+    {
+      "trigger": "renderComponent",
+      "contents": "renderComponent"
+    },
+    {
+      "trigger": "accessible",
+      "contents": "accessible"
+    },
+    {
+      "trigger": "accessibilityLabel",
+      "contents": "accessibilityLabel"
+    },
+    {
+      "trigger": "accessibilityComponentType",
+      "contents": "accessibilityComponentType"
+    },
+    {
+      "trigger": "accessibilityLiveRegion",
+      "contents": "accessibilityLiveRegion"
+    },
+    {
+      "trigger": "importantForAccessibility",
+      "contents": "importantForAccessibility"
+    },
+    {
+      "trigger": "accessibilityTraits",
+      "contents": "accessibilityTraits"
+    },
+    {
+      "trigger": "onAccessibilityTap",
+      "contents": "onAccessibilityTap"
+    },
+    {
+      "trigger": "onMagicTap",
+      "contents": "onMagicTap"
+    },
+    {
+      "trigger": "testID",
+      "contents": "testID"
+    },
+    {
+      "trigger": "onResponderGrant",
+      "contents": "onResponderGrant"
+    },
+    {
+      "trigger": "onResponderMove",
+      "contents": "onResponderMove"
+    },
+    {
+      "trigger": "onResponderReject",
+      "contents": "onResponderReject"
+    },
+    {
+      "trigger": "onResponderRelease",
+      "contents": "onResponderRelease"
+    },
+    {
+      "trigger": "onResponderTerminate",
+      "contents": "onResponderTerminate"
+    },
+    {
+      "trigger": "onResponderTerminationRequest",
+      "contents": "onResponderTerminationRequest"
+    },
+    {
+      "trigger": "onStartShouldSetResponder",
+      "contents": "onStartShouldSetResponder"
+    },
+    {
+      "trigger": "onStartShouldSetResponderCapture",
+      "contents": "onStartShouldSetResponderCapture"
+    },
+    {
+      "trigger": "onMoveShouldSetResponder",
+      "contents": "onMoveShouldSetResponder"
+    },
+    {
+      "trigger": "onMoveShouldSetResponderCapture",
+      "contents": "onMoveShouldSetResponderCapture"
+    },
+    {
+      "trigger": "onLayout",
+      "contents": "onLayout"
+    },
+    {
+      "trigger": "pointerEvents",
+      "contents": "pointerEvents"
+    },
+    {
+      "trigger": "style",
+      "contents": "style"
+    },
+    {
+      "trigger": "removeClippedSubviews",
+      "contents": "removeClippedSubviews"
+    },
+    {
+      "trigger": "renderToHardwareTextureAndroid",
+      "contents": "renderToHardwareTextureAndroid"
+    },
+    {
+      "trigger": "shouldRasterizeIOS",
+      "contents": "shouldRasterizeIOS"
+    },
+    {
+      "trigger": "collapsable",
+      "contents": "collapsable"
+    },
+    {
+      "trigger": "needsOffscreenAlphaCompositing",
+      "contents": "needsOffscreenAlphaCompositing"
+    },
+    {
+      "trigger": "keyboardDismissMode",
+      "contents": "keyboardDismissMode"
+    },
+    {
+      "trigger": "drawerPosition",
+      "contents": "drawerPosition"
+    },
+    {
+      "trigger": "drawerWidth",
+      "contents": "drawerWidth"
+    },
+    {
+      "trigger": "onDrawerSlide",
+      "contents": "onDrawerSlide"
+    },
+    {
+      "trigger": "onDrawerStateChanged",
+      "contents": "onDrawerStateChanged"
+    },
+    {
+      "trigger": "onDrawerOpen",
+      "contents": "onDrawerOpen"
+    },
+    {
+      "trigger": "onDrawerClose",
+      "contents": "onDrawerClose"
+    },
+    {
+      "trigger": "renderNavigationView",
+      "contents": "renderNavigationView"
+    },
+    {
+      "trigger": "source",
+      "contents": "source"
+    },
+    {
+      "trigger": "loadingIndicatorSource",
+      "contents": "loadingIndicatorSource"
+    },
+    {
+      "trigger": "progressiveRenderingEnabled",
+      "contents": "progressiveRenderingEnabled"
+    },
+    {
+      "trigger": "fadeDuration",
+      "contents": "fadeDuration"
+    },
+    {
+      "trigger": "onLoadStart",
+      "contents": "onLoadStart"
+    },
+    {
+      "trigger": "onLoad",
+      "contents": "onLoad"
+    },
+    {
+      "trigger": "onLoadEnd",
+      "contents": "onLoadEnd"
+    },
+    {
+      "trigger": "automaticallyAdjustContentInsets",
+      "contents": "automaticallyAdjustContentInsets"
+    },
+    {
+      "trigger": "contentInset",
+      "contents": "contentInset"
+    },
+    {
+      "trigger": "contentOffset",
+      "contents": "contentOffset"
+    },
+    {
+      "trigger": "bounces",
+      "contents": "bounces"
+    },
+    {
+      "trigger": "bouncesZoom",
+      "contents": "bouncesZoom"
+    },
+    {
+      "trigger": "alwaysBounceHorizontal",
+      "contents": "alwaysBounceHorizontal"
+    },
+    {
+      "trigger": "alwaysBounceVertical",
+      "contents": "alwaysBounceVertical"
+    },
+    {
+      "trigger": "centerContent",
+      "contents": "centerContent"
+    },
+    {
+      "trigger": "contentContainerStyle",
+      "contents": "contentContainerStyle"
+    },
+    {
+      "trigger": "decelerationRate",
+      "contents": "decelerationRate"
+    },
+    {
+      "trigger": "horizontal",
+      "contents": "horizontal"
+    },
+    {
+      "trigger": "directionalLockEnabled",
+      "contents": "directionalLockEnabled"
+    },
+    {
+      "trigger": "canCancelContentTouches",
+      "contents": "canCancelContentTouches"
+    },
+    {
+      "trigger": "keyboardShouldPersistTaps",
+      "contents": "keyboardShouldPersistTaps"
+    },
+    {
+      "trigger": "maximumZoomScale",
+      "contents": "maximumZoomScale"
+    },
+    {
+      "trigger": "minimumZoomScale",
+      "contents": "minimumZoomScale"
+    },
+    {
+      "trigger": "onScroll",
+      "contents": "onScroll"
+    },
+    {
+      "trigger": "onScrollAnimationEnd",
+      "contents": "onScrollAnimationEnd"
+    },
+    {
+      "trigger": "onContentSizeChange",
+      "contents": "onContentSizeChange"
+    },
+    {
+      "trigger": "pagingEnabled",
+      "contents": "pagingEnabled"
+    },
+    {
+      "trigger": "scrollEnabled",
+      "contents": "scrollEnabled"
+    },
+    {
+      "trigger": "scrollEventThrottle",
+      "contents": "scrollEventThrottle"
+    },
+    {
+      "trigger": "scrollIndicatorInsets",
+      "contents": "scrollIndicatorInsets"
+    },
+    {
+      "trigger": "scrollsToTop",
+      "contents": "scrollsToTop"
+    },
+    {
+      "trigger": "sendMomentumEvents",
+      "contents": "sendMomentumEvents"
+    },
+    {
+      "trigger": "showsHorizontalScrollIndicator",
+      "contents": "showsHorizontalScrollIndicator"
+    },
+    {
+      "trigger": "showsVerticalScrollIndicator",
+      "contents": "showsVerticalScrollIndicator"
+    },
+    {
+      "trigger": "stickyHeaderIndices",
+      "contents": "stickyHeaderIndices"
+    },
+    {
+      "trigger": "snapToInterval",
+      "contents": "snapToInterval"
+    },
+    {
+      "trigger": "snapToAlignment",
+      "contents": "snapToAlignment"
+    },
+    {
+      "trigger": "zoomScale",
+      "contents": "zoomScale"
+    },
+    {
+      "trigger": "refreshControl",
+      "contents": "refreshControl"
+    },
+    {
+      "trigger": "onRefreshStart",
+      "contents": "onRefreshStart"
+    },
+    {
+      "trigger": "dataSource",
+      "contents": "dataSource"
+    },
+    {
+      "trigger": "renderSeparator",
+      "contents": "renderSeparator"
+    },
+    {
+      "trigger": "renderRow",
+      "contents": "renderRow"
+    },
+    {
+      "trigger": "initialListSize",
+      "contents": "initialListSize"
+    },
+    {
+      "trigger": "onEndReached",
+      "contents": "onEndReached"
+    },
+    {
+      "trigger": "onEndReachedThreshold",
+      "contents": "onEndReachedThreshold"
+    },
+    {
+      "trigger": "pageSize",
+      "contents": "pageSize"
+    },
+    {
+      "trigger": "renderFooter",
+      "contents": "renderFooter"
+    },
+    {
+      "trigger": "renderHeader",
+      "contents": "renderHeader"
+    },
+    {
+      "trigger": "renderSectionHeader",
+      "contents": "renderSectionHeader"
+    },
+    {
+      "trigger": "renderScrollComponent",
+      "contents": "renderScrollComponent"
+    },
+    {
+      "trigger": "scrollRenderAheadDistance",
+      "contents": "scrollRenderAheadDistance"
+    },
+    {
+      "trigger": "onChangeVisibleRows",
+      "contents": "onChangeVisibleRows"
+    },
+    {
+      "trigger": "showsUserLocation",
+      "contents": "showsUserLocation"
+    },
+    {
+      "trigger": "followUserLocation",
+      "contents": "followUserLocation"
+    },
+    {
+      "trigger": "showsPointsOfInterest",
+      "contents": "showsPointsOfInterest"
+    },
+    {
+      "trigger": "showsCompass",
+      "contents": "showsCompass"
+    },
+    {
+      "trigger": "zoomEnabled",
+      "contents": "zoomEnabled"
+    },
+    {
+      "trigger": "rotateEnabled",
+      "contents": "rotateEnabled"
+    },
+    {
+      "trigger": "pitchEnabled",
+      "contents": "pitchEnabled"
+    },
+    {
+      "trigger": "mapType",
+      "contents": "mapType"
+    },
+    {
+      "trigger": "region",
+      "contents": "region"
+    },
+    {
+      "trigger": "annotations",
+      "contents": "annotations"
+    },
+    {
+      "trigger": "overlays",
+      "contents": "overlays"
+    },
+    {
+      "trigger": "maxDelta",
+      "contents": "maxDelta"
+    },
+    {
+      "trigger": "minDelta",
+      "contents": "minDelta"
+    },
+    {
+      "trigger": "legalLabelInsets",
+      "contents": "legalLabelInsets"
+    },
+    {
+      "trigger": "onRegionChange",
+      "contents": "onRegionChange"
+    },
+    {
+      "trigger": "onRegionChangeComplete",
+      "contents": "onRegionChangeComplete"
+    },
+    {
+      "trigger": "onAnnotationPress",
+      "contents": "onAnnotationPress"
+    },
+    {
+      "trigger": "active",
+      "contents": "active"
+    },
+    {
+      "trigger": "animated",
+      "contents": "animated"
+    },
+    {
+      "trigger": "transparent",
+      "contents": "transparent"
+    },
+    {
+      "trigger": "visible",
+      "contents": "visible"
+    },
+    {
+      "trigger": "onDismiss",
+      "contents": "onDismiss"
+    },
+    {
+      "trigger": "configureScene",
+      "contents": "configureScene"
+    },
+    {
+      "trigger": "renderScene",
+      "contents": "renderScene"
+    },
+    {
+      "trigger": "initialRoute",
+      "contents": "initialRoute"
+    },
+    {
+      "trigger": "initialRouteStack",
+      "contents": "initialRouteStack"
+    },
+    {
+      "trigger": "onWillFocus",
+      "contents": "onWillFocus"
+    },
+    {
+      "trigger": "onDidFocus",
+      "contents": "onDidFocus"
+    },
+    {
+      "trigger": "navigationBar",
+      "contents": "navigationBar"
+    },
+    {
+      "trigger": "navigator",
+      "contents": "navigator"
+    },
+    {
+      "trigger": "sceneStyle",
+      "contents": "sceneStyle"
+    },
+    {
+      "trigger": "selectedValue",
+      "contents": "selectedValue"
+    },
+    {
+      "trigger": "onValueChange",
+      "contents": "onValueChange"
+    },
+    {
+      "trigger": "enabled",
+      "contents": "enabled"
+    },
+    {
+      "trigger": "mode",
+      "contents": "mode"
+    },
+    {
+      "trigger": "itemStyle",
+      "contents": "itemStyle"
+    },
+    {
+      "trigger": "prompt",
+      "contents": "prompt"
+    },
+    {
+      "trigger": "styleAttr",
+      "contents": "styleAttr"
+    },
+    {
+      "trigger": "indeterminate",
+      "contents": "indeterminate"
+    },
+    {
+      "trigger": "progress",
+      "contents": "progress"
+    },
+    {
+      "trigger": "color",
+      "contents": "color"
+    },
+    {
+      "trigger": "value",
+      "contents": "value"
+    },
+    {
+      "trigger": "disabled",
+      "contents": "disabled"
+    },
+    {
+      "trigger": "tintColor",
+      "contents": "tintColor"
+    },
+    {
+      "trigger": "onTintColor",
+      "contents": "onTintColor"
+    },
+    {
+      "trigger": "thumbTintColor",
+      "contents": "thumbTintColor"
+    },
+    {
+      "trigger": "colors",
+      "contents": "colors"
+    },
+    {
+      "trigger": "progressBackgroundColor",
+      "contents": "progressBackgroundColor"
+    },
+    {
+      "trigger": "refreshing",
+      "contents": "refreshing"
+    },
+    {
+      "trigger": "size",
+      "contents": "size"
+    },
+    {
+      "trigger": "onRefresh",
+      "contents": "onRefresh"
+    },
+    {
+      "trigger": "title",
+      "contents": "title"
+    },
+    {
+      "trigger": "numberOfLines",
+      "contents": "numberOfLines"
+    },
+    {
+      "trigger": "onPress",
+      "contents": "onPress"
+    },
+    {
+      "trigger": "suppressHighlighting",
+      "contents": "suppressHighlighting"
+    },
+    {
+      "trigger": "allowFontScaling",
+      "contents": "allowFontScaling"
+    },
+    {
+      "trigger": "autoCapitalize",
+      "contents": "autoCapitalize"
+    },
+    {
+      "trigger": "autoCorrect",
+      "contents": "autoCorrect"
+    },
+    {
+      "trigger": "autoFocus",
+      "contents": "autoFocus"
+    },
+    {
+      "trigger": "editable",
+      "contents": "editable"
+    },
+    {
+      "trigger": "keyboardType",
+      "contents": "keyboardType"
+    },
+    {
+      "trigger": "keyboardAppearance",
+      "contents": "keyboardAppearance"
+    },
+    {
+      "trigger": "returnKeyType",
+      "contents": "returnKeyType"
+    },
+    {
+      "trigger": "maxLength",
+      "contents": "maxLength"
+    },
+    {
+      "trigger": "enablesReturnKeyAutomatically",
+      "contents": "enablesReturnKeyAutomatically"
+    },
+    {
+      "trigger": "multiline",
+      "contents": "multiline"
+    },
+    {
+      "trigger": "onBlur",
+      "contents": "onBlur"
+    },
+    {
+      "trigger": "onFocus",
+      "contents": "onFocus"
+    },
+    {
+      "trigger": "onChange",
+      "contents": "onChange"
+    },
+    {
+      "trigger": "onChangeText",
+      "contents": "onChangeText"
+    },
+    {
+      "trigger": "onEndEditing",
+      "contents": "onEndEditing"
+    },
+    {
+      "trigger": "onSelectionChange",
+      "contents": "onSelectionChange"
+    },
+    {
+      "trigger": "onSubmitEditing",
+      "contents": "onSubmitEditing"
+    },
+    {
+      "trigger": "onKeyPress",
+      "contents": "onKeyPress"
+    },
+    {
+      "trigger": "placeholder",
+      "contents": "placeholder"
+    },
+    {
+      "trigger": "placeholderTextColor",
+      "contents": "placeholderTextColor"
+    },
+    {
+      "trigger": "secureTextEntry",
+      "contents": "secureTextEntry"
+    },
+    {
+      "trigger": "selectionState",
+      "contents": "selectionState"
+    },
+    {
+      "trigger": "defaultValue",
+      "contents": "defaultValue"
+    },
+    {
+      "trigger": "clearButtonMode",
+      "contents": "clearButtonMode"
+    },
+    {
+      "trigger": "clearTextOnFocus",
+      "contents": "clearTextOnFocus"
+    },
+    {
+      "trigger": "selectTextOnFocus",
+      "contents": "selectTextOnFocus"
+    },
+    {
+      "trigger": "blurOnSubmit",
+      "contents": "blurOnSubmit"
+    },
+    {
+      "trigger": "underlineColorAndroid",
+      "contents": "underlineColorAndroid"
+    },
+    {
+      "trigger": "actions",
+      "contents": "actions"
+    },
+    {
+      "trigger": "logo",
+      "contents": "logo"
+    },
+    {
+      "trigger": "navIcon",
+      "contents": "navIcon"
+    },
+    {
+      "trigger": "onActionSelected",
+      "contents": "onActionSelected"
+    },
+    {
+      "trigger": "onIconClicked",
+      "contents": "onIconClicked"
+    },
+    {
+      "trigger": "overflowIcon",
+      "contents": "overflowIcon"
+    },
+    {
+      "trigger": "subtitle",
+      "contents": "subtitle"
+    },
+    {
+      "trigger": "subtitleColor",
+      "contents": "subtitleColor"
+    },
+    {
+      "trigger": "titleColor",
+      "contents": "titleColor"
+    },
+    {
+      "trigger": "contentInsetStart",
+      "contents": "contentInsetStart"
+    },
+    {
+      "trigger": "contentInsetEnd",
+      "contents": "contentInsetEnd"
+    },
+    {
+      "trigger": "rtl",
+      "contents": "rtl"
+    },
+    {
+      "trigger": "onPressIn",
+      "contents": "onPressIn"
+    },
+    {
+      "trigger": "onPressOut",
+      "contents": "onPressOut"
+    },
+    {
+      "trigger": "onLongPress",
+      "contents": "onLongPress"
+    },
+    {
+      "trigger": "delayPressIn",
+      "contents": "delayPressIn"
+    },
+    {
+      "trigger": "delayPressOut",
+      "contents": "delayPressOut"
+    },
+    {
+      "trigger": "delayLongPress",
+      "contents": "delayLongPress"
+    },
+    {
+      "trigger": "pressRetentionOffset",
+      "contents": "pressRetentionOffset"
+    },
+    {
+      "trigger": "activeOpacity",
+      "contents": "activeOpacity"
+    },
+    {
+      "trigger": "underlayColor",
+      "contents": "underlayColor"
+    },
+    {
+      "trigger": "onShowUnderlay",
+      "contents": "onShowUnderlay"
+    },
+    {
+      "trigger": "onHideUnderlay",
+      "contents": "onHideUnderlay"
+    },
+    {
+      "trigger": "background",
+      "contents": "background"
+    },
+    {
+      "trigger": "initialPage",
+      "contents": "initialPage"
+    },
+    {
+      "trigger": "onPageScroll",
+      "contents": "onPageScroll"
+    },
+    {
+      "trigger": "onPageSelected",
+      "contents": "onPageSelected"
+    },
+    {
+      "trigger": "renderError",
+      "contents": "renderError"
+    },
+    {
+      "trigger": "renderLoading",
+      "contents": "renderLoading"
+    },
+    {
+      "trigger": "onError",
+      "contents": "onError"
+    },
+    {
+      "trigger": "url",
+      "contents": "url"
+    },
+    {
+      "trigger": "html",
+      "contents": "html"
+    },
+    {
+      "trigger": "onNavigationStateChange",
+      "contents": "onNavigationStateChange"
+    },
+    {
+      "trigger": "startInLoadingState",
+      "contents": "startInLoadingState"
+    },
+    {
+      "trigger": "javaScriptEnabled",
+      "contents": "javaScriptEnabled"
+    },
+    {
+      "trigger": "domStorageEnabled",
+      "contents": "domStorageEnabled"
+    },
+    {
+      "trigger": "injectedJavaScript",
+      "contents": "injectedJavaScript"
+    },
+    {
+      "trigger": "userAgent",
+      "contents": "userAgent"
+    },
+    {
+      "trigger": "width",
+      "contents": "width"
+    },
+    {
+      "trigger": "height",
+      "contents": "height"
+    },
+    {
+      "trigger": "top",
+      "contents": "top"
+    },
+    {
+      "trigger": "left",
+      "contents": "left"
+    },
+    {
+      "trigger": "right",
+      "contents": "right"
+    },
+    {
+      "trigger": "bottom",
+      "contents": "bottom"
+    },
+    {
+      "trigger": "margin",
+      "contents": "margin"
+    },
+    {
+      "trigger": "marginVertical",
+      "contents": "marginVertical"
+    },
+    {
+      "trigger": "marginHorizontal",
+      "contents": "marginHorizontal"
+    },
+    {
+      "trigger": "marginTop",
+      "contents": "marginTop"
+    },
+    {
+      "trigger": "marginBottom",
+      "contents": "marginBottom"
+    },
+    {
+      "trigger": "marginLeft",
+      "contents": "marginLeft"
+    },
+    {
+      "trigger": "marginRight",
+      "contents": "marginRight"
+    },
+    {
+      "trigger": "padding",
+      "contents": "padding"
+    },
+    {
+      "trigger": "paddingVertical",
+      "contents": "paddingVertical"
+    },
+    {
+      "trigger": "paddingHorizontal",
+      "contents": "paddingHorizontal"
+    },
+    {
+      "trigger": "paddingTop",
+      "contents": "paddingTop"
+    },
+    {
+      "trigger": "paddingBottom",
+      "contents": "paddingBottom"
+    },
+    {
+      "trigger": "paddingLeft",
+      "contents": "paddingLeft"
+    },
+    {
+      "trigger": "paddingRight",
+      "contents": "paddingRight"
+    },
+    {
+      "trigger": "borderWidth",
+      "contents": "borderWidth"
+    },
+    {
+      "trigger": "borderTopWidth",
+      "contents": "borderTopWidth"
+    },
+    {
+      "trigger": "borderRightWidth",
+      "contents": "borderRightWidth"
+    },
+    {
+      "trigger": "borderBottomWidth",
+      "contents": "borderBottomWidth"
+    },
+    {
+      "trigger": "borderLeftWidth",
+      "contents": "borderLeftWidth"
+    },
+    {
+      "trigger": "position",
+      "contents": "position"
+    },
+    {
+      "trigger": "flexDirection",
+      "contents": "flexDirection"
+    },
+    {
+      "trigger": "flexWrap",
+      "contents": "flexWrap"
+    },
+    {
+      "trigger": "justifyContent",
+      "contents": "justifyContent"
+    },
+    {
+      "trigger": "alignItems",
+      "contents": "alignItems"
+    },
+    {
+      "trigger": "alignSelf",
+      "contents": "alignSelf"
+    },
+    {
+      "trigger": "flex",
+      "contents": "flex"
+    },
+    {
+      "trigger": "absolute",
+      "contents": "absolute"
+    },
+    {
+      "trigger": "relative",
+      "contents": "relative"
+    },
+    {
+      "trigger": "row",
+      "contents": "row"
+    },
+    {
+      "trigger": "column",
+      "contents": "column"
+    },
+    {
+      "trigger": "wrap",
+      "contents": "wrap"
+    },
+    {
+      "trigger": "nowrap",
+      "contents": "nowrap"
+    },
+    {
+      "trigger": "flex-start",
+      "contents": "flex-start"
+    },
+    {
+      "trigger": "flex-end",
+      "contents": "flex-end"
+    },
+    {
+      "trigger": "center",
+      "contents": "center"
+    },
+    {
+      "trigger": "space-between",
+      "contents": "space-between"
+    },
+    {
+      "trigger": "space-around",
+      "contents": "space-around"
+    },
+    {
+      "trigger": "stretch",
+      "contents": "stretch"
+    },
+    {
+      "trigger": "auto",
+      "contents": "auto"
+    },
+    {
+      "trigger": "transform",
+      "contents": "transform"
+    },
+    {
+      "trigger": "perspective",
+      "contents": "perspective"
+    },
+    {
+      "trigger": "rotate",
+      "contents": "rotate"
+    },
+    {
+      "trigger": "rotateX",
+      "contents": "rotateX"
+    },
+    {
+      "trigger": "rotateY",
+      "contents": "rotateY"
+    },
+    {
+      "trigger": "rotateZ",
+      "contents": "rotateZ"
+    },
+    {
+      "trigger": "scale",
+      "contents": "scale"
+    },
+    {
+      "trigger": "scaleX",
+      "contents": "scaleX"
+    },
+    {
+      "trigger": "scaleY",
+      "contents": "scaleY"
+    },
+    {
+      "trigger": "translateX",
+      "contents": "translateX"
+    },
+    {
+      "trigger": "translateY",
+      "contents": "translateY"
+    },
+    {
+      "trigger": "skewX",
+      "contents": "skewX"
+    },
+    {
+      "trigger": "skewY",
+      "contents": "skewY"
+    },
+    {
+      "trigger": "transformMatrix",
+      "contents": "transformMatrix"
+    },
+    {
+      "trigger": "shadowColor",
+      "contents": "shadowColor"
+    },
+    {
+      "trigger": "shadowOffset",
+      "contents": "shadowOffset"
+    },
+    {
+      "trigger": "shadowOpacity",
+      "contents": "shadowOpacity"
+    },
+    {
+      "trigger": "shadowRadius",
+      "contents": "shadowRadius"
+    },
+    {
+      "trigger": "backfaceVisibility",
+      "contents": "backfaceVisibility"
+    },
+    {
+      "trigger": "backgroundColor",
+      "contents": "backgroundColor"
+    },
+    {
+      "trigger": "borderColor",
+      "contents": "borderColor"
+    },
+    {
+      "trigger": "borderTopColor",
+      "contents": "borderTopColor"
+    },
+    {
+      "trigger": "borderRightColor",
+      "contents": "borderRightColor"
+    },
+    {
+      "trigger": "borderBottomColor",
+      "contents": "borderBottomColor"
+    },
+    {
+      "trigger": "borderLeftColor",
+      "contents": "borderLeftColor"
+    },
+    {
+      "trigger": "borderRadius",
+      "contents": "borderRadius"
+    },
+    {
+      "trigger": "borderTopLeftRadius",
+      "contents": "borderTopLeftRadius"
+    },
+    {
+      "trigger": "borderTopRightRadius",
+      "contents": "borderTopRightRadius"
+    },
+    {
+      "trigger": "borderBottomLeftRadius",
+      "contents": "borderBottomLeftRadius"
+    },
+    {
+      "trigger": "borderBottomRightRadius",
+      "contents": "borderBottomRightRadius"
+    },
+    {
+      "trigger": "borderStyle",
+      "contents": "borderStyle"
+    },
+    {
+      "trigger": "opacity",
+      "contents": "opacity"
+    },
+    {
+      "trigger": "overflow",
+      "contents": "overflow"
+    },
+    {
+      "trigger": "elevation",
+      "contents": "elevation"
+    },
+    {
+      "trigger": "hidden",
+      "contents": "hidden"
+    },
+    {
+      "trigger": "solid",
+      "contents": "solid"
+    },
+    {
+      "trigger": "dotted",
+      "contents": "dotted"
+    },
+    {
+      "trigger": "dashed",
+      "contents": "dashed"
+    },
+    {
+      "trigger": "fontFamily",
+      "contents": "fontFamily"
+    },
+    {
+      "trigger": "fontSize",
+      "contents": "fontSize"
+    },
+    {
+      "trigger": "fontStyle",
+      "contents": "fontStyle"
+    },
+    {
+      "trigger": "fontWeight",
+      "contents": "fontWeight"
+    },
+    {
+      "trigger": "textShadowOffset",
+      "contents": "textShadowOffset"
+    },
+    {
+      "trigger": "textShadowRadius",
+      "contents": "textShadowRadius"
+    },
+    {
+      "trigger": "textShadowColor",
+      "contents": "textShadowColor"
+    },
+    {
+      "trigger": "letterSpacing",
+      "contents": "letterSpacing"
+    },
+    {
+      "trigger": "lineHeight",
+      "contents": "lineHeight"
+    },
+    {
+      "trigger": "textAlign",
+      "contents": "textAlign"
+    },
+    {
+      "trigger": "textDecorationLine",
+      "contents": "textDecorationLine"
+    },
+    {
+      "trigger": "textDecorationStyle",
+      "contents": "textDecorationStyle"
+    },
+    {
+      "trigger": "textDecorationColor",
+      "contents": "textDecorationColor"
+    },
+    {
+      "trigger": "writingDirection",
+      "contents": "writingDirection"
+    },
+    {
+      "trigger": "normal",
+      "contents": "normal"
+    },
+    {
+      "trigger": "italic",
+      "contents": "italic"
+    },
+    {
+      "trigger": "bold",
+      "contents": "bold"
+    },
+    {
+      "trigger": "justify",
+      "contents": "justify"
+    },
+    {
+      "trigger": "none",
+      "contents": "none"
+    },
+    {
+      "trigger": "underline",
+      "contents": "underline"
+    },
+    {
+      "trigger": "line-through",
+      "contents": "line-through"
+    },
+    {
+      "trigger": "double",
+      "contents": "double"
+    },
+    {
+      "trigger": "ltr",
+      "contents": "ltr"
+    },
+    {
+      "trigger": "resizeMode",
+      "contents": "resizeMode"
+    }
+  ]
+}
