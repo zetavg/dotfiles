@@ -26,3 +26,6 @@ subl*/Ruby Slim.sublime-settings
 subl*/Ruby.sublime-settings
 subl*/Shell-Unix-Generic.sublime-settings
 subl*/XML.sublime-settings
+
+# Visual Studio Code
+vscode/User/workspaceStorage

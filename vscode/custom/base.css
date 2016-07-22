@@ -1,0 +1,7 @@
+a,
+.action-item,
+.tab,
+.collapsible,
+.monaco-tree-row {
+    cursor: default !important;
+}

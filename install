@@ -81,6 +81,26 @@ if [[ -e "$BASEDIR/subl3" ]]; then
 fi
 
 
+# Create symbolic links for Visual Studio Code
+if [[ -e "$BASEDIR/vscode/User" ]]; then
+  source="$BASEDIR/vscode/User"
+  if [[ $(uname) == "Darwin" ]]; then
+    test ! -e "$HOME/Library/Application Support/Code" && mkdir -p "$HOME/Library/Application Support/Code"
+    target="$HOME/Library/Application Support/Code/User"
+  fi
+  link_file "$source" "$target"
+fi
+
+if [[ -e "$BASEDIR/vscode/custom" ]]; then
+  source="$BASEDIR/vscode/custom"
+  if [[ $(uname) == "Darwin" ]]; then
+    test ! -e "$HOME/Applications/Visual Studio Code.app/Contents/Resources/app/out/vs/workbench/electron-browser" && mkdir -p "$HOME/Applications/Visual Studio Code.app/Contents/Resources/app/out/vs/workbench/electron-browser"
+    target="$HOME/Applications/Visual Studio Code.app/Contents/Resources/app/out/vs/workbench/electron-browser/custom"
+  fi
+  link_file "$source" "$target"
+fi
+
+
 # Deal with secret files
 if [[ -e "$BASEDIR/secret" ]]; then
 
