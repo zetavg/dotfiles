@@ -42,8 +42,8 @@
 
 # Set the default NVM and RVM
 # The NVM/RVM status will not display if there’re matching the values below:
-#DEFAULT_NVM='0.10.26'
-#DEFAULT_RVM='2.0.0-p451'
+# DEFAULT_NVM='0.10.26'
+# DEFAULT_RVM='2.0.0-p451'
 
 # Display the git status on prompt by default?
 L_DISPLAY_GIT_STATUS=true
@@ -116,7 +116,7 @@ fi
 
 # Get some variables that can be used by everyone
 prompt_prebuld() {
-  SCREEN_WIDTH=$(tput cols)
+  SCREEN_WIDTH=$(($(tput cols) - 2))
   if [[ $(( $SCREEN_WIDTH < 50 )) = 1 ]] && MOBILE=true
   PWD="$(pwd | sed "s*$HOME*~*g")"
   if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
