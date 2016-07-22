@@ -1,5 +1,5 @@
 ####################################
-# neson's shell profile 2014-10-03 #
+# neson's shell profile 2016-07-22 #
 ####################################
 
 ## Add `. "$HOME/.shell_profile"` to the main .profile or .bash_profile ##
@@ -93,6 +93,13 @@ alias gnsync='python $HOME/.bin/geeknote/gnsync.py'
 alias pg8='ping 8.8.8.8'
 alias ptt='ssh bbsu@ptt.cc'
 
+alias 'ㄋ'='gss' > /dev/null 2>&1
+alias '摸貓ㄠ'='git add --all' > /dev/null 2>&1
+alias '摸ㄘ'='git stash' > /dev/null 2>&1
+alias '黑ㄔㄩㄛ'='git commit' > /dev/null 2>&1
+alias 'ㄏㄦ'='git c -' > /dev/null 2>&1
+alias 'ㄎㄦ'='cd -' > /dev/null 2>&1
+alias '摳ㄡ'='cd ..' > /dev/null 2>&1
 
 # COMMANDS FOR COMPRESS AND DECOMPRESSESING
 # Usage:
