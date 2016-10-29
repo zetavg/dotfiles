@@ -50,6 +50,9 @@ alias s='less'
 
 alias j='jobs'
 
+alias startt='tmux new -s default'
+alias tt='tmux attach -t default'
+
 alias sr='screen -r'
 alias scr='screen -x scr'
 alias irc='screen -x irc'
@@ -76,6 +79,7 @@ alias gs='git status'
 alias gss='git status --short --branch'
 alias gsm='git status | more'
 
+alias R='rails'
 alias RR='rails'
 alias RN='react-native'
 
