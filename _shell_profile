@@ -1,5 +1,5 @@
 ####################################
-# neson's shell profile 2016-07-22 #
+# neson's shell profile 2016-11-08 #
 ####################################
 
 ## Add `. "$HOME/.shell_profile"` to the main .profile or .bash_profile ##
@@ -45,9 +45,6 @@ alias up='cd ../'
 
 alias cg="newgrp"
 
-alias m='more'
-alias s='less'
-
 alias j='jobs'
 
 alias startt='tmux new -s default'
@@ -55,19 +52,10 @@ alias tt='tmux attach -t default'
 
 alias sr='screen -r'
 alias scr='screen -x scr'
-alias irc='screen -x irc'
-alias job='screen -x job'
-alias fbchat='screen -x fbchat'
-alias startscr='screen -S scr'
-alias startirc='screen -S irc irssi'
-alias startjob='screen -S job'
-alias startfbchat='screen -S fbchat'
-fbchatinit() {
-  while true; do
-  profanity --account facebook
-  done
-}
-alias newwin='screen -X screen -t'
+
+alias nw='screen -X screen -t'
+alias s='screen -X select'
+
 alias roots='screen -X screen -t root 10 su'
 alias sudosus='screen -X screen -t root 10 sudo su'
 alias tops='screen -X screen -t top 9 top'

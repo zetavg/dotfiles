@@ -1,5 +1,5 @@
 ################################
-# neson's .screenrc 2013-04-10 #
+# neson's .screenrc 2016-11-08 #
 ################################
 
 
@@ -20,6 +20,7 @@ deflog on
 
 
 # Display
+termcapinfo xterm* ti@:te@
 attrcolor b ".I"
 termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
 defbce "on"
@@ -32,6 +33,8 @@ bindkey -k F1 prev
 bindkey -k F2 next
 bindkey "^[j" prev
 bindkey "^[k" next
+bindkey "^j" prev
+bindkey "^k" next
 bindkey "^[`" other
 bindkey "^[f" focus
 bindkey "^[m" split

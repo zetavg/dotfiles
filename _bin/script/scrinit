@@ -3,22 +3,8 @@
 # Display
 source scrbar
 
-
-# IRC
-screen -X title irc
-echo 'run "startirc" to start irssi in a new screen, or type "irc" to open current irc screen.'
-
-# BASH
-screen -X screen -t bash 1
-
-# ROOT
-screen -X screen -t root 10 sudo su
-
-# TOP
-screen -X screen -t top 9 top
-
-# BBS
-screen -X screen -t BBS 8 ssh bbsu@ptt.cc
+# INITIAL SHELL
+screen -X screen -t bash 0
 
 # END
 screen -X select 0
