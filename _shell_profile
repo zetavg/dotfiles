@@ -50,7 +50,9 @@ alias j='jobs'
 alias startt='tmux new -s default'
 alias tt='tmux attach -t default'
 
-alias sr='screen -r'
+alias ns='screen -x'
+alias rs='screen -r'
+alias startscr='screen -S scr'
 alias scr='screen -x scr'
 
 alias nw='screen -X screen -t'
