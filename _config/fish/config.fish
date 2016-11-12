@@ -8,6 +8,7 @@ end
 
 fundle plugin 'edc/bass'
 fundle plugin 'neson/agnoster'
+fundle plugin 'fisherman/rvm'
 
 fundle init
 
@@ -38,3 +39,7 @@ set fish_pager_color_progress "black"
 set fish_pager_color_secondary ""
 
 bass source "$HOME/.shell_profile"
+
+if which rvm > /dev/null
+  rvm use default > /dev/null 2>&1
+end
