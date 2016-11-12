@@ -222,9 +222,7 @@ prompt_status() {
 prompt_date() {
   if [[ $MOBILE != true ]]; then
     if [[ $(expr "$(($SCREEN_WIDTH - ${#L_BUILT_PROMPT})) >= 18") -eq 1 ]]; then
-      prompt_segment black 8 "%D %*"
-    else
-      prompt_segment black 8 ""
+      prompt_segment black 8 (date "+%Y-%m-%d %T")
     fi
   fi
 }
