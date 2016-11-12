@@ -41,5 +41,6 @@ set fish_pager_color_secondary ""
 bass source "$HOME/.shell_profile"
 
 if which rvm > /dev/null
+  source "$HOME/.config/fish/fundle/fisherman/rvm/conf.d/rvm.fish"
   rvm use default > /dev/null 2>&1
 end
