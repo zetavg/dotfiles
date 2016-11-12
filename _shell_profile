@@ -2,15 +2,17 @@
 # neson's shell profile 2016-11-08 #
 ####################################
 
-## Add `. "$HOME/.shell_profile"` to the main .profile or .bash_profile ##
+## Add `source "$HOME/.shell_profile"` to the main .profile or .bash_profile ##
 
 
 # SET DEFAULT CONSTANTS
-DEFAULT_NVM='5.5.0'
-DEFAULT_RVM='2.2.0'
+
+DEFAULT_NVM_VERSION='5.5.0'
+DEFAULT_RVM_VERSION='2.2.0'
 
 
 # PATH
+
 PATH="$HOME/.bin:$PATH"
 PATH="$HOME/.bin/script:$PATH"
 PATH="$HOME/.sbin:$PATH"
@@ -18,16 +20,18 @@ PATH="$HOME/.sbin/script:$PATH"
 
 
 # LOAD CONFIG SCRIPT
-if type "git" > /dev/null 2> /dev/null; then
-  if type "git_config" > /dev/null 2> /dev/null; then
-    git_config
-  fi
-fi
+
+# if type "git" > /dev/null 2> /dev/null; then
+#   if type "git_config" > /dev/null 2> /dev/null; then
+#     git_config
+#   fi
+# fi
 
 
 # ALIAS
+
 alias repro='source $HOME/.shell_profile'
-alias cls='cd;clear;test -e /etc/motd && cat /etc/motd;repro'
+alias cls='cd;clear;test -e /etc/motd and cat /etc/motd;repro'
 alias bye='exit'
 
 alias l='ls -CF'
@@ -87,14 +91,6 @@ alias gnsync='python $HOME/.bin/geeknote/gnsync.py'
 alias pg8='ping 8.8.8.8'
 alias ptt='ssh bbsu@ptt.cc'
 
-alias 'ㄋ'='gss' > /dev/null 2>&1
-alias '摸貓ㄠ'='git add --all' > /dev/null 2>&1
-alias '摸ㄘ'='git stash' > /dev/null 2>&1
-alias '黑ㄔㄩㄛ'='git commit' > /dev/null 2>&1
-alias 'ㄏㄦ'='git c -' > /dev/null 2>&1
-alias 'ㄎㄦ'='cd -' > /dev/null 2>&1
-alias '摳ㄡ'='cd ..' > /dev/null 2>&1
-
 # COMMANDS FOR COMPRESS AND DECOMPRESSESING
 # Usage:
 # mk* OutputFileName.* InputDirName
@@ -152,44 +148,28 @@ alias unlha='lha -e'
 
 
 # FUNCTIONS
+
 function mkcd() {
   mkdir "$1"
   cd "$1"
 }
 
-function scd() {
-  echo "$(pwd)" > $HOME/.scd_$1
-}
-function rcd() {
-  [[ -s "$HOME/.scd_$1" ]] && cd "$(cat $HOME/.scd_$1)"
-}
-function cscd() {
-  rm "$HOME/.scd_*"
-}
 
+# LOAD ENVIRMENT SPECIFIC PROFILES
 
-# OSX
-if [[ `uname` == "Darwin" ]]; then
-  function mou() {
-    set -m
-    /Applications/Mou.app/Contents/MacOS/mou $1 &
-    sleep 1
-    osascript -e "tell app \"mou\" to activate"
-    fg %+
-  }
-fi
-
-
-# ZSH
-if [ -n "$ZSH_VERSION" ]; then
-  printf "\033[1A"
-fi
-
-
-# OTHER
 if [ -f "$HOME/.profile_other" ]; then
-  . "$HOME/.profile_other"
+  if [ -n "$FISH_VERSION" ]; then
+    bass source "$HOME/.profile_other"
+  else
+    source "$HOME/.profile_other"
+  fi
 fi
+
 if [ -f "$HOME/.profile_after_initialized" ]; then
-  . "$HOME/.profile_after_initialized"
+  if [ -n "$FISH_VERSION" ]; then
+    bass source "$HOME/.profile_after_initialized"
+  else
+    source "$HOME/.profile_after_initialized"
+  fi
 fi
+

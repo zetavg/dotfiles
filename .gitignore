@@ -6,7 +6,17 @@ _bin/subl
 _vim/.netrwhist
 _oh-my-zsh
 
+# Fish
+_config/fish/fish_history
+_config/fish/fishd.*
+_config/fisherman/*
+_config/fish/fundle/*
+_config/fish/conf.d/*
+_config/fish/completions/*
+_config/fish/functions/*
+
 # Sublime Text
+_config/sublime-text-*
 subl*/*.cache
 subl*/Package Control.last-run
 subl*/Package Control.system-ca-bundle
