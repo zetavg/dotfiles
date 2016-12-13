@@ -1,0 +1,104 @@
+#!/bin/bash
+# -------------------------------------------------------------------
+# heroku-cp-database
+# -------------------------------------------------------------------
+
+SUBJECT=heroku-cp-database
+VERSION=0.0.1
+USAGE="heroku-cp-database from-app to-app [-n] [-d <database-name>]"
+HELP="
+$USAGE
+
+    Download the database dump from Heroku (the default remote-name is
+    \"heroku\").
+
+    The following options are available:
+
+    -h      Show this message.
+
+    -n      Create a new backup before proceeding.
+
+    -d      Specify the database to restore to. Defaults to \"DATABASE_URL\".
+"
+
+# --- Options -------------------------------------------------------
+
+from_app=''
+to_app=''
+to_database='DATABASE_URL'
+create_new_backup=false
+
+# --- Option Processing ---------------------------------------------
+
+# Transform long options to short ones
+for arg in "$@"; do
+  shift
+  case "$arg" in
+    "--help") set -- "$@" "-h" ;;
+    "--database") set -- "$@" "-d" ;;
+    *)        set -- "$@" "$arg"
+  esac
+done
+
+while getopts ":vhnd:" optname
+  do
+    case "$optname" in
+      "v")
+        echo "$SUBJECT version $VERSION"
+        exit 0;
+        ;;
+      "h")
+        echo "$HELP"
+        exit 0;
+        ;;
+      "?")
+        echo "Unknown option: -$OPTARG" >&2
+        echo "Usage: $USAGE"
+        exit 1;
+        ;;
+      ":")
+        echo "No argument value for option $OPTARG" >&2
+        echo "Usage: $USAGE"
+        exit 1;
+        ;;
+
+      "n")
+        create_new_backup=true
+        ;;
+
+      "d")
+        to_database="$OPTARG"
+        ;;
+    esac
+  done
+
+shift $(($OPTIND - 1))
+
+# --- Options Overriding --------------------------------------------
+
+from_app="$1"
+to_app="$2"
+
+if [ -z "$from_app" ]; then
+  echo "Missing required argument: from_app" >&2
+  echo "Usage: $USAGE"
+  exit 1;
+fi
+
+if [ -z "$to_app" ]; then
+  echo "Missing required argument: to_app" >&2
+  echo "Usage: $USAGE"
+  exit 1;
+fi
+
+# --- Script Body ---------------------------------------------------
+
+set -e
+
+if $create_new_backup; then
+  heroku pg:backups capture --app "$from_app"
+fi
+
+database_url=$(heroku pg:backups public-url -q --app "$from_app")
+
+heroku pg:backups restore "$database_url" "$to_database" --app "$to_app"
