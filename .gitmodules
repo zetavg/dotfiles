@@ -20,3 +20,6 @@
 [submodule "_vim/bundle/editorconfig"]
 	path = _vim/bundle/editorconfig
 	url = https://github.com/editorconfig/editorconfig-vim.git
+[submodule "_vim/bundle/ctrlp.vim"]
+	path = _vim/bundle/ctrlp.vim
+	url = https://github.com/ctrlpvim/ctrlp.vim.git
