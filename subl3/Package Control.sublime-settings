@@ -24,7 +24,6 @@
 		"SublimeLinter-contrib-eslint",
 		"SublimeLinter-rubocop",
 		"SublimeLinter-shellcheck",
-		"TrailingSpaces",
-		"WordCount"
+		"TrailingSpaces"
 	]
 }
