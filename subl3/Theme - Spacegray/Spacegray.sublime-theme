@@ -153,6 +153,7 @@
     {
         "class": "tab_label",
         "fade": true,
+        "font.face": "InputSansCondensed-ExtraLight",
         "fg": [101, 115, 127] // 03
     },
     {
