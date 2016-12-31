@@ -6,6 +6,9 @@ _bin/subl
 _vim/.netrwhist
 _oh-my-zsh
 
+_config/heroku
+_config/gitcfg
+
 # Fish
 _config/fish/fish_history
 _config/fish/fishd.*
@@ -18,6 +21,7 @@ _config/fish/functions/*
 # Sublime Text
 _config/sublime-text-*
 subl*/*.cache
+subl*/oscrypto-ca-bundle.crt
 subl*/Package Control.last-run
 subl*/Package Control.system-ca-bundle
 subl*/Gist.sublime-settings
