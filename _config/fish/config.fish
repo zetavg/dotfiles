@@ -9,6 +9,7 @@ end
 fundle plugin 'edc/bass'
 fundle plugin 'neson/agnoster'
 fundle plugin 'fisherman/rvm'
+fundle plugin 'fisherman/nvm'
 
 fundle init
 
