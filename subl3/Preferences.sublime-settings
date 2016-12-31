@@ -44,7 +44,8 @@
 	"show_encoding": true,
 	"show_line_endings": false,
 	"soda_classic_tabs": true,
-	"theme": "Spacegray-customized.sublime-theme",
+	"spacegray_fileicons": true,
+	"theme": "Spacegray.sublime-theme",
 	"trim_trailing_white_space_on_save": true,
 	"word_separators": "./\\()\"'-:,.;<>~!@#%^&*|+=[]{}`~，。？「」『』",
 	"word_wrap": true
