@@ -1,5 +1,5 @@
 ####################################
-# neson's shell profile 2016-11-08 #
+# neson's shell profile 2017-01-20 #
 ####################################
 
 ## Add `source "$HOME/.shell_profile"` to the main .profile or .bash_profile ##
@@ -8,7 +8,7 @@
 # SET DEFAULT CONSTANTS
 
 export DEFAULT_NVM_VERSION='5.5.0'
-export DEFAULT_RVM_VERSION='2.3.1'
+export DEFAULT_RVM_VERSION='2.4.0'
 
 
 # PATH
@@ -19,13 +19,9 @@ PATH="$HOME/.sbin:$PATH"
 PATH="$HOME/.sbin/script:$PATH"
 
 
-# LOAD CONFIG SCRIPT
+# ENV
 
-# if type "git" > /dev/null 2> /dev/null; then
-#   if type "git_config" > /dev/null 2> /dev/null; then
-#     git_config
-#   fi
-# fi
+EDITOR=subl
 
 
 # ALIAS
