@@ -7,7 +7,7 @@ if set -q need_to_install_fundle
 end
 
 fundle plugin 'edc/bass'
-fundle plugin 'neson/agnoster'
+fundle plugin 'zetavg/agnoster'
 fundle plugin 'fisherman/rvm'
 fundle plugin 'fisherman/nvm'
 
