@@ -22,6 +22,7 @@
 		"SideBarEnhancements",
 		"SublimeLinter",
 		"SublimeLinter-contrib-eslint",
+		"SublimeLinter-contrib-scss-lint",
 		"SublimeLinter-rubocop",
 		"SublimeLinter-shellcheck",
 		"TrailingSpaces"
