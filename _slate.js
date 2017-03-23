@@ -207,6 +207,10 @@ slate.bind('0:'+hyperKey+';'+optionKey, function(win) {
   win.doOperation(logStep);
   win.doOperation(moveToCenter);
 }, true);
+slate.bind('-:'+hyperKey+';'+optionKey, function(win) {
+  win.doOperation(logStep);
+  win.doOperation(fullscreen);
+}, true);
 slate.bind('p:'+hyperKey+';'+optionKey, function(win) {
   win.doOperation(logStep);
   var thisScreen = slate.screen;

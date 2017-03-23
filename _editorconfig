@@ -12,12 +12,18 @@ end_of_line = lf
 trim_trailing_whitespace = true
 insert_final_newline = true
 
-# 2 space indentation by default
 [*]
 indent_style = space
 indent_size = 2
 
-# 4 space indentation for Python and Java
+[**.c]
+indent_style = space
+indent_size = 4
+
+[**.cpp]
+indent_style = space
+indent_size = 4
+
 [**.py]
 indent_style = space
 indent_size = 4
@@ -30,7 +36,13 @@ indent_size = 4
 indent_style = space
 indent_size = 4
 
-# Tab indentation (no size specified)
+[**.sql]
+indent_style = space
+indent_size = 4
+
+[{Makefile,**.mk}]
+indent_style = tab
+
 [**.sublime-settings]
 indent_style = tab
 indent_size = 4
@@ -47,16 +59,15 @@ indent_size = 4
 tab_size = 4
 
 [**.css]
-indent_style = tab
+indent_style = space
 indent_size = 4
 tab_size = 4
 
 [**.scss]
-indent_style = tab
+indent_style = space
 indent_size = 4
 tab_size = 4
 
-# Don't trim trailing whitespace for markdown files
 [**.md]
 trim_trailing_whitespace = false
 
@@ -69,7 +80,6 @@ trim_trailing_whitespace = false
 [**.erb]
 trim_trailing_whitespace = false
 
-# 4 space indentation and don't trim trailing whitespace for API Blueprint
 [**.apib]
 indent_style = space
 indent_size = 4
