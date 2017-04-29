@@ -1,26 +1,32 @@
 {
-    "window.titleBarStyle": "native",
-    "vim.startInInsertMode": true,
-    "vim.statusBarColorControl": true,
-    "vim.statusBarColors": {
-        "insert": "#1b88ad",
-        "normal": "#acd115",
-        "visual": "#f48817"
-    },
-    "vim.overrideCopy": false,
+    "workbench.colorTheme": "Spacegray",
+    // "vim.startInInsertMode": true,
+    // "vim.statusBarColorControl": true,
+    // "vim.statusBarColors": {
+    //     "insert": "#1b88ad",
+    //     "normal": "#acd115",
+    //     "visual": "#f48817"
+    // },
+    // "vim.overrideCopy": false,
     "window.zoomLevel": 0,
     "editor.fontSize": 16.5,
     "editor.fontFamily": "InputMono-ExtraLight, 'Courier New', monospace",
+    "editor.minimap.enabled": true,
+    "editor.minimap.renderCharacters": false,
+    "window.titleBarStyle": "native",
     "editor.renderWhitespace": "boundary",
     "editor.cursorStyle": "line-thin",
     "editor.wordWrap": "on",
     "editor.lineHeight": 28,
     "editor.wrappingIndent": "indent",
+    "editor.renderIndentGuides": true,
     "editor.emptySelectionClipboard": false,
     "editor.cursorBlinking": "smooth",
     "editor.renderControlCharacters": true,
-    "editor.renderLineHighlight": "none",
+    "editor.renderLineHighlight": "gutter",
     "editor.dragAndDrop": true,
+    "workbench.activityBar.visible": true,
+    "workbench.statusBar.visible": true,
     "terminal.external.osxExec": "iTerm.app",
     "terminal.integrated.shell.osx": "/usr/local/bin/fish",
     "terminal.integrated.shell.linux": "/bin/bash",
@@ -31,7 +37,6 @@
     "terminal.integrated.scrollback": 1000,
     "terminal.integrated.confirmOnExit": true,
     "ruby.lint": {
-        "rubocop": true,
-        "ruby": true
+        "rubocop": true
     }
 }

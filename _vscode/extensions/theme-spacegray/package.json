@@ -1,0 +1,26 @@
+{
+    "name": "theme-spacegray",
+    "displayName": "Spacegray",
+    "description": "",
+    "version": "0.0.1",
+    "publisher": "zetavg",
+    "engines": {
+        "vscode": "^1.11.0"
+    },
+    "activationEvents": [
+        "*"
+    ],
+    "main": "./src/extension",
+    "categories": [
+        "Themes"
+    ],
+    "contributes": {
+        "themes": [
+            {
+                "label": "Spacegray",
+                "uiTheme": "vs-dark",
+                "path": "./themes/spacegray.json"
+            }
+        ]
+    }
+}

@@ -1,0 +1,282 @@
+/*
+ * Global
+ */
+
+html {
+    background-color: #2b303b;
+}
+
+.zetavg-theme-spacegray-themes-spacegray-json {
+    background-color: #2b303b;
+}
+
+.zetavg-theme-spacegray-themes-spacegray-json .scroll-decoration {
+    box-shadow: none !important;
+}
+
+.dropdown.send-feedback {
+    display: none !important;
+}
+
+/* Use default cursor instead of pointer for a more native feeling */
+a:not([disabled]):not(.disabled),
+.label-description,
+.monaco-action-bar .action-item,
+.custom-checkbox,
+.dropdown>.dropdown-label,
+.monaco-list-row,
+.open-external:hover,
+.header.collapsible,
+.monaco-tree-row,
+.monaco-checkbox .checkbox:not(:disabled)+.label,
+.folding,
+.parameter-hints-widget.multiple .button,
+.suggest-widget .details>.header>.go-back,
+.peekview-title,
+.tabs-container>.tab,
+.monaco-shell label,
+.monaco-tree-rows>.monaco-tree-row.has-children,
+.title-container,
+.search-viewlet .query-clear,
+.search-viewlet .query-details .more {
+    cursor: default !important;
+}
+
+/*
+ * Editor
+ */
+
+.zetavg-theme-spacegray-themes-spacegray-json .editor .overflow-guard {
+    height: 110% !important;
+}
+
+.zetavg-theme-spacegray-themes-spacegray-json .decorationsOverviewRuler {
+    display: none;
+}
+
+/* Indent guide */
+
+.zetavg-theme-spacegray-themes-spacegray-json .view-overlays .cigr {
+    background-color: transparent !important;
+    background: linear-gradient(to top, #4a505b 0px, transparent 1px, #4a505b 2px, transparent 3px, #4a505b 4px, transparent 5px, #4a505b 6px, transparent 7px, #4a505b 8px, transparent 9px, #4a505b 10px, transparent 11px, #4a505b 12px, transparent 13px, #4a505b 14px, transparent 15px, #4a505b 16px, transparent 17px, #4a505b 18px, transparent 19px, #4a505b 20px, transparent 21px, #4a505b 22px, transparent 23px, #4a505b 24px, transparent 25px, #4a505b 26px, transparent 27px, #4a505b 28px, transparent 29px, #4a505b 30px, transparent 31px, #4a505b 32px, transparent 33px, #4a505b 34px, transparent 35px, #4a505b 36px, transparent 37px, #4a505b 38px, transparent 39px, #4a505b 40px, transparent 41px, #4a505b 42px, transparent 43px, #4a505b 44px, transparent 45px, #4a505b 46px, transparent 47px, #4a505b 48px, transparent 49px, #4a505b 50px, transparent 51px, #4a505b 52px, transparent 53px, #4a505b 54px, transparent 55px, #4a505b 56px, transparent 57px, #4a505b 58px, transparent 59px, #4a505b 60px, transparent 61px, #4a505b 62px, transparent 63px);
+    background: linear-gradient(to top, #4a505b 0px, transparent 0.5px, #4a505b 1px, transparent 1.5px, #4a505b 2px, transparent 2.5px, #4a505b 3px, transparent 3.5px, #4a505b 4px, transparent 4.5px, #4a505b 5px, transparent 5.5px, #4a505b 6px, transparent 6.5px, #4a505b 7px, transparent 7.5px, #4a505b 8px, transparent 8.5px, #4a505b 9px, transparent 9.5px, #4a505b 10px, transparent 10.5px, #4a505b 11px, transparent 11.5px, #4a505b 12px, transparent 12.5px, #4a505b 13px, transparent 13.5px, #4a505b 14px, transparent 14.5px, #4a505b 15px, transparent 15.5px, #4a505b 16px, transparent 16.5px, #4a505b 17px, transparent 17.5px, #4a505b 18px, transparent 18.5px, #4a505b 19px, transparent 19.5px, #4a505b 20px, transparent 20.5px, #4a505b 21px, transparent 21.5px, #4a505b 22px, transparent 22.5px, #4a505b 23px, transparent 23.5px, #4a505b 24px, transparent 24.5px, #4a505b 25px, transparent 25.5px, #4a505b 26px, transparent 26.5px, #4a505b 27px, transparent 27.5px, #4a505b 28px, transparent 28.5px, #4a505b 29px, transparent 29.5px, #4a505b 30px, transparent 30.5px, #4a505b 31px, transparent 31.5px, #4a505b 32px, transparent 32.5px, #4a505b 33px, transparent 33.5px, #4a505b 34px, transparent 34.5px, #4a505b 35px, transparent 35.5px, #4a505b 36px, transparent 36.5px, #4a505b 37px, transparent 37.5px, #4a505b 38px, transparent 38.5px, #4a505b 39px, transparent 39.5px, #4a505b 40px, transparent 40.5px, #4a505b 41px, transparent 41.5px, #4a505b 42px, transparent 42.5px, #4a505b 43px, transparent 43.5px, #4a505b 44px, transparent 44.5px, #4a505b 45px, transparent 45.5px, #4a505b 46px, transparent 46.5px, #4a505b 47px, transparent 47.5px, #4a505b 48px, transparent 48.5px, #4a505b 49px, transparent 49.5px, #4a505b 50px, transparent 50.5px, #4a505b 51px, transparent 51.5px, #4a505b 52px, transparent 52.5px, #4a505b 53px, transparent 53.5px, #4a505b 54px, transparent 54.5px, #4a505b 55px, transparent 55.5px, #4a505b 56px, transparent 56.5px, #4a505b 57px, transparent 57.5px, #4a505b 58px, transparent 58.5px, #4a505b 59px, transparent 59.5px, #4a505b 60px, transparent 60.5px, #4a505b 61px, transparent 61.5px, #4a505b 62px, transparent 62.5px, #4a505b 63px, transparent 63.5px, #4a505b 64px, transparent 64.5px);
+}
+
+/* Highlight line number of current line */
+
+.zetavg-theme-spacegray-themes-spacegray-json .current-line-margin {
+    border: 0 !important;
+    background-color: #39424d;
+}
+
+/* Tweak cursor height */
+
+.zetavg-theme-spacegray-themes-spacegray-json .cursor {
+    background-color: transparent !important;
+    background: linear-gradient(to top, transparent 0, transparent 7%, #aeafad 7%, #aeafad 93%, transparent 93%, transparent 100%);
+}
+
+/* Make overflowed overlay (like greensquiggly block) visible */
+
+.zetavg-theme-spacegray-themes-spacegray-json .editor-scrollable,
+.zetavg-theme-spacegray-themes-spacegray-json .lines-content {
+    overflow: visible !important;
+}
+
+/* Use underline to show bracket match */
+
+.zetavg-theme-spacegray-themes-spacegray-json .bracket-match {
+    border: 0 !important;
+    background: none !important;
+    position: absolute;
+}
+
+.zetavg-theme-spacegray-themes-spacegray-json .bracket-match::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    bottom: 3px;
+    border-bottom: 1px solid #888;
+}
+
+/* Use underline for word highlighting */
+
+.zetavg-theme-spacegray-themes-spacegray-json .cdr.wordHighlightStrong {
+    background: none !important;
+    position: absolute;
+}
+
+.zetavg-theme-spacegray-themes-spacegray-json .cdr.wordHighlightStrong::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    bottom: 2px;
+    border-bottom: 1px solid #888;
+}
+
+/* Tweak syntax error background */
+
+.zetavg-theme-spacegray-themes-spacegray-json .mtk2 {
+    position: relative;
+}
+
+.zetavg-theme-spacegray-themes-spacegray-json .mtk2::before {
+    content: '-';
+    display: block;
+    position: absolute;
+    top: -4px;
+    left: 0;
+    width: 100%;
+    background-color: #c66c75;
+    color: #c66c75;
+    z-index: -1;
+}
+
+/* Use outline block for selection highlighting and error marking */
+
+.zetavg-theme-spacegray-themes-spacegray-json .cdr.selectionHighlight {
+    background: none;
+    background-color: transparent !important;
+    position: absolute;
+}
+
+.zetavg-theme-spacegray-themes-spacegray-json .cdr.selectionHighlight::after {
+    content: '';
+    position: absolute;
+    top: 1px;
+    left: -1px;
+    right: -1px;
+    bottom: 1px;
+    border: 1px solid #a5aab2;
+    border-radius: 3px;
+}
+
+.zetavg-theme-spacegray-themes-spacegray-json .cdr.greensquiggly {
+    background: none;
+    position: absolute;
+}
+
+.zetavg-theme-spacegray-themes-spacegray-json .cdr.greensquiggly::after {
+    content: '';
+    position: absolute;
+    top: 1px;
+    left: -1px;
+    right: -1px;
+    bottom: 1px;
+    border: 1px solid #e1bf00;
+    border-radius: 3px;
+}
+
+.zetavg-theme-spacegray-themes-spacegray-json .cdr.redsquiggly {
+    background: none;
+    position: absolute;
+}
+
+.zetavg-theme-spacegray-themes-spacegray-json .cdr.redsquiggly::after {
+    content: '';
+    position: absolute;
+    top: 1px;
+    left: -1px;
+    right: -1px;
+    bottom: 1px;
+    border: 1px solid #d62400;
+    border-radius: 3px;
+}
+
+/* Always show the current view point on the minimap */
+
+.zetavg-theme-spacegray-themes-spacegray-json .minimap-slider {
+    opacity: 1 !important;
+    background: hsla(0, 0%, 80%, .08) !important;
+}
+
+/* Use a pop-up style for peekview widget */
+
+.zetavg-theme-spacegray-themes-spacegray-json .peekview-widget:not(.zone-widget-arrow) {
+    margin-left: 24px;
+    border-radius: 3px;
+    border-color: #3b4650;
+    border-left: 1px solid #3b4650;
+    border-right: 1px solid #3b4650;
+}
+
+.zetavg-theme-spacegray-themes-spacegray-json .preferences-editor .side-by-side-preferences-editor > .editable-preferences-editor-container,
+.zetavg-theme-spacegray-themes-spacegray-json .monaco-diff-editor.side-by-side.vs-dark .editor.modified {
+    box-shadow: -4px 0 5px -5px rgba(0,0,0, .5);
+}
+
+/*
+ * Tabs
+ */
+
+.zetavg-theme-spacegray-themes-spacegray-json .monaco-workbench > .part.editor > .content > .one-editor-silo > .container > .title, .monaco-workbench > .part > .title,
+.zetavg-theme-spacegray-themes-spacegray-json .title .tabs-container,
+.zetavg-theme-spacegray-themes-spacegray-json .title .tabs-container .tab {
+    height: 28px !important;
+}
+
+.zetavg-theme-spacegray-themes-spacegray-json .tabs .scrollbar {
+    display: none !important;
+}
+
+.zetavg-theme-spacegray-themes-spacegray-json .tabs {
+    font-family: "InputSansCondensed-ExtraLight";
+}
+
+.zetavg-theme-spacegray-themes-spacegray-json .tab .label-name {
+    font-size: 12px !important;
+    vertical-align: bottom;
+}
+
+.zetavg-theme-spacegray-themes-spacegray-json .editor-actions > * {
+    margin-top: -3px;
+    filter: grayscale(1);
+    opacity: .5;
+}
+
+.tab:not(.active):hover a {
+    color: hsl(227, 16%, 78%) !important;
+}
+
+.tab:not(.active):hover .label-description {
+    color: hsl(227, 16%, 78%) !important;
+}
+
+.zetavg-theme-spacegray-themes-spacegray-json .tab.dirty .close-editor-action {
+    background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' height='16' width='16'%3E%3Ccircle stroke='%23EBCB8B' fill='transparent' cx='8' cy='8' r='3.5'/%3E%3C/svg%3E") 50% no-repeat !important;
+}
+
+.zetavg-theme-spacegray-themes-spacegray-json .close-editor-action {
+    background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='M4,4 L12,12' stroke='%23707E89'%3E%3C/path%3E%3Cpath d='M12,4 L4,12' stroke='%23707E89'%3E%3C/path%3E%3C/svg%3E") 50% no-repeat !important;
+}
+
+.zetavg-theme-spacegray-themes-spacegray-json .close-editor-action:hover,
+.zetavg-theme-spacegray-themes-spacegray-json .tab.dirty .close-editor-action:hover {
+    background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='M4,4 L12,12' stroke='%23C66C75'%3E%3C/path%3E%3Cpath d='M12,4 L4,12' stroke='%23C66C75'%3E%3C/path%3E%3C/svg%3E") 50% no-repeat !important;
+}
+
+.zetavg-theme-spacegray-themes-spacegray-json .action-item.active {
+    transform: none !important;
+    opacity: .5 !important;
+}
+
+/*
+ * Status bar
+ */
+
+.part.statusbar {
+    font-family: "InputSansNarrow-Light";
+}
+
+/*
+ * CSS hacks
+ */
+
+/* Fix inconsistent color blocks */
+.zetavg-theme-spacegray-themes-spacegray-json .editor-container,
+.zetavg-theme-spacegray-themes-spacegray-json .monaco-editor-background,
+.zetavg-theme-spacegray-themes-spacegray-json .view-lines,
+.zetavg-theme-spacegray-themes-spacegray-json .statusbar {
+    border-bottom: 1px solid rgba(0, 0, 0, .005);
+    border-right: 1px solid rgba(0, 0, 0, .005);
+}
