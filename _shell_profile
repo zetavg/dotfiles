@@ -18,6 +18,10 @@ PATH="$HOME/.bin/script:$PATH"
 PATH="$HOME/.sbin:$PATH"
 PATH="$HOME/.sbin/script:$PATH"
 
+if [ -d "$HOME/Library/bin" ]; then
+  PATH="$HOME/Library/bin:$PATH"
+fi
+
 
 # ENV
 

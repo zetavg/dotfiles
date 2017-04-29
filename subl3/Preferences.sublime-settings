@@ -20,7 +20,8 @@
 		"*.scssc",
 		"*.cssc",
 		"*/bower_components/*",
-		"*/node_modules/*"
+		"*/node_modules/*",
+		"*/tmp/cache/*"
 	],
 	"bold_folder_labels": false,
 	"caret_style": "smooth",
@@ -34,6 +35,7 @@
 	"ignored_packages":
 	[
 	],
+	"index_files": true,
 	"line_numbers": true,
 	"line_padding_bottom": 3,
 	"line_padding_top": 3,
