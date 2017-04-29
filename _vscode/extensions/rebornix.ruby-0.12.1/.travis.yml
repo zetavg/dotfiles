@@ -1,0 +1,15 @@
+language: ruby
+rvm:
+  - 2.3.0
+  - 2.0.0
+  - 1.9.3
+
+before_install:
+ - gem install ruby-debug-ide
+ - nvm install v6.9.1
+ - nvm use v6.9.1
+before_script:
+  - npm install -g typescript -v 1.8.2
+  - npm install
+  - tsc -p ./src
+script: npm test

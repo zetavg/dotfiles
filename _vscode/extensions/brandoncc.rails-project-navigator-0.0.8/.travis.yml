@@ -1,0 +1,29 @@
+sudo: false
+
+dist: trusty
+language: node_js
+node_js:
+  - "7"
+
+os:
+  - osx
+  - linux
+
+before_install:
+  - if [ $TRAVIS_OS_NAME == "linux" ]; then
+      export CODE_TESTS_PATH=/home/travis/build/brandoncc/rails-project-navigator/test;
+      export CODE_TESTS_WORKSPACE=/home/travis/build/brandoncc/rails-project-navigator/test/hello_world;
+      export CXX="g++-4.9" CC="gcc-4.9" DISPLAY=:99.0;
+      sh -e /etc/init.d/xvfb start;
+      sleep 3;
+    fi
+  - if [ $TRAVIS_OS_NAME == "osx" ]; then
+      export CODE_TESTS_PATH=/Users/travis/build/brandoncc/rails-project-navigator/test;
+      export CODE_TESTS_WORKSPACE=/Users/travis/build/brandoncc/rails-project-navigator/test/hello_world;
+    fi
+
+install:
+  - npm install
+
+script:
+  - npm test --silent

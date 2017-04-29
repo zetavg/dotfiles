@@ -1,0 +1,1184 @@
+{
+	"$L": {
+		"prefix": "$L",
+		"body": "\\$LABEL",
+		"description": "$LABEL",
+		"scope": "source.yaml"
+	},
+	"fi": {
+		"prefix": "fi",
+		"body": "${TM_RAILS_TEMPLATE_START_RUBY_EXPR}Fixtures.identify(:${1:name})${TM_RAILS_TEMPLATE_END_RUBY_EXPR}$0",
+		"description": "<%= Fixtures.identify(:symbol) %>",
+		"scope": "source.yaml"
+	},
+	"ft": {
+		"prefix": "ft",
+		"body": "${TM_RAILS_TEMPLATE_START_RUBY_EXPR}form_tag(${1:action: \"${5:update}\"}${6:, {:${8:class}: \"${9:form}\"\\}}) do${TM_RAILS_TEMPLATE_END_RUBY_EXPR}\n  $0\n${TM_RAILS_TEMPLATE_END_RUBY_BLOCK}",
+		"description": "form_tag",
+		"scope": "text.html.ruby, text.haml"
+	},
+	"tcbi": {
+		"prefix": "tcbi",
+		"body": "t.binary :${1:title}${2:, limit: ${3:2}.megabytes}\n$0",
+		"description": "Table column binary",
+		"scope": "meta.rails.migration.create_table, meta.rails.migration.change_table"
+	},
+	"tcb": {
+		"prefix": "tcb",
+		"body": "t.boolean :${1:title}\n$0",
+		"description": "Table column boolean",
+		"scope": "meta.rails.migration.create_table, meta.rails.migration.change_table"
+	},
+	"con": {
+		"prefix": "con",
+		"body": "class ${1:${TM_FILENAME/(?:\\A|_)([A-Za-z0-9]+)(?:\\.rb)?/(?2::\\u$1)/g}} < ${2:Application}Controller\n  $3\nend",
+		"description": "Create controller class",
+		"scope": "source.ruby"
+	},
+	"tcda": {
+		"prefix": "tcda",
+		"body": "t.date :${1:title}\n$0",
+		"description": "Table column date",
+		"scope": "meta.rails.migration.create_table, meta.rails.migration.change_table"
+	},
+	"tcdt": {
+		"prefix": "tcdt",
+		"body": "t.datetime :${1:title}\n$0",
+		"description": "Table column datetime",
+		"scope": "meta.rails.migration.create_table, meta.rails.migration.change_table"
+	},
+	"tcd": {
+		"prefix": "tcd",
+		"body": "t.decimal :${1:title}${2:${3:, precision: ${4:10}}${5:, scale: ${6:2}}}\n$0",
+		"description": "Table column decimal",
+		"scope": "meta.rails.migration.create_table, meta.rails.migration.change_table"
+	},
+	"tcf": {
+		"prefix": "tcf",
+		"body": "t.float :${1:title}\n$0",
+		"description": "Table column float",
+		"scope": "meta.rails.migration.create_table, meta.rails.migration.change_table"
+	},
+	"cla": {
+		"prefix": "cla",
+		"body": "require File.dirname(__FILE__) + '/../test_helper'\n\nclass ${1:Model}ControllerTest < ActionController::TestCase\n\tdeft$0\nend\n",
+		"description": "Create functional test class",
+		"scope": "source.ruby"
+	},
+	"tci": {
+		"prefix": "tci",
+		"body": "t.integer :${1:title}\n$0",
+		"description": "Table column integer",
+		"scope": "meta.rails.migration.create_table, meta.rails.migration.change_table"
+	},
+	"tcl": {
+		"prefix": "tcl",
+		"body": "t.integer :lock_version, null: false, default: 0\n$0",
+		"description": "Table column lock_version",
+		"scope": "meta.rails.migration.create_table, meta.rails.migration.change_table"
+	},
+	"tcr": {
+		"prefix": "tcr",
+		"body": "t.references :${1:taggable}${2:, polymorphic: ${3:{ default: '${4:Photo}' \\}}}\n$0",
+		"description": "Table column(s) references",
+		"scope": "meta.rails.migration.create_table, meta.rails.migration.change_table"
+	},
+	"tcs": {
+		"prefix": "tcs",
+		"body": "t.string :${1:title}\n$0",
+		"description": "Table column string",
+		"scope": "meta.rails.migration.create_table, meta.rails.migration.change_table"
+	},
+	"tct": {
+		"prefix": "tct",
+		"body": "t.text :${1:title}\n$0",
+		"description": "Table column text",
+		"scope": "meta.rails.migration.create_table, meta.rails.migration.change_table"
+	},
+	"tcti": {
+		"prefix": "tcti",
+		"body": "t.time :${1:title}\n$0",
+		"description": "Table column time",
+		"scope": "meta.rails.migration.create_table, meta.rails.migration.change_table"
+	},
+	"tcts": {
+		"prefix": "tcts",
+		"body": "t.timestamp :${1:title}\n$0",
+		"description": "Table column timestamp",
+		"scope": "meta.rails.migration.create_table, meta.rails.migration.change_table"
+	},
+	"tctss": {
+		"prefix": "tctss",
+		"body": "t.timestamps\n$0",
+		"description": "Table column timestamps",
+		"scope": "meta.rails.migration.create_table, meta.rails.migration.change_table"
+	},
+	"mcol": {
+		"prefix": "mcol",
+		"body": "add_column :${1:table}, :${2:column}, :${3:string}${4:, ${5:limit}: ${6:255}}",
+		"description": "Add Column",
+		"scope": "meta.rails.migration - meta.rails.migration.create_table - meta.rails.migration.change_table"
+	},
+	"mind": {
+		"prefix": "mind",
+		"body": "add_index :${1:table}, :${2:columns}${4:, ${5:name}: \"${6:custom_index_name}\"}",
+		"description": "Add Index",
+		"scope": "meta.rails.migration - meta.rails.migration.create_table - meta.rails.migration.change_table"
+	},
+	"mcol1": {
+		"prefix": "mcol",
+		"body": "change_column :${1:table}, :${2:column}, :${3:string}${4:, ${5:limit}: ${6:255}}",
+		"description": "Change Column",
+		"scope": "meta.rails.migration - meta.rails.migration.create_table - meta.rails.migration.change_table"
+	},
+	"mcol2": {
+		"prefix": "mcol",
+		"body": "t.column ${1:title}, :${2:string}\n$0",
+		"description": "Create Column in Table",
+		"scope": "meta.rails.migration.create_table"
+	},
+	"mccc": {
+		"prefix": "mccc",
+		"body": "t.column ${1:title}, :${2:string}\nmccc$0",
+		"description": "Create Several Columns in Table",
+		"scope": "meta.rails.migration.create_table"
+	},
+	"mtab": {
+		"prefix": "mtab",
+		"body": "create_table :${1:table} do |t|\n  t.${2:string} :${3:name}\n\n  t.timestamps\nend\n",
+		"description": "Create Table",
+		"scope": "meta.rails.migration - meta.rails.migration.create_table - meta.rails.migration.change_table"
+	},
+	"mtab1": {
+		"prefix": "mtab",
+		"body": "drop_table :${1:table}",
+		"description": "Drop Table",
+		"scope": "meta.rails.migration - meta.rails.migration.create_table - meta.rails.migration.change_table"
+	},
+	"mcol3": {
+		"prefix": "mcol",
+		"body": "remove_column :${1:table}, :${2:column}",
+		"description": "Remove Column",
+		"scope": "meta.rails.migration - meta.rails.migration.create_table - meta.rails.migration.change_table"
+	},
+	"mind1": {
+		"prefix": "mind",
+		"body": "remove_index :${1:table}, name: :${2:index_name}",
+		"description": "Remove Index",
+		"scope": "meta.rails.migration - meta.rails.migration.create_table - meta.rails.migration.change_table"
+	},
+	"mcol4": {
+		"prefix": "mcol",
+		"body": "rename_column :${1:table}, :${2:old_column_name}, :${3:new_column_name}",
+		"description": "Rename Column",
+		"scope": "meta.rails.migration - meta.rails.migration.create_table - meta.rails.migration.change_table"
+	},
+	"rdb": {
+		"prefix": "rdb",
+		"body": "RAILS_DEFAULT_LOGGER.debug \"${1:message}\"$0",
+		"description": "RAILS_DEFAULT_LOGGER.debug",
+		"scope": "source.ruby.rails"
+	},
+	"tre": {
+		"prefix": "tre",
+		"body": "t.rename(:${1:old_column_name}, :${2:new_column_name})\n$0",
+		"description": "Table column(s) rename",
+		"scope": "meta.rails.migration.create_table, meta.rails.migration.change_table"
+	},
+	"art": {
+		"prefix": "art",
+		"body": "assert_redirected_to ${2:action: \"${1:index}\"}",
+		"description": "assert_redirected_to",
+		"scope": "source.ruby.rails"
+	},
+	"asre": {
+		"prefix": "asre",
+		"body": "assert_response :${1:success}, @response.body$0",
+		"description": "assert_response",
+		"scope": "source.ruby.rails"
+	},
+	"anaf": {
+		"prefix": "anaf",
+		"body": "accepts_nested_attributes_for :${1:relationship}, ${2:reject_if: ->(attributes){ attributes['name'].blank? \\}}${3:, allow_destroy: true}",
+		"description": "accepts_nested_attributes_for",
+		"scope": "source.ruby.rails"
+	},
+	"arc": {
+		"prefix": "arc",
+		"body": "class ${1:${TM_FILENAME/(?:\\A|_)([A-Za-z0-9]+)(?:\\.rb)?/(?2::\\u$1)/g}} < ActiveRecord::Base\n$0\nend",
+		"description": "Active Record model",
+		"scope": "source.ruby.rails"
+	},
+	"aftc": {
+		"prefix": "aftc",
+		"body": "after_create ",
+		"description": "after_create",
+		"scope": "source.ruby.rails"
+	},
+	"aftd": {
+		"prefix": "aftd",
+		"body": "after_destroy ",
+		"description": "after_destroy",
+		"scope": "source.ruby.rails"
+	},
+	"afts": {
+		"prefix": "afts",
+		"body": "after_save ",
+		"description": "after_save",
+		"scope": "source.ruby.rails"
+	},
+	"aftu": {
+		"prefix": "aftu",
+		"body": "after_update ",
+		"description": "after_update",
+		"scope": "source.ruby.rails"
+	},
+	"aftv": {
+		"prefix": "aftv",
+		"body": "after_validation ",
+		"description": "after_validation",
+		"scope": "source.ruby.rails"
+	},
+	"aftvoc": {
+		"prefix": "aftvoc",
+		"body": "after_validation ${1:validation_method}, on: :create",
+		"description": "after_validation on create",
+		"scope": "source.ruby.rails"
+	},
+	"aftvou": {
+		"prefix": "aftvou",
+		"body": "after_validation ${1:validation_method}, on: :update",
+		"description": "after_validation on update",
+		"scope": "source.ruby.rails"
+	},
+	"asg": {
+		"prefix": "asg",
+		"body": "assert(${1:var} = assigns(:${1}), \"Cannot find @${1}\")\n$0",
+		"description": "assert(var = assigns(:var))",
+		"scope": "source.ruby"
+	},
+	"asd": {
+		"prefix": "asd",
+		"body": "assert_difference \"${1:Model}.${2:count}\", ${3:1} do\n  $0\nend",
+		"description": "assert_difference",
+		"scope": "source.ruby"
+	},
+	"asnd": {
+		"prefix": "asnd",
+		"body": "assert_no_difference \"${1:Model}.${2:count}\" do\n  $0\nend",
+		"description": "assert_no_difference",
+		"scope": "source.ruby"
+	},
+	"artnp": {
+		"prefix": "artnp",
+		"body": "assert_redirected_to ${2:${12:parent}_${13:child}_path(${14:@}${15:${12}}, ${16:@}${17:${13}})}",
+		"description": "assert_redirected_to (nested path)",
+		"scope": "source.ruby.rails"
+	},
+	"artnpp": {
+		"prefix": "artnpp",
+		"body": "assert_redirected_to ${10:${2:parent}_${3:child}_path(${4:@}${5:${2}})}",
+		"description": "assert_redirected_to (nested path plural)",
+		"scope": "source.ruby.rails"
+	},
+	"artp": {
+		"prefix": "artp",
+		"body": "assert_redirected_to ${2:${12:model}_path(${13:@}${14:${12}})}",
+		"description": "assert_redirected_to (path)",
+		"scope": "source.ruby.rails"
+	},
+	"artpp": {
+		"prefix": "artpp",
+		"body": "assert_redirected_to ${10:${2:model}s_path}",
+		"description": "assert_redirected_to (path plural)",
+		"scope": "source.ruby.rails"
+	},
+	"ass": {
+		"prefix": "ass",
+		"body": "assert_select '${1:path}'${2:, ${3:text}: ${4:'${5:inner_html}'}}${6: do\n\t$0\nend}",
+		"description": "assert_select",
+		"scope": "source.ruby.rails"
+	},
+	"befc": {
+		"prefix": "befc",
+		"body": "before_create ",
+		"description": "before_create",
+		"scope": "source.ruby.rails"
+	},
+	"befd": {
+		"prefix": "befd",
+		"body": "before_destroy ",
+		"description": "before_destroy",
+		"scope": "source.ruby.rails"
+	},
+	"befs": {
+		"prefix": "befs",
+		"body": "before_save ",
+		"description": "before_save",
+		"scope": "source.ruby.rails"
+	},
+	"befu": {
+		"prefix": "befu",
+		"body": "before_update ",
+		"description": "before_update",
+		"scope": "source.ruby.rails"
+	},
+	"befv": {
+		"prefix": "befv",
+		"body": "before_validation ",
+		"description": "before_validation",
+		"scope": "source.ruby.rails"
+	},
+	"befvoc": {
+		"prefix": "befvoc",
+		"body": "before_validation ${1:validation_method}, on: :create",
+		"description": "before_validation on create",
+		"scope": "source.ruby.rails"
+	},
+	"befvou": {
+		"prefix": "befvou",
+		"body": "before_validation ${1:validation_method}, on: :update",
+		"description": "before_validation on update",
+		"scope": "source.ruby.rails"
+	},
+	"bt": {
+		"prefix": "bt",
+		"body": "belongs_to :${1:object}${2:, class_name: \"${3:${1/[[:alpha:]]+|(_)/(?1::\\u$0)/g}}\", foreign_key: \"${4:${1}_id}\"}",
+		"description": "belongs_to",
+		"scope": "source.ruby.rails"
+	},
+	"bp": {
+		"prefix": "bp",
+		"body": "\nbinding.pry\n",
+		"description": "",
+		"scope": "source.ruby"
+	},
+	"crw": {
+		"prefix": "crw",
+		"body": "cattr_accessor :${0:attr_names}",
+		"description": "cattr_accessor",
+		"scope": "source.ruby.rails"
+	},
+	"class": {
+		"prefix": "class",
+		"body": "class ${1:${TM_FILENAME/(?:\\A|_)([A-Za-z0-9]+)(?:\\.rb)?/(?2::\\u$1)/g}}\n$0\nend",
+		"description": "class NAME end",
+		"scope": "source.ruby"
+	},
+	"crud": {
+		"prefix": "crud",
+		"body": "\n  def index\n    @${1} = ${1/(.+)/\\u$1/g}.scoped\n  end\n\n  def show\n    @${1} = ${1/(.+)/\\u$1/g}.find(params[:id])\n  end\n\n  def create\n    @${1} = ${1/(.+)/\\u$1/g}.new(params[:${1}])\n  end\n\n  def update\n    @${1} = ${1/(.+)/\\u$1/g}.find(params[:id])\n  end\n\n  def edit\n    @${1} = ${1/(.+)/\\u$1/g}.find(params[:id])\n  end\n\n  def destroy\n    ${1} = ${1/(.+)/\\u$1/g}.find(params[:id])\n  end",
+		"description": "crud actions",
+		"scope": "meta.rails.controller"
+	},
+	"defcreate": {
+		"prefix": "defcreate",
+		"body": "def create\n  @${1:model} = ${2:${1/[[:alpha:]]+|(_)/(?1::\\u$0)/g}}.new(params[:$1])\n  $0\n  respond_to do |format|\n    if @$1.save\n      flash[:notice] = '$2 was successfully created.'\n      format.html { redirect_to(@$1) }\n      format.xml { render xml: @$1, status: :created, location: @$1 }\n    else\n      format.html { render action: \"new\" }\n      format.xml { render xml: @$1.errors, status: :unprocessable_entity }\n    end\n  end\nend\n",
+		"description": "def create - resource",
+		"scope": "meta.rails.controller"
+	},
+	"deftg": {
+		"prefix": "deftg",
+		"body": "def test_should_get_${1:action}\n\t${2:@${3:model} = ${4:$3s}(:${5:fixture_name})\n\t}get :${1}${6:, id: @$3.to_param}\n\tassert_response :success\n\t$0\nend",
+		"description": "def test_should_get_action",
+		"scope": "meta.rails.functional_test"
+	},
+	"deftp": {
+		"prefix": "deftp",
+		"body": "def test_should_post_${1:action}\n\t${3:@$2 = ${4:$2s}(:${5:fixture_name})\n\t}post :${1}${6:, id: @$2.to_param}, ${2:model}: { $0 }\n\tassert_response :redirect\n\nend",
+		"description": "def test_should_post_action",
+		"scope": "meta.rails.functional_test"
+	},
+	"end": {
+		"prefix": "end",
+		"body": "<% end %>",
+		"description": "end (ERB)",
+		"scope": "text.html.ruby"
+	},
+	"fini": {
+		"prefix": "fini",
+		"body": "find(${1:id})",
+		"description": "find(id)",
+		"scope": "source.ruby.rails"
+	},
+	"fp": {
+		"prefix": "fp",
+		"body": "find(params[:${1:id}])",
+		"description": "find(params[:id])",
+		"scope": "meta.rails.controller"
+	},
+	"for": {
+		"prefix": "for",
+		"body": "<% if !${1:list}.blank? %>\n  <% for ${2:item} in ${1} %>\n    $3\n  <% end %>\n<% else %>\n  $4\n<% end %>\n",
+		"description": "for loop in rhtml",
+		"scope": "text.html.ruby"
+	},
+	"ffcb": {
+		"prefix": "ffcb",
+		"body": "${TM_RAILS_TEMPLATE_START_RUBY_EXPR}f.check_box :${1:attribute}${TM_RAILS_TEMPLATE_END_RUBY_EXPR}",
+		"description": "form_for check_box",
+		"scope": "text.html.ruby, text.haml"
+	},
+	"f.": {
+		"prefix": "f.",
+		"body": "${TM_RAILS_TEMPLATE_START_RUBY_EXPR}f.check_box :${1:attribute}${TM_RAILS_TEMPLATE_END_RUBY_EXPR}",
+		"description": "f.check_box (ffcb)",
+		"scope": "text.html.ruby, text.haml"
+	},
+	"ffff": {
+		"prefix": "ffff",
+		"body": "${TM_RAILS_TEMPLATE_START_RUBY_EXPR}f.file_field :${1:attribute}${TM_RAILS_TEMPLATE_END_RUBY_EXPR}",
+		"description": "form_for file_field",
+		"scope": "text.html.ruby, text.haml"
+	},
+	"f.1": {
+		"prefix": "f.",
+		"body": "${TM_RAILS_TEMPLATE_START_RUBY_EXPR}f.file_field :${1:attribute}${TM_RAILS_TEMPLATE_END_RUBY_EXPR}",
+		"description": "f.file_field (ffff)",
+		"scope": "text.html.ruby, text.haml"
+	},
+	"ffhf": {
+		"prefix": "ffhf",
+		"body": "${TM_RAILS_TEMPLATE_START_RUBY_EXPR}f.hidden_field :${1:attribute}${TM_RAILS_TEMPLATE_END_RUBY_EXPR}",
+		"description": "form_for hidden_field",
+		"scope": "text.html.ruby, text.haml"
+	},
+	"f.2": {
+		"prefix": "f.",
+		"body": "${TM_RAILS_TEMPLATE_START_RUBY_EXPR}f.hidden_field :${1:attribute}${TM_RAILS_TEMPLATE_END_RUBY_EXPR}",
+		"description": "f.hidden_field (ffhf)",
+		"scope": "text.html.ruby, text.haml"
+	},
+	"ffl": {
+		"prefix": "ffl",
+		"body": "${TM_RAILS_TEMPLATE_START_RUBY_EXPR}f.label :${1:attribute}${2:, \"${3:${1/[[:alpha:]]+|(_)/(?1: :\\u$0)/g}}\"}${TM_RAILS_TEMPLATE_END_RUBY_EXPR}",
+		"description": "form_for label",
+		"scope": "text.html.ruby, text.haml"
+	},
+	"f.3": {
+		"prefix": "f.",
+		"body": "${TM_RAILS_TEMPLATE_START_RUBY_EXPR}f.label :${1:attribute}${2:, \"${3:${1/[[:alpha:]]+|(_)/(?1: :\\u$0)/g}}\"}${TM_RAILS_TEMPLATE_END_RUBY_EXPR}",
+		"description": "f.label (ffl)",
+		"scope": "text.html.ruby, text.haml"
+	},
+	"ffpf": {
+		"prefix": "ffpf",
+		"body": "${TM_RAILS_TEMPLATE_START_RUBY_EXPR}f.password_field :${1:attribute}${TM_RAILS_TEMPLATE_END_RUBY_EXPR}",
+		"description": "form_for password_field",
+		"scope": "text.html.ruby, text.haml"
+	},
+	"f.4": {
+		"prefix": "f.",
+		"body": "${TM_RAILS_TEMPLATE_START_RUBY_EXPR}f.password_field :${1:attribute}${TM_RAILS_TEMPLATE_END_RUBY_EXPR}",
+		"description": "f.password_field (ffpf)",
+		"scope": "text.html.ruby, text.haml"
+	},
+	"ffrb": {
+		"prefix": "ffrb",
+		"body": "${TM_RAILS_TEMPLATE_START_RUBY_EXPR}f.radio_box :${1:attribute}, :${2:tag_value}${TM_RAILS_TEMPLATE_END_RUBY_EXPR}",
+		"description": "form_for radio_box",
+		"scope": "text.html.ruby, text.haml"
+	},
+	"f.5": {
+		"prefix": "f.",
+		"body": "${TM_RAILS_TEMPLATE_START_RUBY_EXPR}f.radio_box :${1:attribute}, :${2:tag_value}${TM_RAILS_TEMPLATE_END_RUBY_EXPR}",
+		"description": "f.radio_box (ffrb)",
+		"scope": "text.html.ruby, text.haml"
+	},
+	"ffs": {
+		"prefix": "ffs",
+		"body": "${TM_RAILS_TEMPLATE_START_RUBY_EXPR}f.submit \"${1:Submit}\"${2:, disable_with: '${3:$1ing...}'}${TM_RAILS_TEMPLATE_END_RUBY_EXPR}",
+		"description": "form_for submit",
+		"scope": "text.html.ruby, text.haml"
+	},
+	"f.6": {
+		"prefix": "f.",
+		"body": "${TM_RAILS_TEMPLATE_START_RUBY_EXPR}f.submit \"${1:Submit}\"${2:, disable_with: '${3:$1ing...}'}${TM_RAILS_TEMPLATE_END_RUBY_EXPR}",
+		"description": "f.submit (ffs)",
+		"scope": "text.html.ruby, text.haml"
+	},
+	"ffta": {
+		"prefix": "ffta",
+		"body": "${TM_RAILS_TEMPLATE_START_RUBY_EXPR}f.text_area :${1:attribute}${TM_RAILS_TEMPLATE_END_RUBY_EXPR}",
+		"description": "form_for text_area",
+		"scope": "text.html.ruby, text.haml"
+	},
+	"f.7": {
+		"prefix": "f.",
+		"body": "${TM_RAILS_TEMPLATE_START_RUBY_EXPR}f.text_area :${1:attribute}${TM_RAILS_TEMPLATE_END_RUBY_EXPR}",
+		"description": "f.text_area (ffta)",
+		"scope": "text.html.ruby, text.haml"
+	},
+	"fftf": {
+		"prefix": "fftf",
+		"body": "${TM_RAILS_TEMPLATE_START_RUBY_EXPR}f.text_field :${1:attribute}${TM_RAILS_TEMPLATE_END_RUBY_EXPR}",
+		"description": "form_for text_field",
+		"scope": "text.html.ruby, text.haml"
+	},
+	"f.8": {
+		"prefix": "f.",
+		"body": "${TM_RAILS_TEMPLATE_START_RUBY_EXPR}f.text_field :${1:attribute}${TM_RAILS_TEMPLATE_END_RUBY_EXPR}",
+		"description": "f.text_field (fftf)",
+		"scope": "text.html.ruby, text.haml"
+	},
+	"ffe": {
+		"prefix": "ffe",
+		"body": "${TM_RAILS_TEMPLATE_START_RUBY_EXPR}error_messages_for :${1:model}${TM_RAILS_TEMPLATE_END_RUBY_EXPR}\n\n${TM_RAILS_TEMPLATE_START_RUBY_INLINE}form_for @${2:$1} do |f|${TM_RAILS_TEMPLATE_END_RUBY_INLINE}\n  $0\n${TM_RAILS_TEMPLATE_END_RUBY_BLOCK}",
+		"description": "form_for with errors",
+		"scope": "text.html.ruby, text.haml"
+	},
+	"ff": {
+		"prefix": "ff",
+		"body": "${TM_RAILS_TEMPLATE_START_RUBY_EXPR}form_for @${1:model} do |f|${TM_RAILS_TEMPLATE_END_RUBY_EXPR}\n  $0\n${TM_RAILS_TEMPLATE_END_RUBY_BLOCK}",
+		"description": "form_for",
+		"scope": "text.html.ruby, text.haml"
+	},
+	"habtm": {
+		"prefix": "habtm",
+		"body": "has_and_belongs_to_many :${1:object}${2:, join_table: \"${3:table_name}\", foreign_key: \"${4:${1}_id}\"}",
+		"description": "has_and_belongs_to_many",
+		"scope": "source.ruby.rails"
+	},
+	"hm": {
+		"prefix": "hm",
+		"body": "has_many :${1:object}s${2:, class_name: \"${1}\", foreign_key: \"${4:reference}_id\"}",
+		"description": "has_many",
+		"scope": "source.ruby.rails"
+	},
+	"hmt": {
+		"prefix": "hmt",
+		"body": "has_many :${1:objects}, through: :${2:join_association}${3:, source: :${4:${2}_table_foreign_key_to_${1}_table}}",
+		"description": "has_many (through)",
+		"scope": "source.ruby.rails"
+	},
+	"hmd": {
+		"prefix": "hmd",
+		"body": "has_many :${1:object}s${2:, class_name: \"${1}\", foreign_key: \"${4:reference}_id\"}, dependent: :destroy$0",
+		"description": "has_many dependent: :destroy",
+		"scope": "source.ruby.rails"
+	},
+	"ho": {
+		"prefix": "ho",
+		"body": "has_one :${1:object}${2:, class_name: \"${3:${1/[[:alpha:]]+|(_)/(?1::\\u$0)/g}}\", foreign_key: \"${4:${1}_id}\"}",
+		"description": "has_one",
+		"scope": "source.ruby.rails"
+	},
+	"hot": {
+		"prefix": "hot",
+		"body": "has_one :${1:object}, through: :${2:join_association}${3:, source: :${4:${2}_table_foreign_key_to_${1}_table}}",
+		"description": "has_one through",
+		"scope": "source.ruby.rails"
+	},
+	"ist": {
+		"prefix": "ist",
+		"body": "${TM_RAILS_TEMPLATE_START_RUBY_EXPR}image_submit_tag(\"${1:agree.png}\"${2:${3:, id: \"${4:${1/^(\\w+)(\\.\\w*)?$/$1/}}\"}${5:, name: \"${6:${1/^(\\w+)(\\.\\w*)?$/$1/}}\"}${7:, class: \"${8:${1/^(\\w+)(\\.\\w*)?$/$1/}-button}\"}${9:, disabled: ${10:false}}})${TM_RAILS_TEMPLATE_END_RUBY_EXPR}",
+		"description": "image_submit_tag",
+		"scope": "text.html.ruby, text.haml"
+	},
+	"defi": {
+		"prefix": "defi",
+		"body": "def initialize(${1:attribute})\n  @${1} = ${1}\nend",
+		"description": "Define initializer method",
+		"scope": "source.ruby"
+	},
+	"jit": {
+		"prefix": "jit",
+		"body": "${TM_RAILS_TEMPLATE_START_RUBY_EXPR}javascript_include_tag ${1::application}${2:, cache: ${3:true}}${TM_RAILS_TEMPLATE_END_RUBY_EXPR}",
+		"description": "javascript_include_tag",
+		"scope": "text.html.ruby, text.haml"
+	},
+	"lia": {
+		"prefix": "lia",
+		"body": "${TM_RAILS_TEMPLATE_START_RUBY_EXPR}link_to \"${1:link text...}\", action: \"${2:index}\"${TM_RAILS_TEMPLATE_END_RUBY_EXPR}",
+		"description": "link_to (action)",
+		"scope": "text.html.ruby, text.haml"
+	},
+	"liai": {
+		"prefix": "liai",
+		"body": "${TM_RAILS_TEMPLATE_START_RUBY_EXPR}link_to \"${1:link text...}\", action: \"${2:edit}\", id: ${3:@item}${TM_RAILS_TEMPLATE_END_RUBY_EXPR}",
+		"description": "link_to (action, id)",
+		"scope": "text.html.ruby, text.haml"
+	},
+	"lic": {
+		"prefix": "lic",
+		"body": "${TM_RAILS_TEMPLATE_START_RUBY_EXPR}link_to \"${1:link text...}\", controller: \"${2:items}\"${TM_RAILS_TEMPLATE_END_RUBY_EXPR}",
+		"description": "link_to (controller)",
+		"scope": "text.html.ruby, text.haml"
+	},
+	"lica": {
+		"prefix": "lica",
+		"body": "${TM_RAILS_TEMPLATE_START_RUBY_EXPR}link_to \"${1:link text...}\", controller: \"${2:items}\", action: \"${3:index}\"${TM_RAILS_TEMPLATE_END_RUBY_EXPR}",
+		"description": "link_to (controller, action)",
+		"scope": "text.html.ruby, text.haml"
+	},
+	"licai": {
+		"prefix": "licai",
+		"body": "${TM_RAILS_TEMPLATE_START_RUBY_EXPR}link_to \"${1:link text...}\", controller: \"${2:items}\", action: \"${3:edit}\", id: ${4:@item}${TM_RAILS_TEMPLATE_END_RUBY_EXPR}",
+		"description": "link_to (controller, action, id)",
+		"scope": "text.html.ruby, text.haml"
+	},
+	"linp": {
+		"prefix": "linp",
+		"body": "${TM_RAILS_TEMPLATE_START_RUBY_EXPR}link_to ${1:\"${2:link text...}\"}, ${3:${12:parent}_${13:child}_path(${14:@}${15:${12}}, ${16:@}${17:${13}})}${TM_RAILS_TEMPLATE_END_RUBY_EXPR}",
+		"description": "link_to (nested path)",
+		"scope": "text.html.ruby, text.haml"
+	},
+	"linpp": {
+		"prefix": "linpp",
+		"body": "${TM_RAILS_TEMPLATE_START_RUBY_EXPR}link_to ${1:\"${2:link text...}\"}, ${3:${10:parent}_${11:child}_path(${12:@}${13:${10}})}${TM_RAILS_TEMPLATE_END_RUBY_EXPR}",
+		"description": "link_to (nested path plural)",
+		"scope": "text.html.ruby, text.haml"
+	},
+	"lip": {
+		"prefix": "lip",
+		"body": "${TM_RAILS_TEMPLATE_START_RUBY_EXPR}link_to ${1:\"${2:link text...}\"}, ${3:${12:model}_path(${13:@}${14:${12}})}${TM_RAILS_TEMPLATE_END_RUBY_EXPR}",
+		"description": "link_to (path)",
+		"scope": "text.html.ruby, text.haml"
+	},
+	"lipp": {
+		"prefix": "lipp",
+		"body": "${TM_RAILS_TEMPLATE_START_RUBY_EXPR}link_to ${1:\"${2:link text...}\"}, ${3:${4:model}s_path}${TM_RAILS_TEMPLATE_END_RUBY_EXPR}",
+		"description": "link_to (path plural)",
+		"scope": "text.html.ruby, text.haml"
+	},
+	"lim": {
+		"prefix": "lim",
+		"body": "${TM_RAILS_TEMPLATE_START_RUBY_EXPR}link_to ${1:model}.${2:name}, ${3:${4:$1}_path(${14:$1})}${TM_RAILS_TEMPLATE_END_RUBY_EXPR}",
+		"description": "link_to model",
+		"scope": "text.html.ruby, text.haml"
+	},
+	"logd": {
+		"prefix": "logd",
+		"body": "logger.debug { \"${1:message}\" }$0",
+		"description": "logger.debug",
+		"scope": "source.ruby.rails"
+	},
+	"loge": {
+		"prefix": "loge",
+		"body": "logger.error { \"${1:message}\" }$0",
+		"description": "logger.error",
+		"scope": "source.ruby.rails"
+	},
+	"logf": {
+		"prefix": "logf",
+		"body": "logger.fatal { \"${1:message}\" }$0",
+		"description": "logger.fatal",
+		"scope": "source.ruby.rails"
+	},
+	"logi": {
+		"prefix": "logi",
+		"body": "logger.info { \"${1:message}\" }$0",
+		"description": "logger.info",
+		"scope": "source.ruby.rails"
+	},
+	"logw": {
+		"prefix": "logw",
+		"body": "logger.warn { \"${1:message}\" }$0",
+		"description": "logger.warn",
+		"scope": "source.ruby.rails"
+	},
+	"mp": {
+		"prefix": "mp",
+		"body": "map(&:${1:id})",
+		"description": "map(&:sym_proc)",
+		"scope": "source.ruby.rails"
+	},
+	"mrw": {
+		"prefix": "mrw",
+		"body": "mattr_accessor :${0:attr_names}",
+		"description": "mattr_accessor",
+		"scope": "source.ruby.rails"
+	},
+	"lsc": {
+		"prefix": "lsc",
+		"body": "scope :name, ->(${1:param}){ ${3:['${4:${5:field} = ?}', ${6:$1}]} }\n",
+		"description": "lambda",
+		"scope": "source.ruby.rails"
+	},
+	"flash": {
+		"prefix": "flash",
+		"body": "flash[:${1:notice}] = \"${2:Successfully created...}\"$0",
+		"description": "flash[…]",
+		"scope": "source.ruby.rails"
+	},
+	"rea": {
+		"prefix": "rea",
+		"body": "redirect_to action: \"${1:index}\"",
+		"description": "redirect_to (action)",
+		"scope": "source.ruby.rails"
+	},
+	"reai": {
+		"prefix": "reai",
+		"body": "redirect_to action: \"${1:show}\", id: ${0:@item}",
+		"description": "redirect_to (action, id)",
+		"scope": "source.ruby.rails"
+	},
+	"rec": {
+		"prefix": "rec",
+		"body": "redirect_to controller: \"${1:items}\"",
+		"description": "redirect_to (controller)",
+		"scope": "source.ruby.rails"
+	},
+	"reca": {
+		"prefix": "reca",
+		"body": "redirect_to controller: \"${1:items}\", action: \"${2:list}\"",
+		"description": "redirect_to (controller, action)",
+		"scope": "source.ruby.rails"
+	},
+	"recai": {
+		"prefix": "recai",
+		"body": "redirect_to controller: \"${1:items}\", action: \"${2:show}\", id: ${0:@item}",
+		"description": "redirect_to (controller, action, id)",
+		"scope": "source.ruby.rails"
+	},
+	"renp": {
+		"prefix": "renp",
+		"body": "redirect_to(${2:${12:parent}_${13:child}_path(${14:@}${15:${12}}, ${16:@}${17:${13}})})",
+		"description": "redirect_to (nested path)",
+		"scope": "source.ruby.rails"
+	},
+	"renpp": {
+		"prefix": "renpp",
+		"body": "redirect_to(${2:${10:parent}_${11:child}_path(${12:@}${13:${10}})})",
+		"description": "redirect_to (nested path plural)",
+		"scope": "source.ruby.rails"
+	},
+	"rep": {
+		"prefix": "rep",
+		"body": "redirect_to(${2:${12:model}_path(${13:@}${14:${12}})})",
+		"description": "redirect_to (path)",
+		"scope": "source.ruby.rails"
+	},
+	"repp": {
+		"prefix": "repp",
+		"body": "redirect_to(${2:${10:model}s_path})",
+		"description": "redirect_to (path plural)",
+		"scope": "source.ruby.rails"
+	},
+	"ra": {
+		"prefix": "ra",
+		"body": "render action: \"${1:action}\"",
+		"description": "render (action)",
+		"scope": "source.ruby.rails"
+	},
+	"ral": {
+		"prefix": "ral",
+		"body": "render action: \"${1:action}\", layout: \"${2:layoutname}\"",
+		"description": "render (action, layout)",
+		"scope": "source.ruby.rails"
+	},
+	"rf": {
+		"prefix": "rf",
+		"body": "render file: \"${1:filepath}\"",
+		"description": "render (file)",
+		"scope": "source.ruby.rails"
+	},
+	"rfu": {
+		"prefix": "rfu",
+		"body": "render file: \"${1:filepath}\", use_full_path: ${2:false}",
+		"description": "render (file, use_full_path)",
+		"scope": "source.ruby.rails"
+	},
+	"ri": {
+		"prefix": "ri",
+		"body": "render inline: \"${1:<%= 'hello' %>}\"",
+		"description": "render (inline)",
+		"scope": "source.ruby.rails"
+	},
+	"ril": {
+		"prefix": "ril",
+		"body": "render inline: \"${1:<%= 'hello' %>}\", locals: { ${2:name}: \"${3:value}\"$4 }",
+		"description": "render (inline, locals)",
+		"scope": "source.ruby.rails"
+	},
+	"rit": {
+		"prefix": "rit",
+		"body": "render inline: \"${1:<%= 'hello' %>}\", type: ${2::rxml}",
+		"description": "render (inline, type)",
+		"scope": "source.ruby.rails"
+	},
+	"rl": {
+		"prefix": "rl",
+		"body": "render layout: \"${1:layoutname}\"",
+		"description": "render (layout)",
+		"scope": "source.ruby.rails"
+	},
+	"rn": {
+		"prefix": "rn",
+		"body": "render nothing: ${1:true}",
+		"description": "render (nothing)",
+		"scope": "source.ruby.rails"
+	},
+	"rns": {
+		"prefix": "rns",
+		"body": "render nothing: ${1:true}, status: ${2:401}",
+		"description": "render (nothing, status)",
+		"scope": "source.ruby.rails"
+	},
+	"rp": {
+		"prefix": "rp",
+		"body": "${TM_RAILS_TEMPLATE_START_RUBY_EXPR}render \"${1:partial/path}\"${2:, ${3:var}: @${3:var}}${TM_RAILS_TEMPLATE_END_RUBY_EXPR}",
+		"description": "render partial",
+		"scope": "source.ruby.rails, text.haml"
+	},
+	"rpc": {
+		"prefix": "rpc",
+		"body": "${TM_RAILS_TEMPLATE_START_RUBY_EXPR}render partial: \"${1:item}\", collection: ${2:@$1s}${TM_RAILS_TEMPLATE_END_RUBY_EXPR}",
+		"description": "render (partial, collection)",
+		"scope": "source.ruby.rails, text.haml"
+	},
+	"rpo": {
+		"prefix": "rpo",
+		"body": "${TM_RAILS_TEMPLATE_START_RUBY_EXPR}render partial: \"${1:item}\", object: ${2:@$1}${TM_RAILS_TEMPLATE_END_RUBY_EXPR}",
+		"description": "render (partial, object)",
+		"scope": "source.ruby.rails, text.haml"
+	},
+	"rps": {
+		"prefix": "rps",
+		"body": "render partial: \"${1:item}\", status: ${2:500}",
+		"description": "render (partial, status)",
+		"scope": "source.ruby.rails"
+	},
+	"rt": {
+		"prefix": "rt",
+		"body": "render text: \"${1:text to render...}\"",
+		"description": "render (text)",
+		"scope": "source.ruby.rails"
+	},
+	"rtl": {
+		"prefix": "rtl",
+		"body": "render text: \"${1:text to render...}\", layout: \"${2:layoutname}\"",
+		"description": "render (text, layout)",
+		"scope": "source.ruby.rails"
+	},
+	"rtlt": {
+		"prefix": "rtlt",
+		"body": "render text: \"${1:text to render...}\", layout: ${2:true}",
+		"description": "render (text, layout: true)",
+		"scope": "source.ruby.rails"
+	},
+	"rts": {
+		"prefix": "rts",
+		"body": "render text: \"${1:text to render...}\", status: ${2:401}",
+		"description": "render (text, status)",
+		"scope": "source.ruby.rails"
+	},
+	"ru": {
+		"prefix": "ru",
+		"body": "render :update do |${2:page}|\n\t$2.$0\nend",
+		"description": "render (update)",
+		"scope": "source.ruby.rails"
+	},
+	"rest": {
+		"prefix": "rest",
+		"body": "respond_to do |format|\n\tformat.${1:html}${2: { $0 \\}}\nend",
+		"description": "respond_to",
+		"scope": "meta.rails.controller"
+	},
+	"returning": {
+		"prefix": "returning",
+		"body": "returning ${1:variable} do${2/(^(?<var>\\s*[a-z_][a-zA-Z0-9_]*\\s*)(,\\g<var>)*,?\\s*$)|.*/(?1: |)/}${2:v}${2/(^(?<var>\\s*[a-z_][a-zA-Z0-9_]*\\s*)(,\\g<var>)*,?\\s*$)|.*/(?1:|)/}\n\t$0\nend",
+		"description": "returning do |variable| … end",
+		"scope": "source.ruby.rails"
+	},
+	"reso": {
+		"prefix": "reso",
+		"body": "resources :${1:res_name}, only: [:${2:index}]",
+		"description": "resources :name, only: [:actions]",
+		"scope": "meta.rails.routes"
+	},
+	"res": {
+		"prefix": "res",
+		"body": "resources :${1:res_name}",
+		"description": "resources :resource_name",
+		"scope": "meta.rails.routes"
+	},
+	"resd": {
+		"prefix": "resd",
+		"body": "resources :${1:res_name} do\n  $2\nend",
+		"description": "resources with an empty params block",
+		"scope": "meta.rails.routes"
+	},
+	"resdc": {
+		"prefix": "resdc",
+		"body": "resources :${1:res_name} do\n  collection do\n    ${2:get} :${3:action}\n  end\nend",
+		"description": "resources with a custom collection block",
+		"scope": "meta.rails.routes"
+	},
+	"resdm": {
+		"prefix": "resdm",
+		"body": "resources :${1:res_name} do\n  member do\n    ${2:get} :${3:action}\n  end\nend",
+		"description": "resources with a custom member block",
+		"scope": "meta.rails.routes"
+	},
+	"sc": {
+		"prefix": "sc",
+		"body": "scope :${1:name}, ->{ where(${2:attr:} ${3:value}) }\n",
+		"description": "scope",
+		"scope": "source.ruby.rails"
+	},
+	"scar": {
+		"prefix": "scar",
+		"body": "scope :${1:name}, ->(${2:arg}){ where(${3:attribute:} ${2}) }\n",
+		"description": "scope with arguments",
+		"scope": "source.ruby.rails"
+	},
+	"slt": {
+		"prefix": "slt",
+		"body": "${TM_RAILS_TEMPLATE_START_RUBY_EXPR}stylesheet_link_tag ${1::application}${2:, media: \"${3:all}\"}${4:, cache: ${5:true}}${TM_RAILS_TEMPLATE_END_RUBY_EXPR}",
+		"description": "stylesheet_link_tag",
+		"scope": "text.html.ruby, text.haml"
+	},
+	"st": {
+		"prefix": "st",
+		"body": "${TM_RAILS_TEMPLATE_START_RUBY_EXPR}submit_tag \"${1:Save changes}\"${2:, id: \"${3:submit}\"}${4:, name: \"${5:$3}\"}${6:, class: \"${7:form_$3}\"}${8:, disabled: ${9:false}}${10:, disable_with: \"${11:Please wait...}\"}${TM_RAILS_TEMPLATE_END_RUBY_EXPR}",
+		"description": "submit_tag",
+		"scope": "text.html.ruby, text.haml"
+	},
+	"t.": {
+		"prefix": "t.",
+		"body": "t.binary :${1:title}${2:, limit: ${3:2}.megabytes}\nt.$0",
+		"description": "t.binary (tcbi)",
+		"scope": "meta.rails.migration.create_table, meta.rails.migration.change_table"
+	},
+	"t.1": {
+		"prefix": "t.",
+		"body": "t.boolean :${1:title}\nt.$0",
+		"description": "t.boolean (tcb)",
+		"scope": "meta.rails.migration.create_table, meta.rails.migration.change_table"
+	},
+	"t.2": {
+		"prefix": "t.",
+		"body": "t.date :${1:title}\nt.$0",
+		"description": "t.date (tcda)",
+		"scope": "meta.rails.migration.create_table, meta.rails.migration.change_table"
+	},
+	"t.3": {
+		"prefix": "t.",
+		"body": "t.datetime :${1:title}\nt.$0",
+		"description": "t.datetime (tcdt)",
+		"scope": "meta.rails.migration.create_table, meta.rails.migration.change_table"
+	},
+	"t.4": {
+		"prefix": "t.",
+		"body": "t.decimal :${1:title}${2:${3:, precision: ${4:10}}${5:, scale: ${6:2}}}\nt.$0",
+		"description": "t.decimal (tcd)",
+		"scope": "meta.rails.migration.create_table, meta.rails.migration.change_table"
+	},
+	"t.5": {
+		"prefix": "t.",
+		"body": "t.float :${1:title}\nt.$0",
+		"description": "t.float (tcf)",
+		"scope": "meta.rails.migration.create_table, meta.rails.migration.change_table"
+	},
+	"t.6": {
+		"prefix": "t.",
+		"body": "t.integer :${1:title}\nt.$0",
+		"description": "t.integer (tci)",
+		"scope": "meta.rails.migration.create_table, meta.rails.migration.change_table"
+	},
+	"t.7": {
+		"prefix": "t.",
+		"body": "t.integer :lock_version, null: false, default: 0\nt.$0",
+		"description": "t.lock_version (tcl)",
+		"scope": "meta.rails.migration.create_table, meta.rails.migration.change_table"
+	},
+	"t.8": {
+		"prefix": "t.",
+		"body": "t.references :${1:taggable}${2:, polymorphic: ${3:{ default: '${4:Photo}' \\}}}\nt.$0",
+		"description": "t.references (tcr)",
+		"scope": "meta.rails.migration.create_table, meta.rails.migration.change_table"
+	},
+	"t.9": {
+		"prefix": "t.",
+		"body": "t.rename(:${1:old_column_name}, :${2:new_column_name})\nt.$0",
+		"description": "t.rename (tre)",
+		"scope": "meta.rails.migration.create_table, meta.rails.migration.change_table"
+	},
+	"t.10": {
+		"prefix": "t.",
+		"body": "t.string :${1:title}\nt.$0",
+		"description": "t.string (tcs)",
+		"scope": "meta.rails.migration.create_table, meta.rails.migration.change_table"
+	},
+	"t.11": {
+		"prefix": "t.",
+		"body": "t.text :${1:title}\nt.$0",
+		"description": "t.text (tct)",
+		"scope": "meta.rails.migration.create_table, meta.rails.migration.change_table"
+	},
+	"t.12": {
+		"prefix": "t.",
+		"body": "t.time :${1:title}\nt.$0",
+		"description": "t.time (tcti)",
+		"scope": "meta.rails.migration.create_table, meta.rails.migration.change_table"
+	},
+	"t.13": {
+		"prefix": "t.",
+		"body": "t.timestamp :${1:title}\nt.$0",
+		"description": "t.timestamp (tcts)",
+		"scope": "meta.rails.migration.create_table, meta.rails.migration.change_table"
+	},
+	"t.14": {
+		"prefix": "t.",
+		"body": "t.timestamps\nt.$0",
+		"description": "t.timestamps (tctss)",
+		"scope": "meta.rails.migration.create_table, meta.rails.migration.change_table"
+	},
+	"vaoif": {
+		"prefix": "vaoif",
+		"body": "validates_acceptance_of :${1:terms}${2:${3:, accept: \"${4:1}\"}${5:, message: \"${6:You must accept the terms of service}\"}}, if: proc { |obj| ${7:obj.condition?} }}",
+		"description": "validates_acceptance_of if",
+		"scope": "source.ruby.rails"
+	},
+	"vao": {
+		"prefix": "vao",
+		"body": "validates_acceptance_of :${1:terms}${2:${3:, accept: \"${4:1}\"}${5:, message: \"${6:You must accept the terms of service}\"}}",
+		"description": "validates_acceptance_of",
+		"scope": "source.ruby.rails"
+	},
+	"va": {
+		"prefix": "va",
+		"body": "validates_associated :${1:attribute}${2:, on: :${3:create}}",
+		"description": "validates_associated",
+		"scope": "source.ruby.rails"
+	},
+	"vaif": {
+		"prefix": "vaif",
+		"body": "validates_associated :${1:attribute}${2:, on: :${3:create}, if: proc { |obj| ${5:obj.condition?} }}",
+		"description": "validates_associated if",
+		"scope": "source.ruby.rails"
+	},
+	"vc": {
+		"prefix": "vc",
+		"body": "validates_confirmation_of :${1:attribute}${2:, on: :${3:create}, message: \"${4:should match confirmation}\"}",
+		"description": "validates_confirmation_of",
+		"scope": "source.ruby.rails"
+	},
+	"vcif": {
+		"prefix": "vcif",
+		"body": "validates_confirmation_of :${1:attribute}${2:, on: :${3:create}, message: \"${4:should match confirmation}\", if: proc { |obj| ${5:obj.condition?} }}",
+		"description": "validates_confirmation_of if",
+		"scope": "source.ruby.rails"
+	},
+	"ve": {
+		"prefix": "ve",
+		"body": "validates_exclusion_of :${1:attribute}${2:, in: ${3:%w( ${4:mov avi} )}, on: :${5:create}, message: \"${6:extension %s is not allowed}\"}",
+		"description": "validates_exclusion_of",
+		"scope": "source.ruby.rails"
+	},
+	"veif": {
+		"prefix": "veif",
+		"body": "validates_exclusion_of :${1:attribute}${2:, in: ${3:%w( ${4:mov avi} )}, on: :${5:create}, message: \"${6:extension %s is not allowed}\"}, if: proc { |obj| ${7:obj.condition?} }}",
+		"description": "validates_exclusion_of if",
+		"scope": "source.ruby.rails"
+	},
+	"vfif": {
+		"prefix": "vfif",
+		"body": "validates_format_of :${1:attribute}, with: /${2:^[${3:\\w\\d}]+\\$}/${4:, on: :${5:create}, message: \"${6:is invalid}\"}, if: proc { |obj| ${7:obj.condition?} }}",
+		"description": "validates_format_of if",
+		"scope": "source.ruby.rails"
+	},
+	"vf": {
+		"prefix": "vf",
+		"body": "validates_format_of :${1:attribute}, with: /${2:^[${3:\\w\\d}]+\\$}/${4:, on: :${5:create}, message: \"${6:is invalid}\"}",
+		"description": "validates_format_of",
+		"scope": "source.ruby.rails"
+	},
+	"viif": {
+		"prefix": "viif",
+		"body": "validates_inclusion_of :${1:attribute}${2:, in: ${3:%w( ${4:mov avi} )}, on: :${5:create}, message: \"${6:extension %s is not included in the list}\"}, if: proc { |obj| ${7:obj.condition?} }}",
+		"description": "validates_inclusion_of if",
+		"scope": "source.ruby.rails"
+	},
+	"vi": {
+		"prefix": "vi",
+		"body": "validates_inclusion_of :${1:attribute}${2:, in: ${3:%w( ${4:mov avi} )}, on: :${5:create}, message: \"${6:extension %s is not included in the list}\"}",
+		"description": "validates_inclusion_of",
+		"scope": "source.ruby.rails"
+	},
+	"vl": {
+		"prefix": "vl",
+		"body": "validates_length_of :${1:attribute}, within: ${2:3..20}${3:, on: :${4:create}, message: \"${5:must be present}\"}",
+		"description": "validates_length_of",
+		"scope": "source.ruby.rails"
+	},
+	"vlif": {
+		"prefix": "vlif",
+		"body": "validates_length_of :${1:attribute}, within: ${2:3..20}${3:, on: :${4:create}, message: \"${5:must be present}\"}, if: proc { |obj| ${6:obj.condition?} }}",
+		"description": "validates_length_of if",
+		"scope": "source.ruby.rails"
+	},
+	"vnif": {
+		"prefix": "vnif",
+		"body": "validates_numericality_of :${1:attribute}${2:, on: :${3:create}, message: \"${4:is not a number}\"}, if: proc { |obj| ${5:obj.condition?} }}",
+		"description": "validates_numericality_of if",
+		"scope": "source.ruby.rails"
+	},
+	"vn": {
+		"prefix": "vn",
+		"body": "validates_numericality_of :${1:attribute}${2:, on: :${3:create}, message: \"${4:is not a number}\"}",
+		"description": "validates_numericality_of",
+		"scope": "source.ruby.rails"
+	},
+	"vp": {
+		"prefix": "vp",
+		"body": "validates_presence_of :${1:attribute}${2:, on: :${3:create}, message: \"${4:can't be blank}\"}",
+		"description": "validates_presence_of",
+		"scope": "source.ruby.rails"
+	},
+	"vpif": {
+		"prefix": "vpif",
+		"body": "validates_presence_of :${1:attribute}${2:, on: :${3:create}, message: \"${4:can't be blank}\"}, if: proc { |obj| ${5:obj.condition?} }}",
+		"description": "validates_presence_of if",
+		"scope": "source.ruby.rails"
+	},
+	"vu": {
+		"prefix": "vu",
+		"body": "validates_uniqueness_of :${1:attribute}${2:, on: :${3:create}, message: \"${4:must be unique}\"}",
+		"description": "validates_uniqueness_of",
+		"scope": "source.ruby.rails"
+	},
+	"vuif": {
+		"prefix": "vuif",
+		"body": "validates_uniqueness_of :${1:attribute}${2:, on: :${3:create}, message: \"${4:must be unique}\", if: proc { |obj| ${6:obj.condition?} }}",
+		"description": "validates_uniqueness_of if",
+		"scope": "source.ruby.rails"
+	},
+	"verify": {
+		"prefix": "verify",
+		"body": "verify only: [:$1], method: :post, render: { status: 500, text: \"use HTTP-POST\" }\n",
+		"description": "verify — render",
+		"scope": "source.ruby.rails"
+	},
+	"format": {
+		"prefix": "format",
+		"body": "format.${1:js|xml|html}${2: { $0 \\}}",
+		"description": "format.format",
+		"scope": "meta.rails.controller"
+	},
+	"xdelete": {
+		"prefix": "xdelete",
+		"body": "xhr :delete, :${1:destroy}, id: ${2:1}$0",
+		"description": "xhr delete",
+		"scope": "source.ruby.rails"
+	},
+	"xget": {
+		"prefix": "xget",
+		"body": "xhr :get, :${1:show}${2:, id: ${3:1}}$0",
+		"description": "xhr get",
+		"scope": "source.ruby.rails"
+	},
+	"xpost": {
+		"prefix": "xpost",
+		"body": "xhr :post, :${1:create}, ${2:object}: { $3 }",
+		"description": "xhr post",
+		"scope": "source.ruby.rails"
+	},
+	"xput": {
+		"prefix": "xput",
+		"body": "xhr :put, :${1:update}, id: ${2:1}, ${3:object}: { $4 }$0",
+		"description": "xhr put",
+		"scope": "source.ruby.rails"
+	}
+}

@@ -1,0 +1,42 @@
+{
+	"name": "slim",
+	"displayName": "Slim",
+	"description": "Slim language support based on https://github.com/slim-template/ruby-slim.tmbundle",
+	"version": "0.1.2",
+	"publisher": "sianglim",
+	"icon": "images/slim.jpg",
+	"engines": {
+		"vscode": "^0.10.10"
+	},
+	"categories": [
+		"Languages"
+	],
+	"contributes": {
+		"languages": [
+			{
+				"id": "slim",
+				"aliases": [
+					"slim-lang",
+					"slim"
+				],
+				"extensions": [
+					".slim",
+					".skim"
+				],
+				"configuration": "./slim.configuration.json"
+			}
+		],
+		"grammars": [
+			{
+				"language": "slim",
+				"scopeName": "text.slim",
+				"path": "./syntaxes/slim.tmLanguage"
+			}
+		]
+	},
+	"__metadata": {
+		"id": "66a5558f-9e27-4895-9c3e-dde3d657bc13",
+		"publisherId": "a27b16ed-ebe0-41ad-9ce9-48a8999457b0",
+		"publisherDisplayName": "Siang Lim"
+	}
+}

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
+  <Metadata>
+    <Identity Language="en-US" Id="Ruby" Version="0.12.1" Publisher="rebornix"/>
+    <DisplayName>Ruby</DisplayName>
+    <Description xml:space="preserve">Provides Ruby language and debugging support for Visual Studio Code</Description>
+    <Tags>snippet,debuggers,ruby,Ruby,__ext_.rb,__ext_.rbx,__ext_.rjs,__ext_.Rakefile,__ext_.rake,__ext_.cgi,__ext_.fcgi,__ext_.gemspec,__ext_.irbrc,__ext_.capfile,__ext_.ru,__ext_.prawn,__ext_.jbuilder,__ext_.Gemfile,__ext_.Guardfile,__ext_.Vagrantfile,erb,Encapsulated Ruby,__ext_.erb,__ext_.rhtml,__ext_.rhtm</Tags>
+    <Categories>Languages,Debuggers,Linters,Snippets,Formatters</Categories>
+    <GalleryFlags>Public</GalleryFlags>
+    <Badges></Badges>
+    <Properties>
+      <Property Id="Microsoft.VisualStudio.Code.Engine" Value="^0.10.1" />
+      <Property Id="Microsoft.VisualStudio.Code.ExtensionDependencies" Value="" />
+      
+        <Property Id="Microsoft.VisualStudio.Services.Links.Source" Value="https://github.com/rubyide/vscode-ruby.git" />
+        <Property Id="Microsoft.VisualStudio.Services.Links.Getstarted" Value="https://github.com/rubyide/vscode-ruby.git" />
+        
+          <Property Id="Microsoft.VisualStudio.Services.Links.GitHub" Value="https://github.com/rubyide/vscode-ruby.git" />
+        
+      
+      <Property Id="Microsoft.VisualStudio.Services.Links.Support" Value="https://github.com/rubyide/vscode-ruby/issues" />
+      
+      
+      
+      <Property Id="Microsoft.VisualStudio.Services.GitHubFlavoredMarkdown" Value="true" />
+    </Properties>
+    <License>extension/LICENSE.txt</License>
+    <Icon>extension/images/ruby.png</Icon>
+  </Metadata>
+  <Installation>
+    <InstallationTarget Id="Microsoft.VisualStudio.Code"/>
+  </Installation>
+  <Dependencies/>
+  <Assets>
+    <Asset Type="Microsoft.VisualStudio.Code.Manifest" Path="extension/package.json" Addressable="true" />
+    <Asset Type="Microsoft.VisualStudio.Services.Content.Details" Path="extension/readme.md" Addressable="true" /><Asset Type="Microsoft.VisualStudio.Services.Content.Changelog" Path="extension/CHANGELOG.md" Addressable="true" /><Asset Type="Microsoft.VisualStudio.Services.Content.License" Path="extension/LICENSE.txt" Addressable="true" /><Asset Type="Microsoft.VisualStudio.Services.Icons.Default" Path="extension/images/ruby.png" Addressable="true" />
+  </Assets>
+</PackageManifest>

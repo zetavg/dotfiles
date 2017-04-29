@@ -1,0 +1,26 @@
+{
+	"name": "ruby-on-rails-snippets",
+	"displayName": "ruby-on-rails-snippets",
+	"description": "Snippets for Ruby on Rails",
+	"version": "0.0.1",
+	"publisher": "atefth",
+	"engines": {
+		"vscode": "^0.10.10"
+	},
+	"categories": [
+		"Snippets"
+	],
+	"contributes": {
+		"snippets": [
+			{
+				"language": "ruby",
+				"path": "./snippets/snippets.json"
+			}
+		]
+	},
+	"__metadata": {
+		"id": "c5ce4424-d7c2-4422-a130-296812d9aa21",
+		"publisherId": "73800096-beb7-414d-9283-e8f2d4b9c031",
+		"publisherDisplayName": "Atef Haque"
+	}
+}

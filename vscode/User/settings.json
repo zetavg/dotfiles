@@ -1,3 +1,37 @@
 {
-    "vscode_custom_css.imports": ["custom/base.css"]
+    "window.titleBarStyle": "native",
+    "vim.startInInsertMode": true,
+    "vim.statusBarColorControl": true,
+    "vim.statusBarColors": {
+        "insert": "#1b88ad",
+        "normal": "#acd115",
+        "visual": "#f48817"
+    },
+    "vim.overrideCopy": false,
+    "window.zoomLevel": 0,
+    "editor.fontSize": 16.5,
+    "editor.fontFamily": "InputMono-ExtraLight, 'Courier New', monospace",
+    "editor.renderWhitespace": "boundary",
+    "editor.cursorStyle": "line-thin",
+    "editor.wordWrap": "on",
+    "editor.lineHeight": 28,
+    "editor.wrappingIndent": "indent",
+    "editor.emptySelectionClipboard": false,
+    "editor.cursorBlinking": "smooth",
+    "editor.renderControlCharacters": true,
+    "editor.renderLineHighlight": "none",
+    "editor.dragAndDrop": true,
+    "terminal.external.osxExec": "iTerm.app",
+    "terminal.integrated.shell.osx": "/usr/local/bin/fish",
+    "terminal.integrated.shell.linux": "/bin/bash",
+    "terminal.integrated.fontFamily": "InconsolataForPowerlineNerdFontCM-Medium",
+    "terminal.integrated.fontSize": 18,
+    "terminal.integrated.lineHeight": 1,
+    "terminal.integrated.cursorBlinking": true,
+    "terminal.integrated.scrollback": 1000,
+    "terminal.integrated.confirmOnExit": true,
+    "ruby.lint": {
+        "rubocop": true,
+        "ruby": true
+    }
 }

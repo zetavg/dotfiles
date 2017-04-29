@@ -1,0 +1,61 @@
+{
+	"name": "rails-nav",
+	"displayName": "Rails Nav",
+	"description": "Ruby on Rails related file navigation",
+	"version": "0.0.3",
+	"publisher": "hjleochen",
+	"engines": {
+		"vscode": "^1.0.0"
+	},
+	"icon": "icon.png",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/hjleochen/vscode-rails-nav.git"
+	},
+	"galleryBanner": {
+		"color": "#c52f24",
+		"theme": "dark"
+	},
+	"homepage": "https://github.com/hjleochen/vscode-rails-nav",
+	"categories": [
+		"Other"
+	],
+	"keywords": [
+		"Ruby on Rails"
+	],
+	"activationEvents": [
+		"onCommand:extension.rails-nav"
+	],
+	"main": "./out/src/extension",
+	"contributes": {
+		"commands": [
+			{
+				"command": "extension.rails-nav",
+				"title": "Rails Nav"
+			}
+		],
+		"keybindings": [
+			{
+				"command": "extension.rails-nav",
+				"key": "Alt+."
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "node ./node_modules/vscode/bin/compile",
+		"compile": "node ./node_modules/vscode/bin/compile -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install"
+	},
+	"devDependencies": {
+		"typescript": "^1.8.5",
+		"vscode": "^0.11.0"
+	},
+	"dependencies": {
+		"inflection": "^1.10.0"
+	},
+	"__metadata": {
+		"id": "16884884-ac28-4d0b-8791-5c1576834aec",
+		"publisherId": "4ebbe5df-2c69-426b-bad4-f7dc11e1f517",
+		"publisherDisplayName": "hjleochen"
+	}
+}

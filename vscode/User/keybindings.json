@@ -1,3 +1,41 @@
-// 將您的按鍵組合放入此檔案中以覆寫預設值
 [
+    {
+        "key": "shift+cmd+-",
+        "command": "editor.action.triggerSuggest",
+        "when": "editorHasCompletionItemProvider && editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "shift+cmd+-",
+        "command": "toggleSuggestionDetails",
+        "when": "editorTextFocus && suggestWidgetVisible"
+    },
+    {
+        "key": "alt+`",
+        "command": "workbench.action.terminal.toggleTerminal"
+    },
+    {
+        "key": "ctrl+cmd+j",
+        "command": "editor.action.insertCursorBelow",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+cmd+k",
+        "command": "editor.action.insertCursorAbove",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+cmd+l",
+        "command": "editor.action.insertCursorAtEndOfEachLineSelected",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+cmd+i",
+        "command": "removeSecondaryCursors",
+        "when": "editorHasMultipleSelections && editorTextFocus"
+    },
+    {
+        "key": "alt+cmd+v",
+        "command": "pasteAndIndent.action",
+        "when": "editorTextFocus && !editorReadonly"
+    }
 ]

@@ -1,0 +1,53 @@
+{
+	"name": "vscode-paste-and-indent",
+	"displayName": "Paste and Indent",
+	"description": "Paste some code with \"correct\" indentation",
+	"version": "0.0.8",
+	"publisher": "Rubymaniac",
+	"license": "MIT",
+	"engines": {
+		"vscode": "^1.0.0"
+	},
+	"bugs": {
+		"url": "https://github.com/rubymaniac/vscode-paste-and-indent/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/rubymaniac/vscode-paste-and-indent.git"
+	},
+	"scripts": {
+		"vscode:prepublish": "node ./node_modules/vscode/bin/compile",
+		"compile": "node ./node_modules/vscode/bin/compile -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install"
+	},
+	"devDependencies": {
+		"typescript": "^1.8.5",
+		"vscode": "^0.11.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:pasteAndIndent.action"
+	],
+	"contributes": {
+		"configuration": {
+			"type": "object",
+			"title": "PasteAndIndent configuration",
+			"properties": {
+				"pasteAndIndent.selectAfter": {
+					"type": "boolean",
+					"default": false,
+					"description": "After pasting and indenting selects the probably wrong indented region."
+				}
+			}
+		}
+	},
+	"main": "./out/src/extension",
+	"dependencies": {},
+	"__metadata": {
+		"id": "03b20f74-9504-4130-a12f-af9808985b37",
+		"publisherId": "5232259f-6ba7-4615-a1dd-a4367a5096b6",
+		"publisherDisplayName": "g3rry"
+	}
+}

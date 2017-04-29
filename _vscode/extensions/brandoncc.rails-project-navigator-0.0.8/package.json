@@ -1,0 +1,44 @@
+{
+	"name": "rails-project-navigator",
+	"displayName": "Rails Project Navigator",
+	"description": "Easily navigate the files in Rails applications",
+	"version": "0.0.8",
+	"publisher": "brandoncc",
+	"repository": "https://github.com/brandoncc/rails-project-navigator",
+	"engines": {
+		"vscode": "^1.11.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:railsProjectNavigator.navigate"
+	],
+	"main": "./extension",
+	"contributes": {
+		"commands": [
+			{
+				"command": "railsProjectNavigator.navigate",
+				"title": "Navigate Rails Project"
+			}
+		]
+	},
+	"scripts": {
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"@types/mocha": "^2.2.32",
+		"@types/node": "^6.0.40",
+		"chai": "^3.5.0",
+		"eslint": "^3.6.0",
+		"mocha": "^2.3.3",
+		"typescript": "^2.0.3",
+		"vscode": "^1.0.0"
+	},
+	"__metadata": {
+		"id": "bf0411fb-11e6-4e1a-b9f1-93ae3ea78926",
+		"publisherId": "f982bb89-aa99-4758-a66c-3ecde7995d00",
+		"publisherDisplayName": "Brandon Conway"
+	}
+}
