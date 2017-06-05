@@ -17,6 +17,7 @@
 		"Haml",
 		"Hasher",
 		"I18n Rails",
+		"LLVM",
 		"Package Control",
 		"Rails Latest Migration",
 		"Rails Migrations List",
@@ -35,6 +36,7 @@
 		"SublimeLinter-cpplint",
 		"SublimeLinter-rubocop",
 		"SublimeLinter-shellcheck",
-		"TrailingSpaces"
+		"TrailingSpaces",
+		"WakaTime"
 	]
 }

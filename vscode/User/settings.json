@@ -25,7 +25,7 @@
     "editor.renderControlCharacters": true,
     "editor.renderLineHighlight": "gutter",
     "editor.dragAndDrop": true,
-    "workbench.activityBar.visible": true,
+    "workbench.activityBar.visible": false,
     "workbench.statusBar.visible": true,
     "terminal.external.osxExec": "iTerm.app",
     "terminal.integrated.shell.osx": "/usr/local/bin/fish",
@@ -38,5 +38,23 @@
     "terminal.integrated.confirmOnExit": true,
     "ruby.lint": {
         "rubocop": true
-    }
+    },
+    "workbench.welcome.enabled": false,
+    "[cpp]": {
+        "editor.quickSuggestions": true
+    },
+    "[c]": {
+        "editor.quickSuggestions": true
+    },
+    "[markdown]": {
+        "editor.quickSuggestions": true
+    },
+    "workbench.sideBar.location": "left",
+    "editor.snippetSuggestions": "top",
+    "editor.quickSuggestionsDelay": 1,
+    "editor.acceptSuggestionOnEnter": true,
+    "newFile.relativeTo": "project",
+    "newFile.defaultFileExtension": "",
+    "newFile.defaultBaseFileName": "new_file",
+    "newFile.showFullPath": false
 }

@@ -53,7 +53,7 @@
 			},
 			"eslint":
 			{
-				"@disable": false,
+				"@disable": true,
 				"args":
 				[
 				],

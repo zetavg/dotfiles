@@ -57,5 +57,19 @@
         "key": "shift+cmd+f12",
         "command": "-editor.action.peekImplementation",
         "when": "editorHasImplementationProvider && editorTextFocus && !isInEmbeddedEditor"
+    },
+    {
+        "key": "shift+cmd+g",
+        "command": "workbench.view.git"
+    },
+    {
+        "key": "shift+cmd+t",
+        "command": "extension.railsGoToSpec",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "shift+cmd+y",
+        "command": "-extension.railsGoToSpec",
+        "when": "editorTextFocus"
     }
 ]

@@ -8,6 +8,9 @@ _oh-my-zsh
 
 _config/heroku
 _config/gitcfg
+_config/codeclimate/
+_config/configstore/
+_config/git/
 
 # Fish
 _config/fish/fish_history
@@ -40,6 +43,8 @@ subl*/Ruby Slim.sublime-settings
 subl*/Ruby.sublime-settings
 subl*/Shell-Unix-Generic.sublime-settings
 subl*/XML.sublime-settings
+subl*/WakaTime.sublime-settings
 
 # Visual Studio Code
 vscode/User/workspaceStorage
+_vscode/extensions/*
