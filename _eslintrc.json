@@ -1,0 +1,45 @@
+{
+  "parser": "babel-eslint",
+  "extends": [
+    "eslint:recommended",
+    "airbnb",
+    "plugin:react/recommended",
+    "plugin:react-native/all"
+  ],
+  "rules": {
+    "no-use-before-define": ["warn"],
+    "semi": ["error", "never"],
+    "max-len": ["warn", 120],
+    "quote-props": ["warn"],
+    "class-methods-use-this": ["warn"],
+    "no-underscore-dangle": ["warn"],
+    "import/no-extraneous-dependencies": ["off"],
+    "react/jsx-filename-extension": ["off"],
+    "react/jsx-no-bind": ["warn"],
+    "react/prop-types": ["warn"],
+    "react/prefer-stateless-function": ["warn"],
+    "react-native/no-inline-styles": ["warn"],
+    "react-native/no-color-literals": ["warn"]
+  },
+  "env": {
+    "browser": true,
+    "jquery": true,
+    "node": true,
+    "mocha": true,
+    "es6": true
+  },
+  "plugins": [
+    "react",
+    "react-native"
+  ],
+  "settings": {
+    "import/resolve": {
+      "moduleDirectory": ["node_modules", "src", "app"]
+    }
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  }
+}
