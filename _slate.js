@@ -234,4 +234,24 @@ slate.on("appActivated", function (event, app) {
       "app" : 'Franz',
     }).run();
   }
+
+  // Fix Franz window size
+  if (app.name() === 'Franz') {
+    app.mainWindow().doOperation(slate.operation("move", {
+      "x" : "screenOriginX+screenSizeX/2-min({screenSizeX*0.9,1152})/2",
+      "y" : "screenOriginY+screenSizeY/2-min({screenSizeY*0.9,780})/2",
+      "width" : "min({screenSizeX*0.9,1152})",
+      "height" : "min({screenSizeY*0.9,780})",
+    }));
+  }
+
+  // Fix Dash window size
+  if (app.name() === 'Dash') {
+    app.mainWindow().doOperation(slate.operation("move", {
+      "x" : "screenOriginX+screenSizeX/2-min({screenSizeX*0.9,1024})/2",
+      "y" : "screenOriginY+screenSizeY/2-min({screenSizeY*0.9,780})/2",
+      "width" : "min({screenSizeX*0.9,1024})",
+      "height" : "min({screenSizeY*0.9,780})",
+    }));
+  }
 });
