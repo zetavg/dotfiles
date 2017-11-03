@@ -8,6 +8,8 @@
   ],
   "rules": {
     "no-use-before-define": ["warn"],
+    "no-return-assign": ["off"],
+    "no-plusplus": ["off"],
     "semi": ["error", "never"],
     "max-len": ["warn", 120],
     "quote-props": ["warn"],
@@ -17,6 +19,7 @@
     "react/jsx-filename-extension": ["off"],
     "react/jsx-no-bind": ["warn"],
     "react/prop-types": ["warn"],
+    "react/forbid-prop-types": ["warn"],
     "react/prefer-stateless-function": ["warn"],
     "react-native/no-inline-styles": ["warn"],
     "react-native/no-color-literals": ["warn"]
