@@ -1,0 +1,17 @@
+{
+  "scope": "source.js",
+  "completions": [
+    {
+      "trigger": "export",
+      "contents": "export"
+    },
+    {
+      "trigger": "default",
+      "contents": "default"
+    },
+    {
+      "trigger": "import",
+      "contents": "import"
+    }
+  ]
+}

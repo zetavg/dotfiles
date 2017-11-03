@@ -21,11 +21,12 @@
 		"*.cssc",
 		"*/bower_components/*",
 		"*/node_modules/*",
+		"*/_build/*",
 		"*/tmp/cache/*"
 	],
 	"bold_folder_labels": false,
 	"caret_style": "smooth",
-	"color_scheme": "Packages/User/base16-ocean.dark (SL).tmTheme",
+	"color_scheme": "Packages/User/base16-ocean.dark.tmTheme",
 	"copy_with_empty_selection": false,
 	"default_encoding": "UTF-8",
 	"ensure_newline_at_eof_on_save": true,
@@ -47,7 +48,7 @@
 	"show_line_endings": false,
 	"soda_classic_tabs": true,
 	"spacegray_fileicons": true,
-	"theme": "Spacegray.sublime-theme",
+	"theme": "Spacegray Dark.sublime-theme",
 	"trim_trailing_white_space_on_save": true,
 	"word_separators": "./\\()\"'-:,.;<>~!@#%^&*|+=[]{}`~，。？「」『』",
 	"word_wrap": true

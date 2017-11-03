@@ -51,15 +51,37 @@
 				"filter": "-legal/copyright,-build/include,-build/header_guard",
 				"linelength": ""
 			},
-			"eslint":
+			"elixirlinter":
 			{
-				"@disable": true,
+				"@disable": false,
 				"args":
 				[
 				],
 				"excludes":
 				[
 				]
+			},
+			"eslint":
+			{
+				"@disable": false,
+				"args":
+				[
+				],
+				"excludes":
+				[
+				]
+			},
+			"flow":
+			{
+				"@disable": false,
+				"args":
+				[
+				],
+				"excludes":
+				[
+				],
+				"flow-bin": null,
+				"show-all-errors": true
 			},
 			"rubocop":
 			{
