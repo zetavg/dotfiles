@@ -22,15 +22,15 @@ if [ -d "$1" ]; then
   mkdir -p "$HOME/Projects/Sublime Projects/${dir_path_hash}"
 
   if [ -e "$subl_workspace_path" ]; then
-    echo "Opening Project: $subl_project_path"
-    open "$subl_workspace_path"
+    echo "Opening Project: \"$subl_project_path\""
+    "$subl_executable" -n "$subl_project_path"
   else
-    echo "Creating Project: $subl_project_path"
+    echo "Creating Project: \"$subl_project_path\""
     subl_project="{ \"folders\": [ { \"path\": \"${dir_path}\" } ] }"
     subl_workspace="{ \"project\": \"${project_name}.sublime-project\" }"
     echo "$subl_project" > "$subl_project_path"
     echo "$subl_workspace" > "$subl_workspace_path"
-    open "$subl_workspace_path"
+    "$subl_executable" -n "$subl_project_path"
   fi
 else
   "$subl_executable" "$@"
