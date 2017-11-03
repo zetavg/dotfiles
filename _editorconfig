@@ -44,29 +44,14 @@ indent_size = 4
 indent_style = tab
 
 [**.sublime-settings]
-indent_style = tab
+indent_style = space
 indent_size = 4
 tab_size = 4
 
 [**.tmTheme]
 indent_style = tab
-indent_size = 4
-tab_size = 4
-
-[**.json]
-indent_style = space
-indent_size = 4
-tab_size = 4
-
-[**.css]
-indent_style = space
-indent_size = 4
-tab_size = 4
-
-[**.scss]
-indent_style = space
-indent_size = 4
-tab_size = 4
+indent_size = 2
+tab_size = 2
 
 [**.md]
 trim_trailing_whitespace = false
@@ -78,9 +63,4 @@ trim_trailing_whitespace = false
 trim_trailing_whitespace = false
 
 [**.erb]
-trim_trailing_whitespace = false
-
-[**.apib]
-indent_style = space
-indent_size = 4
 trim_trailing_whitespace = false
