@@ -6,11 +6,12 @@ _bin/subl
 _vim/.netrwhist
 _oh-my-zsh
 
+_config/yarn
 _config/heroku
 _config/gitcfg
-_config/codeclimate/
-_config/configstore/
-_config/git/
+_config/codeclimate
+_config/configstore
+_config/git
 
 # Fish
 _config/fish/fish_history
