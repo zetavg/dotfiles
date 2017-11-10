@@ -1,0 +1,4 @@
+env:
+  - TEST_SCRIPT=tests/installation.sh
+script:
+  $TEST_SCRIPT
