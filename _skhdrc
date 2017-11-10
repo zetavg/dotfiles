@@ -132,7 +132,7 @@ shift + ctrl - p : chunkc tiling::monitor -f next
 shift + ctrl + alt + cmd - o : chunkc tiling::desktop --toggle offset
 
 # toggle window fullscreen
-shift + ctrl - f : chunkc tiling::window --toggle fullscreen
+# shift + ctrl - f : chunkc tiling::window --toggle fullscreen
 
 # toggle window parent zoom
 # alt - d : chunkc tiling::window --toggle parent
@@ -141,7 +141,7 @@ shift + ctrl - f : chunkc tiling::window --toggle fullscreen
 # alt - e : chunkc tiling::window --toggle split
 
 # float / unfloat window
-shift + ctrl + cmd - f : chunkc tiling::window --toggle float
+# shift + ctrl + cmd - f : chunkc tiling::window --toggle float
 
 # toggle sticky, float and resize to picture-in-picture size
 # alt - s : chunkc tiling::window --toggle sticky;\
