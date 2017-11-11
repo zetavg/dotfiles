@@ -23,6 +23,26 @@ source <(antibody init)
 
 bundles=(
   zdharma/fast-syntax-highlighting
+  zsh-users/zsh-completions
+  zsh-users/zsh-autosuggestions
+  zsh-users/zsh-history-substring-search
+  jreese/zsh-titles
 )
 
 antibody bundle < <(print -l $bundles)
+
+##
+# zsh-users/zsh-completions
+##
+
+autoload -U compinit && compinit
+
+##
+# zsh-users/zsh-history-substring-search
+##
+
+HISTORY_SUBSTRING_SEARCH_FUZZY=true          # "ab c" will match "*ab*c*""
+HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=true  # only return unique search results
+
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
