@@ -1,3 +1,24 @@
+##
+# Histroy
+##
+
+HISTSIZE=10000  # number of histories the shell will keep within one session
+SAVEHIST=50000  # the number of lines of history to save
+
+HISTFILE=$HOME/.zhistory
+
+setopt APPEND_HISTORY          # append history list to the history file, rather than replace it
+setopt HIST_EXPIRE_DUPS_FIRST  # drop duplicate histories first when hitting the history size limit
+setopt EXTENDED_HISTORY        # save each command’s beginning timestamp and duration to history
+setopt HIST_IGNORE_SPACE
+setopt HIST_VERIFY
+setopt INC_APPEND_HISTORY      # append entries to the history file as soon as they are entered
+setopt SHARE_HISTORY
+
+##
+# antibody
+##
+
 source <(antibody init)
 
 bundles=(
