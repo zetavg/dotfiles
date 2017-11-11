@@ -1,3 +1,5 @@
+# .zshrc
+
 ##
 # Histroy
 ##
@@ -15,6 +17,13 @@ setopt HIST_VERIFY
 setopt INC_APPEND_HISTORY      # append entries to the history file as soon as they are entered
 setopt SHARE_HISTORY
 
+
+##
+# Prompt Options
+##
+
+setopt PROMPT_SUBST
+
 ##
 # antibody
 ##
@@ -22,11 +31,14 @@ setopt SHARE_HISTORY
 source <(antibody init)
 
 bundles=(
+  mafredri/zsh-async
   zdharma/fast-syntax-highlighting
   zsh-users/zsh-completions
   zsh-users/zsh-autosuggestions
   zsh-users/zsh-history-substring-search
+  zdharma/history-search-multi-word
   jreese/zsh-titles
+  marcoy/zsh-gitfast
 )
 
 antibody bundle < <(print -l $bundles)
@@ -46,3 +58,22 @@ HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=true  # only return unique search results
 
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
+
+##
+# zdharma/fast-syntax-highlighting
+##
+
+FAST_HIGHLIGHT_STYLES[unknown-token]='fg=red'
+
+##
+# fpath
+##
+
+fpath=( $fpath ~/.zsh/functions )
+
+##
+# prompt
+##
+
+autoload -U promptinit; promptinit
+prompt pure
