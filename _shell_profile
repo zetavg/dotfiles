@@ -7,8 +7,9 @@
 
 # CONSTANTS
 
-export DEFAULT_NODE_VERSION='8.0.0'
-export DEFAULT_RUBY_VERSION='2.4.0'
+export DEFAULT_NODEJS_VERSION=$(cat ~/.tool-versions | grep nodejs | awk -F' ' '{print $2}')
+export DEFAULT_RUBY_VERSION=$(cat ~/.tool-versions | grep ruby | awk -F' ' '{print $2}')
+export DEFAULT_ELIXIR_VERSION=$(cat ~/.tool-versions | grep elixir | awk -F' ' '{print $2}')
 
 
 # PATH
