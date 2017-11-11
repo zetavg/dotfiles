@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/zetavg/dotfiles.svg?branch=master)](https://travis-ci.org/zetavg/dotfiles)
 
-@zetavg's dotfiles, including handy scripts, configurations for bash.
+@zetavg's dotfiles, including handy scripts, configurations for bash, zsh, asdf, Sublime Text, Karabiner-Elements and more.
 
 
 ## Install
@@ -19,7 +19,7 @@ is `~/.profile` → `<dotfiles>/_profile`, see `install` for more complex rules)
 If a file or  directory  already  exists  at  the  desired  location,  the  old
 ones will be automatically renamed to `*.<time_stamp>.bak`.
 
-Further setup  instructions  for  different  environment,  OS,  and  tools  are 
+Further setup  instructions  for  different  environment,  OS,  and  tools  are
 expanded in the separated sections below.
 
 ### Private Dotfiles

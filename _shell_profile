@@ -72,6 +72,8 @@ alias gs='git status'
 alias gss='git status --short --branch'
 alias gsm='git status | more'
 
+alias a='asdf'
+
 alias R='rails'
 alias RR='rails'
 alias RN='react-native'
