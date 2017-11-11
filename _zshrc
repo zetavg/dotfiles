@@ -24,6 +24,16 @@ setopt SHARE_HISTORY
 
 setopt PROMPT_SUBST
 
+
+##
+# Enable Colors
+##
+
+unset LSCOLORS
+export CLICOLOR=1
+export CLICOLOR_FORCE=1
+
+
 ##
 # antibody
 ##
@@ -43,11 +53,13 @@ bundles=(
 
 antibody bundle < <(print -l $bundles)
 
+
 ##
 # zsh-users/zsh-completions
 ##
 
 autoload -U compinit && compinit
+
 
 ##
 # zsh-users/zsh-history-substring-search
@@ -65,15 +77,24 @@ bindkey '^[[B' history-substring-search-down
 
 FAST_HIGHLIGHT_STYLES[unknown-token]='fg=red'
 
+
 ##
-# fpath
+# Append fpath
 ##
 
 fpath=( $fpath ~/.zsh/functions )
 
+
 ##
-# prompt
+# Enable prompt
 ##
 
 autoload -U promptinit; promptinit
 prompt pure
+
+
+##
+# Load Shared Profile
+##
+
+. "$HOME/.shell_profile"

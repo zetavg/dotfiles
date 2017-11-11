@@ -1,0 +1,22 @@
+#! /bin/bash
+# httrackToDoc
+# Usage: httrackToDoc http://...
+#
+
+if [[ -n "$1" ]]; then
+	httrackToDoc_docD=""
+	[[ -d "$HOME/Google Drive/WebDocs" ]] && httrackToDoc_docD="$HOME/Google Drive/WebDocs"
+	[[ -d "$HOME/Google 雲端硬碟/WebDocs" ]] && httrackToDoc_docD="$HOME/Google 雲端硬碟/WebDocs"
+	[[ -d "$HOME/WebDocs" ]] && httrackToDoc_docD="$HOME/WebDocs"
+	if [[ -n "$httrackToDoc_docD" ]]; then
+		echo "Backup to ~/Desktop ..."
+		cp -r "$httrackToDoc_docD" "$HOME/Desktop"
+		sleep 1
+		echo "Running httrack \"$1\" -w -O \"$httrackToDoc_docD\" -r3 -n -%i -%I --update"
+		httrack "$1" -W -O "$httrackToDoc_docD" -r3 -n -%i -%I --update
+	else
+		echo "Can't find WebDocs directory in neither '~/Google Drive/WebDocs', '~/WebDocs'"
+	fi
+else
+	echo "httrackToDoc -- httrack a website to Doc folder (~/Google Drive/WebDocs)"
+fi

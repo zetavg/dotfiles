@@ -1,0 +1,37 @@
+#! /bin/bash
+# A wrapper around subl that automatically open or creates Sublime Project on
+# opening directories
+
+set -e
+
+if [[ $(uname) == "Darwin" ]]; then
+  subl_executable="/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl"
+else
+  echo "Sorry, $(uname) is not supported yet!" >&2
+  exit 1;
+fi
+
+if [ -d "$1" ]; then
+  dir_path="$(realpath "$1")"
+  project_name=$(basename "$dir_path" | sed "s/^\.//g")
+  dir_path_hash="$(echo "Dir: $dir_path" | openssl md5)"
+
+  subl_project_path="$HOME/Projects/Sublime Projects/${dir_path_hash}/${project_name}.sublime-project"
+  subl_workspace_path="$HOME/Projects/Sublime Projects/${dir_path_hash}/${project_name}.sublime-workspace"
+
+  mkdir -p "$HOME/Projects/Sublime Projects/${dir_path_hash}"
+
+  if [ -e "$subl_workspace_path" ]; then
+    echo "Opening Project: \"$subl_project_path\""
+    "$subl_executable" -n "$subl_project_path"
+  else
+    echo "Creating Project: \"$subl_project_path\""
+    subl_project="{ \"folders\": [ { \"path\": \"${dir_path}\" } ] }"
+    subl_workspace="{ \"project\": \"${project_name}.sublime-project\" }"
+    echo "$subl_project" > "$subl_project_path"
+    echo "$subl_workspace" > "$subl_workspace_path"
+    "$subl_executable" -n "$subl_project_path"
+  fi
+else
+  "$subl_executable" "$@"
+fi

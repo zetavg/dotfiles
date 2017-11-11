@@ -1,0 +1,73 @@
+#!/bin/bash
+# -------------------------------------------------------------------
+# git-push-match
+# -------------------------------------------------------------------
+
+SUBJECT=git-push-match
+VERSION=0.0.1
+USAGE="git-push-match [remote=origin]"
+HELP="
+$USAGE
+
+    Auto creates matching upstream branch and push.
+"
+
+# --- Option Processing ---------------------------------------------
+
+# Transform long options to short ones
+for arg in "$@"; do
+  shift
+  case "$arg" in
+    "--help") set -- "$@" "-h" ;;
+    "--database") set -- "$@" "-d" ;;
+    *)        set -- "$@" "$arg"
+  esac
+done
+
+while getopts ":vhnd:" optname
+  do
+    case "$optname" in
+      "v")
+        echo "$SUBJECT version $VERSION"
+        exit 0;
+        ;;
+      "h")
+        echo "$HELP"
+        exit 0;
+        ;;
+      "?")
+        echo "Unknown option: -$OPTARG" >&2
+        echo "Usage: $USAGE"
+        exit 1;
+        ;;
+      ":")
+        echo "No argument value for option $OPTARG" >&2
+        echo "Usage: $USAGE"
+        exit 1;
+        ;;
+    esac
+  done
+
+shift $(($OPTIND - 1))
+
+# --- Options -------------------------------------------------------
+
+remote='origin'
+
+# --- Options Overriding --------------------------------------------
+
+if [ ! -z "$1" ]; then
+  remote="$1"
+fi
+
+# --- Script Body ---------------------------------------------------
+
+set -e
+
+current_branch="$(git rev-parse --abbrev-ref HEAD)"
+
+branch="$current_branch"
+
+echo "Pushing $branch to $remote"
+
+git push --set-upstream "$remote" "$branch"

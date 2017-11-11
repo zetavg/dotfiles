@@ -1,0 +1,105 @@
+#!/bin/bash
+# -------------------------------------------------------------------
+# heroku-get-database
+# -------------------------------------------------------------------
+
+SUBJECT=heroku-get-database
+VERSION=0.0.1
+USAGE="heroku-get-database [remote-name] [-s <path>] [-u] [-n]"
+HELP="
+$USAGE
+
+    Download the database dump from Heroku (the default remote-name is
+    \"heroku\").
+
+    The following options are available:
+
+    -h      Show this message.
+
+    -s      The path to save the database dump, defaults to
+            \"tmp/heroku-database.dump\".
+
+    -u      Do not download the database dump, just print the URL only.
+
+    -n      Create a new backup before downloading.
+"
+
+# --- Options -------------------------------------------------------
+
+remote_name=''
+save_path=''
+create_new_backup=false
+only_show_url=false
+
+# --- Option Processing ---------------------------------------------
+
+# Transform long options to short ones
+for arg in "$@"; do
+  shift
+  case "$arg" in
+    "--help") set -- "$@" "-h" ;;
+    *)        set -- "$@" "$arg"
+  esac
+done
+
+while getopts ":vhs:u" optname
+  do
+    case "$optname" in
+      "v")
+        echo "$SUBJECT version $VERSION"
+        exit 0;
+        ;;
+      "h")
+        echo "$HELP"
+        exit 0;
+        ;;
+      "?")
+        echo "Unknown option: -$OPTARG" >&2
+        echo "Usage: $USAGE"
+        exit 1;
+        ;;
+      ":")
+        echo "No argument value for option $OPTARG" >&2
+        echo "Usage: $USAGE"
+        exit 1;
+        ;;
+
+      "s")
+        save_path="$OPTARG"
+        ;;
+      "u")
+        only_show_url=true
+        ;;
+      "n")
+        create_new_backup=true
+        ;;
+    esac
+  done
+
+shift $(($OPTIND - 1))
+
+# --- Options Overriding --------------------------------------------
+
+remote_name="$1"
+
+if [ -z "$remote_name" ]; then
+  remote_name='heroku'
+fi
+
+if [ -z "$save_path" ]; then
+  save_path="tmp/${remote_name}-database.dump"
+fi
+
+# --- Script Body ---------------------------------------------------
+
+set -e
+
+if $create_new_backup; then
+  heroku pg:backups capture --remote "$remote_name"
+fi
+
+if $only_show_url; then
+  heroku pg:backups public-url -q --remote "$remote_name"
+else
+  wget -O "$save_path" "$(heroku pg:backups public-url -q --remote "$remote_name")"
+fi
