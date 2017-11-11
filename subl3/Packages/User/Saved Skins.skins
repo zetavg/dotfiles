@@ -1,0 +1,22 @@
+{
+	"Spacegray Dark":
+	{
+		"Preferences":
+		{
+			"color_scheme": "Packages/Theme - Spacegray/base16-ocean.dark.tmTheme",
+			"font_face": "InputMono-ExtraLight",
+			"font_size": 16.5,
+			"theme": "Spacegray.sublime-theme"
+		}
+	},
+	"Spacegray Light":
+	{
+		"Preferences":
+		{
+			"color_scheme": "Packages/Theme - Spacegray/spacegray-ayu-light.tmTheme",
+			"font_face": "InputMono-Light",
+			"font_size": 16.5,
+			"theme": "Spacegray Light.sublime-theme"
+		}
+	}
+}
