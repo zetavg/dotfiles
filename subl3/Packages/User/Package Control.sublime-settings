@@ -1,0 +1,25 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"AdvancedNewFile",
+		"AutoBackups",
+		"Babel",
+		"CloseOtherWindows",
+		"EditorConfig",
+		"Elixir",
+		"Gist",
+		"Git",
+		"GitGutter",
+		"Hasher",
+		"Package Control",
+		"Ruby Slim",
+		"Sass",
+		"SCSS",
+		"SideBarEnhancements",
+		"TrailingSpaces"
+	]
+}

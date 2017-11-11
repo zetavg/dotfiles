@@ -1,0 +1,27 @@
+[
+  /* Paste and Indent */
+  { "keys": ["super+alt+v"], "command": "paste_and_indent" },
+
+  /* Multiple Selections */
+  // Add a cursor at the next or previous line
+  { "keys": ["ctrl+super+j"], "command": "select_lines", "args": { "forward": true } },
+  { "keys": ["ctrl+super+k"], "command": "select_lines", "args": { "forward": false } },
+  // Split the selected area into multiple selections by line
+  { "keys": ["ctrl+super+l"], "command": "split_selection_into_lines" },
+  // When having mulitiple selections or cursors, cancel other selections or cursors only leaving the first one
+  { "keys": ["ctrl+super+i"], "command": "single_selection", "context":
+    [
+      { "key": "num_selections", "operator": "not_equal", "operand": 1 }
+    ]
+  },
+
+  /* Window Operations */
+  // Close other windows (provided by the CloseOtherWindows plugin)s
+  { "keys": ["alt+super+w"], "command": "close_other_windows" },
+
+  /* Fast Browser Refresh */
+  { "keys": ["command+shift+a"], "command": "browser_refresh", "args": { "auto_save": true, "delay": 1.0, "activate_browser": true, "browser_name" : "all" } },
+
+  /* Intent HTML */
+  { "keys": ["ctrl+shift+r"], "command": "reindent" , "args": {"single_line": false} }
+]

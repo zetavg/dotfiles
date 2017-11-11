@@ -16,7 +16,7 @@ link() {
   source="$1"
   target="$2"
   echo "$source → $target"
-  
+
   if [[ -e "$target" ]] && [[ ! -L "$target" ]]; then
     backup_name="$target.$TIMESTAMP.bak"
     echo "  ...creating backup for $target: $backup_name"
@@ -30,8 +30,8 @@ link() {
 }
 
 # Function to echo a heaer message for a phase
-phase() { 
-  printf "$(tput bold)$(tput sgr 0 1)%s$(tput sgr0)\\n" "$@" 
+phase() {
+  printf "$(tput bold)$(tput sgr 0 1)%s$(tput sgr0)\\n" "$@"
 }
 
 ##
@@ -54,8 +54,7 @@ git submodule update
 
 phase "Link General Files"
 
-for i in _*
-do
+for i in _*; do
   source="$BASEDIR/$i"
   target="$HOME/${i/_/.}"
   link "$source" "$target"
@@ -63,16 +62,21 @@ done
 
 phase "Link User Packages for Sublime Text 3"
 
-if [[ -d "$BASEDIR/subl3" ]]; then
-  source="$BASEDIR/subl3"
+if [[ -d "$BASEDIR/subl3/Packages" ]]; then
+  subl_source_packages_dir="$BASEDIR/subl3/Packages"
   if [[ $(uname) == "Darwin" ]]; then
     test ! -e "$HOME/Library/Application Support/Sublime Text 3/Packages" && mkdir -p "$HOME/Library/Application Support/Sublime Text 3/Packages"
-    target="$HOME/Library/Application Support/Sublime Text 3/Packages/User"
+    subl_target_packages_dir="$HOME/Library/Application Support/Sublime Text 3/Packages"
   else
     test ! -e "$HOME/.config/sublime-text-3/Packages" && mkdir -p "$HOME/.config/sublime-text-3/Packages"
-    target="$HOME/.config/sublime-text-3/Packages/User"
+    subl_target_packages_dir="$HOME/.config/sublime-text-3/Packages"
   fi
-  link "$source" "$target"
+
+  cd "$subl_source_packages_dir"
+  for i in *; do
+    link "$subl_source_packages_dir/$i" "$subl_target_packages_dir/$i"
+  done
+  cd "$BASEDIR"
 fi
 
 phase "Link Configuration Files for VSCode"
