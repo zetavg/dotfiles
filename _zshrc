@@ -1,0 +1,7 @@
+source <(antibody init)
+
+bundles=(
+  zdharma/fast-syntax-highlighting
+)
+
+antibody bundle < <(print -l $bundles)
