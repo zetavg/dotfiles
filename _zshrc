@@ -1,6 +1,14 @@
 # .zshrc
 
 ##
+# General
+##
+
+setopt PROMPT_SUBST  # enable prompt expansions
+export CLICOLOR=1
+
+
+##
 # Histroy
 ##
 
@@ -16,22 +24,6 @@ setopt HIST_IGNORE_SPACE
 setopt HIST_VERIFY
 setopt INC_APPEND_HISTORY      # append entries to the history file as soon as they are entered
 setopt SHARE_HISTORY
-
-
-##
-# Prompt Options
-##
-
-setopt PROMPT_SUBST
-
-
-##
-# Enable Colors
-##
-
-unset LSCOLORS
-export CLICOLOR=1
-export CLICOLOR_FORCE=1
 
 
 ##
@@ -55,10 +47,18 @@ antibody bundle < <(print -l $bundles)
 
 
 ##
-# zsh-users/zsh-completions
+# Completions
 ##
 
 autoload -U compinit && compinit
+zstyle ':completion:*' menu select
+
+
+##
+# Zle
+##
+
+WORDCHARS=${WORDCHARS/\/}
 
 
 ##
