@@ -26,7 +26,7 @@
 	],
 	"bold_folder_labels": false,
 	"caret_style": "smooth",
-	"color_scheme": "Packages/User/SublimeLinter/base16-ocean.dark (SL).tmTheme",
+	"color_scheme": "Packages/User/ColorScheme/base16-ocean.dark.tmTheme",
 	"copy_with_empty_selection": false,
 	"default_encoding": "UTF-8",
 	"ensure_newline_at_eof_on_save": true,

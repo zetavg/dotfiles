@@ -3,7 +3,7 @@
 	{
 		"Preferences":
 		{
-			"color_scheme": "Packages/User/SublimeLinter/base16-ocean.dark (SL).tmTheme",
+			"color_scheme": "Packages/User/ColorScheme/base16-ocean.dark.tmTheme",
 			"font_face": "InputMono-ExtraLight",
 			"font_size": 16.5,
 			"theme": "Spacegray.sublime-theme"
@@ -13,7 +13,7 @@
 	{
 		"Preferences":
 		{
-			"color_scheme": "Packages/User/SublimeLinter/base16-ocean.light (SL).tmTheme",
+			"color_scheme": "Packages/User/ColorScheme/base16-ocean.light.tmTheme",
 			"font_face": "InputMono-Light",
 			"font_size": 16.5,
 			"theme": "Spacegray Light.sublime-theme"
