@@ -156,6 +156,18 @@ function mkcd() {
 }
 
 
+# ASDF
+
+# Only if the go executable is provided by asdf
+if [[ "$(command -v go)" == *".asdf"* ]]; then
+  export GOPATH="$HOME/.go"
+  PATH="$PATH:$GOPATH/bin"
+  # TODO: run this every time after the go version has been switched
+  GOV=$(asdf current golang | sed 's/ (set by .*)//g')
+  export GOROOT="$HOME/.asdf/installs/golang/$GOV/go/"
+fi
+
+
 # LOAD ENVIRMENT SPECIFIC PROFILES
 
 if [ -f "$HOME/.profile_other" ]; then
