@@ -28,6 +28,7 @@
 		"SublimeLinter-flow",
 		"SublimeLinter-rubocop",
 		"SublimeLinter-shellcheck",
-		"TrailingSpaces"
+		"TrailingSpaces",
+		"WakaTime"
 	]
 }
