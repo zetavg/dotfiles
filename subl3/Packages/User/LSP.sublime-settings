@@ -1,0 +1,8 @@
+{
+    "diagnostics_highlight_style": "box",
+	"clients": {
+		"reason": {
+			"enabled": true
+		}
+	}
+}

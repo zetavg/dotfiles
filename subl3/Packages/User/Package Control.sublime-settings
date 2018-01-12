@@ -15,20 +15,27 @@
 		"Git Commit Message Syntax",
 		"GitGutter",
 		"Hasher",
+		"LSP",
 		"Package Control",
 		"Ruby Slim",
 		"Sass",
 		"SCSS",
 		"SideBarEnhancements",
 		"Skins",
+		"sublime-reason",
 		"SublimeGit",
 		"SublimeLinter",
-		"SublimeLinter-contrib-eslint",
 		"SublimeLinter-contrib-scss-lint",
+		"SublimeLinter-eslint",
 		"SublimeLinter-flow",
 		"SublimeLinter-rubocop",
 		"SublimeLinter-shellcheck",
 		"TrailingSpaces",
+		"VimL",
 		"WakaTime"
+	],
+	"repositories":
+	[
+		"https://github.com/reasonml-editor/sublime-reason.git"
 	]
 }
