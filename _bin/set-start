@@ -1,0 +1,102 @@
+#!/bin/bash
+# -------------------------------------------------------------------
+# set-start
+# -------------------------------------------------------------------
+
+SUBJECT=set-start
+VERSION=0.0.1
+USAGE="set-start [type=default] <command>"
+HELP="
+$USAGE
+
+    Set the \"start\" command for the current directory.
+"
+
+# --- Option Processing ---------------------------------------------
+
+# Transform long options to short ones
+for arg in "$@"; do
+  shift
+  case "$arg" in
+    "--help") set -- "$@" "-h" ;;
+    *)        set -- "$@" "$arg"
+  esac
+done
+
+while getopts ":vhnd:" optname
+  do
+    case "$optname" in
+      "v")
+        echo "$SUBJECT version $VERSION"
+        exit 0;
+        ;;
+      "h")
+        echo "$HELP"
+        exit 0;
+        ;;
+      "?")
+        echo "Unknown option: -$OPTARG" >&2
+        echo "Usage: $USAGE"
+        exit 1;
+        ;;
+      ":")
+        echo "No argument value for option $OPTARG" >&2
+        echo "Usage: $USAGE"
+        exit 1;
+        ;;
+    esac
+  done
+
+shift $(($OPTIND - 1))
+
+# --- Arguments and Default Values ----------------------------------
+
+command=''
+type='default'
+
+# --- Arguments Processing ------------------------------------------
+
+if [ -n "$2" ]; then
+  type="$1"
+  command="$2"
+else
+  command="$1"
+fi
+
+if [ -z "$command" ]; then
+  echo "No command specified" >&2
+  echo "Usage: $USAGE"
+  exit 1;
+fi
+
+# --- Script Body ---------------------------------------------------
+
+set -eu
+
+project_dir="$(pwd)"
+project_dir_hash="$(echo "$project_dir" | openssl md5)"
+
+start_files_path="$HOME/.start"
+
+mkdir -p "$start_files_path"
+
+start_file_path="$start_files_path/$project_dir_hash"
+
+if [ ! -e "$start_file_path" ]; then
+  echo "Creating start file: \"$start_file_path\""
+  echo 'default: ' > "$start_file_path"
+fi
+
+sed "/^${type}: .*\$/{h;s/^${type}: .*$/${type}: ${command}/;}
+\${x
+/^\$/{s//${type}: ${command}/;H;}
+x
+}" "$start_file_path" > "${start_file_path}_tmp"
+rm -r "$start_file_path"
+mv "${start_file_path}_tmp" "$start_file_path"
+
+echo "Start file $start_file_path updated:"
+echo ''
+cat "$start_file_path"
+echo ''
+echo "You can use the command 'start [type=default]' to boot up the project"

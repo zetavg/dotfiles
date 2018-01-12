@@ -1,0 +1,96 @@
+#!/bin/bash
+# -------------------------------------------------------------------
+# set-start
+# -------------------------------------------------------------------
+
+SUBJECT=start
+VERSION=0.0.1
+USAGE="start [type=default]"
+HELP="
+$USAGE
+
+    Bootup the project with pre-setted command.
+"
+
+# --- Option Processing ---------------------------------------------
+
+# Transform long options to short ones
+for arg in "$@"; do
+  shift
+  case "$arg" in
+    "--help") set -- "$@" "-h" ;;
+    *)        set -- "$@" "$arg"
+  esac
+done
+
+while getopts ":vhnd:" optname
+  do
+    case "$optname" in
+      "v")
+        echo "$SUBJECT version $VERSION"
+        exit 0;
+        ;;
+      "h")
+        echo "$HELP"
+        project_dir="$(pwd)"
+        project_dir_hash="$(echo "$project_dir" | openssl md5)"
+        start_files_path="$HOME/.start"
+        start_file_path="$start_files_path/$project_dir_hash"
+        if [ -f "$start_file_path" ]; then
+          echo "Available Types:"
+          sed "s/^/  /g" < "$start_file_path"
+        fi
+        echo ''
+        echo "Use the 'set-start' command to add start commands."
+        exit 0;
+        ;;
+      "?")
+        echo "Unknown option: -$OPTARG" >&2
+        echo "Usage: $USAGE"
+        exit 1;
+        ;;
+      ":")
+        echo "No argument value for option $OPTARG" >&2
+        echo "Usage: $USAGE"
+        exit 1;
+        ;;
+    esac
+  done
+
+shift $(($OPTIND - 1))
+
+# --- Arguments and Default Values ----------------------------------
+
+type='default'
+
+# --- Arguments Processing ------------------------------------------
+
+if [ -n "$1" ]; then
+  type="$1"
+fi
+
+# --- Script Body ---------------------------------------------------
+
+set -eu
+
+project_dir="$(pwd)"
+project_dir_hash="$(echo "$project_dir" | openssl md5)"
+start_files_path="$HOME/.start"
+start_file_path="$start_files_path/$project_dir_hash"
+
+if [ -f "$start_file_path" ]; then
+  if command="$(pcregrep -o1 "^$type: (.*)" < "$start_file_path")"; then
+    echo "Running \`$command\`"
+    $command
+  else
+    echo "Unknown type: $type."
+    echo ''
+    echo "Available Types:"
+    sed "s/^/  /g" < "$start_file_path"
+    echo ''
+    echo "Use the 'set-start' command to add start commands."
+  fi
+else
+  echo "No start command set for this directory. Use the 'set-start' command to add start commands."
+  exit -1
+fi
