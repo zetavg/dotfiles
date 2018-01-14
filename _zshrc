@@ -38,6 +38,7 @@ bundles=(
   zsh-users/zsh-completions
   zsh-users/zsh-autosuggestions
   zsh-users/zsh-history-substring-search
+  psprint/zsh-navigation-tools
   zdharma/history-search-multi-word
   jreese/zsh-titles
   marcoy/zsh-gitfast
