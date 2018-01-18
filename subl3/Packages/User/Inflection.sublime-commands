@@ -1,0 +1,67 @@
+[
+  {
+    "caption": "Inflection: Camelize (Upper-case First Letter)",
+    "command": "camelize_text",
+    "args": {}
+  },
+  {
+    "caption": "Inflection: Camelize (Lower-case First Letter)",
+    "command": "camelize_text",
+    "args": { "uppercase_first_letter": false }
+  },
+  {
+    "caption": "Inflection: Dasherize",
+    "command": "dasherize_text",
+    "args": {}
+  },
+  {
+    "caption": "Inflection: Humanize",
+    "command": "humanize_text",
+    "args": {}
+  },
+  {
+    "caption": "Inflection: Ordinal",
+    "command": "ordinal_text",
+    "args": {}
+  },
+  {
+    "caption": "Inflection: Ordinalize",
+    "command": "ordinalize_text",
+    "args": {}
+  },
+  {
+    "caption": "Inflection: Parameterize",
+    "command": "parameterize_text",
+    "args": {}
+  },
+  {
+    "caption": "Inflection: Pluralize",
+    "command": "pluralize_text",
+    "args": {}
+  },
+  {
+    "caption": "Inflection: Singularize",
+    "command": "singularize_text",
+    "args": {}
+  },
+  {
+    "caption": "Inflection: Tableize",
+    "command": "tableize_text",
+    "args": {}
+  },
+  {
+    "caption": "Inflection: Titleize",
+    "command": "titleize_text",
+    "args": {}
+  },
+  {
+    "caption": "Inflection: Transliterate",
+    "command": "transliterate_text",
+    "args": {}
+  },
+  {
+    "caption": "Inflection: Underscore",
+    "command": "underscore_text",
+    "args": {}
+  }
+]
