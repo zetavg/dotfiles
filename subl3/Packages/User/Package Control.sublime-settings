@@ -30,6 +30,7 @@
 		"SublimeLinter-flow",
 		"SublimeLinter-rubocop",
 		"SublimeLinter-shellcheck",
+		"SyncedSideBar",
 		"TrailingSpaces",
 		"VimL",
 		"WakaTime"
