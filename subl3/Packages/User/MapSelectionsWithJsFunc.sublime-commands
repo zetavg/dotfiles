@@ -1,7 +1,12 @@
 [
   {
-    "caption": "Map and Replace Selections with JavaScript Function",
+    "caption": "Map w/ JS Func: Map and Replace Selections with JavaScript Function",
     "command": "map_selections_with_js_func",
     "args": {}
+  },
+  {
+    "caption": "Map w/ JS Func: Redo: Redo Last Map and Replace Selections with JavaScript Function",
+    "command": "map_selections_with_js_func",
+    "args": { "redo": true }
   }
 ]
