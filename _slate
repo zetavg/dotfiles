@@ -1,0 +1,31 @@
+# GLOBAL CONFIGURATIONS
+# -------------------------------------------------------------------
+# See https://github.com/jigish/slate/wiki/Global-Configs
+
+config defaultToCurrentScreen true
+config secondsBeforeRepeat 0.2
+config secondsBetweenRepeat 0.05
+config keyboardLayout "qwerty"
+config nudgePercentOf screenSize
+config resizePercentOf screenSize
+
+# OPERATION ON WINDOW
+# -------------------------------------------------------------------
+
+# Focus
+bind h:cmd;shift       focus left
+bind j:cmd;shift       focus down
+bind k:cmd;shift       focus up
+bind l:cmd;shift       focus right
+
+# Move
+bind h:cmd;shift;alt   nudge -16 +0
+bind j:cmd;shift;alt   nudge +0 +16
+bind k:cmd;shift;alt   nudge +0 -16
+bind l:cmd;shift;alt   nudge +16 +0
+
+# Resize
+bind n:cmd;shift;alt resize -16 +0
+bind m:cmd;shift;alt resize +0 +16
+bind ,:cmd;shift;alt resize +0 -16
+bind .:cmd;shift;alt resize +16 +0
