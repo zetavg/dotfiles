@@ -1,23 +1,90 @@
 [
+  /* Changing Focus */
+  { "keys": ["super+0"], "command": "focus_side_bar" },
+  { "keys": ["ctrl+j"], "command": "focus_neighboring_group" },
+  { "keys": ["ctrl+k"], "command": "focus_neighboring_group", "args": {"forward": false} },
+  { "keys": ["ctrl+h"], "command": "focus_neighboring_group", "args": {"forward": false} },
+  { "keys": ["ctrl+l"], "command": "focus_neighboring_group" },
+
+  /* Tabs */
+  // ⌘J,K as switching to next/previous tab is done by BetterTouchTool
+
+  /* Layout & Groups */
+  { "keys": ["super+;", "super+b"], "command": "toggle_side_bar" },
+  { "keys": ["super+;", "super+s"], "command": "toggle_side_bar" },
+  { "keys": ["super+;", "super+n", "super+g"], "command": "chain", "args": { "commands": [
+    ["new_pane", { "move": false }],
+    ["focus_group", { "group": 9 }]
+  ] } },
+  { "keys": ["super+;", "super+n", "super+g"], "command": "new_pane" },
+  { "keys": ["super+;", "super+c", "super+g"], "command": "close_pane" },
+
   /* Paste and Indent */
   { "keys": ["super+alt+v"], "command": "paste_and_indent" },
 
   /* Multiple Selections */
   // Add a cursor at the next or previous line
-  { "keys": ["ctrl+super+j"], "command": "select_lines", "args": { "forward": true } },
-  { "keys": ["ctrl+super+k"], "command": "select_lines", "args": { "forward": false } },
+  { "keys": ["alt+down"], "command": "select_lines", "args": { "forward": true } },
+  { "keys": ["alt+up"], "command": "select_lines", "args": { "forward": false } },
   // Split the selected area into multiple selections by line
   { "keys": ["ctrl+super+l"], "command": "split_selection_into_lines" },
-  // When having mulitiple selections or cursors, cancel other selections or cursors only leaving the first one
+  { "keys": ["alt+l"], "command": "split_selection_into_lines" },
+  // When having mulitiple selections or cursors, cancel other selections or cursors
   { "keys": ["ctrl+super+i"], "command": "single_selection", "context":
     [
       { "key": "num_selections", "operator": "not_equal", "operand": 1 }
     ]
   },
+  { "keys": ["alt+i"], "command": "single_selection" },
+
+  /* Bookmarks */
+  { "keys": ["ctrl+f"], "command": "toggle_bookmark" },
 
   /* Window Operations */
   // Close other windows (provided by the CloseOtherWindows plugin)s
   { "keys": ["alt+super+w"], "command": "close_other_windows" },
+
+  /* The Find Panel */
+  {
+    "keys": ["alt+r"],
+    "command": "toggle_regex",
+    "context": { "key": "setting.is_widget", "operator": "equal", "operand": true }
+  },
+  {
+    "keys": ["alt+c"],
+    "command": "toggle_case_sensitive",
+    "context": { "key": "setting.is_widget", "operator": "equal", "operand": true }
+  },
+  {
+    "keys": ["alt+w"],
+    "command": "toggle_whole_word",
+    "context": { "key": "setting.is_widget", "operator": "equal", "operand": true }
+  },
+  {
+    "keys": ["alt+shift+w"],
+    "command": "toggle_wrap",
+    "context": { "key": "setting.is_widget", "operator": "equal", "operand": true }
+  },
+  {
+    "keys": ["alt+s"],
+    "command": "toggle_in_selection",
+    "context": { "key": "setting.is_widget", "operator": "equal", "operand": true }
+  },
+  {
+    "keys": ["alt+t"],
+    "command": "toggle_show_context",
+    "context": { "key": "setting.is_widget", "operator": "equal", "operand": true }
+  },
+  {
+    "keys": ["alt+b"],
+    "command": "toggle_use_buffer",
+    "context": { "key": "setting.is_widget", "operator": "equal", "operand": true }
+  },
+  {
+    "keys": ["alt+p"],
+    "command": "toggle_preserve_case",
+    "context": { "key": "setting.is_widget", "operator": "equal", "operand": true }
+  },
 
   /* Fast Browser Refresh */
   { "keys": ["command+shift+a"], "command": "browser_refresh", "args": { "auto_save": true, "delay": 1.0, "activate_browser": true, "browser_name" : "all" } },
