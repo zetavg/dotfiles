@@ -1,7 +1,7 @@
 --- === Basic Definitions ===
 
 -- Show debug notifications
-local debug = true
+local debug = false
 
 -- Window operation modification key
 local winOpMods = {"shift", "cmd"}
