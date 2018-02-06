@@ -1,6 +1,6 @@
 [
   /* Changing Focus */
-  { "keys": ["super+0"], "command": "focus_side_bar" },
+  { "keys": ["ctrl+s"], "command": "focus_side_bar" },
   { "keys": ["ctrl+j"], "command": "focus_neighboring_group" },
   { "keys": ["ctrl+k"], "command": "focus_neighboring_group", "args": {"forward": false} },
   { "keys": ["ctrl+h"], "command": "focus_neighboring_group", "args": {"forward": false} },
@@ -39,6 +39,9 @@
 
   /* Bookmarks */
   { "keys": ["ctrl+f"], "command": "toggle_bookmark" },
+
+  /* Sidebar */
+  { "keys": ["super+0"], "command": "force_reveal_in_sidebar" },
 
   /* Window Operations */
   // Close other windows (provided by the CloseOtherWindows plugin)s

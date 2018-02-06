@@ -1,4 +1,9 @@
 {
+	"added_words":
+	[
+		"args",
+		"Func"
+	],
 	"always_show_minimap_viewport": true,
 	"auto_close_tags": true,
 	"auto_indent": true,

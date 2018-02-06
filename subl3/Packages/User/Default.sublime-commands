@@ -49,7 +49,10 @@
   { "caption": "Toggle Bookmark", "command": "toggle_bookmark" },
 
   /* Sidebar */
-  { "caption": "Reveal in Sidebar", "command": "reveal_in_side_bar" },
+  { "caption": "Sidebar: Toggle Show Open Files", "command": "toggle_show_open_files" },
+  { "caption": "Sidebar: Collapse All Sub Folders On Sidebar", "command": "collapse_all_sub_folders_on_sidebar" },
+  { "caption": "Sidebar: Reveal in Sidebar", "command": "force_reveal_in_sidebar" },
+  { "caption": "Sidebar: Open Selected Item In New Window", "command": "side_bar_open_in_new_window", },
 
   /* Window Operations */
   { "caption": "Close Other Windows", "command": "close_other_windows" }
