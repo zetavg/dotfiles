@@ -69,6 +69,8 @@ if [ -z "$command" ]; then
   exit 1;
 fi
 
+command="${command/\//\\/}"
+
 # --- Script Body ---------------------------------------------------
 
 set -eu
