@@ -1,0 +1,128 @@
+#!/bin/bash
+# -------------------------------------------------------------------
+# n-server
+# -------------------------------------------------------------------
+
+SUBJECT=n-local-server
+VERSION=0.0.1
+USAGE="n-local-server hostname port [public-dir]"
+HELP="
+$USAGE
+
+    Create a port-forwarding local nginx server with self-signed SSL + HTTP/2 on mac.
+"
+
+# --- Option Processing ---------------------------------------------
+
+# Transform long options to short ones
+for arg in "$@"; do
+  shift
+  case "$arg" in
+    "--help") set -- "$@" "-h" ;;
+    *)        set -- "$@" "$arg"
+  esac
+done
+
+while getopts ":vhnd:" optname
+  do
+    case "$optname" in
+      "v")
+        echo "$SUBJECT version $VERSION"
+        exit 0;
+        ;;
+      "h")
+        echo "$HELP"
+        project_dir="$(pwd)"
+        project_dir_hash="$(echo "$project_dir" | openssl md5)"
+        start_files_path="$HOME/.start"
+        start_file_path="$start_files_path/$project_dir_hash"
+        if [ -f "$start_file_path" ]; then
+          echo "Available Types:"
+          sed "s/^/  /g" < "$start_file_path"
+        fi
+        echo ''
+        echo "Use the 'set-start' command to add start commands."
+        exit 0;
+        ;;
+      "?")
+        echo "Unknown option: -$OPTARG" >&2
+        echo "Usage: $USAGE"
+        exit 1;
+        ;;
+      ":")
+        echo "No argument value for option $OPTARG" >&2
+        echo "Usage: $USAGE"
+        exit 1;
+        ;;
+    esac
+  done
+
+shift $(($OPTIND - 1))
+
+# --- Arguments and Default Values ----------------------------------
+
+hostname=''
+port=''
+public_dir='/dev/null'
+
+# --- Arguments Processing ------------------------------------------
+
+hostname="$1"
+port="$2"
+hostname="$(echo "$hostname" | sed 's/localhost$//g' | sed 's/\.*$//g').localhost"
+server_name=".$hostname"
+
+if [ -n "$3" ]; then
+  public_dir="$3"
+fi
+
+if [ -z "$hostname" ]; then
+  echo "No hostname specified" >&2
+  echo "Usage: $USAGE"
+  exit 1;
+fi
+
+if [ -z "$port" ]; then
+  echo "No port specified" >&2
+  echo "Usage: $USAGE"
+  exit 1;
+fi
+
+# --- Script Body ---------------------------------------------------
+
+set -eu
+
+nginx_config_path="/usr/local/etc/nginx/servers/$hostname.conf"
+
+if [[ -e "$nginx_config_path" ]]; then
+  timestamp=$(date +%Y%m%d_%H%M%S)
+  mv "$nginx_config_path" "$nginx_config_path.$timestamp"
+fi
+
+cat > "$nginx_config_path" <<-EOF
+server {
+  listen 80;
+  server_name $server_name;
+  root $public_dir;
+
+  listen 443 ssl http2;
+  ssl_certificate /usr/local/etc/nginx/ssl/$hostname.crt;
+  ssl_certificate_key /usr/local/etc/nginx/ssl/$hostname.key;
+
+  location / {
+    proxy_pass http://localhost:$port;
+    proxy_set_header Host \$host;
+  }
+}
+EOF
+
+if [[ ! -e "/usr/local/etc/nginx/ssl/$hostname.key" ]] || [[ ! -e "/usr/local/etc/nginx/ssl/$hostname.crt" ]]; then
+  mkdir -p "/usr/local/etc/nginx/ssl"
+  openssl req -newkey rsa:2048 -x509 -nodes -keyout "/usr/local/etc/nginx/ssl/$hostname.key" -new -out "/usr/local/etc/nginx/ssl/$hostname.crt" -subj /CN=localhost -reqexts SAN -extensions SAN -config <(cat /System/Library/OpenSSL/openssl.cnf <(printf '[SAN]\nsubjectAltName=DNS:%s,DNS:*.%s' "$hostname" "$hostname")) -sha256 -days 36500
+  sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain "/usr/local/etc/nginx/ssl/$hostname.crt"
+fi
+
+sudo brew services reload nginx
+
+echo ''
+echo "New server ready: $hostname → localhost:$port"
