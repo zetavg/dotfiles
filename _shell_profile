@@ -168,6 +168,12 @@ if [[ "$(command -v go)" == *".asdf"* ]]; then
 fi
 
 
+# ERLANG
+
+# Persist erl/iex history
+export ERL_AFLAGS="-kernel shell_history enabled"
+
+
 # LOAD ENVIRMENT SPECIFIC PROFILES
 
 if [ -f "$HOME/.profile_other" ]; then
