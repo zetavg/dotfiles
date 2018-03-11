@@ -1,4 +1,5 @@
 ruby 2.4.0
 nodejs 8.0.0
-elixir 1.5.2
+elixir 1.6.1
 golang 1.8.4
+erlang 20.2.2
