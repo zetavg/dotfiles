@@ -3,9 +3,9 @@
 # n-server
 # -------------------------------------------------------------------
 
-SUBJECT=n-local-server
+SUBJECT=create-nginx-port-forwarding-localhost-server
 VERSION=0.0.1
-USAGE="n-local-server hostname port [public-dir]"
+USAGE="create-nginx-port-forwarding-localhost-server hostname port [public-dir]"
 HELP="
 $USAGE
 
