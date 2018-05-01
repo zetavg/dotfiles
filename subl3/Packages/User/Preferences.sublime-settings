@@ -19,6 +19,7 @@
 		"*.zip",
 		"*.scssc",
 		"*.cssc",
+		"*.cmi",
 		"*/bower_components/*",
 		"*/node_modules/*",
 		"*/_build/*",
