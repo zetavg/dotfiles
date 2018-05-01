@@ -302,6 +302,18 @@ end
 --   return table[1]
 -- end
 
+--- === Reload Configuration ===
+
+hs.hotkey.bind({"cmd", "alt", "ctrl"}, "H", function()
+  hs.reload()
+  hs.notify.new({title="Hammerspoon", informativeText="Reloading"}):send()
+end)
+
+hs.hotkey.bind({"cmd", "alt", "ctrl"}, "R", function()
+  hs.reload()
+  hs.notify.new({title="Hammerspoon", informativeText="Reloading"}):send()
+end)
+
 --- === Auto Reload Configuration ===
 
 hs.loadSpoon("ReloadConfiguration")
