@@ -40,6 +40,11 @@
   /* Bookmarks */
   { "keys": ["ctrl+f"], "command": "toggle_bookmark" },
 
+  /* Jump */
+  { "keys": ["ctrl+-"], "command": "jump_back" },
+  { "keys": ["ctrl+="], "command": "jump_forward" },
+  { "keys": ["ctrl+shift+minus"], "command": "jump_forward" },
+
   /* Window Operations */
   // Close other windows (provided by the CloseOtherWindows plugin)s
   { "keys": ["alt+super+w"], "command": "close_other_windows" },
