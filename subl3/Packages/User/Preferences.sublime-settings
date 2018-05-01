@@ -23,6 +23,9 @@
 		"*/bower_components/*",
 		"*/node_modules/*",
 		"*/_build/*",
+		"ios/build/Build/*",
+		"ios/build/Index/*",
+		"ios/build/ModuleCache/*",
 		"*/tmp/cache/*"
 	],
 	"bold_folder_labels": false,
