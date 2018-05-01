@@ -1,5 +1,6 @@
-ruby 2.4.0
+haskell 8.4.2
 nodejs 8.0.0
+ruby 2.4.0
 elixir 1.6.1
-golang 1.8.4
 erlang 20.2.2
+golang 1.8.4
