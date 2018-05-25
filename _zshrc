@@ -9,6 +9,13 @@ export CLICOLOR=1
 
 
 ##
+# Append fpath
+##
+
+fpath=( $fpath ~/.zsh/functions )
+
+
+##
 # Histroy
 ##
 
@@ -77,13 +84,6 @@ bindkey '^[[B' history-substring-search-down
 ##
 
 FAST_HIGHLIGHT_STYLES[unknown-token]='fg=red'
-
-
-##
-# Append fpath
-##
-
-fpath=( $fpath ~/.zsh/functions )
 
 
 ##
