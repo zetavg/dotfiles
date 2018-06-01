@@ -1,8 +1,43 @@
 {
-    "diagnostics_highlight_style": "box",
-	"clients": {
-		"reason": {
+	"clients":
+	{
+		"cquery":
+		{
+			"command":
+			[
+				"cquery",
+				"--log-all-to-stderr"
+			],
+			"initializationOptions":
+			{
+				"blacklist":
+				[
+					"targetver.h",
+					"stdafx.h",
+					"stdafx.cpp"
+				],
+				"cacheDirectory": "/tmp/cquery"
+			},
+			"languageId": "c++",
+			"scopes":
+			[
+				"source.c",
+				"source.c++",
+				"source.objc",
+				"source.objc++"
+			],
+			"syntaxes":
+			[
+				"Packages/C++/C.sublime-syntax",
+				"Packages/C++/C++.sublime-syntax",
+				"Packages/Objective-C/Objective-C.sublime-syntax",
+				"Packages/Objective-C/Objective-C++.sublime-syntax"
+			]
+		},
+		"reason":
+		{
 			"enabled": true
 		}
-	}
+	},
+	"diagnostics_highlight_style": "box"
 }
