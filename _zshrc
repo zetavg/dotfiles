@@ -49,6 +49,7 @@ bundles=(
   zdharma/history-search-multi-word
   jreese/zsh-titles
   marcoy/zsh-gitfast
+  paulirish/git-open
 )
 
 antibody bundle < <(print -l $bundles)
