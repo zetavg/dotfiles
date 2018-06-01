@@ -26,6 +26,8 @@
 		"ios/build/Build/*",
 		"ios/build/Index/*",
 		"ios/build/ModuleCache/*",
+		"android/.gradle/*",
+		"android/app/build/intermediates/*",
 		"*/tmp/cache/*"
 	],
 	"bold_folder_labels": false,
