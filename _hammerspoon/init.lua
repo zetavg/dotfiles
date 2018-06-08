@@ -207,7 +207,7 @@ function franzWatchFunction(appName, eventType, appObject)
     end
   end
 end
-local franzWatcher = hs.application.watcher.new(franzWatchFunction)
+franzWatcher = hs.application.watcher.new(franzWatchFunction)
 franzWatcher:start()
 
 function dashWatchFunction(appName, eventType, appObject)
@@ -236,7 +236,7 @@ function dashWatchFunction(appName, eventType, appObject)
     end
   end
 end
-local dashWatcher = hs.application.watcher.new(dashWatchFunction)
+dashWatcher = hs.application.watcher.new(dashWatchFunction)
 dashWatcher:start()
 
 --- === Extended Functions ===
