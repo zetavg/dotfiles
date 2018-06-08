@@ -1,15 +1,15 @@
 #!/bin/bash
 # -------------------------------------------------------------------
-# start
+# set-update
 # -------------------------------------------------------------------
 
-SUBJECT=start
+SUBJECT=set-update
 VERSION=0.0.1
-USAGE="start [type=default]"
+USAGE="set-update [type=default] <command>"
 HELP="
 $USAGE
 
-    Bootup the project with pre-setted command.
+    Set the \"update\" command for the current directory.
 "
 
 # --- Option Processing ---------------------------------------------
@@ -32,16 +32,6 @@ while getopts ":vhnd:" optname
         ;;
       "h")
         echo "$HELP"
-        project_dir="$(pwd)"
-        project_dir_hash="$(echo "$project_dir" | openssl md5)"
-        start_files_path="$HOME/.start"
-        start_file_path="$start_files_path/$project_dir_hash"
-        if [ -f "$start_file_path" ]; then
-          echo "Available Types:"
-          sed "s/^/  /g" < "$start_file_path"
-        fi
-        echo ''
-        echo "Use the 'set-start' command to add start commands."
         exit 0;
         ;;
       "?")
@@ -61,13 +51,25 @@ shift $(($OPTIND - 1))
 
 # --- Arguments and Default Values ----------------------------------
 
+command=''
 type='default'
 
 # --- Arguments Processing ------------------------------------------
 
-if [ -n "$1" ]; then
+if [ -n "$2" ]; then
   type="$1"
+  command="$2"
+else
+  command="$1"
 fi
+
+if [ -z "$command" ]; then
+  echo "No command specified" >&2
+  echo "Usage: $USAGE"
+  exit 1;
+fi
+
+command="${command/\//\\/}"
 
 # --- Script Body ---------------------------------------------------
 
@@ -75,22 +77,28 @@ set -eu
 
 project_dir="$(pwd)"
 project_dir_hash="$(echo "$project_dir" | openssl md5)"
-start_files_path="$HOME/.start"
-start_file_path="$start_files_path/$project_dir_hash"
 
-if [ -f "$start_file_path" ]; then
-  if command="$(pcregrep -o1 "^$type: (.*)" < "$start_file_path")"; then
-    echo "Running \`$command\`"
-    eval $command
-  else
-    echo "Unknown type: $type."
-    echo ''
-    echo "Available Types:"
-    sed "s/^/  /g" < "$start_file_path"
-    echo ''
-    echo "Use the 'set-start' command to add start commands."
-  fi
-else
-  echo "No start command set for this directory. Use the 'set-start' command to add start commands."
-  exit -1
+update_files_path="$HOME/.update"
+
+mkdir -p "$update_files_path"
+
+update_file_path="$update_files_path/$project_dir_hash"
+
+if [ ! -e "$update_file_path" ]; then
+  echo "Creating update file: \"$update_file_path\""
+  echo 'default: ' > "$update_file_path"
 fi
+
+sed "/^${type}: .*\$/{h;s/^${type}: .*$/${type}: ${command}/;}
+\${x
+/^\$/{s//${type}: ${command}/;H;}
+x
+}" "$update_file_path" > "${update_file_path}_tmp"
+rm -r "$update_file_path"
+mv "${update_file_path}_tmp" "$update_file_path"
+
+echo "update file $update_file_path updated:"
+echo ''
+cat "$update_file_path"
+echo ''
+echo "You can use the command 'update [type=default]' to boot up the project"
