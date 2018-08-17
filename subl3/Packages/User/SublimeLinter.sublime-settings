@@ -1,0 +1,9 @@
+// SublimeLinter Settings - User
+{
+    "debug": false,
+    "linters": {
+        "scsslint": {
+            "selector": "source.scss"
+        }
+    }
+}
