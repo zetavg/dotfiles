@@ -34,6 +34,24 @@
 				"Packages/Objective-C/Objective-C++.sublime-syntax"
 			]
 		},
+		"haskell-ide-engine":
+		{
+			"command":
+			[
+				"hie"
+			],
+			"enabled": true,
+			"languageId": "haskell",
+			"scopes":
+			[
+				"source.haskell",
+				"source.hs"
+			],
+			"syntaxes":
+			[
+				"Packages/Haskell/Haskell.sublime-syntax"
+			]
+		},
 		"reason":
 		{
 			"enabled": true
