@@ -55,6 +55,24 @@
 		"reason":
 		{
 			"enabled": true
+		},
+		"reason-language-server":
+		{
+			"command":
+			[
+				"reason-language-server.exe"
+			],
+			"languageId": "reason",
+			"scopes":
+			[
+				"source.reason",
+				"source.re",
+				"source.rei"
+			],
+			"syntaxes":
+			[
+				"Packages/sublime-reason/Reason.tmLanguage"
+			]
 		}
 	},
 	"diagnostics_highlight_style": "box"

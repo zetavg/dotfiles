@@ -14,3 +14,9 @@ The engine that powers OCaml and Reason's editors support.
 $ npm install -g https://github.com/reasonml/reason-cli/archive/3.0.1-bin-darwin.tar.gz
 $ npm install -g ocaml-language-server
 ```
+
+## [reason-language-server](https://github.com/jaredly/reason-language-server)
+
+A language server for reason, in reason.
+
+Follow the [instructions on its README](https://github.com/jaredly/reason-language-server#usage) to install.
