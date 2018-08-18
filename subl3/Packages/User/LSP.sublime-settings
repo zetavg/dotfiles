@@ -40,7 +40,6 @@
 			[
 				"hie"
 			],
-			"enabled": true,
 			"languageId": "haskell",
 			"scopes":
 			[
@@ -51,10 +50,6 @@
 			[
 				"Packages/Haskell/Haskell.sublime-syntax"
 			]
-		},
-		"reason":
-		{
-			"enabled": true
 		},
 		"reason-language-server":
 		{
