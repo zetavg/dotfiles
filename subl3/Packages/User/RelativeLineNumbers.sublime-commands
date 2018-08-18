@@ -1,0 +1,7 @@
+[
+  {
+    "caption": "Show Relative Line Numbers",
+    "command": "relative_line_numbers",
+    "args": {}
+  }
+]

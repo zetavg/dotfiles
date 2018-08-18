@@ -18,6 +18,7 @@
   ] } },
   { "keys": ["super+;", "super+n", "super+g"], "command": "new_pane" },
   { "keys": ["super+;", "super+c", "super+g"], "command": "close_pane" },
+  { "keys": ["ctrl+super+r"], "command": "relative_line_numbers" },
 
   /* Paste and Indent */
   { "keys": ["super+alt+v"], "command": "paste_and_indent" },
