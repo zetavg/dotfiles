@@ -1,6 +1,17 @@
 {
 	"always_show_minimap_viewport": true,
 	"auto_close_tags": true,
+	"auto_complete_triggers":
+	[
+		{
+			"characters": "<",
+			"selector": "text.html"
+		},
+		{
+			"characters": "\\",
+			"selector": "text.tex.latex"
+		}
+	],
 	"auto_indent": true,
 	"binary_file_patterns":
 	[
