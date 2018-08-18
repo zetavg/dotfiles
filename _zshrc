@@ -50,6 +50,7 @@ bundles=(
   jreese/zsh-titles
   marcoy/zsh-gitfast
   paulirish/git-open
+  sobolevn/wakatime-zsh-plugin
 )
 
 antibody bundle < <(print -l $bundles)
