@@ -176,7 +176,7 @@ end)
 hs.hotkey.bind(winMdMods, '4', nil, function()
   local image = hs.window:focusedWindow():snapshot()
   if not image then return end
-  image:saveToFile('~/Desktop/hs_ss.png')
+  image:saveToFile(string.format('~/Desktop/Screen Shot %s.png', os.date('%Y-%m-%d at %I.%M.%S %p')))
 end)
 
 --- === App Event Handling ===
