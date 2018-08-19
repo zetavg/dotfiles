@@ -6,6 +6,7 @@
 	"installed_packages":
 	[
 		"AdvancedNewFile",
+		"AlignTab",
 		"AutoBackups",
 		"Babel",
 		"Bison",
@@ -24,6 +25,7 @@
 		"LaTeX-cwl",
 		"LaTeXTools",
 		"LSP",
+		"MultiEditUtils",
 		"Package Control",
 		"Pretty JSON",
 		"Pug",

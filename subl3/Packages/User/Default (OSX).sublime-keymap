@@ -36,7 +36,7 @@
       { "key": "num_selections", "operator": "not_equal", "operand": 1 }
     ]
   },
-  { "keys": ["alt+i"], "command": "single_selection" },
+  { "keys": ["alt+i"], "command": "jump_to_last_region" },
 
   /* Bookmarks */
   { "keys": ["ctrl+f"], "command": "toggle_bookmark" },
