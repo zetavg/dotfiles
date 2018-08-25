@@ -104,7 +104,7 @@ for (task of completedTasks) {
     const source = 'OmniFocus';
     const postURL = `https://www.rescuetime.com/anapi/highlights_post?key=${apiKey}&amp;highlight_date=${completionDate.toISOString()}&amp;description=${encodeURIComponent(taskDisplayName)}&amp;source=${source}`;
     console.log(`Uploading ${taskDisplayName} with URL ${postURL}`);
-    const res = app.doShellScript(`curl -X POST '${postURL}'`);
+    const res = app.doShellScript(`curl -X POST "${postURL.replace(/"/g, '\\"')}"`);
     console.log(`Upload response: ${res}`);
 
   } catch (e) {
