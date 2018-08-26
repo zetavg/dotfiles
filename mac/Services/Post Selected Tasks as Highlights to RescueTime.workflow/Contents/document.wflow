@@ -114,8 +114,18 @@ for (task of completedTasks) {
 }
 
 if (erroredTaskDisplayNames.length &gt; 0) {
-  omniFocus.displayAlert(`Error occured while uploading the following tasks: ${erroredTaskDisplayNames.join(', ')}.`);
+  const { buttonReturned } = omniFocus.displayAlert(`Error occured while uploading the following tasks: ${erroredTaskDisplayNames.map(t =&gt; `"${t}"`).join(', ')}.`, {
+    as: 'warning',
+    buttons: ['Close', 'Copy Errored Items'],
+    defaultButton: 2,
+  });
+
+  if (buttonReturned === 'Copy Errored Items') {
+    omniFocus.setTheClipboardTo(erroredTaskDisplayNames.join("\n") + "\n");
+  }
 }
+
+app.openLocation('https://www.rescuetime.com/browse/highlights/for/the/last30days/of/today');
 </string>
 				</dict>
 				<key>BundleIdentifier</key>
