@@ -21,17 +21,25 @@
 					<true/>
 					<key>Types</key>
 					<array>
-						<string>com.apple.applescript.object</string>
+						<string>com.apple.cocoa.string</string>
 					</array>
 				</dict>
 				<key>AMActionVersion</key>
-				<string>1.0</string>
+				<string>2.0.3</string>
 				<key>AMApplication</key>
 				<array>
 					<string>Automator</string>
 				</array>
 				<key>AMParameterProperties</key>
 				<dict>
+					<key>COMMAND_STRING</key>
+					<dict/>
+					<key>CheckedForUserDefaultShell</key>
+					<dict/>
+					<key>inputMethod</key>
+					<dict/>
+					<key>shell</key>
+					<dict/>
 					<key>source</key>
 					<dict/>
 				</dict>
@@ -41,97 +49,30 @@
 					<string>List</string>
 					<key>Types</key>
 					<array>
-						<string>com.apple.applescript.object</string>
+						<string>com.apple.cocoa.string</string>
 					</array>
 				</dict>
 				<key>ActionBundlePath</key>
-				<string>/System/Library/Automator/Run JavaScript.action</string>
+				<string>/System/Library/Automator/Run Shell Script.action</string>
 				<key>ActionName</key>
-				<string>執行 JavaScript</string>
+				<string>執行 Shell 工序指令</string>
 				<key>ActionParameters</key>
 				<dict>
+					<key>COMMAND_STRING</key>
+					<string>open ~/Library/JXA/Post\ OmniFocus\ Selected\ Tasks\ as\ Highlights\ to\ RescueTime.app</string>
+					<key>CheckedForUserDefaultShell</key>
+					<true/>
+					<key>inputMethod</key>
+					<integer>0</integer>
+					<key>shell</key>
+					<string>/bin/bash</string>
 					<key>source</key>
-					<string>app = Application.currentApplication();
-app.includeStandardAdditions = true;
-apiKey = app.doShellScript('defaults read com.rescuetime api.key');
-
-r = app.doShellScript(`curl https://www.rescuetime.com/anapi/highlights_feed?key=${apiKey}`);
-json = JSON.parse(r);
-highlightsOfDates = json.reduce((obj, v) =&gt; {
-  if (!obj[v.date]) obj[v.date] = [];
-  obj[v.date].push(v.description);
-  return obj;
-}, {});
-
-function toISODate(date) { return date.toISOString().substring(0, 10); }
-
-function getFullTaskName(task) {
-  const parentTask = task.parentTask();
-  if (parentTask) {
-    return `${getFullTaskName(parentTask)} ‹ ${task.name()}`;
-  }
-
-  return task.name();
-}
-
-omniFocus = Application('OmniFocus');
-omniFocus.includeStandardAdditions = true;
-
-selectedItems = omniFocus.windows[0].content.selectedTrees.value();
-
-completedTasks = selectedItems.filter((item) =&gt; {
-  try {
-    return !!item.completionDate();
-  } catch (e) {
-    return false;
-  }
-});
-
-erroredTaskDisplayNames = [];
-
-for (task of completedTasks) {
-  let taskDisplayName = task.name();
-  try {
-    taskDisplayName = getFullTaskName(task);
-    const completionDate = task.completionDate();
-    const isoCompletionDate = toISODate(completionDate);
-
-    if (highlightsOfDates[isoCompletionDate] &amp;&amp; highlightsOfDates[isoCompletionDate].includes(taskDisplayName)) {
-      console.log(`Skipping ${taskDisplayName}`);
-      continue;
-    }
-
-    const source = 'OmniFocus';
-    const postURL = `https://www.rescuetime.com/anapi/highlights_post?key=${apiKey}&amp;highlight_date=${completionDate.toISOString()}&amp;description=${encodeURIComponent(taskDisplayName)}&amp;source=${source}`;
-    console.log(`Uploading ${taskDisplayName} with URL ${postURL}`);
-    const res = app.doShellScript(`curl -X POST "${postURL.replace(/"/g, '\\"')}"`);
-    console.log(`Upload response: ${res}`);
-
-  } catch (e) {
-    console.log('Error', e);
-    erroredTaskDisplayNames.push(taskDisplayName);
-  }
-}
-
-if (erroredTaskDisplayNames.length &gt; 0) {
-  const { buttonReturned } = omniFocus.displayAlert(`Error occured while uploading the following tasks: ${erroredTaskDisplayNames.map(t =&gt; `"${t}"`).join(', ')}.`, {
-    as: 'warning',
-    buttons: ['Close', 'Copy Errored Items'],
-    defaultButton: 2,
-  });
-
-  if (buttonReturned === 'Copy Errored Items') {
-    omniFocus.setTheClipboardTo(erroredTaskDisplayNames.join("\n") + "\n");
-  }
-}
-
-app.openLocation('https://www.rescuetime.com/browse/highlights/for/the/last30days/of/today');
-</string>
+					<string></string>
 				</dict>
 				<key>BundleIdentifier</key>
-				<string>com.apple.Automator.RunJavaScript</string>
+				<string>com.apple.RunShellScript</string>
 				<key>CFBundleVersion</key>
-				<string>1.0</string>
+				<string>2.0.3</string>
 				<key>CanShowSelectedItemsWhenRun</key>
 				<false/>
 				<key>CanShowWhenRun</key>
@@ -141,18 +82,21 @@ app.openLocation('https://www.rescuetime.com/browse/highlights/for/the/last30day
 					<string>AMCategoryUtilities</string>
 				</array>
 				<key>Class Name</key>
-				<string>RunJavaScriptAction</string>
+				<string>RunShellScriptAction</string>
 				<key>InputUUID</key>
-				<string>B8395E0C-35F1-407C-B3DA-1634A6E0F3DB</string>
+				<string>73E3F3F7-8169-4B71-877D-37D9118FF89E</string>
 				<key>Keywords</key>
 				<array>
+					<string>Shell</string>
+					<string>工序指令</string>
+					<string>指令</string>
 					<string>執行</string>
-					<string>JavaScript</string>
+					<string>Unix</string>
 				</array>
 				<key>OutputUUID</key>
-				<string>23930B3A-0DEF-42C0-B0A5-0FA9DD0BB06F</string>
+				<string>119BB9F7-40CD-4EDB-8F23-CB05DEC70FE8</string>
 				<key>UUID</key>
-				<string>87D62FDE-CCC1-4A46-A78D-50FF7B9596EF</string>
+				<string>A774096F-B1A9-41B4-B336-7F9D2271B394</string>
 				<key>UnlocalizedApplications</key>
 				<array>
 					<string>Automator</string>
@@ -162,14 +106,9 @@ app.openLocation('https://www.rescuetime.com/browse/highlights/for/the/last30day
 					<key>0</key>
 					<dict>
 						<key>default value</key>
-						<string>function run(input, parameters) {
-	
-	// Your script goes here
-
-	return input;
-}</string>
+						<integer>0</integer>
 						<key>name</key>
-						<string>source</string>
+						<string>inputMethod</string>
 						<key>required</key>
 						<string>0</string>
 						<key>type</key>
@@ -177,13 +116,67 @@ app.openLocation('https://www.rescuetime.com/browse/highlights/for/the/last30day
 						<key>uuid</key>
 						<string>0</string>
 					</dict>
+					<key>1</key>
+					<dict>
+						<key>default value</key>
+						<string></string>
+						<key>name</key>
+						<string>source</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>1</string>
+					</dict>
+					<key>2</key>
+					<dict>
+						<key>default value</key>
+						<false/>
+						<key>name</key>
+						<string>CheckedForUserDefaultShell</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>2</string>
+					</dict>
+					<key>3</key>
+					<dict>
+						<key>default value</key>
+						<string></string>
+						<key>name</key>
+						<string>COMMAND_STRING</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>3</string>
+					</dict>
+					<key>4</key>
+					<dict>
+						<key>default value</key>
+						<string>/bin/sh</string>
+						<key>name</key>
+						<string>shell</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>4</string>
+					</dict>
 				</dict>
+				<key>conversionLabel</key>
+				<integer>0</integer>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>420.000000:316.000000</string>
+				<string>420.000000:253.000000</string>
 				<key>nibPath</key>
-				<string>/System/Library/Automator/Run JavaScript.action/Contents/Resources/Base.lproj/main.nib</string>
+				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/zh_TW.lproj/main.nib</string>
 			</dict>
 			<key>isViewVisible</key>
 			<true/>

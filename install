@@ -60,6 +60,23 @@ for i in _*; do
   link "$source" "$target"
 done
 
+if [[ $(uname) == "Darwin" ]]; then
+  phase "Build and link User Scripts for macOS"
+  mac_jxa_dir="$BASEDIR/mac/JXA"
+
+  cd "$mac_jxa_dir"
+  for i in *.js; do
+    name=${i/.js/}
+    osacompile -l JavaScript -o "$name.scptd" "$i"
+    osacompile -l JavaScript -o "$name.app" "$i"
+  done
+  cd "$BASEDIR"
+
+  # mkdir -p "$HOME/Library/Scripts"
+  # link "$mac_jxa_dir" "$HOME/Library/Scripts/JXA"
+  link "$mac_jxa_dir" "$HOME/Library/JXA"
+fi
+
 phase "Link User Packages for Sublime Text 3"
 
 if [[ -d "$BASEDIR/subl3/Packages" ]]; then
