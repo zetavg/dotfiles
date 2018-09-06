@@ -1,28 +1,23 @@
 {
   "BTTPresetName" : "App Switcher",
-  "BTTPresetUUID" : "0FBFCA99-DA49-4A0A-8FE7-013C46AA5249",
+  "BTTPresetUUID" : "375A9933-24C0-45D8-B195-C8D6BCFF607D",
   "BTTPresetContent" : [
     {
       "BTTAppBundleIdentifier" : "BT.G",
       "BTTAppName" : "Global",
+      "BTTAppSpecificSettings" : {
+
+      },
       "BTTTriggers" : [
-        {
-          "BTTTouchBarButtonName" : "Chrome",
-          "BTTTriggerType" : 629,
-          "BTTTriggerClass" : "BTTTriggerTypeTouchBar",
-          "BTTPredefinedActionType" : 49,
-          "BTTPredefinedActionName" : "Open Application \/ File \/ Apple Script …",
-          "BTTLaunchPath" : "file:\/\/\/Applications\/Google%20Chrome.app",
-          "BTTEnabled" : 1,
-          "BTTOrder" : 0
-        },
         {
           "BTTTouchBarButtonName" : "Subl",
           "BTTTriggerType" : 629,
           "BTTTriggerClass" : "BTTTriggerTypeTouchBar",
           "BTTPredefinedActionType" : 49,
-          "BTTPredefinedActionName" : "Open Application \/ File \/ Apple Script …",
+          "BTTPredefinedActionName" : "Launch Application \/ Open File \/ Start Apple Script …",
           "BTTLaunchPath" : "file:\/\/\/Applications\/Sublime%20Text.app",
+          "BTTEnabled2" : 1,
+          "BTTUUID" : "65453A64-7EE1-43FB-A62D-79EF4C55A43B",
           "BTTEnabled" : 1,
           "BTTOrder" : 2
         },
@@ -31,8 +26,10 @@
           "BTTTriggerType" : 629,
           "BTTTriggerClass" : "BTTTriggerTypeTouchBar",
           "BTTPredefinedActionType" : 49,
-          "BTTPredefinedActionName" : "Open Application \/ File \/ Apple Script …",
+          "BTTPredefinedActionName" : "Launch Application \/ Open File \/ Start Apple Script …",
           "BTTLaunchPath" : "file:\/\/\/Applications\/iTerm.app",
+          "BTTEnabled2" : 1,
+          "BTTUUID" : "D9CB82EB-12EC-475E-AC10-88E9A7371FA0",
           "BTTEnabled" : 1,
           "BTTOrder" : 3
         },
@@ -41,16 +38,33 @@
           "BTTTriggerType" : 629,
           "BTTTriggerClass" : "BTTTriggerTypeTouchBar",
           "BTTPredefinedActionType" : 49,
-          "BTTPredefinedActionName" : "Open Application \/ File \/ Apple Script …",
+          "BTTPredefinedActionName" : "Launch Application \/ Open File \/ Start Apple Script …",
           "BTTLaunchPath" : "file:\/\/\/Applications\/Keynote.app",
+          "BTTEnabled2" : 1,
+          "BTTUUID" : "627CBF7D-353F-48EA-8FAC-00692CB99B34",
           "BTTEnabled" : 1,
           "BTTOrder" : 1
+        },
+        {
+          "BTTTouchBarButtonName" : "Chrome",
+          "BTTTriggerType" : 629,
+          "BTTTriggerClass" : "BTTTriggerTypeTouchBar",
+          "BTTPredefinedActionType" : 49,
+          "BTTPredefinedActionName" : "Launch Application \/ Open File \/ Start Apple Script …",
+          "BTTLaunchPath" : "file:\/\/\/Applications\/Google%20Chrome.app",
+          "BTTEnabled2" : 1,
+          "BTTUUID" : "CBD0A12D-8620-4B99-9407-19A9A5E54812",
+          "BTTEnabled" : 1,
+          "BTTOrder" : 0
         }
       ]
     },
     {
       "BTTAppBundleIdentifier" : "com.apple.finder",
       "BTTAppName" : "Finder",
+      "BTTAppSpecificSettings" : {
+
+      },
       "BTTTriggers" : [
 
       ]
