@@ -20,6 +20,7 @@ local floatingAppNames = {
   -- "Contacts",
   -- "DaisyDisk",
   "Dash",
+  "Evernote", -- For Evernote Helper
   "Flycut",
   "Franz",
   -- "ImageAlpha",
