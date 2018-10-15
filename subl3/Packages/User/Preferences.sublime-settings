@@ -52,6 +52,7 @@
 	"highlight_line": false,
 	"ignored_packages":
 	[
+		"Rust",
 		"Vintage"
 	],
 	"index_files": true,
