@@ -4,7 +4,19 @@
   const app = Application.currentApplication()
   app.includeStandardAdditions = true
 
-  const apiKey = app.doShellScript('defaults read com.rescuetime api.key')
+  let apiKey
+
+  try {
+    apiKey = app.doShellScript("security find-generic-password -s 'RescueTime API Key' -w")
+  } catch (e) {}
+
+  if (!apiKey) {
+    app.displayDialog('Cannot get "RescueTime API Key" from your Login Keychain.\n\nPlease add a generic password with its service named "RescueTime API Key" and the API key as password in your login keychain.\n\nOr make sure the command "security find-generic-password -s \'RescueTime API Key\' -w" works.', {
+      withTitle: 'Cannot get RescueTime API Key',
+      buttons: ['Ok'],
+    })
+    return
+  }
 
   Progress.totalUnitCount = 2
   Progress.description = 'Preparing...'

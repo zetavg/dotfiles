@@ -51,7 +51,28 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>source</key>
-					<string>(() =&gt; {  const omniFocus = Application('OmniFocus')  const selectedItems = omniFocus.windows[0].content.selectedTrees.value()  for (const item of selectedItems) {    const tags = item.tags()    const fullTags = tags.map(t =&gt; [t, ...t.tags()].map(t =&gt; [t, ...t.tags()])).flat(2)    omniFocus.add(fullTags.filter(t =&gt; !t.effectivelyHidden()), { to: item.tags })  }})()</string>
+					<string>(() =&gt; {  const omniFocus = Application('OmniFocus')
+  omniFocus.includeStandardAdditions = true
+
+  const selectedItems = omniFocus.windows[0].content.selectedTrees.value()
+
+  if (!selectedItems || selectedItems.length === 0) {
+    omniFocus.displayDialog('No item selected.', {
+      buttons: ['Ok'],
+    })
+    return
+  }
+  
+  const selectedItem = selectedItems[0]
+
+  let currentNote = selectedItem.note()
+  
+  if (!currentNote.match(/\n$/g)) {
+    currentNote += "\n"
+  }
+
+  const { textReturned } = omniFocus.displayDialog('Note:', { defaultAnswer: currentNote })
+  selectedItem.note = textReturned})()</string>
 				</dict>
 				<key>BundleIdentifier</key>
 				<string>com.apple.Automator.RunJavaScript</string>
@@ -150,7 +171,7 @@
 		<key>serviceProcessesInput</key>
 		<integer>0</integer>
 		<key>systemImageName</key>
-		<string>NSTouchBarCircleAdd</string>
+		<string>NSTouchBarCompose</string>
 		<key>useAutomaticInputType</key>
 		<integer>0</integer>
 		<key>workflowTypeIdentifier</key>

@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>AMApplicationBuild</key>
-	<string>444.7</string>
+	<string>444.38</string>
 	<key>AMApplicationVersion</key>
-	<string>2.8</string>
+	<string>2.9</string>
 	<key>AMDocumentVersion</key>
 	<string>2</string>
 	<key>actions</key>
@@ -169,14 +169,12 @@
 						<string>4</string>
 					</dict>
 				</dict>
-				<key>conversionLabel</key>
-				<integer>0</integer>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>420.000000:253.000000</string>
+				<string>420.000000:305.000000</string>
 				<key>nibPath</key>
-				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/zh_TW.lproj/main.nib</string>
+				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
 			<key>isViewVisible</key>
 			<true/>
@@ -186,6 +184,30 @@
 	<dict/>
 	<key>workflowMetaData</key>
 	<dict>
+		<key>applicationBundleID</key>
+		<string>com.omnigroup.OmniFocus2.MacAppStore</string>
+		<key>applicationBundleIDsByPath</key>
+		<dict>
+			<key>/Applications/OmniFocus.app</key>
+			<string>com.omnigroup.OmniFocus2.MacAppStore</string>
+			<key>/Applications/OmniFocus.localized/OmniFocus.app</key>
+			<string>com.omnigroup.OmniFocus3.MacAppStore</string>
+		</dict>
+		<key>applicationPath</key>
+		<string>/Applications/OmniFocus.app</string>
+		<key>applicationPaths</key>
+		<array>
+			<string>/Applications/OmniFocus.app</string>
+			<string>/Applications/OmniFocus.localized/OmniFocus.app</string>
+		</array>
+		<key>inputTypeIdentifier</key>
+		<string>com.apple.Automator.text</string>
+		<key>outputTypeIdentifier</key>
+		<string>com.apple.Automator.nothing</string>
+		<key>presentationMode</key>
+		<integer>11</integer>
+		<key>processesInput</key>
+		<integer>0</integer>
 		<key>serviceApplicationBundleID</key>
 		<string>com.omnigroup.OmniFocus2.MacAppStore</string>
 		<key>serviceApplicationPath</key>
@@ -195,6 +217,10 @@
 		<key>serviceOutputTypeIdentifier</key>
 		<string>com.apple.Automator.nothing</string>
 		<key>serviceProcessesInput</key>
+		<integer>0</integer>
+		<key>systemImageName</key>
+		<string>NSActionTemplate</string>
+		<key>useAutomaticInputType</key>
 		<integer>0</integer>
 		<key>workflowTypeIdentifier</key>
 		<string>com.apple.Automator.servicesMenu</string>

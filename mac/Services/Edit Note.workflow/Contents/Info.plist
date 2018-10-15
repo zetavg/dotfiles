@@ -8,21 +8,18 @@
 			<key>NSBackgroundColorName</key>
 			<string>background</string>
 			<key>NSIconName</key>
-			<string>NSActionTemplate</string>
+			<string>NSTouchBarCompose</string>
 			<key>NSMenuItem</key>
 			<dict>
 				<key>default</key>
-				<string>Post Selected Tasks as Highlights to RescueTime</string>
+				<string>Edit Note</string>
 			</dict>
 			<key>NSMessage</key>
 			<string>runWorkflowAsService</string>
 			<key>NSRequiredContext</key>
 			<dict>
 				<key>NSApplicationIdentifier</key>
-				<array>
-					<string>com.omnigroup.OmniFocus2.MacAppStore</string>
-					<string>com.omnigroup.OmniFocus3.MacAppStore</string>
-				</array>
+				<string>com.omnigroup.OmniFocus3.MacAppStore</string>
 			</dict>
 			<key>NSSendTypes</key>
 			<array>
