@@ -17,6 +17,7 @@
     "es6": true
   },
   "globals": {
-    "Application": true
+    "Application": true,
+    "Progress": true
   }
 }
