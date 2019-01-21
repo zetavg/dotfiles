@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 osascript - "$@" <<EOF
     on run argv
         tell application "iTerm"
