@@ -1,0 +1,157 @@
+#!/usr/local/bin/node
+
+const path = require('path')
+const fs = require('fs')
+
+const USAGE = 'Usage: convert-flightradar24-csv-to-gpx csv-file'
+
+const inputCSVFilePath = process.argv[2]
+
+if (inputCSVFilePath === '-h' || inputCSVFilePath === '--help') {
+  console.log(USAGE)
+  process.exit(0)
+}
+
+if (!inputCSVFilePath) {
+  console.error(USAGE)
+  process.exit(1)
+}
+
+let csvFilePath = inputCSVFilePath
+
+if (!fs.existsSync(csvFilePath)) {
+  csvFilePath = path.resolve(process.cwd(), inputCSVFilePath)
+}
+
+if (!fs.existsSync(csvFilePath)) {
+  console.error(`File not existst: ${inputCSVFilePath}`)
+  process.exit(1)
+}
+
+try {
+  const csvContent = fs.readFileSync(inputCSVFilePath, 'utf8')
+  const csvData = parseCSV(csvContent)
+  const gpx = generateGPX(csvData)
+  const outputFileName = csvFilePath.replace(/\.csv$/, '.gpx')
+  fs.writeFileSync(csvFilePath.replace(/\.csv$/, '.gpx'), gpx)
+  console.log(`GPX file saved: ${outputFileName}`)
+} catch (e) {
+  console.error(`Error: ${e.message}`)
+  process.exit(1)
+}
+
+function generateGPX(csvData) {
+  return `<?xml version="1.0"?>
+<gpx
+ version="1.1"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns="http://www.topografix.com/GPX/1/1"
+ xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+  <trk>
+    <trkseg>${csvData.map(csvRowToPointData).map(pointDataToGPXTrkpt).join('')}
+    </trkseg>
+  </trk>
+</gpx>
+`
+}
+
+function csvRowToPointData({ Position, Altitude, UTC, Direction, Speed }) {
+  const latLon = Position.split(',')
+
+  return {
+    lat: latLon[0],
+    lon: latLon[1],
+    ele: Altitude * 0.3048,
+    time: UTC,
+    course: Direction,
+    speed: Speed * 1.85200,
+  }
+}
+
+function pointDataToGPXTrkpt({ lat, lon, ele, time, course, speed }) {
+  return `
+      <trkpt lat="${lat}" lon="${lon}">
+        <ele>${ele}</ele>
+        <time>${time}</time>
+        <course>${course}</course>
+        <speed>${speed}</speed>
+      </trkpt>`
+}
+
+function parseCSV(strData, strDelimiter = ',') {
+  // Create a regular expression to parse the CSV values.
+  const objPattern = new RegExp(
+    (
+      // Delimiters.
+      "(\\" + strDelimiter + "|\\r?\\n|\\r|^)" +
+
+      // Quoted fields.
+      "(?:\"([^\"]*(?:\"\"[^\"]*)*)\"|" +
+
+      // Standard fields.
+      "([^\"\\" + strDelimiter + "\\r\\n]*))"
+    ),
+    "gi"
+    )
+
+  // Create an array to hold the keys.
+  const keys = []
+
+  // Create an array to hold our data.
+  const arrData = []
+
+  // Create an array to hold our individual pattern
+  // matching groups.
+  let arrMatches = null
+
+  let firstLine = true
+
+  // Keep looping over the regular expression matches
+  // until we can no longer find a match.
+  while (arrMatches = objPattern.exec(strData)) {
+
+    // Get the delimiter that was found.
+    const strMatchedDelimiter = arrMatches[1]
+
+    // Check to see if the given delimiter has a length
+    // (is not the start of string) and if it matches
+    // field delimiter. If id does not, then we know
+    // that this delimiter is a row delimiter.
+    if (strMatchedDelimiter.length && strMatchedDelimiter !== strDelimiter) {
+      if (firstLine) {
+        firstLine = false
+      }
+
+      // Since we have reached a new row of data,
+      // add an empty row to our data array.
+      arrData.push({});
+    }
+
+    let strMatchedValue;
+
+    // Now that we have our delimiter out of the way,
+    // let's check to see which kind of value we
+    // captured (quoted or unquoted).
+    if (arrMatches[2]) {
+      // We found a quoted value. When we capture
+      // this value, unescape any double quotes.
+      strMatchedValue = arrMatches[2].replace(
+        new RegExp("\"\"", "g"),
+        "\"",
+      )
+    } else {
+      // We found a non-quoted value.
+      strMatchedValue = arrMatches[3]
+    }
+
+    if (firstLine) {
+      keys.push(strMatchedValue)
+    } else {
+      const currentObj = arrData[arrData.length - 1]
+      currentObj[keys[Object.keys(currentObj).length]] = strMatchedValue
+    }
+  }
+
+  // Return the parsed data.
+  return arrData.filter(o => Object.values(o).some(v => v))
+}
