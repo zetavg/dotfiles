@@ -1,37 +1,86 @@
-#! /bin/bash
-# A wrapper around subl that automatically open or creates Sublime Project on
-# opening directories
+#!/usr/bin/env bash
+
+# subl
+#
+# A wrapper around the Sublime Text command line tool, subl, with some
+# additional features:
+#
+#  - Automatically open or creates Sublime Project while opening directories,
+#    providing persisted opened files and environment settings.
+#  - Automatically connect to remote Sublime Text, rmate, if there's no subl on
+#    the machine.
+#
 
 set -e
 
+SUBLIME_PROJECTS_PATH="$HOME/Projects/Sublime Projects"
+
 if [[ $(uname) == "Darwin" ]]; then
   subl_executable="/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl"
+elif [[ $(uname) == "Linux" ]]; then
+  subl_executable="/todo-where-is-it"
 else
   echo "Sorry, $(uname) is not supported yet!" >&2
   exit 1;
 fi
 
-if [ -d "$1" ]; then
-  dir_path="$(realpath "$1")"
-  project_name=$(basename "$dir_path" | sed "s/^\.//g")
-  dir_path_hash="$(echo "Dir: $dir_path" | openssl md5)"
-
-  subl_project_path="$HOME/Projects/Sublime Projects/${dir_path_hash}/${project_name}.sublime-project"
-  subl_workspace_path="$HOME/Projects/Sublime Projects/${dir_path_hash}/${project_name}.sublime-workspace"
-
-  mkdir -p "$HOME/Projects/Sublime Projects/${dir_path_hash}"
-
-  if [ -e "$subl_workspace_path" ]; then
-    echo "Opening Project: \"$subl_project_path\""
-    "$subl_executable" -n "$subl_project_path"
+if [[ ! -x "$subl_executable" ]]; then
+  if [[ -x "$(which rmate)" ]]; then
+    echo "No local Sublime Text installed on this machine, switching to rmate:"
+    echo "rmate \"$*\""
+    rmate "$@"
   else
-    echo "Creating Project: \"$subl_project_path\""
-    subl_project="{ \"folders\": [ { \"path\": \"${dir_path}\" } ] }"
-    subl_workspace="{ \"project\": \"${project_name}.sublime-project\" }"
-    echo "$subl_project" > "$subl_project_path"
-    echo "$subl_workspace" > "$subl_workspace_path"
-    "$subl_executable" -n "$subl_project_path"
+    echo "Error: Cannot find a subl executable at $subl_executable, and rmate is not available."
+    exit 1;
   fi
 else
-  "$subl_executable" "$@"
+  if [ -d "$1" ]; then
+    dir_path="$(realpath "$1")"
+    dir_path_hash="$(echo "Dir: $dir_path" | openssl md5)"
+    project_base_path="$SUBLIME_PROJECTS_PATH/${dir_path_hash}"
+    mkdir -p "$project_base_path"
+
+    subl_project_path="$(find "$project_base_path" -name '*.sublime-project' -type f)"
+    if [ -z "$subl_project_path" ]; then
+      project_name=$(basename "$dir_path" | sed "s/^\\.//g")
+      subl_project_path="$project_base_path/${project_name}.sublime-project"
+    fi
+    subl_workspace_path=${subl_project_path/.sublime-project/.sublime-workspace}
+
+    if [ ! -f "$subl_workspace_path" ]; then
+      echo "Creating Workspace: \"$subl_workspace_path\""
+      subl_workspace="{ \"project\": \"$(basename "$subl_project_path")\" }"
+      echo "$subl_workspace" > "$subl_workspace_path"
+    fi
+
+    if [ -f "$subl_project_path" ]; then
+      echo "Opening Project: \"$subl_project_path\""
+      "$subl_executable" -n "$subl_project_path"
+    else
+      echo "Creating Project: \"$subl_project_path\""
+
+      subl_project=$(cat << EOF
+// See https://www.sublimetext.com/docs/3/projects.html
+
+{
+  "folders": [
+    {
+      "path": "${dir_path}",
+      // "name": "",
+      // "folder_exclude_patterns": [],
+      // "file_exclude_patterns": [],
+      // "binary_file_patterns": ["*.build", "*.build*", "*.bundle", "*.bundle*", "*.idx", "*.ipa", "*.pcm"],
+      // "follow_symlinks": true,
+    }
+  ]
+}
+EOF
+      )
+      echo "$subl_project" > "$subl_project_path"
+
+      "$subl_executable" -n "$subl_project_path"
+    fi
+  else
+    "$subl_executable" "$@"
+  fi
 fi
