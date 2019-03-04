@@ -46,6 +46,7 @@
 		"SublimeLinter-shellcheck",
 		"SublimeLinter-stylelint",
 		"SublimeLinter-tslint",
+		"SublimeOnSaveBuild",
 		"SyncedSideBar",
 		"TOML",
 		"TrailingSpaces",
