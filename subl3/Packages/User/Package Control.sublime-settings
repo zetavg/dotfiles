@@ -37,6 +37,7 @@
 		"SideBarEnhancements",
 		"Skins",
 		"sublime-reason",
+		"SublimeChineseConvert",
 		"SublimeGit",
 		"SublimeLinter",
 		"SublimeLinter-contrib-scss-lint",
@@ -56,6 +57,7 @@
 	],
 	"repositories":
 	[
-		"https://github.com/reasonml-editor/sublime-reason.git"
+		"https://github.com/reasonml-editor/sublime-reason.git",
+		"https://github.com/zetavg/SublimeChineseConvert"
 	]
 }
