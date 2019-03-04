@@ -27,8 +27,8 @@ fi
 if [[ ! -x "$subl_executable" ]]; then
   if [[ -x "$(which rmate)" ]]; then
     echo "No local Sublime Text installed on this machine, switching to rmate:"
-    echo "rmate \"$*\""
-    rmate "$@"
+    echo "rmate -f \"$*\""
+    rmate -f "$@"
   else
     echo "Error: Cannot find a subl executable at $subl_executable, and rmate is not available."
     exit 1;
