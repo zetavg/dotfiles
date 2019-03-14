@@ -50,6 +50,8 @@ bundles=(
   jreese/zsh-titles
   marcoy/zsh-gitfast
   paulirish/git-open
+  spwhitt/nix-zsh-completions
+  # chisui/zsh-nix-shell # Using direnv with `use nix` in a .envrc instead
   sobolevn/wakatime-zsh-plugin
 )
 
