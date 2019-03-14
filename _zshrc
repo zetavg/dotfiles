@@ -19,8 +19,8 @@ fpath=( $fpath ~/.zsh/functions )
 # Histroy
 ##
 
-HISTSIZE=10000  # number of histories the shell will keep within one session
-SAVEHIST=50000  # the number of lines of history to save
+HISTSIZE=50000   # number of histories the shell will keep within one session
+SAVEHIST=100000  # the number of lines of history to save
 
 HISTFILE=$HOME/.zhistory
 
