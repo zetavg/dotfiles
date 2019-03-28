@@ -1,0 +1,5 @@
+[
+  { "keys": ["super+d"], "command": "find_under_expand_with_memory" },
+  { "keys": ["super+u"], "command": "soft_undo_with_memory_mutation" },
+  { "keys": ["alt+i"], "command": "jump_to_latest_region" }
+]

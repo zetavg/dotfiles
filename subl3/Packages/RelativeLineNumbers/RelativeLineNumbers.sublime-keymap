@@ -1,0 +1,3 @@
+[
+  { "keys": ["ctrl+super+r"], "command": "relative_line_numbers" }
+]

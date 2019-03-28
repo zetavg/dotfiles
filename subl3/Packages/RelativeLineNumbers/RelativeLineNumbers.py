@@ -41,7 +41,8 @@ class RelativeLineNumbersCommand(sublime_plugin.TextCommand):
                 <style>
                     .value {{
                         color: {color};
-                        margin-right: 10px;
+                        left: 1210px;
+                        font-weight: normal;
                     }}
                     .current {{
                         color: {current_color};
