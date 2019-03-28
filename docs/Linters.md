@@ -18,24 +18,10 @@ You can use the globally installed `eslint` with default rules provided in `.esl
 $ npm install -g eslint babel-eslint eslint-config-airbnb eslint-plugin-react eslint-plugin-react-native eslint-plugin-jsx-a11y eslint-plugin-import
 ```
 
-## [Flow](https://flow.org/)
-
-Flow is a static type checker for javascript.
-
-```bash
-$ npm install -g flow-bin
-```
-
 ## [RuboCop](https://github.com/bbatsov/rubocop)
 
 A Ruby static code analyzer, based on the community Ruby style guide.
 
 ```bash
 $ gem install rubocop
-```
-
-## [scss-lint](https://github.com/brigade/scss-lint)
-
-```bash
-$ gem install scss_lint
 ```

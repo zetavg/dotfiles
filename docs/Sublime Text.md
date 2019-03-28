@@ -14,4 +14,12 @@ The [Language Server Protocol](https://github.com/Microsoft/language-server-prot
 
 ## Linters
 
-[SublimeLinter](http://www.sublimelinter.com/) is used to run linters and display errors at editing time. See the [Linters](./Linters.md) documentation for more information before using them.
+[SublimeLinter](http://www.sublimelinter.com/) is used to run linters and display errors at edit time. Usually, linters are used if there's no Language Server support for type checking, diagnostics and formatting. We will choice Language Servers over Linters if possible for more completeness of tooling - but will be chosen to enabled globally for scripting languages such as Shell Script, JavaScript and Ruby, which might appear everywhere.
+
+The following linters are enabled globally:
+
+- shellcheck
+- eslint
+- rubocop
+
+The linters should be installed in your environment to work with [SublimeLinter](http://www.sublimelinter.com/). See the [Linters](./Linters.md) documentation for more information.

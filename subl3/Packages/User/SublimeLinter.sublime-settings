@@ -1,9 +1,17 @@
 // SublimeLinter Settings - User
 {
     "debug": false,
-    "linters": {
-        "scsslint": {
-            "selector": "source.scss"
+    "delay": 0.25,
+    "gutter_theme": "Default",
+    "kill_old_processes": true,
+    "lint_mode": "background",
+    "statusbar.counters_template": "({}|{})",
+    "statusbar.messages_template": "{linter}: {code}",
+    "styles": [
+        {
+            "priority": 1,
+            "icon": "dot",
+            "mark_style": "outline"
         }
-    }
+    ]
 }
