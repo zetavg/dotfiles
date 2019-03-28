@@ -1,0 +1,165 @@
+/**********************************************************************
+
+    This is the default stylesheet for GitGutter diff popup.
+
+    It defines additional rules to merge with mdpopups' styleshets.
+
+    NOTE: You can use all jinja2 template variables of mdpopups.
+
+        Examples:
+          var.is_dark
+          var.is_light
+          var.sublime_version       (mdpopups 2.0.0+)
+          var.mdpopups_version      (mdpopups 2.0.0+)
+
+    The popup's HTML structure:
+
+        <div class="mdpopups">
+            <div class="git-gutter">
+                <div class="toolbar">
+                    <a href="revert"><symbol>⟲</symbol></a>
+                    ...
+                    <a href="revert"><text>(revert)</text></a>
+                    ...
+                </div>
+                <div class="highlight">
+                    ... the content goes in here
+                </div>
+            </div>
+        </div>
+
+    Copy the values you want to change into your user directory
+    and change them there to overwrite the stylesheet.
+
+ *********************************************************************/
+
+/**
+ * POPUP BACKGROUND
+ *
+ * Compatibility rules to fix default popup background color
+ * for light and dark color schemes of Sublime Text < 3132.
+ **/
+html.dark {
+    --mdpopups-hl-bg: color(var(--background) blend(white 95%));
+    --diffpopup-tb-bg: color(var(--mdpopups-hl-bg) blend(white 95%));
+    --diffpopup-ins-bg: color(green blend(black 60%));
+    --diffpopup-ins-fg: color(green blend(white 40%));
+    --diffpopup-del-bg: color(red blend(black 60%));
+    --diffpopup-del-fg: color(red blend(white 40%));
+    --diffpopup-chg-ins-bg: color(#769908 blend(black 95%));
+    --diffpopup-chg-ins-fg: color(#769908 blend(white 20%));
+    --diffpopup-chg-del-bg: color(orangered blend(black 80%));
+    --diffpopup-chg-del-fg: color(orangered blend(white 40%));
+}
+
+html.light {
+    --mdpopups-hl-bg: color(var(--background) blend(black 95%));
+    --diffpopup-tb-bg: color(var(--mdpopups-hl-bg) blend(black 91%));
+    --diffpopup-ins-bg: color(green blend(white 25%));
+    --diffpopup-ins-fg: color(green blend(black 80%));
+    --diffpopup-del-bg: color(red blend(white 25%));
+    --diffpopup-del-fg: color(red blend(black 80%));
+    --diffpopup-chg-ins-bg: color(#93921b blend(white 20%));
+    --diffpopup-chg-ins-fg: color(#93921b blend(black 85%)); /*#b3ca23*/
+    --diffpopup-chg-del-bg: color(orangered blend(white 20%));
+    --diffpopup-chg-del-fg: color(orangered blend(black 85%));
+}
+
+/**
+ * POPUP BORDER
+ *
+ * Set padding to the desired border-width.
+ **/
+div.git-gutter {
+    margin: 0;
+    padding: 0;
+}
+
+/**
+ * TOOLBAR
+ *
+ * The navigation toolbar
+ **/
+.git-gutter div.toolbar {
+    background-color: var(--diffpopup-tb-bg);
+    color: color(var(--foreground) blend(var(--diffpopup-tb-bg) 30%));
+    margin: 0;
+    padding: 0.4rem 0.8rem 0.4rem 0.8em;
+}
+
+/**
+ * ICON BUTTONS
+ *
+ * <symbol>⟲</symbol>
+ *
+ * Unicode chars are rendered smaller than normal text and sometimes ugly
+ * depending on font-family, so force fonts known to render well.
+ * This rule is used to fix the font-family and font-size.
+ **/
+.git-gutter div.toolbar symbol {
+    font-family: "InputSansNarrow-Medium";
+    font-size: 0.8rem;
+    margin: 0;
+    padding: 0.0rem 0.1rem 0.0rem 0.1em;
+}
+
+/**
+ * LINKS
+ **/
+.git-gutter a {
+    /*color: var(--foreground);*/
+    text-decoration: bold;
+}
+
+/**
+ * TEXT VIEW
+ *
+ * Shows the old content or diff.
+ **/
+.git-gutter div.highlight {
+    /*font-family: monospace;*/
+    border-style: none;
+    line-height: 1.3rem;
+    margin: 0;
+    padding: 0.7rem 0.7rem 0.6rem 0.7rem;
+}
+
+/**
+ * TEXT LINE
+ *
+ * Each line is wrapped into <p> tag.
+ **/
+.git-gutter .highlight p {
+    margin: 0;
+}
+
+/**
+ * DIFF HIGHLIGHTING
+ *
+ * The following entries apply to the "highlight difference"
+ * mode of the popup.
+ **/
+
+/* Highlight text, that has been inserted. */
+.git-gutter .hi-ins {
+    color: var(--diffpopup-ins-fg);
+    background-color: var(--diffpopup-ins-bg);
+}
+
+/* Highlight text, that has been deleted. */
+.git-gutter .hi-del {
+    color: var(--diffpopup-del-fg);
+    background-color: var(--diffpopup-del-bg);
+}
+
+/* Highlight text, that has been inserted and substitutes other text. */
+.git-gutter .hi-chg-ins {
+    color: var(--diffpopup-chg-ins-fg);
+    background-color: var(--diffpopup-chg-ins-bg);
+}
+
+/* Highlight text, that has been deleted and is substituted by other text. */
+.git-gutter .hi-chg-del {
+    color: var(--diffpopup-chg-del-fg);
+    background-color: var(--diffpopup-chg-del-bg);
+}
