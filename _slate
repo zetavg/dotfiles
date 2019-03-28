@@ -13,19 +13,19 @@ config resizePercentOf screenSize
 # -------------------------------------------------------------------
 
 # Focus
-bind h:cmd;shift       focus left
-bind j:cmd;shift       focus down
-bind k:cmd;shift       focus up
-bind l:cmd;shift       focus right
+bind h:cmd;ctrl       focus left
+bind j:cmd;ctrl       focus down
+bind k:cmd;ctrl       focus up
+bind l:cmd;ctrl       focus right
 
 # Move
-bind h:cmd;shift;alt   nudge -16 +0
-bind j:cmd;shift;alt   nudge +0 +16
-bind k:cmd;shift;alt   nudge +0 -16
-bind l:cmd;shift;alt   nudge +16 +0
+bind h:cmd;ctrl;alt   nudge -16 +0
+bind j:cmd;ctrl;alt   nudge +0 +16
+bind k:cmd;ctrl;alt   nudge +0 -16
+bind l:cmd;ctrl;alt   nudge +16 +0
 
 # Resize
-bind n:cmd;shift;alt resize -16 +0
-bind m:cmd;shift;alt resize +0 +16
-bind ,:cmd;shift;alt resize +0 -16
-bind .:cmd;shift;alt resize +16 +0
+bind n:cmd;ctrl;alt resize -16 +0
+bind m:cmd;ctrl;alt resize +0 +16
+bind ,:cmd;ctrl;alt resize +0 -16
+bind .:cmd;ctrl;alt resize +16 +0

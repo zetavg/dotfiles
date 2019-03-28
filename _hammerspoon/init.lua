@@ -4,9 +4,9 @@
 local debug = false
 
 -- Window operation modification key
-local winOpMods = {"shift", "cmd"}
+local winOpMods = {"ctrl", "cmd"}
 -- Window modification modification key
-local winMdMods = {"shift", "option", "cmd"}
+local winMdMods = {"ctrl", "option", "cmd"}
 
 -- Apps that should not be considered as normal windows
 local floatingAppNames = {
@@ -305,12 +305,12 @@ end
 
 --- === Reload Configuration ===
 
-hs.hotkey.bind({"cmd", "alt", "ctrl"}, "H", function()
+hs.hotkey.bind({"cmd", "alt", "ctrl", "shift"}, "H", function()
   hs.reload()
   hs.notify.new({title="Hammerspoon", informativeText="Reloading"}):send()
 end)
 
-hs.hotkey.bind({"cmd", "alt", "ctrl"}, "R", function()
+hs.hotkey.bind({"cmd", "alt", "ctrl", "shift"}, "R", function()
   hs.reload()
   hs.notify.new({title="Hammerspoon", informativeText="Reloading"}):send()
 end)
