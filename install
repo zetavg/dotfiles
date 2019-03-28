@@ -2,41 +2,60 @@
 #
 # Install dotfiles.
 
-set -eu
+set -e
 
 BASEDIR=$(cd "$(dirname "$0")"; pwd)
-TIMESTAMP=$(date +%Y%m%d_%H%M%S)
 
 ##
 # Functions
 ##
 
-# Function to create symbolic link and backups the target if something already exists there
-link() {
-  source="$1"
-  target="$2"
-  echo "$source → $target"
-
-  if [[ -e "$target" ]] && [[ ! -L "$target" ]]; then
-    backup_name="$target.$TIMESTAMP.bak"
-    echo "  ...creating backup for $target: $backup_name"
-    mv -f "$target" "$backup_name"
-  elif [[ -L "$target" ]]; then
-    echo "  ...overriding existing symbolic link: $target"
-    rm "$target"
-  fi
-
-  ln -sf "$source" "$target"
+# Function to echo a message for a phase
+phase() {
+  printf "\\n$(tput bold)$(tput sgr 0 1)%s$(tput sgr0)\\n" "$@"
 }
 
-# Function to echo a heaer message for a phase
-phase() {
-  printf "$(tput bold)$(tput sgr 0 1)%s$(tput sgr0)\\n" "$@"
+# Function to run a command respecting the DRY_RUN environment variable
+run_command() {
+  local command="$1"
+  if [[ -z "$DRY_RUN" ]]; then
+    bash -c "$command"
+  else
+    echo "  dry-run: not actually running \`$command\`"
+  fi
+}
+
+# Function to create symbolic link and backups the target if something already exists there
+link() {
+  local source="$1"
+  local target="$2"
+  echo "[Link] $source → $target"
+
+  if [[ -e "$target" ]] && [[ ! -L "$target" ]]; then
+    local backup_name
+    backup_name="$target.$(date +%Y%m%d_%H%M%S).bak"
+    echo "  creating backup: $backup_name"
+    run_command "mv -f '$target' '$backup_name'"
+  elif [[ -L "$target" ]]; then
+    echo "  overriding existing symbolic link"
+    run_command "rm '$target'"
+  fi
+
+  local target_dir
+  target_dir="$(dirname "$target")"
+  if [[ ! -d "$target_dir" ]]; then
+    echo "  target directory does not exist, creating"
+    run_command "mkdir -p '$target_dir'"
+  fi
+
+  run_command "ln -sf '$source' '$target'"
 }
 
 ##
 # Main Phases
 ##
+
+echo "[Dotfiles Installation]"
 
 # Switch to the dotfiles directory
 cd "$BASEDIR"
@@ -47,10 +66,28 @@ if ! git rev-parse --git-dir > /dev/null 2>&1; then
   exit -1
 fi
 
-phase "Update Git Submodules"
+phase "Preparing Git Submodules"
 
 git submodule init
 git submodule update
+echo "submodules ready"
+
+phase "Copy Existing .config Files"
+if [[ -d "$HOME/.config" ]] && [[ ! -L "$HOME/.config" ]]; then
+  echo "coping files from $HOME/.config..."
+  for i in "$HOME/.config"/*; do
+    from="$i"
+    to="$BASEDIR/_config/$(basename "$from")"
+    if [[ ! -e "$to" ]]; then
+      echo "  copying $from to $to"
+      run_command "cp -rn $from $to"
+    else
+      echo "  $to exists, skipping"
+    fi
+  done
+else
+  echo "$HOME/.config is not a normal directory, skipping"
+fi
 
 phase "Link General Files"
 
@@ -72,8 +109,6 @@ if [[ $(uname) == "Darwin" ]]; then
   done
   cd "$BASEDIR"
 
-  # mkdir -p "$HOME/Library/Scripts"
-  # link "$mac_jxa_dir" "$HOME/Library/Scripts/JXA"
   link "$mac_jxa_dir" "$HOME/Library/JXA"
 fi
 
@@ -82,10 +117,8 @@ phase "Link User Packages for Sublime Text 3"
 if [[ -d "$BASEDIR/subl3/Packages" ]]; then
   subl_source_packages_dir="$BASEDIR/subl3/Packages"
   if [[ $(uname) == "Darwin" ]]; then
-    test ! -e "$HOME/Library/Application Support/Sublime Text 3/Packages" && mkdir -p "$HOME/Library/Application Support/Sublime Text 3/Packages"
     subl_target_packages_dir="$HOME/Library/Application Support/Sublime Text 3/Packages"
   else
-    test ! -e "$HOME/.config/sublime-text-3/Packages" && mkdir -p "$HOME/.config/sublime-text-3/Packages"
     subl_target_packages_dir="$HOME/.config/sublime-text-3/Packages"
   fi
 
@@ -96,31 +129,23 @@ if [[ -d "$BASEDIR/subl3/Packages" ]]; then
   cd "$BASEDIR"
 fi
 
-phase "Link Configuration Files for VSCode"
+# phase "Link Configuration Files for VSCode"
 
-if [[ -d "$BASEDIR/vscode/User" ]]; then
-  source="$BASEDIR/vscode/User"
-  if [[ $(uname) == "Darwin" ]]; then
-    test ! -e "$HOME/Library/Application Support/Code" && mkdir -p "$HOME/Library/Application Support/Code"
-    target="$HOME/Library/Application Support/Code/User"
-  fi
-  link "$source" "$target"
-fi
-
-if [[ -d "$BASEDIR/vscode/custom" ]]; then
-  source="$BASEDIR/vscode/custom"
-  if [[ $(uname) == "Darwin" ]]; then
-    test ! -e "$HOME/Applications/Visual Studio Code.app/Contents/Resources/app/out/vs/workbench/electron-browser" && mkdir -p "$HOME/Applications/Visual Studio Code.app/Contents/Resources/app/out/vs/workbench/electron-browser"
-    target="$HOME/Applications/Visual Studio Code.app/Contents/Resources/app/out/vs/workbench/electron-browser/custom"
-  fi
-  link "$source" "$target"
-fi
+# if [[ -d "$BASEDIR/vscode/User" ]]; then
+#   source="$BASEDIR/vscode/User"
+#   if [[ $(uname) == "Darwin" ]]; then
+#     target="$HOME/Library/Application Support/Code/User"
+#   else
+#     target="/tmp/null"
+#   fi
+#   link "$source" "$target"
+# fi
 
 phase "Process Secret Dotfiles"
 
 if [[ -d "$BASEDIR/secret" ]]; then
 
-  echo "Removing all permissions for group/world on secret dotfiles"
+  echo "removing all permissions for group/world on secret dotfiles"
   chmod -R o-r "$BASEDIR/secret"
   chmod -R o-w "$BASEDIR/secret"
   chmod -R o-x "$BASEDIR/secret"
@@ -137,18 +162,22 @@ if [[ -d "$BASEDIR/secret" ]]; then
     link "$source" "$target"
   done
 
-  phase "Installing Secret Dotfiles"
+  phase "Run Installation Script for Secret Dotfiles"
 
   if [[ -x "$BASEDIR/secret/install" ]]; then
+    echo "running $BASEDIR/secret/install..."
+    export -f phase
+    export -f run_command
     export -f link
     "$BASEDIR/secret/install"
   else
     echo "$BASEDIR/secret/install is not an executable, skipping"
   fi
 
-
 else
   echo "$BASEDIR/secret does not exist, skipping"
+  echo "place your secret dotfiles in $BASEDIR/secret before running install if you want them to got taken care of"
 fi
 
-echo "Done"
+echo ""
+echo "[Done]"
