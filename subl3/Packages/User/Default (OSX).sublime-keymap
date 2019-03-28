@@ -9,9 +9,16 @@
   /* Tabs */
   // ⌘J,K as switching to next/previous tab is done by BetterTouchTool
 
+  /* Group, i.e. Pane */
+  { "keys": ["command+shift+j"], "command": "focus_neighboring_group", "args": {"forward": false} },
+  { "keys": ["command+shift+k"], "command": "focus_neighboring_group", "args": {"forward": true} },
+  { "keys": ["command+shift+h"], "command": "focus_neighboring_group", "args": {"forward": false} },
+  { "keys": ["command+shift+l"], "command": "focus_neighboring_group", "args": {"forward": true} },
+
   /* Layout & Groups */
   { "keys": ["super+;", "super+b"], "command": "toggle_side_bar" },
   { "keys": ["super+;", "super+s"], "command": "toggle_side_bar" },
+  { "keys": ["ctrl+s"], "command": "toggle_side_bar" },
   { "keys": ["super+;", "super+n", "super+g"], "command": "chain", "args": { "commands": [
     ["new_pane", { "move": false }],
     ["focus_group", { "group": 9 }]
