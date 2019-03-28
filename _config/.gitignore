@@ -1,2 +1,6 @@
-/configstore
+# Direnv allows
+/direnv/allow
+
+# Other
 /exercism
+/configstore
