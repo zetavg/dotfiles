@@ -1,6 +1,21 @@
 # Direnv allows
 /direnv/allow
 
+# Fish
+fish/fishd.*
+
+# Htop: config file is rewritten by htop when settings are changed in the interface,
+# parser is also very primitive, and not human-friendly.
+/htop
+
+# Yarn
+/yarn/global
+/yarn/link
+
+# Heroku
+/heroku
+
 # Other
-/exercism
 /configstore
+/exercism
+/fontforge
