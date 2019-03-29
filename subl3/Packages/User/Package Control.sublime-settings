@@ -51,6 +51,10 @@
 		"VimL",
 		"WakaTime"
 	],
+	"ignore_vcs_packages":
+	[
+		"Theme - Spacegray"
+	],
 	"repositories":
 	[
 		"https://github.com/reasonml-editor/sublime-reason.git",

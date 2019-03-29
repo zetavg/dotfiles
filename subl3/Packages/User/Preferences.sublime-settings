@@ -44,9 +44,10 @@
 	],
 	"bold_folder_labels": false,
 	"caret_style": "smooth",
-	"color_scheme": "Packages/User/ColorScheme/base16-ocean.dark.tmTheme",
+	"color_scheme": "Packages/Theme - Spacegray/base16-ocean.dark.tmTheme",
 	"copy_with_empty_selection": false,
 	"default_encoding": "UTF-8",
+	"disable_custom_title_bar": true,
 	"ensure_newline_at_eof_on_save": true,
 	"font_face": "InputMono-ExtraLight",
 	"font_size": 16.5,
@@ -55,6 +56,11 @@
 	[
 		"Rust",
 		"Vintage"
+	],
+	"indent_guide_options":
+	[
+		"draw_normal",
+		"draw_active"
 	],
 	"index_files": true,
 	"line_numbers": true,
@@ -66,7 +72,7 @@
 	"scroll_speed": 1.0,
 	"show_encoding": true,
 	"show_line_endings": false,
-	"skin": "User/Spacegray Dark",
+	"skin": "Theme - Spacegray/Spacegray Dark",
 	"soda_classic_tabs": true,
 	"spacegray_fileicons": true,
 	"theme": "Spacegray.sublime-theme",

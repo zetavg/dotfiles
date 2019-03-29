@@ -6,6 +6,10 @@
   { "keys": ["ctrl+h"], "command": "focus_neighboring_group", "args": {"forward": false} },
   { "keys": ["ctrl+l"], "command": "focus_neighboring_group" },
 
+  /* Diff */
+  { "keys": ["super+.", "super+forward_slash"], "command": "toggle_inline_diff" },
+  { "keys": ["super+.", "super+;"], "command": "toggle_inline_diff", "args": { "prefer_hide": true } },
+
   /* Tabs */
   // ⌘J,K as switching to next/previous tab is done by BetterTouchTool
 
@@ -19,6 +23,7 @@
   { "keys": ["super+;", "super+b"], "command": "toggle_side_bar" },
   { "keys": ["super+;", "super+s"], "command": "toggle_side_bar" },
   { "keys": ["ctrl+s"], "command": "toggle_side_bar" },
+  { "keys": ["ctrl+x"], "command": "hide_panel" },
   { "keys": ["super+;", "super+n", "super+g"], "command": "chain", "args": { "commands": [
     ["new_pane", { "move": false }],
     ["focus_group", { "group": 9 }]

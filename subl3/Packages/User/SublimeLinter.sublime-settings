@@ -1,7 +1,7 @@
 // SublimeLinter Settings - User
 {
     "debug": false,
-    "delay": 0.25,
+    "delay": 0.12,
     "gutter_theme": "Default",
     "kill_old_processes": true,
     "lint_mode": "background",

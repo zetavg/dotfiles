@@ -1,4 +1,10 @@
 [
+  /* Skins */
+  { "caption": "UI: Select Theme and Color Scheme (a.k.a Select Skin)", "command": "set_skin" },
+
+  /* Diff */
+  { "caption": "Toggle Inline Diff (a.k.a. Diff Hunk)", "command": "toggle_inline_diff" },
+
   /* Changing Focus */
   { "caption": "Focus: Side Bar", "command": "focus_side_bar" },
   { "caption": "Focus: Previous Group", "command": "focus_neighboring_group", "args": {"forward": false} },
