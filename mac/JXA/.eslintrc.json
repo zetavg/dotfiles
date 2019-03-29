@@ -6,6 +6,7 @@
   ],
   "rules": {
     "no-use-before-define": ["warn"],
+    "no-restricted-syntax": ["off"],
     "no-return-assign": ["off"],
     "no-plusplus": ["off"],
     "semi": ["error", "never"],
@@ -18,6 +19,7 @@
   },
   "globals": {
     "Application": true,
-    "Progress": true
+    "Progress": true,
+    "delay": true
   }
 }
