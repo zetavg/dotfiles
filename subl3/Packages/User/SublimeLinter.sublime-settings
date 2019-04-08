@@ -13,5 +13,11 @@
             "icon": "dot",
             "mark_style": "outline"
         }
-    ]
+    ],
+    "linters": {
+        "eslint": {
+            // A wrapper for eslint, it will load direnv
+            "executable": ["~/.bin/eslint"]
+        }
+    }
 }
