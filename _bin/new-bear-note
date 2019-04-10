@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Create and open a Bear note in new window
+
+open "bear://x-callback-url/create?text=%23%20%0A%0A%0A%23$(date '+%Y/%m/%d')&new_window=yes&edit=yes"
+osascript -e 'tell application "System Events"' -e 'repeat until exists window "" of process "Bear"' -e 'end repeat' -e 'key code 126' -e 'key code 126' -e 'end tell'
