@@ -266,16 +266,16 @@
                                         ]
                                     }
                                 },
-                                "to": [<% (i.zero? ? 1 : i).times do %>
-                                    {
-                                        "key_code": "left_arrow"
-                                    },<% end %>
+                                "to": [
                                     {
                                         "set_variable": {
                                             "name": "vi_repeat_key_for",
                                             "value": 0
                                         }
-                                    }
+                                    }<% (i.zero? ? 1 : i).times do %>,
+                                    {
+                                        "key_code": "left_arrow"
+                                    }<% end %>
                                 ],
                                 "type": "basic"
                             },
@@ -309,16 +309,16 @@
                                         ]
                                     }
                                 },
-                                "to": [<% (i.zero? ? 1 : i).times do %>
-                                    {
-                                        "key_code": "down_arrow"
-                                    },<% end %>
+                                "to": [
                                     {
                                         "set_variable": {
                                             "name": "vi_repeat_key_for",
                                             "value": 0
                                         }
-                                    }
+                                    }<% (i.zero? ? 1 : i).times do %>,
+                                    {
+                                        "key_code": "down_arrow"
+                                    }<% end %>
                                 ],
                                 "type": "basic"
                             },
@@ -352,16 +352,16 @@
                                         ]
                                     }
                                 },
-                                "to": [<% (i.zero? ? 1 : i).times do %>
-                                    {
-                                        "key_code": "up_arrow"
-                                    },<% end %>
+                                "to": [
                                     {
                                         "set_variable": {
                                             "name": "vi_repeat_key_for",
                                             "value": 0
                                         }
-                                    }
+                                    }<% (i.zero? ? 1 : i).times do %>,
+                                    {
+                                        "key_code": "up_arrow"
+                                    }<% end %>
                                 ],
                                 "type": "basic"
                             },
@@ -395,16 +395,16 @@
                                         ]
                                     }
                                 },
-                                "to": [<% (i.zero? ? 1 : i).times do %>
-                                    {
-                                        "key_code": "right_arrow"
-                                    },<% end %>
+                                "to": [
                                     {
                                         "set_variable": {
                                             "name": "vi_repeat_key_for",
                                             "value": 0
                                         }
-                                    }
+                                    }<% (i.zero? ? 1 : i).times do %>,
+                                    {
+                                        "key_code": "right_arrow"
+                                    }<% end %>
                                 ],
                                 "type": "basic"
                             },<% end %>
