@@ -6,17 +6,16 @@ Some editors configured with this dotfiles have dependences on Language Servers.
 
 Follow the [instructions on its README](https://github.com/haskell/haskell-ide-engine#installation) to install.
 
-## [ocaml-language-server](https://github.com/freebroccolo/ocaml-language-server/)
+## [cquery](https://github.com/cquery-project/cquery)
 
-The engine that powers OCaml and Reason's editors support.
+### Mac
 
 ```bash
-$ npm install -g https://github.com/reasonml/reason-cli/archive/3.0.1-bin-darwin.tar.gz
-$ npm install -g ocaml-language-server
+brew install cquery
 ```
 
 ## [reason-language-server](https://github.com/jaredly/reason-language-server)
 
-A language server for reason, in reason.
+### Mac
 
-Follow the [instructions on its README](https://github.com/jaredly/reason-language-server#usage) to install.
+Download `macos.zip` from the [latest release](https://github.com/jaredly/reason-language-server/releases), unzip it, and put the `reason-language-server.exe` file under `~/Library/bin/`.

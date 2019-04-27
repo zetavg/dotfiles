@@ -1,74 +1,99 @@
 {
-	"clients":
-	{
-		"cquery":
-		{
-			"command":
-			[
-				"cquery",
-				"--log-all-to-stderr"
-			],
-			"initializationOptions":
-			{
-				"blacklist":
-				[
-					"targetver.h",
-					"stdafx.h",
-					"stdafx.cpp"
-				],
-				"cacheDirectory": "/tmp/cquery"
-			},
-			"languageId": "c++",
-			"scopes":
-			[
-				"source.c",
-				"source.c++",
-				"source.objc",
-				"source.objc++"
-			],
-			"syntaxes":
-			[
-				"Packages/C++/C.sublime-syntax",
-				"Packages/C++/C++.sublime-syntax",
-				"Packages/Objective-C/Objective-C.sublime-syntax",
-				"Packages/Objective-C/Objective-C++.sublime-syntax"
-			]
-		},
-		"haskell-ide-engine":
-		{
-			"command":
-			[
-				"hie"
-			],
-			"languageId": "haskell",
-			"scopes":
-			[
-				"source.haskell",
-				"source.hs"
-			],
-			"syntaxes":
-			[
-				"Packages/Haskell/Haskell.sublime-syntax"
-			]
-		},
-		"reason-language-server":
-		{
-			"command":
-			[
-				"reason-language-server.exe"
-			],
-			"languageId": "reason",
-			"scopes":
-			[
-				"source.reason",
-				"source.re",
-				"source.rei"
-			],
-			"syntaxes":
-			[
-				"Packages/sublime-reason/Reason.tmLanguage"
-			]
-		}
-	},
-	"diagnostics_highlight_style": "box"
+  "clients":
+  {
+    "cquery":
+    {
+      "command":
+      [
+        "cquery",
+        "--log-all-to-stderr"
+      ],
+      "initializationOptions":
+      {
+        "blacklist":
+        [
+          "targetver.h",
+          "stdafx.h",
+          "stdafx.cpp"
+        ],
+        "cacheDirectory": "/tmp/cquery"
+      },
+      "languages":
+      [
+        {
+          "languageId": "c",
+          "scopes":
+          [
+            "source.c"
+          ],
+          "syntaxes":
+          [
+            "Packages/C++/C.sublime-syntax"
+          ]
+        },
+        {
+          "languageId": "cpp",
+          "scopes":
+          [
+            "source.c++"
+          ],
+          "syntaxes":
+          [
+            "Packages/C++/C++.sublime-syntax"
+          ]
+        },
+        {
+          "languageId": "objective-c",
+          "scopes":
+          [
+            "source.objc"
+          ],
+          "syntaxes":
+          [
+            "Packages/Objective-C/Objective-C.sublime-syntax"
+          ]
+        },
+        {
+          "languageId": "objective-cpp",
+          "scopes":
+          [
+            "source.objc++"
+          ],
+          "syntaxes":
+          [
+            "Packages/Objective-C/Objective-C++.sublime-syntax"
+          ]
+        }
+      ]
+    },
+    "haskell-ide-engine":
+    {
+      "command":
+      [
+        "hie",
+        "--lsp"
+      ],
+      "languageId": "haskell",
+      "scopes":
+      [
+        "source.haskell"
+      ],
+      "syntaxes":
+      [
+        "Packages/Haskell/Haskell.sublime-syntax"
+      ]
+    },
+    "reason-language-server": {
+      "command": ["reason-language-server.exe"],
+      "scopes": ["source.reason"],
+      "syntaxes": ["Packages/Reason/Reason.tmLanguage"],
+      "languageId": "reason"
+    }
+  },
+  "default_clients": {},
+  "diagnostics_highlight_style": "box",
+  "show_diagnostics_count_in_view_status": true,
+  "log_debug": false,
+  "log_server": false,
+  "log_stderr": false
 }
