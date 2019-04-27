@@ -7,5 +7,5 @@ indent_style = space
 indent_size = 4
 
 [LSP.sublime-settings]
-indent_style = space
+indent_style = tab
 indent_size = 2
