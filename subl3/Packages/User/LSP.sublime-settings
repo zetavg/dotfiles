@@ -86,7 +86,10 @@
     "reason-language-server": {
       "command": ["reason-language-server.exe"],
       "scopes": ["source.reason"],
-      "syntaxes": ["Packages/Reason/Reason.tmLanguage"],
+      "syntaxes": [
+        "Packages/Reason/Reason.tmLanguage",
+        "Packages/sublime-reason/Reason.tmLanguage"
+      ],
       "languageId": "reason"
     }
   },
