@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# A wrapper for reason-language-server.exe that loads direnv
+
+if command -v direnv >/dev/null 2>&1; then
+  eval "$(direnv hook bash)"
+  _direnv_hook >/dev/null 2>&1;
+fi
+
+reason-language-server.exe "$@"

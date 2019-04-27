@@ -84,7 +84,7 @@
       ]
     },
     "reason-language-server": {
-      "command": ["reason-language-server.exe"],
+      "command": ["reason-language-server"],
       "scopes": ["source.reason"],
       "syntaxes": [
         "Packages/Reason/Reason.tmLanguage",
