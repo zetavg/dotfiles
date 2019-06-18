@@ -144,7 +144,7 @@
         systemEvents.keystroke('w', { using: ['option down', 'command down'] })
         sublimeText.activate()
         systemEvents.keystroke('w', { using: ['shift down', 'command down'] })
-        delay(0.1)
+        delay(1)
       }
 
       // Quit the app
@@ -175,11 +175,26 @@
       while (towerProcess.windows().length > 0) {
         tower.activate()
         systemEvents.keystroke('w', { using: ['option down', 'command down'] })
-        delay(0.1)
+        delay(1)
       }
 
       // Quit the app
       tower.quit()
+    },
+  },
+  {
+    name: 'Bear',
+    path: '/Applications/Bear.app',
+    func: ({ Application, systemEvents, delay }) => {
+      // Close all windows
+      const bear = Application('Bear')
+      const bearProcess = systemEvents.applicationProcesses.byName('Bear')
+      delay(0.2)
+      while (bearProcess.windows().length > 0) {
+        bear.activate()
+        systemEvents.keystroke('w', { using: ['option down', 'command down'] })
+        delay(1)
+      }
     },
   },
 
