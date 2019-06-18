@@ -19,5 +19,11 @@
             // A wrapper for eslint, it will load direnv
             "executable": ["~/.bin/eslint"]
         }
+    },
+    "linters": {
+        "rubocop": {
+            // A wrapper for rubocop, it will load direnv
+            "executable": ["~/.bin/rubocop"]
+        }
     }
 }
