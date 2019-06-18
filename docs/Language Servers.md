@@ -19,3 +19,9 @@ brew install cquery
 ### Mac
 
 Download `macos.zip` from the [latest release](https://github.com/jaredly/reason-language-server/releases), unzip it, and put the `reason-language-server.exe` file under `~/Library/bin/`.
+
+## [solargraph](https://github.com/castwide/solargraph) (Ruby)
+
+`gem install solargraph` or use `~/.bin/solargraph` which loads direnv.
+
+May need to run `yard gems` to have gem documentation installed.
