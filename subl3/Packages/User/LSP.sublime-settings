@@ -92,14 +92,22 @@
 			"languageId": "reason",
 			"scopes":
 			[
-				"source.reason"
+				"source.reason",
+				"source.ocaml"
 			],
 			"syntaxes":
 			[
 				"Packages/Reason/Reason.tmLanguage",
-				"Packages/sublime-reason/Reason.tmLanguage"
-			]
-		}
+				"Packages/sublime-reason/Reason.tmLanguage",
+				"Packages/OCaml/OCaml.sublime-syntax"
+			],
+			"initializationOptions":
+			{
+				"per_value_codelens": true,
+				"dependencies_codelens": true,
+				"opens_codelens": true
+			}
+		},
 		"solargraph":
 		{
 		  "command":
