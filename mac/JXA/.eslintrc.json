@@ -5,6 +5,7 @@
     "airbnb"
   ],
   "rules": {
+    "no-eval": ["off"],
     "no-use-before-define": ["warn"],
     "no-restricted-syntax": ["off"],
     "no-return-assign": ["off"],
@@ -19,6 +20,7 @@
   },
   "globals": {
     "Application": true,
+    "Path": true,
     "Progress": true,
     "delay": true
   }
