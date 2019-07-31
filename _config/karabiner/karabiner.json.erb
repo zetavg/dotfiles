@@ -14,27 +14,31 @@
                     "basic.to_if_held_down_threshold_milliseconds": 500
                 },
                 "rules": [
-                    {
-                        "description": "⇪ → ⌃",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "caps_lock",
-                                    "modifiers": {
-                                        "optional": [
-                                            "any"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "left_control"
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },<%
+                    <%
+                    # Prefer "⇪ → (alone ? A/注 : ⌃)".
+                    # {
+                    #     "description": "⇪ → ⌃",
+                    #     "manipulators": [
+                    #         {
+                    #             "from": {
+                    #                 "key_code": "caps_lock",
+                    #                 "modifiers": {
+                    #                     "optional": [
+                    #                         "any"
+                    #                     ]
+                    #                 }
+                    #             },
+                    #             "to": [
+                    #                 {
+                    #                     "key_code": "left_control"
+                    #                 }
+                    #             ],
+                    #             "type": "basic"
+                    #         }
+                    #     ]
+                    # },
+                    %>
+                    <%
                     # This is done by BetterTouhTool to give KeyCastr a better casting.
                     # {
                     #     "description": "⌃[ → ⎋",
@@ -58,6 +62,77 @@
                     #     ]
                     # },
                     %>
+                    {
+                        "description": "⇪ → (alone ? A/注 : ⌃)",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "type": "input_source_if",
+                                        "input_sources": [
+                                            {
+                                                "language": "en"
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "type": "basic",
+                                "from": {
+                                    "key_code": "caps_lock",
+                                    "modifiers": {
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_control"
+                                    }
+                                ],
+                                "to_if_alone": [
+                                    {
+                                        "select_input_source": {
+                                            "input_mode_id": "com.apple.inputmethod.TCIM.Zhuyin"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "type": "input_source_unless",
+                                        "input_sources": [
+                                            {
+                                                "language": "en"
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "type": "basic",
+                                "from": {
+                                    "key_code": "caps_lock",
+                                    "modifiers": {
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_control"
+                                    }
+                                ],
+                                "to_if_alone": [
+                                    {
+                                        "select_input_source": {
+                                            "input_source_id": "com.apple.keylayout.ABC"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
                     {
                         "description": "⇪⌫ → ⌦",
                         "manipulators": [
