@@ -156,6 +156,35 @@ function mkcd() {
 }
 
 
+# NIXOS
+
+# See https://nixos.org/nixos/manual/#sec-rollback
+alias nixos-list-generations='ls -lt /nix/var/nix/profiles/system-*-link'
+function nixos-switch-generation() {
+  local generation="$1"
+  generation="${generation//[!0-9]/}"
+  if [ -z "$generation" ]; then
+    >&2 echo "You need to specify a generation number as the argument."
+    return 1
+  fi
+  local generation_dir="/nix/var/nix/profiles/system-$generation-link"
+  if [ ! -d "$generation_dir" ]; then
+    >&2 echo "Generation $generation does not exists. Use nixos-list-generations to list all available generations."
+    return 1
+  fi
+  local generation_mod_time
+  generation_mod_time="$(stat -c %y "$generation_dir" | sed 's/\.[0-9]*//g')"
+  printf 'You are about to switch to generation %s (%s)' "$generation" "$generation_mod_time"
+  sleep 1; printf '.'; sleep 1; printf '.'; sleep 1; printf '.'
+  sleep 1; echo ''
+  local command="sudo $generation_dir/bin/switch-to-configuration switch"
+  printf 'Running "%s" in 3...' "$command"
+  sleep 1; printf ' 2...'; sleep 1; printf ' 1...'
+  sleep 1; echo ''
+  $command
+}
+
+
 # ASDF
 
 # Only if the go executable is provided by asdf
