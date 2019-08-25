@@ -98,6 +98,7 @@ FAST_HIGHLIGHT_STYLES[unknown-token]='fg=red'
 
 autoload -U promptinit; promptinit
 prompt pure
+RPROMPT=''
 
 
 ##
