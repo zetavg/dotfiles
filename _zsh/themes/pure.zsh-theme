@@ -108,11 +108,8 @@ prompt_pure_preprompt_render() {
 	# Initialize the preprompt array.
 	local -a preprompt_parts
 
-  # Username and machine, if applicable.
-  [[ -n $prompt_pure_username ]] && preprompt_parts+=('$prompt_pure_username')
-
-	# Set the path.
-	preprompt_parts+=('%F{blue}%~%f')
+  # Set the path, username and machine, if applicable.
+  [[ -n $prompt_pure_username ]] && preprompt_parts+=('$prompt_pure_username%F{240}:%f%F{blue}%~%f') || preprompt_parts+=('%F{blue}%~%f')
 
 	# Add git branch and dirty status info.
 	typeset -gA prompt_pure_vcs_info
