@@ -82,6 +82,8 @@ HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=true  # only return unique search results
 
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
 
 ##
 # zdharma/fast-syntax-highlighting
