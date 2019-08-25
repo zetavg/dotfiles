@@ -83,6 +83,13 @@
 				"Packages/Haskell/Haskell.sublime-syntax"
 			]
 		},
+		"rls":
+		{
+		  "command": ["rustup", "run", "stable", "rls"],
+		  "scopes": ["source.rust"],
+		  "syntaxes": ["Packages/Rust/Rust.sublime-syntax", "Packages/Rust Enhanced/RustEnhanced.sublime-syntax"],
+		  "languageId": "rust"
+		},
 		"reason-language-server":
 		{
 			"command":

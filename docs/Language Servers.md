@@ -14,6 +14,10 @@ Follow the [instructions on its README](https://github.com/haskell/haskell-ide-e
 brew install cquery
 ```
 
+## [Rust Language Server (RLS)](https://github.com/rust-lang/rls)
+
+According to [the Setup section of it's README](https://github.com/rust-lang/rls#setup), you can use [rustup](http://rustup.rs/) to install the required components: `rustup component add rls rust-analysis rust-src --toolchain stable`.
+
 ## [reason-language-server](https://github.com/jaredly/reason-language-server)
 
 ### Mac
