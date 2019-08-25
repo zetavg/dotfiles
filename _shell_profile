@@ -155,6 +155,237 @@ function mkcd() {
   cd "$1"
 }
 
+function bsd_color() {
+  local color_name=$1
+  case "$color_name" in
+    black)
+      echo 'a'
+      ;;
+    red)
+      echo 'b'
+      ;;
+    green)
+      echo 'c'
+      ;;
+    yellow)
+      echo 'd'
+      ;;
+    blue)
+      echo 'e'
+      ;;
+    magenta)
+      echo 'f'
+      ;;
+    cyan)
+      echo 'g'
+      ;;
+    white)
+      echo 'h'
+      ;;
+    bold_black)
+      echo 'A'
+      ;;
+    bold_red)
+      echo 'B'
+      ;;
+    bold_green)
+      echo 'C'
+      ;;
+    bold_yellow)
+      echo 'D'
+      ;;
+    bold_blue)
+      echo 'E'
+      ;;
+    bold_magenta)
+      echo 'F'
+      ;;
+    bold_cyan)
+      echo 'G'
+      ;;
+    bold_white)
+      echo 'H'
+      ;;
+    *)
+      echo 'x'
+  esac
+}
+
+function ansi_color() {
+  local color_name=$1
+  case "$color_name" in
+    bold)
+      echo '01'
+      ;;
+    underline)
+      echo '04'
+      ;;
+    black)
+      echo '30'
+      ;;
+    red)
+      echo '31'
+      ;;
+    green)
+      echo '32'
+      ;;
+    yellow)
+      echo '33'
+      ;;
+    blue)
+      echo '34'
+      ;;
+    magenta)
+      echo '35'
+      ;;
+    cyan)
+      echo '36'
+      ;;
+    white)
+      echo '37'
+      ;;
+    light_black)
+      echo '90'
+      ;;
+    light_red)
+      echo '91'
+      ;;
+    light_green)
+      echo '92'
+      ;;
+    light_yellow)
+      echo '93'
+      ;;
+    light_blue)
+      echo '94'
+      ;;
+    light_magenta)
+      echo '95'
+      ;;
+    light_cyan)
+      echo '96'
+      ;;
+    light_white)
+      echo '97'
+      ;;
+    black_bg)
+      echo '40'
+      ;;
+    red_bg)
+      echo '41'
+      ;;
+    green_bg)
+      echo '42'
+      ;;
+    yellow_bg)
+      echo '43'
+      ;;
+    blue_bg)
+      echo '44'
+      ;;
+    magenta_bg)
+      echo '45'
+      ;;
+    cyan_bg)
+      echo '46'
+      ;;
+    white_bg)
+      echo '47'
+      ;;
+    light_black_bg)
+      echo '100'
+      ;;
+    light_red_bg)
+      echo '101'
+      ;;
+    light_green_bg)
+      echo '102'
+      ;;
+    light_yellow_bg)
+      echo '103'
+      ;;
+    light_blue_bg)
+      echo '104'
+      ;;
+    light_magenta_bg)
+      echo '105'
+      ;;
+    light_cyan_bg)
+      echo '106'
+      ;;
+    light_white_bg)
+      echo '107'
+      ;;
+    *)
+      echo '00'
+  esac
+}
+
+
+# LS
+function set_ls_color() {
+  local dir=cyan
+  local dir_bold=true
+  local dir_bg=
+  local sym_link=magenta
+  local sym_link_bold=true
+  local sym_link_bg=
+  local socket=green
+  local socket_bold=true
+  local socket_bg=
+  local pipe=yellow
+  local pipe_bold=true
+  local pipe_bg=
+  local exe=red
+  local exe_bold=true
+  local exe_bg=
+  local block_sp=blue
+  local block_sp_bold=false
+  local block_sp_bg=cyan
+  local char_sp=blue
+  local char_sp_bold=false
+  local char_sp_bg=yellow
+  local exe_suid=black
+  local exe_suid_bold=false
+  local exe_suid_bg=red
+  local exe_guid=black
+  local exe_guid_bold=false
+  local exe_guid_bg=cyan
+  local dir_sticky=black
+  local dir_sticky_bold=false
+  local dir_sticky_bg=green
+  local dir_wo_sticky=black
+  local dir_wo_sticky_bold=false
+  local dir_wo_sticky_bg=yellow
+
+  function _lscolor() {
+    local color=$1
+    local bold=$2
+    local bg_color=$3
+    local color_prefix
+    [[ "$bold" = 'true' ]] && color_prefix='bold_' || color_prefix=''
+    echo "$(bsd_color "${color_prefix}${color}")$(bsd_color "$bg_color")"
+  }
+
+  export LSCOLORS="$(_lscolor $dir $dir_bold $dir_bg)$(_lscolor $sym_link $sym_link_bold $sym_link_bg)$(_lscolor $socket $socket_bold $socket_bg)$(_lscolor $pipe $pipe_bold $pipe_bg)$(_lscolor $exe $exe_bold $exe_bg)$(_lscolor $block_sp $block_sp_bold $block_sp_bg)$(_lscolor $char_sp $char_sp_bold $char_sp_bg)$(_lscolor $exe_suid $exe_suid_bold $exe_suid_bg)$(_lscolor $exe_guid $exe_guid_bold $exe_guid_bg)$(_lscolor $dir_sticky $dir_sticky_bold $dir_sticky_bg)$(_lscolor $dir_wo_sticky $dir_wo_sticky_bold $dir_wo_sticky_bg)"
+
+  function _ls_color() {
+    local color=$1
+    local bold=$2
+    local bg_color=$3
+    local color_bold
+    [[ "$bold" = 'true' ]] && color_bold=";$(ansi_color 'bold')" || color_bold=''
+    local color_bg
+    [[ -z "$bg_color" ]] && color_bg='' || color_bg=";$(ansi_color "$bg_color")"
+
+    echo "$(ansi_color "$color")${color_bold}${color_bg}"
+  }
+
+  declare -x LS_COLORS="no=00:fi=00:di=$(_ls_color $dir $dir_bold $dir_bg):ln=$(_ls_color $sym_link $sym_link_bold $sym_link_bg):pi=$(_ls_color $pipe $pipe_bold $pipe_bg):so=$(_ls_color $socket $socket_bold $socket_bg):do=01;35:bd=$(_ls_color $block_sp $block_sp_bold $block_sp_bg):cd=$(_ls_color $char_sp $char_sp_bold $char_sp_bg):or=$(_ls_color $sym_link $sym_link_bold $sym_link_bg):ex=$(_ls_color $exe $exe_bold $exe_bg)"
+}
+
+set_ls_color
+
 
 # NIXOS
 
