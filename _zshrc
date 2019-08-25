@@ -99,7 +99,6 @@ FAST_HIGHLIGHT_STYLES[unknown-token]='fg=red'
 autoload -U promptinit; promptinit
 [[ "$SSH_CONNECTION" != '' ]] && PURE_PROMPT_SYMBOL='⋯ ❯' || PURE_PROMPT_SYMBOL='❯'
 prompt pure
-RPROMPT=''
 
 
 ##

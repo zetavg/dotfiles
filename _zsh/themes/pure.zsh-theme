@@ -453,6 +453,9 @@ prompt_pure_setup() {
 	# if a virtualenv is activated, display it in grey
 	PROMPT='%(12V.%F{242}%12v%f .)'
 
+	# show the derivation name if in a Nix Shell
+	RPROMPT='$([[ -z "$IN_NIX_SHELL" ]] && : || print -n "%F{239}λ $name%f")'
+
 	# prompt turns red if the previous command didn't exit with 0
 	PROMPT+='%(?.%F{magenta}.%F{red})${PURE_PROMPT_SYMBOL:-❯}%f '
 }
