@@ -36,9 +36,9 @@ alias bye='exit'
 alias l='ls -CF'
 alias ll='ls -lFh'
 if [[ `uname` == "Darwin" ]]; then
-  alias lll='ls -alFh -G | less'
+  alias lll='CLICOLOR_FORCE=true ls -alFh -G | less -r'
 else
-   alias lll='ls -alFh --color=always | less'
+   alias lll='ls -alFh --color=always | less -r'
 fi
 alias la='ls -alFh'
 alias lz='ls -lSrh'
