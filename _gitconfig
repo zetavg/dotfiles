@@ -1,45 +1,27 @@
-[user]
-	name = zetavg
-	email = mail@zeta.vg
-	signingkey = 3177B0C43EB793B0
 [color]
-	diff = auto
-	status = auto
-	branch = auto
-	log = auto
-	ui = true
+  diff = auto
+  status = auto
+  branch = auto
+  log = auto
+  ui = true
 [alias]
-	c = checkout
-	co = checkout
-	a = add
-	aa = add --update
-	stage = add
-	unstage = reset HEAD
-	cm = commit --verbose
-	amend = commit --verbose --amend
-	s = status
-	b = branch
-	d = diff
-	r = remote
-	f = fetch
-	pm = pull
-	pr = pull --rebase
-	rs = reset --soft
-	rh = reset --hard
-	l = log --pretty=format:\"[%h] %s  -- %an, %ar\" --graph
-[push]
-	default = simple
-[difftool "Kaleidoscope"]
-	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
-[mergetool "Kaleidoscope"]
-	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-	trustexitcode = true
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
-[commit]
-	gpgsign = true
-[gpg]
-	program = /usr/local/bin/gpg
+  c = checkout
+  co = checkout
+  a = add
+  aa = add --update
+  stage = add
+  unstage = reset HEAD
+  cm = commit --verbose
+  amend = commit --verbose --amend
+  s = status
+  b = branch
+  d = diff
+  r = remote
+  f = fetch
+  pm = pull
+  pr = pull --rebase
+  rs = reset --soft
+  rh = reset --hard
+  l = log --pretty=format:\"[%h] %s  -- %an, %ar\" --graph
+[include]
+  path = ~/.dotfiles/secret/_gitconfig
