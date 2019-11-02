@@ -24,4 +24,4 @@
   rh = reset --hard
   l = log --pretty=format:\"[%h] %s  -- %an, %ar\" --graph
 [include]
-  path = ~/.dotfiles/secret/_gitconfig
+  path = ~/.dotfiles/secret/_gitconfig_secret
