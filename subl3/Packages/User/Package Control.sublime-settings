@@ -1,5 +1,9 @@
 {
 	"bootstrapped": true,
+	"ignore_vcs_packages":
+	[
+		"Theme - Spacegray"
+	],
 	"in_process_packages":
 	[
 	],
