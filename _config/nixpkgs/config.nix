@@ -1,6 +1,11 @@
 {
   allowUnfree = true;
+  allowUnsupportedSystem = true;
+  launchd.daemons.nix-daemon.environment.OBJC_DISABLE_INITIALIZE_FORK_SAFETY = "YES";
   packageOverrides = pkgs: {
+    zpkgs = import (builtins.fetchTarball "https://git.io/zpkgs-archive-master") {
+      inherit pkgs;
+    };
     gdrive = pkgs.gdrive.overrideAttrs (oldAttrs: {
       # Allow gdrive to use custom client credentials passed via environment variables
       # (GDRIVE_CLIENT_ID, GDRIVE_CLIENT_SECRET) to avoid rate limit errors
