@@ -207,10 +207,10 @@
 
   /* Pre-launch Apps */
 
-  {
-    name: 'Vivaldi',
-    path: '/Applications/Vivaldi.app',
-  },
+  // {
+  //   name: 'Vivaldi',
+  //   path: '/Applications/Vivaldi.app',
+  // },
   {
     name: 'Franz',
     path: '/Applications/Franz.app',
