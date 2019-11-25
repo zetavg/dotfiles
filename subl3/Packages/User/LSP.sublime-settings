@@ -83,6 +83,14 @@
 				"Packages/Haskell/Haskell.sublime-syntax"
 			]
 		},
+    "flow":
+    {
+    	// Use the flow installed in the current project
+      "command": ["yarn", "run", "flow", "lsp"],
+      "scopes": ["source.js"],
+      "syntaxes": ["Packages/Babel/JavaScript (Babel).sublime-syntax", "Packages/JavaScript/JavaScript.sublime-syntax"],
+      "languageId": "javascript"
+    },
 		"rls":
 		{
 		  "command": ["rustup", "run", "stable", "rls"],

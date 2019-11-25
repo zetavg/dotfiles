@@ -48,6 +48,7 @@
 	"copy_with_empty_selection": false,
 	"default_encoding": "UTF-8",
 	"disable_custom_title_bar": true,
+	"enable_language_service_for_javascript": false,
 	"ensure_newline_at_eof_on_save": true,
 	"font_face": "InputMono-ExtraLight",
 	"font_size": 16.5,
