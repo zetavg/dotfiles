@@ -83,20 +83,24 @@
 				"Packages/Haskell/Haskell.sublime-syntax"
 			]
 		},
-    "flow":
-    {
-    	// Use the flow installed in the current project
-      "command": ["yarn", "run", "flow", "lsp"],
-      "scopes": ["source.js"],
-      "syntaxes": ["Packages/Babel/JavaScript (Babel).sublime-syntax", "Packages/JavaScript/JavaScript.sublime-syntax"],
-      "languageId": "javascript"
-    },
+		"flow":
+		{
+			// Use the flow installed in the current project
+			"command": ["yarn", "run", "flow", "lsp"],
+			"scopes": ["source.js"],
+			"syntaxes": [
+				"Packages/Babel/JavaScript (Babel).sublime-syntax",
+				"Packages/JavaScript/JavaScript.sublime-syntax",
+				"Packages/Naomi/syntaxes/naomi.fjsx15.sublime-syntax"
+			],
+			"languageId": "javascript"
+		},
 		"rls":
 		{
-		  "command": ["rustup", "run", "stable", "rls"],
-		  "scopes": ["source.rust"],
-		  "syntaxes": ["Packages/Rust/Rust.sublime-syntax", "Packages/Rust Enhanced/RustEnhanced.sublime-syntax"],
-		  "languageId": "rust"
+			"command": ["rustup", "run", "stable", "rls"],
+			"scopes": ["source.rust"],
+			"syntaxes": ["Packages/Rust/Rust.sublime-syntax", "Packages/Rust Enhanced/RustEnhanced.sublime-syntax"],
+			"languageId": "rust"
 		},
 		"reason-language-server":
 		{
@@ -125,24 +129,24 @@
 		},
 		"solargraph":
 		{
-		  "command":
-		  [
-		    "~/.bin/solargraph",
-		    "socket"
-		  ],
-		  "languageId": "ruby",
-		  "scopes":
-		  [
-		    "source.ruby",
-		    "source.ruby.rails"
-		  ],
-		  "syntaxes":
-		  [
-		    "Packages/Ruby/Ruby.sublime-syntax",
-		    "Packages/Rails/Ruby on Rails.sublime-syntax",
-		    "Packages/Rails/HTML (Rails).sublime-syntax"
-		  ],
-		  "tcp_port": 7658
+			"command":
+			[
+				"~/.bin/solargraph",
+				"socket"
+			],
+			"languageId": "ruby",
+			"scopes":
+			[
+				"source.ruby",
+				"source.ruby.rails"
+			],
+			"syntaxes":
+			[
+				"Packages/Ruby/Ruby.sublime-syntax",
+				"Packages/Rails/Ruby on Rails.sublime-syntax",
+				"Packages/Rails/HTML (Rails).sublime-syntax"
+			],
+			"tcp_port": 7658
 		},
 	},
 	"default_clients":
