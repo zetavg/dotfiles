@@ -1,0 +1,18 @@
+{
+    "editor.autoIndent": true,
+    "editor.emptySelectionClipboard": false,
+    "files.encoding": "utf8",
+    "files.insertFinalNewline": true,
+    "editor.fontFamily": "InputMono-ExtraLight",
+    "editor.fontSize": 16.5,
+    "editor.lineNumbers": "on",
+    "window.openFilesInNewWindow": "off",
+    "editor.scrollBeyondLastLine": true,
+    "editor.mouseWheelScrollSensitivity": 1,
+    "files.trimTrailingWhitespace": true,
+    "editor.wordSeparators": "./\\()\"'-:,.;<>~!@#%^&*|+=[]{}`~，。？「」『』",
+    "editor.wordWrap": "on",
+    "editor.formatOnPaste": true,
+    "editor.multiCursorModifier": "ctrlCmd",
+    "editor.snippetSuggestions": "top"
+}
