@@ -129,17 +129,18 @@ if [[ -d "$BASEDIR/subl3/Packages" ]]; then
   cd "$BASEDIR"
 fi
 
-# phase "Link Configuration Files for VSCode"
+phase "Link User Directory for VSCode"
 
-# if [[ -d "$BASEDIR/vscode/User" ]]; then
-#   source="$BASEDIR/vscode/User"
-#   if [[ $(uname) == "Darwin" ]]; then
-#     target="$HOME/Library/Application Support/Code/User"
-#   else
-#     target="/tmp/null"
-#   fi
-#   link "$source" "$target"
-# fi
+if [[ -d "$BASEDIR/vscode/User" ]]; then
+  source="$BASEDIR/vscode/User"
+  if [[ $(uname) == "Darwin" ]]; then
+    target="$HOME/Library/Application Support/Code/User"
+  else
+    # TODO: Support other OS?
+    target="/tmp/null"
+  fi
+  link "$source" "$target"
+fi
 
 phase "Process Secret Dotfiles"
 
