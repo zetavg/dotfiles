@@ -1,0 +1,17 @@
+// Place your key bindings in this file to override the defaultsauto[]
+[
+    {
+        "key": "alt+up",
+        "command": "editor.action.insertCursorAbove",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+down",
+        "command": "editor.action.insertCursorBelow",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "shift+cmd+l",
+        "command": "workbench.files.action.showActiveFileInExplorer"
+    }
+]
