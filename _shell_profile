@@ -1,5 +1,5 @@
 #####################################
-# zetavg's shell profile 2017-11-11 #
+# zetavg's shell profile 2020-01-16 #
 #####################################
 
 ## Add `source "$HOME/.shell_profile"` to the main .profile ##
@@ -25,6 +25,13 @@ fi
 # ENV
 
 EDITOR=subl
+
+
+# CONFIG
+
+# Let cd follow symbolic links
+# (cd into `foo@ -> bar` will get into `bar`, not `foo`)
+set -o physical
 
 
 # ALIAS
