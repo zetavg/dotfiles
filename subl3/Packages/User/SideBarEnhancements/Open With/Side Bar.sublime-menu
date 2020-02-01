@@ -1,0 +1,57 @@
+[
+  {
+    "id": "side-bar-files-open-with",
+    "children": [
+      {
+        "caption": "VSCode",
+        "id": "side-bar-files-open-with-vscode",
+        "command": "side_bar_files_open_with",
+        "args": {
+          "paths": [],
+          "application": "Visual Studio Code.app",
+          "extensions": "",
+          "args": []
+        }
+      },
+      // {
+      //   "caption": "Photoshop",
+      //   "id": "side-bar-files-open-with-photoshop",
+      //   "command": "side_bar_files_open_with",
+      //   "args": {
+      //     "paths": [],
+      //     "application": "Adobe Photoshop CS5.app",
+      //     "extensions": "psd|png|jpg|jpeg",
+      //     "args": []
+      //   }
+      // },
+      // {
+      //   "caption": "-"
+      // },
+      // {
+      //   "caption": "SeaMonkey",
+      //   "id": "side-bar-files-open-with-seamonkey",
+      //   "command": "side_bar_files_open_with",
+      //   "args": {
+      //     "paths": [],
+      //     "application": "C:\\Archivos de programa\\SeaMonkey\\seamonkey.exe",
+      //     "extensions": "",
+      //     "args": []
+      //   }
+      // },
+      // {
+      //   "caption": "Chrome",
+      //   "id": "side-bar-files-open-with-chrome",
+      //   "command": "side_bar_files_open_with",
+      //   "args": {
+      //     "paths": [],
+      //     "application": "C:\\Documents and Settings\\tito\\local\\Datos de programa\\Google\\Chrome\\Application\\chrome.exe",
+      //     "extensions": ".*",
+      //     "args": []
+      //   }
+      // },
+      {
+        "caption": "-"
+      }
+    ]
+  }
+]
