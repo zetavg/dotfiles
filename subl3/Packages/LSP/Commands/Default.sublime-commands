@@ -1,0 +1,93 @@
+[
+    {
+        "caption": "Preferences: LSP Settings",
+        "command": "edit_settings",
+        "args": {
+          "base_file": "${packages}/LSP/LSP.sublime-settings",
+          "default": "// Settings in here override those in \"LSP/LSP.sublime-settings\",\n\n{\n\t$0\n}\n"}
+    },
+    {
+        "caption": "Preferences: LSP Keybindings",
+        "command": "edit_settings",
+        "args": {
+            "base_file": "${packages}/LSP/Keymaps/Default (${platform}).sublime-keymap",
+            "user_file": "${packages}/User/Default ($platform).sublime-keymap",
+            "default": "// Settings in here override those in \"LSP/Keymaps/Default (${platform}).sublime-keymap\",\n\n{\n\t$0\n}\n"}
+    },
+    {
+        "caption": "LSP: Setup Language Server",
+        "command": "lsp_setup_language_server",
+        "args": {}
+    },
+    // {
+    //     "caption": "LSP: Enable Language Server Globally",
+    //     "command": "lsp_enable_language_server_globally",
+    //     "args": {}
+    // },
+    // {
+    //     "caption": "LSP: Disable Language Server Globally",
+    //     "command": "lsp_disable_language_server_globally",
+    //     "args": {}
+    // },
+    {
+        "caption": "LSP: Enable Language Server in Project",
+        "command": "lsp_enable_language_server_in_project",
+        "args": {}
+    },
+    {
+        "caption": "LSP: Disable Language Server in Project",
+        "command": "lsp_disable_language_server_in_project",
+        "args": {}
+    },
+    {
+      "caption": "LSP: Format Document",
+      "command": "lsp_format_document",
+      "args": {}
+    },
+    {
+        "caption": "LSP: Format Selection",
+        "command": "lsp_format_document_range",
+        "args": {}
+    },
+    {
+        "caption": "LSP: Restart Servers",
+        "command": "lsp_restart_client",
+        "args": {}
+    },
+    {
+        "caption": "LSP: Document Symbols",
+        "command": "lsp_document_symbols",
+        "args": {}
+    },
+    {
+        "caption": "LSP: Toggle Panel: Language Servers",
+        "command": "lsp_toggle_server_panel",
+    },
+    {
+        "caption": "LSP: Toggle Panel: Diagnostics",
+        "command": "lsp_show_diagnostics_panel"
+    },
+    {
+        "caption": "LSP: Clear Diagnostics",
+        "command": "lsp_clear_diagnostics",
+        "args": {}
+    },
+    {
+        "caption": "LSP: Next Diagnostic",
+        "command": "lsp_next_diagnostic",
+        "args": {}
+    },
+    {
+        "caption": "LSP: Previous Diagnostic",
+        "command": "lsp_previous_diagnostic",
+        "args": {}
+    },
+    {
+        "caption": "LSP: Workspace Symbol",
+        "command": "lsp_workspace_symbols"
+    },
+    {
+        "caption": "LSP: Rename Symbol",
+        "command": "lsp_symbol_rename"
+    }
+]
