@@ -1,0 +1,5 @@
+# Non-interactive shells will not load .zshrc, but we should at least have
+# .shell_profile to setup the basic shell environment
+if [[ ! -o interactive ]]; then
+  source "$HOME/.shell_profile"
+fi
