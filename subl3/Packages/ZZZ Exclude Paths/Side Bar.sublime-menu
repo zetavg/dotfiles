@@ -1,0 +1,24 @@
+[
+    // {
+    //     "caption": "Exclude...",
+    //     "id": "exclude-path",
+    //     "children": [
+    //         {
+    //             "caption": "From Project",
+    //             "id": "exclude-path-project",
+    //             "command": "exclude_path_project",
+    //             "args": {
+    //                 "paths": []
+    //             }
+    //         },
+    //         {
+    //             "caption": "From Indexing",
+    //             "id": "exclude-path-index",
+    //             "command": "exclude_path_index",
+    //             "args": {
+    //                 "paths": []
+    //             }
+    //         }
+    //     ]
+    // }
+]
