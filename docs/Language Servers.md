@@ -24,6 +24,31 @@ According to [the Setup section of it's README](https://github.com/rust-lang/rls
 
 Download `macos.zip` from the [latest release](https://github.com/jaredly/reason-language-server/releases), unzip it, and put the `reason-language-server.exe` file under `~/Library/bin/`.
 
+## [python-language-server](https://github.com/palantir/python-language-server) (Python)
+
+`pip install 'python-language-server[all]'`, not `pip install pyls`!
+
+To use a `pyls` installed in an `venv` with Sublime Text, set the pyls command as following in a `.sublime-project`:
+
+```json
+{
+  "settings":
+  {
+    "LSP":
+    {
+      "pyls":
+      {
+        "command":
+        [
+          "/path/to/your/env-dir/bin/pyls"
+        ],
+        "enabled": true
+      }
+    }
+  }
+}
+```
+
 ## [solargraph](https://github.com/castwide/solargraph) (Ruby)
 
 `gem install solargraph` or use `~/.bin/solargraph` which loads direnv.
