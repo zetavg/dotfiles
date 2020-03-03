@@ -52,8 +52,14 @@ bundles=(
   paulirish/git-open
   spwhitt/nix-zsh-completions
   # chisui/zsh-nix-shell # Using direnv with `use nix` in a .envrc instead
+  'robbyrussell/oh-my-zsh path:plugins/docker'
+  'robbyrussell/oh-my-zsh path:plugins/docker-compose'
   sobolevn/wakatime-zsh-plugin
 )
+
+# Manually add oh-my-zsh/plugins/docker/_docker to fpath
+# https://stackoverflow.com/a/45406609
+fpath+=($(antibody home)/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh/plugins/docker)
 
 antibody bundle < <(print -l $bundles)
 
