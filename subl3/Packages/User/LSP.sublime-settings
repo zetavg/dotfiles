@@ -66,6 +66,27 @@
 				}
 			]
 		},
+		"flow":
+		{
+			"command":
+			[
+				"yarn",
+				"run",
+				"flow",
+				"lsp"
+			],
+			"languageId": "javascript",
+			"scopes":
+			[
+				"source.js"
+			],
+			"syntaxes":
+			[
+				"Packages/Babel/JavaScript (Babel).sublime-syntax",
+				"Packages/JavaScript/JavaScript.sublime-syntax",
+				"Packages/Naomi/syntaxes/naomi.fjsx15.sublime-syntax"
+			]
+		},
 		"haskell-ide-engine":
 		{
 			"command":
@@ -83,24 +104,23 @@
 				"Packages/Haskell/Haskell.sublime-syntax"
 			]
 		},
-		"flow":
+		"pyls":
 		{
-			// Use the flow installed in the current project
-			"command": ["yarn", "run", "flow", "lsp"],
-			"scopes": ["source.js"],
-			"syntaxes": [
-				"Packages/Babel/JavaScript (Babel).sublime-syntax",
-				"Packages/JavaScript/JavaScript.sublime-syntax",
-				"Packages/Naomi/syntaxes/naomi.fjsx15.sublime-syntax"
+			"command":
+			[
+				"pyls"
 			],
-			"languageId": "javascript"
-		},
-		"rls":
-		{
-			"command": ["rustup", "run", "stable", "rls"],
-			"scopes": ["source.rust"],
-			"syntaxes": ["Packages/Rust/Rust.sublime-syntax", "Packages/Rust Enhanced/RustEnhanced.sublime-syntax"],
-			"languageId": "rust"
+			"languageId": "python",
+			"scopes":
+			[
+				"source.python"
+			],
+			"syntaxes":
+			[
+				"Packages/Python/Python.sublime-syntax",
+				"Packages/MagicPython/grammars/MagicPython.tmLanguage",
+				"Packages/Djaneiro/Syntaxes/Python Django.tmLanguage"
+			]
 		},
 		"reason-language-server":
 		{
@@ -108,6 +128,12 @@
 			[
 				"reason-language-server"
 			],
+			"initializationOptions":
+			{
+				"dependencies_codelens": true,
+				"opens_codelens": true,
+				"per_value_codelens": true
+			},
 			"languageId": "reason",
 			"scopes":
 			[
@@ -119,31 +145,27 @@
 				"Packages/Reason/Reason.tmLanguage",
 				"Packages/sublime-reason/Reason.tmLanguage",
 				"Packages/OCaml/OCaml.sublime-syntax"
-			],
-			"initializationOptions":
-			{
-				"per_value_codelens": true,
-				"dependencies_codelens": true,
-				"opens_codelens": true
-			}
+			]
 		},
-		"pyls":
+		"rls":
 		{
 			"command":
 			[
-				"pyls"
+				"rustup",
+				"run",
+				"stable",
+				"rls"
 			],
+			"languageId": "rust",
 			"scopes":
 			[
-				"source.python"
+				"source.rust"
 			],
 			"syntaxes":
 			[
-				"Packages/Python/Python.sublime-syntax",
-				"Packages/MagicPython/grammars/MagicPython.tmLanguage",
-				"Packages/Djaneiro/Syntaxes/Python Django.tmLanguage"
-			],
-			"languageId": "python"
+				"Packages/Rust/Rust.sublime-syntax",
+				"Packages/Rust Enhanced/RustEnhanced.sublime-syntax"
+			]
 		},
 		"solargraph":
 		{
@@ -166,6 +188,43 @@
 			],
 			"tcp_port": 7658
 		},
+		"typescript-language-server":
+		{
+			"command":
+			[
+				"typescript-language-server",
+				"--stdio"
+			],
+			"languages":
+			[
+				{
+					"languageId": "typescript",
+					"scopes":
+					[
+						"source.ts"
+					],
+					"syntaxes":
+					[
+						"Packages/TypeScript-TmLanguage/TypeScript.tmLanguage",
+						"Packages/TypeScript Syntax/TypeScript.tmLanguage",
+						"Packages/TypeScript/TypeScript.tmLanguage"
+					]
+				},
+				{
+					"languageId": "typescriptreact",
+					"scopes":
+					[
+						"source.tsx"
+					],
+					"syntaxes":
+					[
+						"Packages/TypeScript-TmLanguage/TypeScriptReact.tmLanguage",
+						"Packages/TypeScript Syntax/TypeScriptReact.tmLanguage",
+						"Packages/TypeScript/TypeScriptReact.tmLanguage"
+					]
+				}
+			]
+		}
 	},
 	"default_clients":
 	{
