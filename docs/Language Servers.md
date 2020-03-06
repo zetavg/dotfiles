@@ -32,14 +32,10 @@ To use a `pyls` installed in an `venv` with Sublime Text, set the pyls command a
 
 ```json
 {
-  "settings":
-  {
-    "LSP":
-    {
-      "pyls":
-      {
-        "command":
-        [
+  "settings": {
+    "LSP": {
+      "pyls": {
+        "command": [
           "/path/to/your/env-dir/bin/pyls"
         ],
         "enabled": true
