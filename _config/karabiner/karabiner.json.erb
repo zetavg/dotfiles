@@ -206,76 +206,7 @@
                                     }
                                 ],
                                 "type": "basic"
-                            },<% [
-                                   "return_or_enter",
-                                   "spacebar",
-                                   "tab",
-                                   "hyphen",
-                                   "equal_sign",
-                                   "open_bracket",
-                                   "close_bracket",
-                                   "backslash",
-                                   "non_us_pound",
-                                   "semicolon",
-                                   "quote",
-                                   "grave_accent_and_tilde",
-                                   "comma",
-                                   "period",
-                                   "slash",
-                                   "non_us_backslash",
-                                   "a",
-                                   "b",
-                                   "c",
-                                   "d",
-                                   "e",
-                                   "g",
-                                   "m",
-                                   "n",
-                                   "o",
-                                   "p",
-                                   "q",
-                                   "r",
-                                   "r",
-                                   "t",
-                                   "u",
-                                   "w",
-                                   "x",
-                                   "y",
-                                   "z"
-                                 ].each do |key_code| %>
-                            {
-                                "conditions": [
-                                    {
-                                        "name": "vi_mode",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "<%= key_code %>",
-                                    "modifiers": {
-                                        "optional": [
-                                            "caps_lock",
-                                            "command",
-                                            "shift",
-                                            "option"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "semicolon"
-                                    },
-                                    {
-                                        "key_code": "<%= key_code %>"
-                                    },
-                                    {
-                                        "key_code": "vk_none"
-                                    }
-                                ],
-                                "type": "basic"
-                            },<% end %>
-                            {}
+                            }
                         ]
                     },
                     {
@@ -561,6 +492,98 @@
                                 ],
                                 "type": "basic"
                             }
+                        ]
+                    },
+                    {
+                        "description": "Vi Mode [;] - Fast Typing Fixups",
+                        "manipulators": [
+                            <% [
+                                   "return_or_enter",
+                                   "spacebar",
+                                   "tab",
+                                   "hyphen",
+                                   "equal_sign",
+                                   "open_bracket",
+                                   "close_bracket",
+                                   "backslash",
+                                   "non_us_pound",
+                                   "semicolon",
+                                   "quote",
+                                   "grave_accent_and_tilde",
+                                   "comma",
+                                   "period",
+                                   "slash",
+                                   "non_us_backslash",
+                                   "a",
+                                   "b",
+                                   "c",
+                                   "d",
+                                   "e",
+                                   "f",
+                                   "g",
+                                   "h",
+                                   "i",
+                                   "j",
+                                   "k",
+                                   "l",
+                                   "m",
+                                   "n",
+                                   "o",
+                                   "p",
+                                   "q",
+                                   "r",
+                                   "s",
+                                   "t",
+                                   "u",
+                                   "v",
+                                   "w",
+                                   "x",
+                                   "y",
+                                   "z",
+                                   "1",
+                                   "2",
+                                   "3",
+                                   "4",
+                                   "5",
+                                   "6",
+                                   "7",
+                                   "8",
+                                   "9",
+                                   "0"
+                                 ].each do |key_code| %>
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "vi_mode",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "<%= key_code %>",
+                                    "modifiers": {
+                                        "optional": [
+                                            "caps_lock",
+                                            "command",
+                                            "shift",
+                                            "option"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "semicolon"
+                                    },
+                                    {
+                                        "key_code": "<%= key_code %>"
+                                    },
+                                    {
+                                        "key_code": "vk_none"
+                                    }
+                                ],
+                                "type": "basic"
+                            },<% end %>
+                            {}
                         ]
                     },
                     {
