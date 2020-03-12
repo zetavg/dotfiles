@@ -3,6 +3,7 @@
   photos.includeStandardAdditions = true
 
   const photoDataChunkSize = 10000
+  const folderName = '整理'
   const importTargetAlbumName = '待整理'
   const importDataHolderAlbumName = '待整理－資料'
 
@@ -16,12 +17,24 @@
   Progress.description = '處理中⋯⋯'
   Progress.additionalDescription = '取得相簿⋯⋯'
 
+  let folder
+  try {
+    folder = photos.folders.byName(folderName)
+    folder.id()
+  } catch (e) {
+    photos.displayDialog(`Please create an folder named "${folderName}".`, {
+      withTitle: 'Error',
+      buttons: ['Ok'],
+    })
+    return
+  }
+
   let importTargetAlbum
   try {
-    importTargetAlbum = photos.albums.byName(importTargetAlbumName)
+    importTargetAlbum = folder.albums.byName(importTargetAlbumName)
     importTargetAlbum.id()
   } catch (e) {
-    photos.displayDialog(`Please create an album named "${importTargetAlbumName}".`, {
+    photos.displayDialog(`Please create an album named "${importTargetAlbumName}" under ${folderName}.`, {
       withTitle: 'Error',
       buttons: ['Ok'],
     })
@@ -30,9 +43,9 @@
 
   let importDataHolderMediaItems
   try {
-    importDataHolderMediaItems = photos.albums.byName(importDataHolderAlbumName).mediaItems()
+    importDataHolderMediaItems = folder.albums.byName(importDataHolderAlbumName).mediaItems()
   } catch (e) {
-    photos.displayDialog(`Please create an album named "${importDataHolderAlbumName}" and put some unused photo in it.`, {
+    photos.displayDialog(`Please create an album named "${importDataHolderAlbumName}" under ${folderName} and put some unused photo in it.`, {
       withTitle: 'Error',
       buttons: ['Ok'],
     })
