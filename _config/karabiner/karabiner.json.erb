@@ -136,7 +136,7 @@
                         ]
                     },
                     {
-                        "description": "⇪⌫ → ⌦",
+                        "description": "⇧⌫ → ⌦",
                         "manipulators": [
                             {
                                 "from": {
@@ -207,38 +207,6 @@
                                 ],
                                 "type": "basic"
                             }
-                        ]
-                    },
-                    {
-                        "description": "Vi Mode - Repeats",
-                        "manipulators": [<% 0.upto(12).each do |i| %><% 0.upto(9).each do |j| %>
-                            {
-                                "conditions": [
-                                    {
-                                        "name": "vi_mode",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    },
-                                    {
-                                        "name": "vi_repeat_key_for",
-                                        "type": "variable_if",
-                                        "value": <%= i %>
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "<%= j %>"
-                                },
-                                "to": [
-                                    {
-                                        "set_variable": {
-                                            "name": "vi_repeat_key_for",
-                                            "value": <%= i * 10 + j %>
-                                        }
-                                    }
-                                ],
-                                "type": "basic"
-                            },<% end %><% end %>
-                            {}
                         ]
                     },
                     {
@@ -416,6 +384,38 @@
                                 ],
                                 "type": "basic"
                             },<% end %>
+                            {}
+                        ]
+                    },
+                    {
+                        "description": "Vi Mode - Repeats",
+                        "manipulators": [<% 0.upto(12).each do |i| %><% 0.upto(9).each do |j| %>
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "vi_mode",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    },
+                                    {
+                                        "name": "vi_repeat_key_for",
+                                        "type": "variable_if",
+                                        "value": <%= i %>
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "<%= j %>"
+                                },
+                                "to": [
+                                    {
+                                        "set_variable": {
+                                            "name": "vi_repeat_key_for",
+                                            "value": <%= i * 10 + j %>
+                                        }
+                                    }
+                                ],
+                                "type": "basic"
+                            },<% end %><% end %>
                             {}
                         ]
                     },
