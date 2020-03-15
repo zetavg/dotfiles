@@ -66,6 +66,23 @@
 				}
 			]
 		},
+		"haskell-ide-engine":
+		{
+			"command":
+			[
+				"hie-wrapper",
+				"--lsp"
+			],
+			"languageId": "haskell",
+			"scopes":
+			[
+				"source.haskell"
+			],
+			"syntaxes":
+			[
+				"Packages/Haskell/Haskell.sublime-syntax"
+			]
+		},
 		"flow":
 		{
 			"command":
@@ -87,21 +104,134 @@
 				"Packages/Naomi/syntaxes/naomi.fjsx15.sublime-syntax"
 			]
 		},
-		"haskell-ide-engine":
+		"typescript-language-server":
 		{
 			"command":
 			[
-				"hie-wrapper",
-				"--lsp"
+				"typescript-language-server",
+				"--stdio"
 			],
-			"languageId": "haskell",
-			"scopes":
+			"languages":
 			[
-				"source.haskell"
+				{
+					"languageId": "typescript",
+					"scopes":
+					[
+						"source.ts"
+					],
+					"syntaxes":
+					[
+						"Packages/TypeScript-TmLanguage/TypeScript.tmLanguage",
+						"Packages/TypeScript Syntax/TypeScript.tmLanguage",
+						"Packages/TypeScript/TypeScript.tmLanguage"
+					]
+				},
+				{
+					"languageId": "typescriptreact",
+					"scopes":
+					[
+						"source.tsx"
+					],
+					"syntaxes":
+					[
+						"Packages/TypeScript-TmLanguage/TypeScriptReact.tmLanguage",
+						"Packages/TypeScript Syntax/TypeScriptReact.tmLanguage",
+						"Packages/TypeScript/TypeScriptReact.tmLanguage"
+					]
+				},
+				{
+					"scopes": ["source.js"],
+					"syntaxes": [
+						"Packages/Babel/JavaScript (Babel).sublime-syntax",
+						"Packages/JavaScript/JavaScript.sublime-syntax",
+						"Packages/Naomi/syntaxes/naomi.fjsx15.sublime-syntax"
+					],
+					"languageId": "javascript"
+				},
+				{
+					"scopes": ["source.jsx"],
+					"syntaxes": [
+						"Packages/Babel/JavaScript (Babel).sublime-syntax",
+						"Packages/JavaScript/JavaScript.sublime-syntax",
+						"Packages/Naomi/syntaxes/naomi.fjsx15.sublime-syntax"
+					],
+					"languageId": "javascriptreact"
+				}
+			]
+		},
+		"eslint-server":
+		{
+			"command":
+			[
+				"eslint-server",
+				"--stdio"
 			],
-			"syntaxes":
+			"settings":
+			// See https://github.com/microsoft/vscode-eslint#settings-options for the avaliable settings,
+			// note that some of them are required and the underlaying vscode-eslint-server might crash if missing!
+			{
+				"validate": "on",
+				"run": "onType",
+				"nodePath": null,
+				"codeAction": {
+					"disableRuleComment": {
+						"enable": true,
+						"location": "separateLine"
+					},
+					"showDocumentation": {
+						// Sublime LSP does not support this:
+						// `unhandled eslint-server eslint/openDoc(x): {'url': 'https://eslint.org/docs/rules/prefer-const'}`
+						"enable": false
+					},
+				},
+				"onIgnoredFiles": "off",
+			},
+			"languages":
 			[
-				"Packages/Haskell/Haskell.sublime-syntax"
+				{
+					"languageId": "typescript",
+					"scopes":
+					[
+						"source.ts"
+					],
+					"syntaxes":
+					[
+						"Packages/TypeScript-TmLanguage/TypeScript.tmLanguage",
+						"Packages/TypeScript Syntax/TypeScript.tmLanguage",
+						"Packages/TypeScript/TypeScript.tmLanguage"
+					]
+				},
+				{
+					"languageId": "typescriptreact",
+					"scopes":
+					[
+						"source.tsx"
+					],
+					"syntaxes":
+					[
+						"Packages/TypeScript-TmLanguage/TypeScriptReact.tmLanguage",
+						"Packages/TypeScript Syntax/TypeScriptReact.tmLanguage",
+						"Packages/TypeScript/TypeScriptReact.tmLanguage"
+					]
+				},
+				{
+					"scopes": ["source.js"],
+					"syntaxes": [
+						"Packages/Babel/JavaScript (Babel).sublime-syntax",
+						"Packages/JavaScript/JavaScript.sublime-syntax",
+						"Packages/Naomi/syntaxes/naomi.fjsx15.sublime-syntax"
+					],
+					"languageId": "javascript"
+				},
+				{
+					"scopes": ["source.jsx"],
+					"syntaxes": [
+						"Packages/Babel/JavaScript (Babel).sublime-syntax",
+						"Packages/JavaScript/JavaScript.sublime-syntax",
+						"Packages/Naomi/syntaxes/naomi.fjsx15.sublime-syntax"
+					],
+					"languageId": "javascriptreact"
+				}
 			]
 		},
 		"pyls":
@@ -187,61 +317,6 @@
 				"Packages/Rails/HTML (Rails).sublime-syntax"
 			],
 			"tcp_port": 7658
-		},
-		"typescript-language-server":
-		{
-			"command":
-			[
-				"typescript-language-server",
-				"--stdio"
-			],
-			"languages":
-			[
-				{
-					"languageId": "typescript",
-					"scopes":
-					[
-						"source.ts"
-					],
-					"syntaxes":
-					[
-						"Packages/TypeScript-TmLanguage/TypeScript.tmLanguage",
-						"Packages/TypeScript Syntax/TypeScript.tmLanguage",
-						"Packages/TypeScript/TypeScript.tmLanguage"
-					]
-				},
-				{
-					"languageId": "typescriptreact",
-					"scopes":
-					[
-						"source.tsx"
-					],
-					"syntaxes":
-					[
-						"Packages/TypeScript-TmLanguage/TypeScriptReact.tmLanguage",
-						"Packages/TypeScript Syntax/TypeScriptReact.tmLanguage",
-						"Packages/TypeScript/TypeScriptReact.tmLanguage"
-					]
-				},
-				{
-					"scopes": ["source.js"],
-					"syntaxes": [
-						"Packages/Babel/JavaScript (Babel).sublime-syntax",
-						"Packages/JavaScript/JavaScript.sublime-syntax",
-						"Packages/Naomi/syntaxes/naomi.fjsx15.sublime-syntax"
-					],
-					"languageId": "javascript"
-				},
-				{
-					"scopes": ["source.jsx"],
-					"syntaxes": [
-						"Packages/Babel/JavaScript (Babel).sublime-syntax",
-						"Packages/JavaScript/JavaScript.sublime-syntax",
-						"Packages/Naomi/syntaxes/naomi.fjsx15.sublime-syntax"
-					],
-					"languageId": "javascriptreact"
-				}
-			]
 		}
 	},
 	"default_clients":

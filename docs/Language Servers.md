@@ -14,6 +14,59 @@ Follow the [instructions on its README](https://github.com/haskell/haskell-ide-e
 brew install cquery
 ```
 
+## eslint-server
+
+This is not a actual language server, but by using the language server provided in [vscode-eslint](https://github.com/microsoft/vscode-eslint), the VS Code ESLint extension, other editors that supports LSP can get the eslint features such as "Quick Fix" in VS Code.
+
+To install this language server, you'll need to get and build the [vscode-eslint](https://github.com/microsoft/vscode-eslint) source code manually:
+
+```bash
+cd [some-dir]
+git clone https://github.com/microsoft/vscode-eslint.git
+cd vscode-eslint
+npm install
+npm run webpack
+ls server/out/eslintServer.js  # Ensure build output exists
+```
+
+Then, create a `eslint-server` wrapper and place it under somewhere in your `$PATH`, such as:
+
+```bash
+#!/usr/bin/env bash
+node [some-dir]/server/out/eslintServer.js "$@"
+```
+
+And at last, make sure you can run `eslint-server` in a terminal:
+
+```bash
+$ eslint-server --stdio
+Content-Length: 117
+
+{"jsonrpc":"2.0","method":"window/logMessage","params":{"type":3,"message":"ESLint server running in node v10.15.0"}}
+```
+
+> Note that some of the default configurations are not built into the language server, but provided by the VS Code extension from the [`workspace/configuration` request](https://microsoft.github.io/language-server-protocol/specifications/specification-current/#workspace_configuration), you'll need to configure your language server client to provide some of the required configurations correctly, or `eslint-server` might crash or being unable to work properly. A sample of the configuration in respond of the language server `workspace/configuration: {'items': [{'scopeUri': '...', 'section': '...'}]}` request is:
+> 
+> ```json
+> [{
+>   "validate": "on",
+>   "run": "onType",
+>   "nodePath": null,
+>   "codeAction": {
+>     "disableRuleComment": {
+>       "enable": true,
+>       "location": "separateLine"
+>     },
+>     "showDocumentation": {
+>       "enable": true
+>     },
+>   },
+>   "onIgnoredFiles": "off",
+> }]
+> ```
+> 
+> See the `eslint-server` section in the [Sublime Text LSP settings](../subl3/Packages/User/LSP.sublime-settings) file as a reference.
+
 ## [Rust Language Server (RLS)](https://github.com/rust-lang/rls)
 
 According to [the Setup section of it's README](https://github.com/rust-lang/rls#setup), you can use [rustup](http://rustup.rs/) to install the required components: `rustup component add rls rust-analysis rust-src --toolchain stable`.
