@@ -68,6 +68,14 @@
         "command": "lsp_show_diagnostics_panel"
     },
     {
+        "caption": "LSP: Show Language Server Logs",
+        "command": "lsp_toggle_server_panel",
+    },
+    {
+        "caption": "LSP: Show Diagnostics",
+        "command": "lsp_show_diagnostics_panel"
+    },
+    {
         "caption": "LSP: Clear Diagnostics",
         "command": "lsp_clear_diagnostics",
         "args": {}
