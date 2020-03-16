@@ -22,11 +22,11 @@ To install this language server, you'll need to get and build the [vscode-eslint
 
 ```bash
 cd [some-dir]
-git clone https://github.com/microsoft/vscode-eslint.git
+git clone https://github.com/microsoft/vscode-eslint.git --depth 10
 cd vscode-eslint
 npm install
 npm run webpack
-ls server/out/eslintServer.js  # Ensure build output exists
+realpath server/out/eslintServer.js  # Ensure build output exists
 ```
 
 Then, create a `eslint-server` wrapper and place it under somewhere in your `$PATH`, such as:
@@ -36,7 +36,7 @@ Then, create a `eslint-server` wrapper and place it under somewhere in your `$PA
 node [some-dir]/server/out/eslintServer.js "$@"
 ```
 
-And at last, make sure you can run `eslint-server` in a terminal:
+Don't forget to `chmod +x eslint-server`! And at last, make sure you can run `eslint-server` in a terminal:
 
 ```bash
 $ eslint-server --stdio
