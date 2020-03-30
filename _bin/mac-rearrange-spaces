@@ -55,6 +55,7 @@ tell application "System Events"
     set dock to process "Dock"
     try
         set mission_control to group "Mission Control" of dock
+        false
     on error
         do shell script "/System/Applications/Mission\\\\ Control.app/Contents/macOS/Mission\\\\ Control"
         delay 0.5
@@ -76,7 +77,7 @@ end tell
 def open_mission_control():
     payload = run_applescript(OPEN_MISSION_CONTROL_APPLESCRIPT)
     mousemove(4, 4)
-    return payload == 'true'
+    return payload.startswith('true')
 
 def close_mission_control():
     run_applescript(CLOSE_MISSION_CONTROL_APPLESCRIPT)
