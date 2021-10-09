@@ -4,6 +4,10 @@
 
 Install [Package Control](https://packagecontrol.io/) when you start Sublime Text at the first time: https://packagecontrol.io/installation.
 
+### Notes on overwritten packages
+
+The dotfiles installation contains overrides of some Package Control installed packages. Package Control might not be able to install such packages properly if the package overrides are placed before Package Control installs those packages. In such case, you'll need to remove all symlinks under `~/Library/Application Support/Sublime Text 3/Packages/` (except `User` and `Theme - Spacegray`), restart Sublime Text 3 to and make sure Package Control installed those packages, then do `~/.dotfiles/install` again.
+
 ## EditorConfig
 
 [EditorConfig](http://editorconfig.org/) and the [EditorConfig Plugin](https://github.com/sindresorhus/editorconfig-sublime) is used to manage coding styles such as intend style and size, newline charictor and eliminating trailing whitespaces, accross projects. A default `.editorconfig` is included with the dotfiles.
