@@ -1,7 +1,0 @@
-#!/bin/sh
-
-if [ -d "/opt/homebrew/bin" ]; then
-  /opt/homebrew/bin/zsh --login
-else
-  /usr/local/bin/zsh --login
-fi
