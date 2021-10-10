@@ -15,6 +15,9 @@ fish/fishd.*
 # Heroku
 /heroku
 
+# iTerm
+/iterm2
+
 # Other
 /configstore
 /exercism
