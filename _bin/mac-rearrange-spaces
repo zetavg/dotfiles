@@ -54,11 +54,11 @@ OPEN_MISSION_CONTROL_APPLESCRIPT = """\
 tell application "System Events"
     set dock to process "Dock"
     try
-        set mission_control to group "Mission Control" of dock
+        set mission_control to group 1 of dock
         false
     on error
         do shell script "/System/Applications/Mission\\\\ Control.app/Contents/macOS/Mission\\\\ Control"
-        delay 0.5
+        delay 0.3
         true
     end try
 end tell
@@ -68,7 +68,7 @@ CLOSE_MISSION_CONTROL_APPLESCRIPT = """\
 tell application "System Events"
     set dock to process "Dock"
     try
-        set mission_control to group "Mission Control" of dock
+        set mission_control to group 1 of dock
         do shell script "/System/Applications/Mission\\\\ Control.app/Contents/macOS/Mission\\\\ Control"
     end try
 end tell
@@ -86,13 +86,13 @@ GET_DESKTOP_N_BUTTON_POSITION_APPLESCRIPT = """\
 tell application "System Events"
     set dock to process "Dock"
     try
-        set mission_control to group "Mission Control" of dock
+        set mission_control to group 1 of dock
     on error
-        do shell script "/System/Applications/Mission\\\\ Control.app/Contents/macOS/Mission\\\\ Control"
-        delay 0.5
+        do shell script "/System/Applications/Mission\\\\ Control.app/Contents/macOS/Mission\\\ Control"
+        delay 0.3
     end try
-    set mission_control to group "Mission Control" of dock
-    set spaces_bar to group "Spaces Bar" of group 1 of mission_control
+    set mission_control to group 1 of dock
+    set spaces_bar to group 2 of group 1 of mission_control
     try
         -- "Desktop n" button
         set b to button {n} of list 1 of spaces_bar
