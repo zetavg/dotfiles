@@ -14,6 +14,13 @@ export CLICOLOR=1
 
 fpath=( $fpath ~/.zsh/functions )
 
+if type brew &>/dev/null; then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
+  autoload -Uz compinit
+  compinit
+fi
+
 
 ##
 # Histroy
