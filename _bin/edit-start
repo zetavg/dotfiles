@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 # -------------------------------------------------------------------
-# start
+# set-start
 # -------------------------------------------------------------------
 
-SUBJECT=start
+SUBJECT=edit-start
 VERSION=0.0.1
-USAGE="start [type=default]"
+USAGE="edit-start"
 HELP="
 $USAGE
 
-    Bootup the project with pre-setted command.
+    Edit \"start\" commands for the current directory.
 "
 
 # --- Option Processing ---------------------------------------------
@@ -59,15 +59,6 @@ while getopts ":vhnd:" optname
 
 shift $(($OPTIND - 1))
 
-# --- Arguments and Default Values ----------------------------------
-
-type='default'
-
-# --- Arguments Processing ------------------------------------------
-
-if [ -n "$1" ]; then
-  type="$1"
-fi
 
 # --- Script Body ---------------------------------------------------
 
@@ -78,19 +69,9 @@ project_dir_hash="$(echo "$project_dir" | openssl md5)"
 start_files_path="$HOME/.start"
 start_file_path="$start_files_path/$project_dir_hash"
 
-if [ -f "$start_file_path" ]; then
-  if command="$(pcregrep -o1 "^$type: (.*)" < "$start_file_path")"; then
-    echo "Running \`$command\`"
-    eval $command
-  else
-    echo "Unknown type: $type."
-    echo ''
-    echo "Available Types:"
-    sed "s/^/  /g" < "$start_file_path"
-    echo ''
-    echo "Use the 'set-start' or 'edit-start' command to add or edit start commands."
-  fi
-else
-  echo "No start command set for this directory. Use the 'set-start' command to add start commands."
-  exit -1
+if [ ! -e "$start_file_path" ]; then
+  echo "Creating start file: \"$start_file_path\""
+  echo 'default: echo "hi"' > "$start_file_path"
 fi
+
+"$EDITOR" "$start_file_path"
