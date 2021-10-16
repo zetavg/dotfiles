@@ -54,31 +54,31 @@ hs.window.animationDuration = 0
 -- This is done by Slate now because it's much faster
 
 -- -- hs.hotkey.bind(winOpMods, "left", function()
--- --   hs.window:focusedWindow():focusWindowWest()
+-- --   hs.window.focusedWindow():focusWindowWest()
 -- -- end)
 -- hs.hotkey.bind(winOpMods, "H", function()
---   hs.window:focusedWindow():focusWindowWest()
+--   hs.window.focusedWindow():focusWindowWest()
 -- end)
 
 -- -- hs.hotkey.bind(winOpMods, "down", function()
--- --   hs.window:focusedWindow():focusWindowSouth()
+-- --   hs.window.focusedWindow():focusWindowSouth()
 -- -- end)
 -- hs.hotkey.bind(winOpMods, "J", function()
---   hs.window:focusedWindow():focusWindowSouth()
+--   hs.window.focusedWindow():focusWindowSouth()
 -- end)
 
 -- -- hs.hotkey.bind(winOpMods, "up", function()
--- --   hs.window:focusedWindow():focusWindowNorth()
+-- --   hs.window.focusedWindow():focusWindowNorth()
 -- -- end)
 -- hs.hotkey.bind(winOpMods, "K", function()
---   hs.window:focusedWindow():focusWindowNorth()
+--   hs.window.focusedWindow():focusWindowNorth()
 -- end)
 
 -- -- hs.hotkey.bind(winOpMods, "right", function()
--- --   hs.window:focusedWindow():focusWindowEast()
+-- --   hs.window.focusedWindow():focusWindowEast()
 -- -- end)
 -- hs.hotkey.bind(winOpMods, "L", function()
---   hs.window:focusedWindow():focusWindowEast()
+--   hs.window.focusedWindow():focusWindowEast()
 -- end)
 
 --- === Moving Windows ===
@@ -86,31 +86,31 @@ hs.window.animationDuration = 0
 -- This is done by Slate now because it's much faster
 
 -- -- hs.hotkey.bind(winMdMods, "left", function()
--- --   hs.window:focusedWindow():move({-16, 0})
+-- --   hs.window.focusedWindow():move({-16, 0})
 -- -- end)
 -- hs.hotkey.bind(winMdMods, "H", function()
---   hs.window:focusedWindow():move({-16, 0})
+--   hs.window.focusedWindow():move({-16, 0})
 -- end)
 
 -- -- hs.hotkey.bind(winMdMods, "down", function()
--- --   hs.window:focusedWindow():move({0, 16})
+-- --   hs.window.focusedWindow():move({0, 16})
 -- -- end)
 -- hs.hotkey.bind(winMdMods, "J", function()
---   hs.window:focusedWindow():move({0, 16})
+--   hs.window.focusedWindow():move({0, 16})
 -- end)
 
 -- -- hs.hotkey.bind(winMdMods, "up", function()
--- --   hs.window:focusedWindow():move({0, -16})
+-- --   hs.window.focusedWindow():move({0, -16})
 -- -- end)
 -- hs.hotkey.bind(winMdMods, "K", function()
---   hs.window:focusedWindow():move({0, -16})
+--   hs.window.focusedWindow():move({0, -16})
 -- end)
 
 -- -- hs.hotkey.bind(winMdMods, "right", function()
--- --   hs.window:focusedWindow():move({16, 0})
+-- --   hs.window.focusedWindow():move({16, 0})
 -- -- end)
 -- hs.hotkey.bind(winMdMods, "L", function()
---   hs.window:focusedWindow():move({16, 0})
+--   hs.window.focusedWindow():move({16, 0})
 -- end)
 
 --- === Resize Windows ===
@@ -118,38 +118,38 @@ hs.window.animationDuration = 0
 -- This is done by Slate now because it's much faster
 
 -- hs.hotkey.bind(winMdMods, "N", function()
---   local originalSize = hs.window:focusedWindow():size()
---   hs.window:focusedWindow():setSize(originalSize.w - 16, originalSize.h)
+--   local originalSize = hs.window.focusedWindow():size()
+--   hs.window.focusedWindow():setSize(originalSize.w - 16, originalSize.h)
 -- end)
 
 -- hs.hotkey.bind(winMdMods, "M", function()
---   local originalSize = hs.window:focusedWindow():size()
---   hs.window:focusedWindow():setSize(originalSize.w, originalSize.h + 16)
+--   local originalSize = hs.window.focusedWindow():size()
+--   hs.window.focusedWindow():setSize(originalSize.w, originalSize.h + 16)
 -- end)
 
 -- hs.hotkey.bind(winMdMods, ",", function()
---   local originalSize = hs.window:focusedWindow():size()
---   hs.window:focusedWindow():setSize(originalSize.w, originalSize.h - 16)
+--   local originalSize = hs.window.focusedWindow():size()
+--   hs.window.focusedWindow():setSize(originalSize.w, originalSize.h - 16)
 -- end)
 
 -- hs.hotkey.bind(winMdMods, ".", function()
---   local originalSize = hs.window:focusedWindow():size()
---   hs.window:focusedWindow():setSize(originalSize.w + 16, originalSize.h)
+--   local originalSize = hs.window.focusedWindow():size()
+--   hs.window.focusedWindow():setSize(originalSize.w + 16, originalSize.h)
 -- end)
 
 --- === More Operation On Windows ===
 
 hs.hotkey.bind(winMdMods, 'O', function()
-  hs.window:focusedWindow():centerOnScreen()
+  hs.window.focusedWindow():centerOnScreen()
 end)
 
 hs.hotkey.bind(winMdMods, 'P', function()
-  local win = hs.window:focusedWindow()
+  local win = hs.window.focusedWindow()
   win:moveToScreen(win:screen():next(), true)
 end)
 
 hs.hotkey.bind(winMdMods, '0', function()
-  local window = hs.window:focusedWindow()
+  local window = hs.window.focusedWindow()
   local screen = window:screen()
   local frame = screen:frame()
   local h = frame.h * 0.83
@@ -159,11 +159,11 @@ hs.hotkey.bind(winMdMods, '0', function()
 end)
 
 hs.hotkey.bind(winMdMods, '-', function()
-  hs.window:focusedWindow():maximize()
+  hs.window.focusedWindow():maximize()
 end)
 
 hs.hotkey.bind(winMdMods, '=', function()
-  hs.window:focusedWindow():maximize()
+  hs.window.focusedWindow():maximize()
 end)
 
 hs.hotkey.bind(winMdMods, ']', nil, function()
@@ -174,8 +174,44 @@ hs.hotkey.bind(winMdMods, '[', nil, function()
   moveFocusedWindowToAdjacentSpace('left')
 end)
 
+hs.hotkey.bind(winMdMods, '1', nil, function()
+  moveFocusedWindowToAdjacentSpace('1')
+end)
+
+hs.hotkey.bind(winMdMods, '2', nil, function()
+  moveFocusedWindowToAdjacentSpace('2')
+end)
+
+hs.hotkey.bind(winMdMods, '3', nil, function()
+  moveFocusedWindowToAdjacentSpace('3')
+end)
+
 hs.hotkey.bind(winMdMods, '4', nil, function()
-  local image = hs.window:focusedWindow():snapshot()
+  moveFocusedWindowToAdjacentSpace('4')
+end)
+
+hs.hotkey.bind(winMdMods, '5', nil, function()
+  moveFocusedWindowToAdjacentSpace('5')
+end)
+
+hs.hotkey.bind(winMdMods, '6', nil, function()
+  moveFocusedWindowToAdjacentSpace('6')
+end)
+
+hs.hotkey.bind(winMdMods, '7', nil, function()
+  moveFocusedWindowToAdjacentSpace('7')
+end)
+
+hs.hotkey.bind(winMdMods, '8', nil, function()
+  moveFocusedWindowToAdjacentSpace('8')
+end)
+
+hs.hotkey.bind(winMdMods, '9', nil, function()
+  moveFocusedWindowToAdjacentSpace('9')
+end)
+
+hs.hotkey.bind(winMdMods, '4', nil, function()
+  local image = hs.window.focusedWindow():snapshot()
   if not image then return end
   image:saveToFile(string.format('~/Desktop/Screen Shot %s.png', os.date('%Y-%m-%d at %I.%M.%S %p')))
 end)
@@ -254,30 +290,35 @@ end
 -- move a window to an adjacent Space
 local mouseOrigin
 local inMove = 0
-function moveFocusedWindowToAdjacentSpace(direction)
+function moveFocusedWindowToAdjacentSpace(space)
   local win = hs.window.focusedWindow()
   if not win then return end
   local clickPoint = win:zoomButtonRect()
-  if inMove == 0 then mouseOrigin = hs.mouse.getAbsolutePosition() end
+  if inMove == 0 then mouseOrigin = hs.mouse.absolutePosition end
 
   clickPoint.x = clickPoint.x + clickPoint.w + 5
   clickPoint.y = clickPoint.y + (clickPoint.h / 2)
+
+  local activatedApp = hs.application.frontmostApplication()
+  local appName = activatedApp:name()
+  if appName == 'iTerm2' then clickPoint.y = clickPoint.y + 20 end
+
   local mouseClickEvent = hs.eventtap.event.newMouseEvent(hs.eventtap.event.types.leftMouseDown, clickPoint)
   mouseClickEvent:post()
 
-  local nextSpaceDownEvent = hs.eventtap.event.newKeyEvent({"ctrl"}, direction, true)
+  local nextSpaceDownEvent = hs.eventtap.event.newKeyEvent({"ctrl"}, space, true)
    nextSpaceDownEvent:post()
    inMove = inMove + 1  -- nested moves possible, ensure reentrancy
 
    hs.timer.doAfter(.1, function()
-    local nextSpaceUpEvent = hs.eventtap.event.newKeyEvent({"ctrl"}, direction, false)
+    local nextSpaceUpEvent = hs.eventtap.event.newKeyEvent({"ctrl"}, space, false)
     nextSpaceUpEvent:post()
     -- wait to release the mouse to avoid sticky window syndrome
     hs.timer.doAfter(.25, function()
       local mouseReleaseEvent = hs.eventtap.event.newMouseEvent(hs.eventtap.event.types.leftMouseUp, clickPoint)
       mouseReleaseEvent:post()
       inMove = math.max(0, inMove - 1)
-      if inMove == 0 then hs.mouse.setAbsolutePosition(mouseOrigin) end
+      if inMove == 0 then hs.mouse.absolutePosition = mouseOrigin end
     end)
   end)
 end
