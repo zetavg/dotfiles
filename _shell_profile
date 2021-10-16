@@ -24,7 +24,7 @@ fi
 
 # ENV
 
-EDITOR=subl
+export EDITOR=subl
 
 
 # CONFIG
