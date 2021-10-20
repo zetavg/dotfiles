@@ -23,6 +23,7 @@ local floatingAppNames = {
   "Evernote", -- For Evernote Helper
   "Flycut",
   "Franz",
+  "Ferdi",
   -- "ImageAlpha",
   -- "ImageOptim",
   -- "iTunes",
@@ -219,21 +220,23 @@ end)
 --- === App Event Handling ===
 
 function franzWatchFunction(appName, eventType, appObject)
-  if appName == "Franz" then
+  if (appName == "Franz" or appName == "Ferdi") then
     if
       eventType == hs.application.watcher.unhidden or
       eventType == hs.application.watcher.activated or
       eventType == hs.application.watcher.launched
     then
       local window = appObject:mainWindow()
-      local screen = window:screen()
-      local frame = screen:frame()
-      local maxH = frame.h * 0.9
-      local maxW = frame.w * 0.9
-      local h = 920
-      local w = 1152
-      window:setSize(math.min(w, maxW), math.min(h, maxH))
-      window:centerOnScreen()
+      if not window == nil then
+        local screen = window:screen()
+        local frame = screen:frame()
+        local maxH = frame.h * 0.9
+        local maxW = frame.w * 0.9
+        local h = 920
+        local w = 1152
+        window:setSize(math.min(w, maxW), math.min(h, maxH))
+        window:centerOnScreen()
+      end
 
     elseif eventType == hs.application.watcher.deactivated then
       local activatedApp = hs.application.frontmostApplication()
