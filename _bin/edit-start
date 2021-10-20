@@ -74,4 +74,4 @@ if [ ! -e "$start_file_path" ]; then
   echo 'default: echo "hi"' > "$start_file_path"
 fi
 
-"$EDITOR" "$start_file_path"
+eval "${VISUAL:-${EDITOR:-vi}} '$start_file_path'"
