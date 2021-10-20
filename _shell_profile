@@ -24,7 +24,9 @@ fi
 
 # ENV
 
-export EDITOR=subl
+if [[ $(uname) == "Darwin" ]]; then
+  export VISUAL='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl -w'
+fi
 
 
 # CONFIG
