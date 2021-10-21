@@ -29,6 +29,8 @@ npm run webpack
 realpath server/out/eslintServer.js  # Ensure build output exists
 ```
 
+> The latest vscode-eslint does not work with Sublime Text 3, I don't know why. Might need to `git checkout release/2.1.2~7` for vscode-eslint to get things work.
+
 Then, create a `eslint-server` wrapper and place it under somewhere in your `$PATH`, such as:
 
 ```bash
