@@ -14,6 +14,7 @@ local floatingAppNames = {
   "1Password",
   "Alfred 3",
   "Alfred",
+  "CleanShot X",
   -- "App Store",
   -- "Bear",
   -- "Calendar",
