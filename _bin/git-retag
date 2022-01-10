@@ -1,0 +1,81 @@
+#!/usr/bin/env bash
+# -------------------------------------------------------------------
+# git-retag
+# -------------------------------------------------------------------
+
+SUBJECT=git-retag
+VERSION=0.0.1
+USAGE="git-retag [remote=origin] <tag>"
+HELP="
+$USAGE
+
+    Delete the original tag (both local and origin), and tag it again and push.
+"
+
+# --- Option Processing ---------------------------------------------
+
+# Transform long options to short ones
+for arg in "$@"; do
+  shift
+  case "$arg" in
+    "--help") set -- "$@" "-h" ;;
+    *)        set -- "$@" "$arg"
+  esac
+done
+
+while getopts ":vhnd:" optname
+  do
+    case "$optname" in
+      "v")
+        echo "$SUBJECT version $VERSION"
+        exit 0;
+        ;;
+      "h")
+        echo "$HELP"
+        exit 0;
+        ;;
+      "?")
+        echo "Unknown option: -$OPTARG" >&2
+        echo "Usage: $USAGE"
+        exit 1;
+        ;;
+      ":")
+        echo "No argument value for option $OPTARG" >&2
+        echo "Usage: $USAGE"
+        exit 1;
+        ;;
+    esac
+  done
+
+shift $(($OPTIND - 1))
+
+# --- Options -------------------------------------------------------
+
+remote='origin'
+
+# --- Options Overriding --------------------------------------------
+
+if [ ! -z "$2" ]; then
+  remote="$1"
+  tag="$2"
+else
+  tag="$1"
+fi
+
+if [ -z "$tag" ]; then
+  echo "No tag specified" >&2
+  echo "Usage: $USAGE"
+  exit 1;
+fi
+
+# --- Script Body ---------------------------------------------------
+
+set -e
+
+git push --delete "$remote" "$tag"
+
+git tag -d "$tag"
+
+git tag "$tag"
+
+git push "$remote" "$tag"
