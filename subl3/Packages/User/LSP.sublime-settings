@@ -323,9 +323,9 @@
 	{
 	},
 	"diagnostics_highlight_style": "box",
-	"log_debug": false,
-	"log_payloads": false,
+	"log_debug": true,
+	"log_payloads": true,
 	"log_server": true,
-	"log_stderr": false,
+	"log_stderr": true,
 	"show_diagnostics_count_in_view_status": true
 }

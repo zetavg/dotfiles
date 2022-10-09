@@ -1,0 +1,120 @@
+#!/usr/bin/env bash
+# -------------------------------------------------------------------
+# git-checkout-worktree
+# -------------------------------------------------------------------
+
+SUBJECT=git-checkout-worktree
+VERSION=0.0.1
+USAGE="git-checkout-worktree <branch>"
+HELP="
+$USAGE
+
+    Checkout a branch in a worktree directory.
+"
+
+# --- Option Processing ---------------------------------------------
+
+# Transform long options to short ones
+for arg in "$@"; do
+  shift
+  case "$arg" in
+    "--help") set -- "$@" "-h" ;;
+    *)        set -- "$@" "$arg"
+  esac
+done
+
+while getopts ":vhnd:" optname
+  do
+    case "$optname" in
+      "v")
+        echo "$SUBJECT version $VERSION"
+        exit 0;
+        ;;
+      "h")
+        echo "$HELP"
+        exit 0;
+        ;;
+      "?")
+        echo "Unknown option: -$OPTARG" >&2
+        echo "Usage: $USAGE"
+        exit 1;
+        ;;
+      ":")
+        echo "No argument value for option $OPTARG" >&2
+        echo "Usage: $USAGE"
+        exit 1;
+        ;;
+    esac
+  done
+
+shift $(($OPTIND - 1))
+
+# --- Options -------------------------------------------------------
+
+# --- Options Overriding --------------------------------------------
+
+if [ ! -z "$1" ]; then
+  branch="$1"
+fi
+
+if [ -z "$branch" ]; then
+  echo "No branch specified" >&2
+  echo "Usage: $USAGE"
+  exit 1;
+fi
+
+# --- Script Body ---------------------------------------------------
+
+set -e
+
+cd "$(git rev-parse --show-toplevel)"
+
+project_dir_path="$(pwd)"
+project_dir_name="$(basename "$project_dir_path")"
+mkdir -p "../${project_dir_name}-worktrees"
+
+worktree_dir_name="${branch//\//--}"
+worktree_dir_path="../${project_dir_name}-worktrees/${worktree_dir_name}"
+git worktree add "${worktree_dir_path}" "${branch}"
+
+cd "${worktree_dir_path}"
+worktree_dir_path="$(pwd)"
+echo "Branch checked-out at \"${worktree_dir_path}\"."
+
+# Link node_modules
+if [ -d "../../${project_dir_name}/node_modules" ]; then
+  ln -sf "../../${project_dir_name}/node_modules" node_modules
+  echo " * Linked node_modules: \"${worktree_dir_path}/node_modules\" → \"../../${project_dir_name}/node_modules\""
+fi
+# # Copy node_modules
+# if [ -d "../../${project_dir_name}/node_modules" ]; then
+#   cp -r "../../${project_dir_name}/node_modules" ./node_modules
+#   echo " * node_modules copied"
+# fi
+
+# Copy start file
+start_files_path="$HOME/.start"
+orig_project_dir_hash="$(echo "$project_dir_path" | openssl md5)"
+orig_start_file_path="$start_files_path/$orig_project_dir_hash"
+if [ -f "$orig_start_file_path" ]; then
+  wt_project_dir_hash="$(echo "$worktree_dir_path" | openssl md5)"
+  wt_start_file_path="$start_files_path/$wt_project_dir_hash"
+  cp "$orig_start_file_path" "$wt_start_file_path"
+  echo " * Start file copied: \"$orig_start_file_path\" → \"$wt_start_file_path\""
+fi
+
+# Copy subl project
+SUBLIME_PROJECTS_PATH="$HOME/Projects/Sublime Projects"
+orig_dir_path_hash="$(echo "Dir: $project_dir_path" | openssl md5)"
+orig_subl_project_base_path="$SUBLIME_PROJECTS_PATH/${orig_dir_path_hash}"
+if [ -d "$orig_subl_project_base_path" ]; then
+  orig_subl_project_path="$(find "$orig_subl_project_base_path" -name '*.sublime-project' -type f)"
+  subl_project_name="$(basename "$orig_subl_project_path")"
+  wt_dir_path_hash="$(echo "Dir: ${worktree_dir_path}" | openssl md5)"
+  wt_subl_project_base_path="$SUBLIME_PROJECTS_PATH/${wt_dir_path_hash}"
+  if [ -f "$orig_subl_project_path" ]; then
+    mkdir -p "${wt_subl_project_base_path}"
+    cat "${orig_subl_project_path}" | sed "s%${project_dir_name}%${project_dir_name}-worktrees/${worktree_dir_name}%g" > "${wt_subl_project_base_path}/${project_dir_name} (${worktree_dir_name}).sublime-project"
+    echo " * Sublime project copied: \"${orig_subl_project_path}\" → \"${wt_subl_project_base_path}/${project_dir_name} (${worktree_dir_name}).sublime-project\""
+  fi
+fi
