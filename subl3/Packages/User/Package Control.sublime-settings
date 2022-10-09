@@ -54,6 +54,7 @@
 		"SublimeLinter-rubocop",
 		"SublimeLinter-shellcheck",
 		"SublimeOnSaveBuild",
+		"SyntaxFold",
 		"TOML",
 		"TrailingSpaces",
 		"TypeScript",
