@@ -18,7 +18,27 @@ fish/fishd.*
 # iTerm
 /iterm2
 
+# Firebase
+/firebase
+
+# Flipper
+/flipper
+
+# Autodesk
+/Autodesk
+
+# ParaView
+/ParaView
+
+# 3D Scanning Tools
+/RevoStudio
+/ChiShine3D
+
+# X-Plane
+/StairportSceneries
+
 # Other
 /configstore
 /exercism
 /fontforge
+/.mono
