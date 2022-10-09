@@ -228,7 +228,8 @@ function franzWatchFunction(appName, eventType, appObject)
       eventType == hs.application.watcher.launched
     then
       local window = appObject:mainWindow()
-      if not window == nil then
+      if debug then hs.alert.show("Franz got focus, resizing") end
+      if not (window == nil) then
         local screen = window:screen()
         local frame = screen:frame()
         local maxH = frame.h * 0.9
@@ -237,6 +238,7 @@ function franzWatchFunction(appName, eventType, appObject)
         local w = 1152
         window:setSize(math.min(w, maxW), math.min(h, maxH))
         window:centerOnScreen()
+        if debug then hs.alert.show("Ok") end
       end
 
     elseif eventType == hs.application.watcher.deactivated then
@@ -367,6 +369,6 @@ spoon.ReloadConfiguration:start()
 
 --- === Inbox ===
 
-hs.hotkey.bind({"cmd", "alt", "ctrl"}, "W", function()
-  hs.notify.new({title="Hammerspoon", informativeText="Hello World!!"}):send()
-end)
+-- hs.hotkey.bind({"cmd", "alt", "ctrl"}, "W", function()
+--   hs.notify.new({title="Hammerspoon", informativeText="Hello World!!"}):send()
+-- end)
