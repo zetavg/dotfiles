@@ -56,6 +56,10 @@
   //   "command": "side_bar_copy_name_encoded"
   // },
   {
+    "caption": "File: Copy Path",
+    "command": "side_bar_copy_path_relative_from_project"
+  },
+  {
     "caption": "File: Copy Full Path",
     "command": "side_bar_copy_path"
   },
