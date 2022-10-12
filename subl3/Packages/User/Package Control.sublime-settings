@@ -33,6 +33,10 @@
 		"LaTeX-cwl",
 		"LaTeXTools",
 		"LSP",
+		"LSP-eslint",
+		"LSP-json",
+		"LSP-ltex-ls",
+		"LSP-typescript",
 		"MultiEditUtils",
 		"Naomi",
 		"Nix",
@@ -50,21 +54,16 @@
 		"sublime-reason",
 		"SublimeChineseConvert",
 		"SublimeGit",
-		"SublimeLinter",
-		"SublimeLinter-eslint",
-		"SublimeLinter-rubocop",
-		"SublimeLinter-shellcheck",
 		"SublimeOnSaveBuild",
 		"SyntaxFold",
 		"TOML",
 		"TrailingSpaces",
-		"TypeScript",
 		"VimL",
-		"WakaTime"
+		"WakaTime",
 	],
 	"repositories":
 	[
 		"https://github.com/reasonml-editor/sublime-reason.git",
 		"https://github.com/zetavg/SublimeChineseConvert"
-	]
+	],
 }
