@@ -5,43 +5,44 @@
 	[
 		{
 			"characters": "<",
-			"selector": "text.html"
+			"selector": "text.html",
 		},
 		{
 			"characters": "\\",
-			"selector": "text.tex.latex"
+			"selector": "text.tex.latex",
 		}
 	],
 	"auto_indent": true,
 	"binary_file_patterns":
 	[
-		"*.jpg",
-		"*.jpeg",
-		"*.png",
-		"*.gif",
-		"*.ttf",
-		"*.tga",
-		"*.dds",
-		"*.ico",
-		"*.eot",
-		"*.pdf",
-		"*.swf",
-		"*.jar",
-		"*.zip",
-		"*.scssc",
-		"*.cssc",
-		"*.cmi",
 		"*.chunk.js",
+		"*.cmi",
+		"*.cssc",
+		"*.dds",
+		"*.eot",
+		"*.gif",
+		"*.ico",
+		"*.jar",
+		"*.jpeg",
+		"*.jpg",
+		"*.pdf",
+		"*.png",
+		"*.scssc",
+		"*.swf",
+		"*.tga",
+		"*.ttf",
+		"*.zip",
 		"*/.direnv/*",
-		"*/bower_components/*",
-		"*/node_modules/*",
 		"*/_build/*",
+		"*/node_modules/*",
+		"*/bower_components/*",
+		"*/tmp/cache/*",
+		"_config/yarn/link/**",
+		"android/.gradle/*",
+		"android/app/build/intermediates/*",
 		"ios/build/Build/*",
 		"ios/build/Index/*",
 		"ios/build/ModuleCache/*",
-		"android/.gradle/*",
-		"android/app/build/intermediates/*",
-		"*/tmp/cache/*"
 	],
 	"bold_folder_labels": false,
 	"caret_style": "smooth",
@@ -58,7 +59,7 @@
 	"ignored_packages":
 	[
 		"Rust",
-		"Vintage"
+		"Vintage",
 	],
 	"indent_guide_options":
 	[
@@ -82,5 +83,5 @@
 	"trim_trailing_white_space_on_save": true,
 	"update_check": false,
 	"word_separators": "./\\()\"'-:,.;<>~!@#%^&*|+=[]{}`~，。？「」『』",
-	"word_wrap": true
+	"word_wrap": true,
 }
