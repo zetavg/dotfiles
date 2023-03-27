@@ -1,41 +1,41 @@
 {
 	"clients":
 	{
-		"diagnostic-ls":
+		"LSP-shellcheck":
 		{
-		  "enabled": true,
-		  "command": ["diagnostic-languageserver", "--stdio"],
-		  "selector": "source.shell.bash",
-		  "initializationOptions": {
-		    "linters": {
-		      "shellcheck": {
-		        "command": "shellcheck",
-		        "args": ["--format=json", "-"],
-		        "debounce": 100,
-		        "formatLines": 1,
-		        "offsetLine": 0,
-		        "offsetColumn": 0,
-		        "sourceName": "shellcheck",
-		        "parseJson": {
-		          "line": "line",
-		          "column": "column",
-		          "endLine": "endLine",
-		          "endColumn": "endColumn",
-		          "security": "level",
-		          "message": "\\${message} [\\${code}]",
-		        },
-		        "securities": {
-		          "error": "error",
-		          "warning": "warning",
-		          "note": "info",
-		        },
-		      }
-		    },
-		    "formatters": {},
-		    "filetypes": {
-		      "shellscript": "shellcheck",
-		    }
-		  }
+			"enabled": true,
+			"command": ["diagnostic-languageserver", "--stdio"],
+			"selector": "source.shell.bash",
+			"initializationOptions": {
+				"linters": {
+					"shellcheck": {
+						"command": "shellcheck",
+						"args": ["--format=json", "-"],
+						"debounce": 100,
+						"formatLines": 1,
+						"offsetLine": 0,
+						"offsetColumn": 0,
+						"sourceName": "shellcheck",
+						"parseJson": {
+							"line": "line",
+							"column": "column",
+							"endLine": "endLine",
+							"endColumn": "endColumn",
+							"security": "level",
+							"message": "\\${message} [\\${code}]",
+						},
+						"securities": {
+							"error": "error",
+							"warning": "warning",
+							"note": "info",
+						},
+					}
+				},
+				"formatters": {},
+				"filetypes": {
+					"shellscript": "shellcheck",
+				}
+			}
 		},
 		"cquery":
 		{
@@ -157,9 +157,9 @@
 					],
 					// "syntaxes":
 					// [
-					// 	"Packages/TypeScript-TmLanguage/TypeScript.tmLanguage",
-					// 	"Packages/TypeScript Syntax/TypeScript.tmLanguage",
-					// 	"Packages/TypeScript/TypeScript.tmLanguage"
+					//  "Packages/TypeScript-TmLanguage/TypeScript.tmLanguage",
+					//  "Packages/TypeScript Syntax/TypeScript.tmLanguage",
+					//  "Packages/TypeScript/TypeScript.tmLanguage"
 					// ]
 				},
 				{
@@ -170,9 +170,9 @@
 					],
 					// "syntaxes":
 					// [
-					// 	"Packages/TypeScript-TmLanguage/TypeScriptReact.tmLanguage",
-					// 	"Packages/TypeScript Syntax/TypeScriptReact.tmLanguage",
-					// 	"Packages/TypeScript/TypeScriptReact.tmLanguage"
+					//  "Packages/TypeScript-TmLanguage/TypeScriptReact.tmLanguage",
+					//  "Packages/TypeScript Syntax/TypeScriptReact.tmLanguage",
+					//  "Packages/TypeScript/TypeScriptReact.tmLanguage"
 					// ]
 				},
 				{
@@ -358,8 +358,11 @@
 	"default_clients":
 	{
 	},
+	"diagnostics_gutter_marker": "",
 	"diagnostics_highlight_style": "box",
+	"diagnostics_panel_include_severity_level": 2,
 	"show_inlay_hints": true,
+	"document_highlight_style": "background",
 	"log_debug": false,
 	"log_payloads": false,
 	"log_server": true,

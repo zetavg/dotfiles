@@ -80,8 +80,10 @@
 	"soda_classic_tabs": true,
 	"spacegray_fileicons": true,
 	"theme": "Spacegray.sublime-theme",
-	"trim_trailing_white_space_on_save": true,
+	"trim_trailing_white_space_on_save": "not_on_caret",
 	"update_check": false,
 	"word_separators": "./\\()\"'-:,.;<>~!@#%^&*|+=[]{}`~，。？「」『』",
 	"word_wrap": true,
+	"preview_on_click": "only_left",
+	"sublime_merge_path": "/usr/local/bin/gittower",
 }
