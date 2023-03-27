@@ -3,103 +3,139 @@
         "caption": "Preferences: LSP Settings",
         "command": "edit_settings",
         "args": {
-          "base_file": "${packages}/LSP/LSP.sublime-settings",
-          "default": "// Settings in here override those in \"LSP/LSP.sublime-settings\",\n\n{\n\t$0\n}\n"}
+            "base_file": "${packages}/LSP/LSP.sublime-settings",
+            "default": "// Settings in here override those in \"LSP/LSP.sublime-settings\"\n{\n\t$0\n}\n"
+        }
     },
     {
-        "caption": "Preferences: LSP Keybindings",
+        "caption": "Preferences: LSP Key Bindings",
         "command": "edit_settings",
         "args": {
-            "base_file": "${packages}/LSP/Keymaps/Default (${platform}).sublime-keymap",
+            "base_file": "${packages}/LSP/Default.sublime-keymap",
             "user_file": "${packages}/User/Default ($platform).sublime-keymap",
-            "default": "// Settings in here override those in \"LSP/Keymaps/Default (${platform}).sublime-keymap\",\n\n{\n\t$0\n}\n"}
+            "default": "[\n\t$0\n]\n",
+        }
     },
     {
-        "caption": "LSP: Setup Language Server",
-        "command": "lsp_setup_language_server",
-        "args": {}
+        "caption": "Preferences: LSP Language ID Mapping Overrides",
+        "command": "edit_settings",
+        "args": {
+            "base_file": "${packages}/LSP/language-ids.sublime-settings",
+            "user_file": "${packages}/User/language-ids.sublime-settings",
+            "default": "// SublimeText base scope -> LSP Language ID overrides\n{\n\t// \"source.mylanguage\": \"mylang\"\n\t$0\n}\n"
+        }
+    },
+    {
+        "caption": "LSP Development: Parse VSCode Package JSON From Clipboard",
+        "command": "lsp_parse_vscode_package_json"
+    },
+    {
+        "caption": "LSP: Troubleshoot Server",
+        "command": "lsp_troubleshoot_server"
+    },
+    {
+        "caption": "LSP: Dump Window Configs",
+        "command": "lsp_dump_window_configs"
     },
     // {
     //     "caption": "LSP: Enable Language Server Globally",
     //     "command": "lsp_enable_language_server_globally",
-    //     "args": {}
     // },
     // {
     //     "caption": "LSP: Disable Language Server Globally",
     //     "command": "lsp_disable_language_server_globally",
-    //     "args": {}
     // },
     {
         "caption": "LSP: Enable Language Server in Project",
         "command": "lsp_enable_language_server_in_project",
-        "args": {}
     },
     {
         "caption": "LSP: Disable Language Server in Project",
         "command": "lsp_disable_language_server_in_project",
-        "args": {}
     },
     {
-      "caption": "LSP: Format Document",
-      "command": "lsp_format_document",
-      "args": {}
+        "caption": "LSP: Format File",
+        "command": "lsp_format_document",
     },
     {
         "caption": "LSP: Format Selection",
         "command": "lsp_format_document_range",
-        "args": {}
     },
     {
-        "caption": "LSP: Restart Servers",
-        "command": "lsp_restart_client",
-        "args": {}
+        "caption": "LSP: Expand Selection",
+        "command": "lsp_expand_selection",
     },
     {
         "caption": "LSP: Restart Server",
-        "command": "lsp_restart_server"
+        "command": "lsp_restart_server",
     },
     {
-        "caption": "LSP: Document Symbols",
+        "caption": "LSP: Goto Symbol",
         "command": "lsp_document_symbols",
-        "args": {}
     },
     {
-        "caption": "LSP: Toggle Panel: Language Servers",
+        "caption": "LSP: Goto Implementation",
+        "command": "lsp_symbol_implementation",
+    },
+    {
+        "caption": "LSP: Goto Declaration",
+        "command": "lsp_symbol_declaration",
+    },
+    {
+        "caption": "LSP: Goto Diagnostic",
+        "command": "lsp_goto_diagnostic",
+        "args": {
+            "uri": "$view_uri"
+        }
+    },
+    {
+        "caption": "LSP: Goto Diagnostic in Project",
+        "command": "lsp_goto_diagnostic"
+    },
+    {
+        "caption": "LSP: Toggle Log Panel",
         "command": "lsp_toggle_server_panel",
     },
     {
-        "caption": "LSP: Toggle Panel: Diagnostics",
+        "caption": "LSP: Toggle Diagnostics Panel",
         "command": "lsp_show_diagnostics_panel"
     },
     {
-        "caption": "LSP: Show Language Server Logs",
-        "command": "lsp_toggle_server_panel",
-    },
-    {
-        "caption": "LSP: Show Diagnostics",
-        "command": "lsp_show_diagnostics_panel"
-    },
-    {
-        "caption": "LSP: Clear Diagnostics",
-        "command": "lsp_clear_diagnostics",
-        "args": {}
-    },
-    {
-        "caption": "LSP: Next Diagnostic",
-        "command": "lsp_next_diagnostic",
-        "args": {}
-    },
-    {
-        "caption": "LSP: Previous Diagnostic",
-        "command": "lsp_previous_diagnostic",
-        "args": {}
-    },
-    {
-        "caption": "LSP: Workspace Symbol",
+        "caption": "LSP: Goto Symbol In Project",
         "command": "lsp_workspace_symbols"
     },
     {
-        "caption": "LSP: Rename Symbol",
+        "caption": "LSP: Rename",
         "command": "lsp_symbol_rename"
+    },
+    {
+        "caption": "LSP: Code Action…",
+        "command": "lsp_code_actions"
+    },
+    {
+        "caption": "LSP: Refactor…",
+        "command": "lsp_code_actions",
+        "args": {
+            "only_kinds": [
+                "refactor"
+            ]
+        },
+    },
+    {
+        "caption": "LSP: Source Action…",
+        "command": "lsp_code_actions",
+        "args": {
+            "only_kinds": [
+                "source"
+            ]
+        }
+    },
+    {
+        "caption": "LSP: Run Code Lens",
+        "command": "lsp_code_lens"
+    },
+    {
+        "caption": "LSP: Find References",
+        "command": "lsp_symbol_references"
     }
 ]
