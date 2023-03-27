@@ -72,7 +72,10 @@ else
       // "binary_file_patterns": ["*.build", "*.build*", "*.bundle", "*.bundle*", "*.idx", "*.ipa", "*.pcm"],
       // "follow_symlinks": true,
     }
-  ]
+  ],
+  "settings": {
+    "lsp_format_on_save": false,
+  }
 }
 EOF
       )
