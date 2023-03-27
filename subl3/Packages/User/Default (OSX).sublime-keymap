@@ -109,6 +109,19 @@
   /* Quick Actions */
   { "keys": ["command+shift+l"], "command": "reveal_in_side_bar" },
 
+  /* LSP */
+  {
+    "command": "lsp_show_diagnostics_panel",
+    "keys": [
+      "ctrl+d"
+    ],
+    "context": [
+      {
+        "key": "setting.lsp_active"
+      }
+    ]
+  },
+
   /* Fast Browser Refresh */
   { "keys": ["command+shift+a"], "command": "browser_refresh", "args": { "auto_save": true, "delay": 1.0, "activate_browser": true, "browser_name" : "all" } },
 
