@@ -58,5 +58,16 @@
   { "caption": "Reveal in Sidebar", "command": "reveal_in_side_bar" },
 
   /* Window Operations */
-  { "caption": "Close Other Windows", "command": "close_other_windows" }
+  { "caption": "Close Other Windows", "command": "close_other_windows" },
+
+  /* LSP */
+  {
+    "caption": "ESlint: Apply all fixes (by LSP)",
+    "command": "lsp_execute",
+    "args": {
+      "session_name": "LSP-eslint",
+      "command_name": "eslint.applyAllFixes",
+      "command_args": ["$versioned_document_id"]
+    }
+  }
 ]
