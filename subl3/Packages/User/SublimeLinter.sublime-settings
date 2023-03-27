@@ -7,23 +7,25 @@
     "lint_mode": "background",
     "statusbar.counters_template": "({}|{})",
     "statusbar.messages_template": "{linter}: {code}",
+    "show_hover_region_report": false,
     "styles": [
         {
-            "priority": 1,
+            "priority": 10,
             "icon": "dot",
             "mark_style": "outline"
         }
     ],
     "linters": {
-        "eslint": {
-            // A wrapper for eslint, it will load direnv
-            "executable": ["~/.bin/eslint"]
-        }
-    },
-    "linters": {
-        "rubocop": {
-            // A wrapper for rubocop, it will load direnv
-            "executable": ["~/.bin/rubocop"]
+        "cspell": {
+            "disable": false,
+            "styles": [
+                {
+                    "priority": 100,
+                    "scope": "region.redish markup.warning.sublime_linter",
+                    "icon": "triangle",
+                    "mark_style": "stippled_underline"
+                }
+            ]
         }
     }
 }

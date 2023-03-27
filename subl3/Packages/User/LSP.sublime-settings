@@ -1,6 +1,21 @@
 {
 	"clients":
 	{
+		"cspell": {
+			"enabled": true,
+			"command": [
+				"cspell-server",
+				"--stdio"
+			],
+			"selector": "source, text",
+			"settings": {
+				// Enable / Disable the spell checker.
+				"cSpell.enabled": true,
+				// Issues found by the spell checker are marked with a Diagnostic Severity Level. This affects the color of squiggle. possible values: Error, Warning, Information, Hint
+				"cSpell.diagnosticLevel": "Warning",
+				// For more settings, please refer to https://github.com/zetavg/vscode-spell-checker-patched-for-sublime#vs-code-configuration-settings
+			}
+		},
 		"LSP-shellcheck":
 		{
 			"enabled": true,

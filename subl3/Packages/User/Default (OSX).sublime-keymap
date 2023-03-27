@@ -121,6 +121,28 @@
       }
     ]
   },
+  {
+    "command": "lsp_code_actions",
+    "keys": [
+      "alt+a"
+    ],
+    "context": [
+      {
+        "key": "setting.lsp_active"
+      }
+    ]
+  },
+  {
+    "command": "lsp_code_actions",
+    "keys": [
+      "ctrl+a"
+    ],
+    "context": [
+      {
+        "key": "setting.lsp_active"
+      }
+    ]
+  },
 
   /* Fast Browser Refresh */
   { "keys": ["command+shift+a"], "command": "browser_refresh", "args": { "auto_save": true, "delay": 1.0, "activate_browser": true, "browser_name" : "all" } },
