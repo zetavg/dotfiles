@@ -1,5 +1,5 @@
 {
-    "editor.autoIndent": true,
+    "editor.autoIndent": "full",
     "editor.emptySelectionClipboard": false,
     "files.encoding": "utf8",
     "files.insertFinalNewline": true,
@@ -14,5 +14,6 @@
     "editor.wordWrap": "on",
     "editor.formatOnPaste": true,
     "editor.multiCursorModifier": "ctrlCmd",
-    "editor.snippetSuggestions": "top"
+    "editor.snippetSuggestions": "top",
+    "C_Cpp.clang_format_fallbackStyle": "Google"
 }
