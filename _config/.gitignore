@@ -12,6 +12,9 @@ fish/fishd.*
 /yarn/global
 /yarn/link
 
+# GitHub Copilot
+/github-copilot
+
 # Heroku
 /heroku
 

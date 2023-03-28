@@ -32,6 +32,7 @@
 		"LaTeX-cwl",
 		"LaTeXTools",
 		"LSP",
+		"LSP-copilot",
 		"LSP-eslint",
 		"LSP-json",
 		"LSP-ltex-ls",
