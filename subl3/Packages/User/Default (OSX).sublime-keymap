@@ -114,8 +114,20 @@
   { "keys": ["command+shift+l"], "command": "reveal_in_side_bar" },
 
   /* LSP */
-  {
+  { // VSCode compatible
     "command": "lsp_show_diagnostics_panel",
+    "keys": [
+      "super+shift+m"
+    ],
+    "context": [
+      {
+        "key": "setting.lsp_active"
+      }
+    ]
+  },
+  {
+    "command": "lsp_goto_diagnostic",
+    "args": { "uri": "$view_uri" },
     "keys": [
       "ctrl+d"
     ],
@@ -140,6 +152,39 @@
     "command": "lsp_code_actions",
     "keys": [
       "ctrl+a"
+    ],
+    "context": [
+      {
+        "key": "setting.lsp_active"
+      }
+    ]
+  },
+  { // VSCode compatible
+    "command": "lsp_code_actions",
+    "keys": [
+      "super+."
+    ],
+    "context": [
+      {
+        "key": "setting.lsp_active"
+      }
+    ]
+  },
+  {
+    "command": "lsp_document_symbols",
+    "keys": [
+      "super+r"
+    ],
+    "context": [
+      {
+        "key": "setting.lsp_active"
+      }
+    ]
+  },
+  {
+    "command": "lsp_workspace_symbols",
+    "keys": [
+      "super+shift+r"
     ],
     "context": [
       {

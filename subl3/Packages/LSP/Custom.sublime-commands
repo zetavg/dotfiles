@@ -1,0 +1,22 @@
+[
+  {
+    "caption": "LSP: Rename Symbol",
+    "command": "lsp_symbol_rename",
+    "args": {}
+  },
+  {
+    "caption": "LSP: Show Call Hierarchy",
+    "command": "lsp_call_hierarchy",
+    "args": {}
+  },
+  {
+    "caption": "LSP: Show Type Hierarchy",
+    "command": "lsp_type_hierarchy",
+    "args": {}
+  },
+  {
+    "caption": "LSP: Signature Help",
+    "command": "lsp_signature_help_show",
+    "args": {}
+  }
+]
