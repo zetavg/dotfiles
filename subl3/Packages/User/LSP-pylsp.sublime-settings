@@ -1,0 +1,21 @@
+// Settings in here override those in "LSP-pylsp/LSP-pylsp.sublime-settings"
+{
+    "disabled_capabilities": {
+        "completionProvider": true,
+        "definitionProvider": true,
+        "documentHighlightProvider": true,
+        "documentSymbolProvider": true,
+        "hoverProvider": true,
+        "referencesProvider": true,
+        "renameProvider": true,
+        "signatureHelpProvider": true,
+    },
+    "settings": {
+        "pylsp.plugins.jedi_completion.enabled": false,
+        "pylsp.plugins.jedi_definition.enabled": false,
+        "pylsp.plugins.jedi_hover.enabled": false,
+        "pylsp.plugins.jedi_references.enabled": false,
+        "pylsp.plugins.jedi_signature_help.enabled": false,
+        "pylsp.plugins.jedi_symbols.enabled": false,
+    },
+}
