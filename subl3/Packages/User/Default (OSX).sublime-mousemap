@@ -5,12 +5,12 @@
     "modifiers": ["alt"],
     "press_command": "drag_select",
     "press_args": {"by": "columns"},
-    "command": "lsp_symbol_definition"
+    "command": "lsp_intelligence_goto"
   },
   {
     "button": "button1",
     "modifiers": ["command", "alt"],
-    "command": "lsp_symbol_definition",
+    "command": "lsp_intelligence_goto",
     "args": { "side_by_side": true }
   }
 ]
