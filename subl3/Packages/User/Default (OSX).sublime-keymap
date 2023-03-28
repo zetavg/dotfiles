@@ -126,15 +126,10 @@
     ]
   },
   {
-    "command": "lsp_goto_diagnostic",
+    "command": "lsp_goto_diagnostic_or_noop",
     "args": { "uri": "$view_uri" },
     "keys": [
       "ctrl+d"
-    ],
-    "context": [
-      {
-        "key": "setting.lsp_active"
-      }
     ]
   },
   {

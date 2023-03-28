@@ -87,3 +87,11 @@ class LspIntelligenceGotoCommand(sublime_plugin.TextCommand):
                     return url
 
         return None
+
+
+# To prevent other key bindings got triggered while LSP has no
+# diagnostics to show.
+class LspGotoDiagnosticOrNoopCommand(sublime_plugin.WindowCommand):
+
+    def run(self, uri=None):
+        self.window.run_command("lsp_goto_diagnostic", {"uri": uri})
