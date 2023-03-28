@@ -1,0 +1,10 @@
+[
+  {
+    "caption": "Navigation History: Back",
+    "command": "navigation_history_back"
+  },
+  {
+    "caption": "Navigation History: Forward",
+    "command": "navigation_history_forward"
+  }
+]

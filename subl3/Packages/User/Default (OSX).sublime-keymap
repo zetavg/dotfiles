@@ -60,6 +60,10 @@
   { "keys": ["ctrl+="], "command": "jump_forward" },
   { "keys": ["ctrl+shift+minus"], "command": "jump_forward" },
 
+  /* Navigation History */
+  { "keys": ["super+]"], "command": "navigation_history_forward" },
+  { "keys": ["super+["], "command": "navigation_history_back" },
+
   /* Window Operations */
   // Close other windows (provided by the CloseOtherWindows plugin)s
   { "keys": ["alt+super+w"], "command": "close_other_windows" },
