@@ -44,4 +44,6 @@ fish/fishd.*
 /configstore
 /exercism
 /fontforge
+/gdrive3
+/gcloud
 /.mono
