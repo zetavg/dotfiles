@@ -38,6 +38,7 @@
 		"LSP-ltex-ls",
 		"LSP-pylsp",
 		"LSP-pyright",
+		"LSP-tailwindcss",
 		"LSP-typescript",
 		"Markdown Extended",
 		"MultiEditUtils",
