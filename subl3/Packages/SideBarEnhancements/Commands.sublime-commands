@@ -56,7 +56,7 @@
   //   "command": "side_bar_copy_name_encoded"
   // },
   {
-    "caption": "File: Copy Path",
+    "caption": "File: Copy Path (Relative to Project)",
     "command": "side_bar_copy_path_relative_from_project"
   },
   {
