@@ -33,7 +33,7 @@ while getopts ":vhnd:" optname
       "h")
         echo "$HELP"
         project_dir="$(pwd)"
-        project_dir_hash="$(echo "$project_dir" | openssl md5)"
+        project_dir_hash="$(echo "$project_dir" | openssl md5 | sed 's/(stdin)= //g')"
         start_files_path="$HOME/.start"
         start_file_path="$start_files_path/$project_dir_hash"
         if [ -f "$start_file_path" ]; then
@@ -74,7 +74,7 @@ fi
 set -eu
 
 project_dir="$(pwd)"
-project_dir_hash="$(echo "$project_dir" | openssl md5)"
+project_dir_hash="$(echo "$project_dir" | openssl md5 | sed 's/(stdin)= //g')"
 start_files_path="$HOME/.start"
 start_file_path="$start_files_path/$project_dir_hash"
 
