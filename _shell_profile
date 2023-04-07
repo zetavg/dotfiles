@@ -101,7 +101,7 @@ alias gnsync='python $HOME/.bin/geeknote/gnsync.py'
 alias pg8='ping 8.8.8.8'
 alias ptt='ssh bbsu@ptt.cc'
 
-# COMMANDS FOR COMPRESS AND DECOMPRESSESING
+# COMMANDS FOR COMPRESS AND DECOMPRESSING
 # Usage:
 # mk* OutputFileName.* InputDirName
 # do* InputFileName
@@ -443,7 +443,7 @@ fi
 export ERL_AFLAGS="-kernel shell_history enabled"
 
 
-# LOAD ENVIRMENT SPECIFIC PROFILES
+# LOAD ENVIRONMENT SPECIFIC PROFILES
 
 if [ -f "$HOME/.profile_other" ]; then
   if [ -n "$FISH_VERSION" ]; then

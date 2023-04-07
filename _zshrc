@@ -23,7 +23,7 @@ fi
 
 
 ##
-# Histroy
+# History
 ##
 
 HISTSIZE=50000   # number of histories the shell will keep within one session
