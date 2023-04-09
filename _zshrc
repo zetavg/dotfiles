@@ -57,6 +57,7 @@ bundles=(
   jreese/zsh-titles
   marcoy/zsh-gitfast
   paulirish/git-open
+  conda-incubator/conda-zsh-completion
   spwhitt/nix-zsh-completions
   # chisui/zsh-nix-shell # Using direnv with `use nix` in a .envrc instead
   'robbyrussell/oh-my-zsh path:plugins/docker'
