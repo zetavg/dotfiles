@@ -12,16 +12,6 @@ export DEFAULT_RUBY_VERSION=$(cat ~/.tool-versions | grep ruby | awk -F' ' '{pri
 export DEFAULT_ELIXIR_VERSION=$(cat ~/.tool-versions | grep elixir | awk -F' ' '{print $2}')
 
 
-# PATH
-
-PATH="$HOME/.bin:$PATH"
-PATH="$HOME/.sbin:$PATH"
-
-if [ -d "$HOME/Library/bin" ]; then
-  PATH="$HOME/Library/bin:$PATH"
-fi
-
-
 # ENV
 
 if [[ $(uname) == "Darwin" ]]; then
@@ -459,4 +449,15 @@ if [ -f "$HOME/.profile_after_initialized" ]; then
   else
     source "$HOME/.profile_after_initialized"
   fi
+fi
+
+
+# PATH
+# This is done at the end (even after loading .profile_after_initialized) so that these paths will have the highest priority.
+
+PATH="$HOME/.bin:$PATH"
+PATH="$HOME/.sbin:$PATH"
+
+if [ -d "$HOME/Library/bin" ]; then
+  PATH="$HOME/Library/bin:$PATH"
 fi
