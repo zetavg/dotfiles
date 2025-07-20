@@ -30,7 +30,7 @@ set -o physical
 
 alias repro='source $HOME/.shell_profile'
 alias cls='cd;clear;test -e /etc/motd and cat /etc/motd;repro'
-alias bye='exit'
+# alias bye='exit'
 
 alias l='ls -CF'
 alias ll='ls -lFh'
@@ -43,7 +43,7 @@ alias la='ls -alFh'
 alias lz='ls -lSrh'
 alias lt='ls -ltrh'
 alias lx='ls -lXBh'
-alias up='cd ../'
+# alias up='cd ../'
 
 alias cg="newgrp"
 
@@ -77,16 +77,16 @@ alias R='rails'
 alias RR='rails'
 alias RN='react-native'
 
-alias st='subl'
-alias ss='subl'
+# alias st='subl'
+# alias ss='subl'
 alias gt='gittower'
 
-alias trr='touch tmp/restart.txt'
-alias ttr='touch tmp/restart.txt'
-alias tdl='tail -f log/development.log'
+# alias trr='touch tmp/restart.txt'
+# alias ttr='touch tmp/restart.txt'
+# alias tdl='tail -f log/development.log'
 
-alias geeknote='python $HOME/.bin/geeknote/geeknote.py'
-alias gnsync='python $HOME/.bin/geeknote/gnsync.py'
+# alias geeknote='python $HOME/.bin/geeknote/geeknote.py'
+# alias gnsync='python $HOME/.bin/geeknote/gnsync.py'
 
 alias pg8='ping 8.8.8.8'
 alias ptt='ssh bbsu@ptt.cc'
