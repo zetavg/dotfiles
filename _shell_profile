@@ -15,7 +15,7 @@ export DEFAULT_ELIXIR_VERSION=$(cat ~/.tool-versions | grep elixir | awk -F' ' '
 # ENV
 
 if [[ $(uname) == "Darwin" ]]; then
-  export VISUAL='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl -w'
+  export VISUAL='code --wait'
 fi
 
 
