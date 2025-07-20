@@ -76,7 +76,7 @@ command="${command/\//\\/}"
 set -eu
 
 project_dir="$(pwd)"
-project_dir_hash="$(echo "$project_dir" | openssl md5)"
+project_dir_hash="$(echo "$project_dir" | openssl md5 | sed 's/(stdin)= //g')"
 
 update_files_path="$HOME/.update"
 
