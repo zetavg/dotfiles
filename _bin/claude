@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+# Launches Claude Code as installed in the Node.js installation specified by ~/.tool-versions (via asdf-vm).
+# CLAUDE_CODE_BASE_URL and CLAUDE_CODE_AUTH_TOKEN, if set, override the standard Anthropic API setup.
+
+set -euo pipefail
+
+[ -n "${CLAUDE_CODE_AUTH_TOKEN:-}" ] && export ANTHROPIC_AUTH_TOKEN="$CLAUDE_CODE_AUTH_TOKEN"
+[ -n "${CLAUDE_CODE_BASE_URL:-}" ] && export ANTHROPIC_BASE_URL="$CLAUDE_CODE_BASE_URL"
+
+node_version_error_msg="This claude wrapper uses a global claude installation no matter what the current directory is and requires the default nodejs version to be set in \$HOME/.tool-versions to determine the correct nodejs version to use."
+
+if [ ! -f "$HOME/.tool-versions" ]; then
+  echo "Error: $HOME/.tool-versions does not exist" >&2
+  echo "$node_version_error_msg" >&2
+  exit 1
+fi
+
+node_version=$(awk '$1 == "nodejs" { print $2 }' "$HOME/.tool-versions")
+if [ -z "$node_version" ]; then
+  echo "Error: nodejs version not found in $HOME/.tool-versions" >&2
+  echo "$node_version_error_msg" >&2
+  exit 1
+fi
+
+claude_path="$HOME/.asdf/installs/nodejs/$node_version/bin/claude"
+
+if [ ! -x "$claude_path" ]; then
+  echo "Error: Claude Code is not installed under Node.js $node_version at $claude_path." >&2
+  exit 1
+fi
+
+exec "$claude_path" "$@"
