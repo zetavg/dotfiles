@@ -1,11 +1,27 @@
 #!/usr/bin/env bash
 # Launches Claude Code as installed in the Node.js installation specified by ~/.tool-versions (via asdf-vm).
+# Also try to load environment variables from .env files in the current and parent directories.
 # CLAUDE_CODE_BASE_URL and CLAUDE_CODE_AUTH_TOKEN, if set, override the standard Anthropic API setup.
 
 set -euo pipefail
 
+SCRIPT_PATH="${BASH_SOURCE[0]:-$0}"
+SCRIPT_DIR="$(cd "$(dirname "$SCRIPT_PATH")" && pwd)"
+
+
+# 1. Environment variables
+
+source "${SCRIPT_DIR}/utils/load_var_from_dotenv.sh" CLAUDE_CONFIG_DIR
+source "${SCRIPT_DIR}/utils/load_var_from_dotenv.sh" ANTHROPIC_AUTH_TOKEN
+source "${SCRIPT_DIR}/utils/load_var_from_dotenv.sh" ANTHROPIC_BASE_URL
+source "${SCRIPT_DIR}/utils/load_var_from_dotenv.sh" CLAUDE_CODE_AUTH_TOKEN
+source "${SCRIPT_DIR}/utils/load_var_from_dotenv.sh" CLAUDE_CODE_BASE_URL
+
 [ -n "${CLAUDE_CODE_AUTH_TOKEN:-}" ] && export ANTHROPIC_AUTH_TOKEN="$CLAUDE_CODE_AUTH_TOKEN"
 [ -n "${CLAUDE_CODE_BASE_URL:-}" ] && export ANTHROPIC_BASE_URL="$CLAUDE_CODE_BASE_URL"
+
+
+# 2. Use claude installed under the Node.js version specified in ~/.tool-versions
 
 node_version_error_msg="This claude wrapper uses a global claude installation no matter what the current directory is and requires the default nodejs version to be set in \$HOME/.tool-versions to determine the correct nodejs version to use."
 
@@ -28,5 +44,8 @@ if [ ! -x "$claude_path" ]; then
   echo "Error: Claude Code is not installed under Node.js $node_version at $claude_path." >&2
   exit 1
 fi
+
+
+# 3. Execute claude with arguments passthrough
 
 exec "$claude_path" "$@"
