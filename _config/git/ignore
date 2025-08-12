@@ -1,5 +1,4 @@
-# Automatically created by GitHub for Mac
-# To make edits, delete these initial comments, or else your changes may be lost!
+# Initially created automatically by GitHub for Mac
 
 # General
 .DS_Store
@@ -7,7 +6,7 @@
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
 
 # Thumbnails
 ._*
@@ -27,3 +26,10 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# VSCode local workspace-specific settings
+# Note that we are using a patched version of VSCode that supports `.local` settings files; this is not a standard feature in official VSCode releases.
+**/.vscode/settings.local.json
+
+# Claude Code
+**/.claude/settings.local.json
