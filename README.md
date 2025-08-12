@@ -1,7 +1,5 @@
 # dotfiles
 
-[![Build Status](https://travis-ci.org/zetavg/dotfiles.svg?branch=master)](https://travis-ci.org/zetavg/dotfiles)
-
 @zetavg's dotfiles, including handy scripts, configurations for bash, zsh, asdf, Sublime Text, Karabiner-Elements and more.
 
 
