@@ -72,28 +72,24 @@ git submodule init
 git submodule update
 echo "submodules ready"
 
-phase "Copy Existing .config Files"
-if [[ -d "$HOME/.config" ]] && [[ ! -L "$HOME/.config" ]]; then
-  echo "coping files from $HOME/.config..."
-  for i in "$HOME/.config"/*; do
-    from="$i"
-    to="$BASEDIR/_config/$(basename "$from")"
-    if [[ ! -e "$to" ]]; then
-      echo "  copying $from to $to"
-      run_command "cp -rn $from $to"
-    else
-      echo "  $to exists, skipping"
-    fi
-  done
-else
-  echo "$HOME/.config is not a normal directory, skipping"
-fi
-
 phase "Link General Files"
 
 for i in _*; do
+  # Skip _config (handled separately)
+  if [[ "$i" == "_config" ]]; then
+    continue
+  fi
+
   source="$BASEDIR/$i"
-  target="$HOME/${i/_/.}"
+  target="$HOME/${i/#_/.}"
+  link "$source" "$target"
+done
+
+phase "Link .config/ Files"
+
+for i in _config/*; do
+  source="$BASEDIR/$i"
+  target="$HOME/${i/#_config/.config}"
   link "$source" "$target"
 done
 
