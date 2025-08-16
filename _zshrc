@@ -7,6 +7,8 @@
 setopt PROMPT_SUBST  # enable prompt expansions
 export CLICOLOR=1
 
+WORDCHARS='_'
+
 
 ##
 # Append fpath
@@ -16,9 +18,6 @@ fpath=( $fpath ~/.zsh/functions )
 
 if type brew &>/dev/null; then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-
-  autoload -Uz compinit
-  compinit
 fi
 
 
@@ -41,35 +40,91 @@ setopt SHARE_HISTORY
 
 
 ##
-# antibody
+# Zinit
 ##
 
-source <(antibody init)
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
+[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+source "${ZINIT_HOME}/zinit.zsh"
 
-bundles=(
-  mafredri/zsh-async
-  zdharma/fast-syntax-highlighting
-  zsh-users/zsh-completions
-  zsh-users/zsh-autosuggestions
-  zsh-users/zsh-history-substring-search
-  psprint/zsh-navigation-tools
-  zdharma/history-search-multi-word
-  jreese/zsh-titles
-  marcoy/zsh-gitfast
-  paulirish/git-open
-  conda-incubator/conda-zsh-completion
-  spwhitt/nix-zsh-completions
-  # chisui/zsh-nix-shell # Using direnv with `use nix` in a .envrc instead
-  'robbyrussell/oh-my-zsh path:plugins/docker'
-  'robbyrussell/oh-my-zsh path:plugins/docker-compose'
-  sobolevn/wakatime-zsh-plugin
-)
+# Workaround for zinit issue#504: remove subversion dependency. Function clones all files in plugin
+# directory (on github) that might be useful to zinit snippet directory. Should only be invoked
+# via zinit atclone"_fix-omz-plugin"
+# From: https://github.com/zdharma-continuum/zinit/discussions/651#discussioncomment-11442498
+_fix-omz-plugin() {
+    [[ -f ./._zinit/teleid ]] || return 1
+    local teleid="$(<./._zinit/teleid)"
+    local pluginid
+    for pluginid (${teleid#OMZ::plugins/} ${teleid#OMZP::}) {
+        [[ $pluginid != $teleid ]] && break
+    }
+    (($?)) && return 1
+    print "Fixing $teleid..."
+    git clone --quiet --no-checkout --depth=1 --filter=tree:0 https://github.com/ohmyzsh/ohmyzsh
+    cd ./ohmyzsh
+    git sparse-checkout set --no-cone /plugins/$pluginid
+    git checkout --quiet
+    cd ..
+    local file
+    for file (./ohmyzsh/plugins/$pluginid/*~(.gitignore|*.plugin.zsh)(D)) {
+        print "Copying ${file:t}..."
+        cp -R $file ./${file:t}
+    }
+    rm -rf ./ohmyzsh
+}
 
-# Manually add oh-my-zsh/plugins/docker/_docker to fpath
-# https://stackoverflow.com/a/45406609
-fpath+=($(antibody home)/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh/plugins/docker)
+# This is needed if we source `zinit.zsh` after `compinit`
+# autoload -Uz _zinit
+# (( ${+_comps} )) && _comps[zinit]=_zinit
 
-antibody bundle < <(print -l $bundles)
+# Load pure theme
+
+
+##
+# Enable prompt
+##
+
+[[ "$SSH_CONNECTION" != '' ]] && PURE_PROMPT_SYMBOL='⋯❯' || PURE_PROMPT_SYMBOL='❯'
+zinit ice pick"async.zsh" src"pure.zsh" # with zsh-async library that's bundled with it.
+zinit light sindresorhus/pure
+zstyle ':prompt:pure:git:dirty' color 242
+precmd_functions+=(precmd_postprocessing)
+precmd_postprocessing() {
+  # Hide if using default environments
+  if [[ $psvar[12] == "base" ]]; then
+    psvar[12]=
+  fi
+
+  # If $psvar[12] is not blank and starts with current dir, strip it
+  if [[ -n $psvar[12] ]]; then
+    if [[ $psvar[12] == /* ]]; then
+      # Show relative path as it will be shorter in most cases
+      local rel_path="${psvar[12]#${PWD}/}"
+      if [[ -n $rel_path && $rel_path != $psvar[12] ]]; then
+        rel_path="./${rel_path}"
+      fi
+
+      if [[ -n $rel_path ]]; then
+        psvar[12]="${rel_path}"
+      fi
+    fi
+  fi
+}
+
+# Load plugins
+# zinit light mafredri/zsh-async # we are using zsh-async library bundled with the pure theme instead
+zinit light zdharma/fast-syntax-highlighting
+zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-history-substring-search
+zinit light psprint/zsh-navigation-tools
+zinit light zdharma/history-search-multi-word
+zinit light jreese/zsh-titles
+zinit light paulirish/git-open
+zinit light conda-incubator/conda-zsh-completion
+
+zinit wait lucid atpull"%atclone" atclone"_fix-omz-plugin" for OMZ::plugins/gitfast
 
 
 ##
@@ -78,13 +133,6 @@ antibody bundle < <(print -l $bundles)
 
 autoload -U compinit && compinit
 zstyle ':completion:*' menu select
-
-
-##
-# Zle
-##
-
-WORDCHARS='?_'
 
 
 ##
@@ -99,20 +147,12 @@ bindkey '^[[B' history-substring-search-down
 bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
 
+
 ##
 # zdharma/fast-syntax-highlighting
 ##
 
 FAST_HIGHLIGHT_STYLES[unknown-token]='fg=red'
-
-
-##
-# Enable prompt
-##
-
-autoload -U promptinit; promptinit
-[[ "$SSH_CONNECTION" != '' ]] && PURE_PROMPT_SYMBOL='⋯ ❯' || PURE_PROMPT_SYMBOL='❯'
-prompt pure
 
 
 ##
