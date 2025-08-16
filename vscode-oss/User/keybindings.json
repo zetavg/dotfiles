@@ -103,6 +103,13 @@
     "when": "cursorBeforeGhostText && inlineSuggestionVisible && !accessibilityModeEnabled && !editorReadonly"
   },
 
+  // Trigger auto-complete
+  {
+    "key": "alt+cmd+i",
+    "command": "editor.action.inlineSuggest.trigger",
+    "when": "editorTextFocus && !editorHasSelection && !inlineSuggestionsVisible"
+  },
+
   //
   // MARK: Find
   //
