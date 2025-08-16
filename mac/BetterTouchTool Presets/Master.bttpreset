@@ -3,7 +3,7 @@
   "BTTPresetInfoURL" : "",
   "BTTPresetName" : "Master",
   "BTTPresetColor" : "0.000000, 0.000000, 0.000000, 255.000000",
-  "BTTPresetUUID" : "D82AFEF0-BEDB-4472-851C-7AA4580C62DF",
+  "BTTPresetUUID" : "DF9EE3A6-5837-405D-ABD4-100C0F0C3829",
   "BTTPresetContent" : [
     {
       "BTTAppBundleIdentifier" : "at.eggerapps.Postico",
@@ -380,7 +380,7 @@
           "BTTAlternateIconData" : ""
         },
         {
-          "BTTLastUpdatedAt" : 1755377778.92384,
+          "BTTLastUpdatedAt" : 1755377814.7090468,
           "BTTTriggerType" : 624,
           "BTTTriggerTypeDescriptionReadOnly" : "Please Select a Trigger ",
           "BTTTriggerTypeDescription" : "  We use Karabiner to do this now.",
@@ -390,6 +390,7 @@
           "BTTGenericActionConfig" : "autoAdapt",
           "BTTShortcutToSend" : "59,49",
           "BTTShortcutKeyboardType" : 0,
+          "BTTEnabled" : 0,
           "BTTShortcutKeyCode" : -1,
           "BTTOrder" : 7,
           "BTTAutoAdaptToKeyboardLayout" : 0,
