@@ -1,5 +1,5 @@
 #####################################
-# zetavg's shell profile 2020-01-16 #
+# zetavg's shell profile 2025-08-16 #
 #####################################
 
 ## Add `source "$HOME/.shell_profile"` to the main .profile ##
@@ -434,6 +434,14 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 
 
 # LOAD ENVIRONMENT SPECIFIC PROFILES
+
+if [ -f "$HOME/.profile_local" ]; then
+  if [ -n "$FISH_VERSION" ]; then
+    bass source "$HOME/.profile_local"
+  else
+    source "$HOME/.profile_local"
+  fi
+fi
 
 if [ -f "$HOME/.profile_other" ]; then
   if [ -n "$FISH_VERSION" ]; then
