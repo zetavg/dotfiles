@@ -1,0 +1,10 @@
+[tools]
+bun = "latest"
+elixir = "1.18.4"
+erlang = "28.0.2"
+go = "1.25.0"
+node = "22.17.1"
+ruby = "3.4.5"
+
+[settings]
+idiomatic_version_file_enable_tools = ["node", "python", "ruby"]

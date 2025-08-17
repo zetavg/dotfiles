@@ -156,6 +156,15 @@ FAST_HIGHLIGHT_STYLES[unknown-token]='fg=red'
 
 
 ##
+# mise
+##
+
+if type mise &>/dev/null; then
+  eval "$(mise activate zsh)"
+fi
+
+
+##
 # Load Shared Profile
 ##
 
