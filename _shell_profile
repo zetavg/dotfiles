@@ -415,6 +415,13 @@ function nixos-switch-generation() {
 }
 
 
+# HOMEBREW
+
+if [ -d "/opt/homebrew/bin" ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
+
 # ASDF
 
 # Only if the go executable is provided by asdf
