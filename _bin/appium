@@ -1,28 +1,12 @@
 #!/usr/bin/env bash
-# Launches appium as installed in the Node.js installation specified by ~/.tool-versions (via asdf-vm).
+# Launches appium installed under the global Node.js.
 
 set -euo pipefail
 
-node_version_error_msg="This appium wrapper uses a global appium installation no matter what the current directory is and requires the default nodejs version to be set in \$HOME/.tool-versions to determine the correct nodejs version to use."
+SCRIPT_PATH="${BASH_SOURCE[0]:-$0}"
+SCRIPT_DIR="$(cd "$(dirname "$SCRIPT_PATH")" && pwd)"
 
-if [ ! -f "$HOME/.tool-versions" ]; then
-  echo "Error: $HOME/.tool-versions does not exist" >&2
-  echo "$node_version_error_msg" >&2
-  exit 1
-fi
-
-node_version=$(awk '$1 == "nodejs" { print $2 }' "$HOME/.tool-versions")
-if [ -z "$node_version" ]; then
-  echo "Error: nodejs version not found in $HOME/.tool-versions" >&2
-  echo "$node_version_error_msg" >&2
-  exit 1
-fi
-
-appium_path="$HOME/.asdf/installs/nodejs/$node_version/bin/appium"
-
-if [ ! -x "$appium_path" ]; then
-  echo "Error: appium is not installed under Node.js $node_version at $appium_path." >&2
-  exit 1
-fi
+source "${SCRIPT_DIR}/utils/find_global_command_path.sh"
+appium_path=$(find_global_command_path "node" "appium" "npm i --location=global appium" "$SCRIPT_PATH")
 
 exec "$appium_path" "$@"

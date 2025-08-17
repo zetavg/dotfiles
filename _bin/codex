@@ -1,31 +1,16 @@
 #!/usr/bin/env bash
-# Launches OpenAI Codex CLI as installed in the Node.js installation specified by ~/.tool-versions (via asdf-vm).
-# CODEX_OPENAI_BASE_URL, if set, overrides the standard OpenAI API setup.
+# Launches OpenAI Codex CLI installed under the global Node.js.
+# CODEX_OPENAI_API_KEY and CODEX_OPENAI_BASE_URL, if set, overrides the standard OpenAI API setup.
 
 set -euo pipefail
 
+[ -n "${CODEX_OPENAI_API_KEY:-}" ] && export OPENAI_API_KEY="$CODEX_OPENAI_API_KEY"
 [ -n "${CODEX_OPENAI_BASE_URL:-}" ] && export OPENAI_BASE_URL="$CODEX_OPENAI_BASE_URL"
 
-node_version_error_msg="This codex wrapper uses a global codex installation no matter what the current directory is and requires the default nodejs version to be set in \$HOME/.tool-versions to determine the correct nodejs version to use."
+SCRIPT_PATH="${BASH_SOURCE[0]:-$0}"
+SCRIPT_DIR="$(cd "$(dirname "$SCRIPT_PATH")" && pwd)"
 
-if [ ! -f "$HOME/.tool-versions" ]; then
-  echo "Error: $HOME/.tool-versions does not exist" >&2
-  echo "$node_version_error_msg" >&2
-  exit 1
-fi
-
-node_version=$(awk '$1 == "nodejs" { print $2 }' "$HOME/.tool-versions")
-if [ -z "$node_version" ]; then
-  echo "Error: nodejs version not found in $HOME/.tool-versions" >&2
-  echo "$node_version_error_msg" >&2
-  exit 1
-fi
-
-codex_path="$HOME/.asdf/installs/nodejs/$node_version/bin/codex"
-
-if [ ! -x "$codex_path" ]; then
-  echo "Error: codex is not installed under Node.js $node_version at $codex_path." >&2
-  exit 1
-fi
+source "${SCRIPT_DIR}/utils/find_global_command_path.sh"
+codex_path=$(find_global_command_path "node" "codex" "npm install -g @openai/codex" "$SCRIPT_PATH")
 
 exec "$codex_path" "$@"
