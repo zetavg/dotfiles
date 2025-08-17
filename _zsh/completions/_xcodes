@@ -1,0 +1,315 @@
+#compdef xcodes
+local context state state_descr line
+_xcodes_commandname=$words[1]
+typeset -A opt_args
+
+_xcodes() {
+    integer ret=1
+    local -a args
+    args+=(
+        '(-h --help)'{-h,--help}'[Show help information.]'
+        '(-): :->command'
+        '(-)*:: :->arg'
+    )
+    _arguments -w -s -S $args[@] && ret=0
+    case $state in
+        (command)
+            local subcommands
+            subcommands=(
+                'download:Download a specific version of Xcode'
+                'install:Download and install a specific version of Xcode'
+                'installed:List the versions of Xcode that are installed'
+                'list:List all versions of Xcode that are available to install'
+                'runtimes:List all simulator runtimes that are available to install'
+                'select:Change the selected Xcode'
+                'uninstall:Uninstall a version of Xcode'
+                'update:Update the list of available versions of Xcode'
+                'version:Print the version number of xcodes itself'
+                'signout:Clears the stored username and password'
+                'help:Show subcommand help information.'
+            )
+            _describe "subcommand" subcommands
+            ;;
+        (arg)
+            case ${words[1]} in
+                (download)
+                    _xcodes_download
+                    ;;
+                (install)
+                    _xcodes_install
+                    ;;
+                (installed)
+                    _xcodes_installed
+                    ;;
+                (list)
+                    _xcodes_list
+                    ;;
+                (runtimes)
+                    _xcodes_runtimes
+                    ;;
+                (select)
+                    _xcodes_select
+                    ;;
+                (uninstall)
+                    _xcodes_uninstall
+                    ;;
+                (update)
+                    _xcodes_update
+                    ;;
+                (version)
+                    _xcodes_version
+                    ;;
+                (signout)
+                    _xcodes_signout
+                    ;;
+                (help)
+                    _xcodes_help
+                    ;;
+            esac
+            ;;
+    esac
+
+    return ret
+}
+
+_xcodes_download() {
+    integer ret=1
+    local -a args
+    args+=(
+        ':version:{_custom_completion $_xcodes_commandname ---completion download -- version $words}'
+        '--latest[Update and then download the latest release version available.]'
+        '--latest-prerelease[Update and then download the latest prerelease version available, including GM seeds and GMs.]'
+        '--aria2[The path to an aria2 executable. Searches $PATH by default.]:aria2:_files'
+        '--no-aria2[Don'"'"'t use aria2 to download Xcode, even if its available.]'
+        '--directory[The directory to download Xcode to. Defaults to ~/Downloads.]:directory:_files -/'
+        '--use-fastlane-auth[Use fastlane spaceship session.]'
+        '--fastlane-user[The fastlane spaceship user]:fastlane-user:{local -a list; list=(${(f)"$(ls file:///Users/z/.fastlane/spaceship)"}); _describe '''' list}'
+        '--data-source[The data source for available Xcode versions.]:data-source:(apple xcodeReleases)'
+        '--color[Determines whether output should be colored.]'
+        '--no-color[Determines whether output should be colored.]'
+        '(-h --help)'{-h,--help}'[Show help information.]'
+    )
+    _arguments -w -s -S $args[@] && ret=0
+
+    return ret
+}
+
+_xcodes_install() {
+    integer ret=1
+    local -a args
+    args+=(
+        ':version:{_custom_completion $_xcodes_commandname ---completion install -- version $words}'
+        '--path[Local path to Xcode .xip]:path:_files -g '"'"'*.xip'"'"''
+        '--latest[Update and then install the latest release version available.]'
+        '--latest-prerelease[Update and then install the latest prerelease version available, including GM seeds and GMs.]'
+        '--aria2[The path to an aria2 executable. Searches $PATH by default.]:aria2:_files'
+        '--no-aria2[Don'"'"'t use aria2 to download Xcode, even if its available.]'
+        '--select[Select the installed xcode version after installation.]'
+        '--update[Whether to update the list before installing]'
+        '(-p --print-path)'{-p,--print-path}'[Print the path of the selected Xcode]'
+        '--experimental-unxip[Use the experimental unxip functionality. May speed up unarchiving by up to 2-3x.]'
+        '--no-superuser[Don'"'"'t ask for superuser (root) permission. Some optional steps of the installation will be skipped.]'
+        '--empty-trash[Completely delete Xcode .xip after installation, instead of keeping it on the user'"'"'s Trash.]'
+        '--directory[The directory to install Xcode into. Defaults to /Applications.]:directory:_files -/'
+        '--use-fastlane-auth[Use fastlane spaceship session.]'
+        '--fastlane-user[The fastlane spaceship user.]:fastlane-user:{local -a list; list=(${(f)"$(ls file:///Users/z/.fastlane/spaceship)"}); _describe '''' list}'
+        '--data-source[The data source for available Xcode versions.]:data-source:(apple xcodeReleases)'
+        '--color[Determines whether output should be colored.]'
+        '--no-color[Determines whether output should be colored.]'
+        '(-h --help)'{-h,--help}'[Show help information.]'
+    )
+    _arguments -w -s -S $args[@] && ret=0
+
+    return ret
+}
+
+_xcodes_installed() {
+    integer ret=1
+    local -a args
+    args+=(
+        ':version:{_custom_completion $_xcodes_commandname ---completion installed -- version $words}'
+        '--directory[The directory where your Xcodes are installed. Defaults to /Applications.]:directory:_files -/'
+        '--color[Determines whether output should be colored.]'
+        '--no-color[Determines whether output should be colored.]'
+        '(-h --help)'{-h,--help}'[Show help information.]'
+    )
+    _arguments -w -s -S $args[@] && ret=0
+
+    return ret
+}
+
+_xcodes_list() {
+    integer ret=1
+    local -a args
+    args+=(
+        '--directory[The directory where your Xcodes are installed. Defaults to /Applications.]:directory:_files -/'
+        '--data-source[The data source for available Xcode versions.]:data-source:(apple xcodeReleases)'
+        '--color[Determines whether output should be colored.]'
+        '--no-color[Determines whether output should be colored.]'
+        '(-h --help)'{-h,--help}'[Show help information.]'
+    )
+    _arguments -w -s -S $args[@] && ret=0
+
+    return ret
+}
+
+_xcodes_runtimes() {
+    integer ret=1
+    local -a args
+    args+=(
+        '--include-betas[Include beta runtimes available to install]'
+        '(-h --help)'{-h,--help}'[Show help information.]'
+        '(-): :->command'
+        '(-)*:: :->arg'
+    )
+    _arguments -w -s -S $args[@] && ret=0
+    case $state in
+        (command)
+            local subcommands
+            subcommands=(
+                'download:Download a specific simulator runtime'
+                'install:Download and install a specific simulator runtime'
+            )
+            _describe "subcommand" subcommands
+            ;;
+        (arg)
+            case ${words[1]} in
+                (download)
+                    _xcodes_runtimes_download
+                    ;;
+                (install)
+                    _xcodes_runtimes_install
+                    ;;
+            esac
+            ;;
+    esac
+
+    return ret
+}
+
+_xcodes_runtimes_download() {
+    integer ret=1
+    local -a args
+    args+=(
+        ':version:'
+        '--aria2[The path to an aria2 executable. Searches $PATH by default.]:aria2:_files'
+        '--no-aria2[Don'"'"'t use aria2 to download the runtime, even if its available.]'
+        '--directory[The directory to download the runtime archive to. Defaults to ~/Downloads.]:directory:_files -/'
+        '--color[Determines whether output should be colored.]'
+        '--no-color[Determines whether output should be colored.]'
+        '(-h --help)'{-h,--help}'[Show help information.]'
+    )
+    _arguments -w -s -S $args[@] && ret=0
+
+    return ret
+}
+
+_xcodes_runtimes_install() {
+    integer ret=1
+    local -a args
+    args+=(
+        ':version:'
+        '--aria2[The path to an aria2 executable. Searches $PATH by default.]:aria2:_files'
+        '--no-aria2[Don'"'"'t use aria2 to download the runtime, even if its available.]'
+        '--directory[The directory to download the runtime archive to. Defaults to ~/Downloads.]:directory:_files -/'
+        '--keep-archive[Do not delete the runtime archive after the installation is finished.]'
+        '--color[Determines whether output should be colored.]'
+        '--no-color[Determines whether output should be colored.]'
+        '(-h --help)'{-h,--help}'[Show help information.]'
+    )
+    _arguments -w -s -S $args[@] && ret=0
+
+    return ret
+}
+
+_xcodes_select() {
+    integer ret=1
+    local -a args
+    args+=(
+        '(-p --print-path)'{-p,--print-path}'[Print the path of the selected Xcode]'
+        ':version-or-path:{_custom_completion $_xcodes_commandname ---completion select -- versionOrPath $words}'
+        '--directory[The directory where your Xcodes are installed. Defaults to /Applications.]:directory:_files -/'
+        '--color[Determines whether output should be colored.]'
+        '--no-color[Determines whether output should be colored.]'
+        '(-h --help)'{-h,--help}'[Show help information.]'
+    )
+    _arguments -w -s -S $args[@] && ret=0
+
+    return ret
+}
+
+_xcodes_uninstall() {
+    integer ret=1
+    local -a args
+    args+=(
+        ':version:{_custom_completion $_xcodes_commandname ---completion uninstall -- version $words}'
+        '--empty-trash[Completely delete Xcode, instead of keeping it on the user'"'"'s Trash.]'
+        '--directory[The directory where your Xcodes are installed. Defaults to /Applications.]:directory:_files -/'
+        '--color[Determines whether output should be colored.]'
+        '--no-color[Determines whether output should be colored.]'
+        '(-h --help)'{-h,--help}'[Show help information.]'
+    )
+    _arguments -w -s -S $args[@] && ret=0
+
+    return ret
+}
+
+_xcodes_update() {
+    integer ret=1
+    local -a args
+    args+=(
+        '--directory[The directory where your Xcodes are installed. Defaults to /Applications.]:directory:_files -/'
+        '--data-source[The data source for available Xcode versions.]:data-source:(apple xcodeReleases)'
+        '--color[Determines whether output should be colored.]'
+        '--no-color[Determines whether output should be colored.]'
+        '(-h --help)'{-h,--help}'[Show help information.]'
+    )
+    _arguments -w -s -S $args[@] && ret=0
+
+    return ret
+}
+
+_xcodes_version() {
+    integer ret=1
+    local -a args
+    args+=(
+        '--color[Determines whether output should be colored.]'
+        '--no-color[Determines whether output should be colored.]'
+        '(-h --help)'{-h,--help}'[Show help information.]'
+    )
+    _arguments -w -s -S $args[@] && ret=0
+
+    return ret
+}
+
+_xcodes_signout() {
+    integer ret=1
+    local -a args
+    args+=(
+        '--color[Determines whether output should be colored.]'
+        '--no-color[Determines whether output should be colored.]'
+        '(-h --help)'{-h,--help}'[Show help information.]'
+    )
+    _arguments -w -s -S $args[@] && ret=0
+
+    return ret
+}
+
+_xcodes_help() {
+    integer ret=1
+    local -a args
+    args+=(
+        ':subcommands:'
+    )
+    _arguments -w -s -S $args[@] && ret=0
+
+    return ret
+}
+
+
+_custom_completion() {
+    local completions=("${(@f)$($*)}")
+    _describe '' completions
+}
+
+_xcodes
