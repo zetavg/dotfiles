@@ -14,7 +14,13 @@ WORDCHARS='_'
 # Append fpath
 ##
 
-fpath=( $fpath ~/.zsh/functions )
+if [[ -d $HOME/.zsh/functions ]]; then
+  fpath=($fpath $HOME/.zsh/functions)
+fi
+
+if [[ -d $HOME/.zsh/completions ]]; then
+  fpath=($fpath $HOME/.zsh/completions)
+fi
 
 if type brew &>/dev/null; then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
