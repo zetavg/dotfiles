@@ -53,91 +53,85 @@ hs.window.animationDuration = 0
 
 --- === Focusing Windows ===
 
--- This is done by Slate now because it's much faster
-
--- -- hs.hotkey.bind(winOpMods, "left", function()
--- --   hs.window.focusedWindow():focusWindowWest()
--- -- end)
--- hs.hotkey.bind(winOpMods, "H", function()
+-- hs.hotkey.bind(winOpMods, "left", function()
 --   hs.window.focusedWindow():focusWindowWest()
 -- end)
+hs.hotkey.bind(winOpMods, "H", function()
+  hs.window.focusedWindow():focusWindowWest()
+end)
 
--- -- hs.hotkey.bind(winOpMods, "down", function()
--- --   hs.window.focusedWindow():focusWindowSouth()
--- -- end)
--- hs.hotkey.bind(winOpMods, "J", function()
+-- hs.hotkey.bind(winOpMods, "down", function()
 --   hs.window.focusedWindow():focusWindowSouth()
 -- end)
+hs.hotkey.bind(winOpMods, "J", function()
+  hs.window.focusedWindow():focusWindowSouth()
+end)
 
--- -- hs.hotkey.bind(winOpMods, "up", function()
--- --   hs.window.focusedWindow():focusWindowNorth()
--- -- end)
--- hs.hotkey.bind(winOpMods, "K", function()
+-- hs.hotkey.bind(winOpMods, "up", function()
 --   hs.window.focusedWindow():focusWindowNorth()
 -- end)
+hs.hotkey.bind(winOpMods, "K", function()
+  hs.window.focusedWindow():focusWindowNorth()
+end)
 
--- -- hs.hotkey.bind(winOpMods, "right", function()
--- --   hs.window.focusedWindow():focusWindowEast()
--- -- end)
--- hs.hotkey.bind(winOpMods, "L", function()
+-- hs.hotkey.bind(winOpMods, "right", function()
 --   hs.window.focusedWindow():focusWindowEast()
 -- end)
+hs.hotkey.bind(winOpMods, "L", function()
+  hs.window.focusedWindow():focusWindowEast()
+end)
 
 --- === Moving Windows ===
 
--- This is done by Slate now because it's much faster
-
--- -- hs.hotkey.bind(winMdMods, "left", function()
--- --   hs.window.focusedWindow():move({-16, 0})
--- -- end)
--- hs.hotkey.bind(winMdMods, "H", function()
+-- hs.hotkey.bind(winMdMods, "left", function()
 --   hs.window.focusedWindow():move({-16, 0})
 -- end)
+hs.hotkey.bind(winMdMods, "H", function()
+  hs.window.focusedWindow():move({-16, 0})
+end)
 
--- -- hs.hotkey.bind(winMdMods, "down", function()
--- --   hs.window.focusedWindow():move({0, 16})
--- -- end)
--- hs.hotkey.bind(winMdMods, "J", function()
+-- hs.hotkey.bind(winMdMods, "down", function()
 --   hs.window.focusedWindow():move({0, 16})
 -- end)
+hs.hotkey.bind(winMdMods, "J", function()
+  hs.window.focusedWindow():move({0, 16})
+end)
 
--- -- hs.hotkey.bind(winMdMods, "up", function()
--- --   hs.window.focusedWindow():move({0, -16})
--- -- end)
--- hs.hotkey.bind(winMdMods, "K", function()
+-- hs.hotkey.bind(winMdMods, "up", function()
 --   hs.window.focusedWindow():move({0, -16})
 -- end)
+hs.hotkey.bind(winMdMods, "K", function()
+  hs.window.focusedWindow():move({0, -16})
+end)
 
--- -- hs.hotkey.bind(winMdMods, "right", function()
--- --   hs.window.focusedWindow():move({16, 0})
--- -- end)
--- hs.hotkey.bind(winMdMods, "L", function()
+-- hs.hotkey.bind(winMdMods, "right", function()
 --   hs.window.focusedWindow():move({16, 0})
 -- end)
+hs.hotkey.bind(winMdMods, "L", function()
+  hs.window.focusedWindow():move({16, 0})
+end)
 
 --- === Resize Windows ===
 
--- This is done by Slate now because it's much faster
+hs.hotkey.bind(winMdMods, "N", function()
+  local originalSize = hs.window.focusedWindow():size()
+  hs.window.focusedWindow():setSize(originalSize.w - 16, originalSize.h)
+end)
 
--- hs.hotkey.bind(winMdMods, "N", function()
---   local originalSize = hs.window.focusedWindow():size()
---   hs.window.focusedWindow():setSize(originalSize.w - 16, originalSize.h)
--- end)
+hs.hotkey.bind(winMdMods, "M", function()
+  local originalSize = hs.window.focusedWindow():size()
+  hs.window.focusedWindow():setSize(originalSize.w, originalSize.h + 16)
+end)
 
--- hs.hotkey.bind(winMdMods, "M", function()
---   local originalSize = hs.window.focusedWindow():size()
---   hs.window.focusedWindow():setSize(originalSize.w, originalSize.h + 16)
--- end)
+hs.hotkey.bind(winMdMods, ",", function()
+  local originalSize = hs.window.focusedWindow():size()
+  hs.window.focusedWindow():setSize(originalSize.w, originalSize.h - 16)
+end)
 
--- hs.hotkey.bind(winMdMods, ",", function()
---   local originalSize = hs.window.focusedWindow():size()
---   hs.window.focusedWindow():setSize(originalSize.w, originalSize.h - 16)
--- end)
-
--- hs.hotkey.bind(winMdMods, ".", function()
---   local originalSize = hs.window.focusedWindow():size()
---   hs.window.focusedWindow():setSize(originalSize.w + 16, originalSize.h)
--- end)
+hs.hotkey.bind(winMdMods, ".", function()
+  local originalSize = hs.window.focusedWindow():size()
+  hs.window.focusedWindow():setSize(originalSize.w + 16, originalSize.h)
+end)
 
 --- === More Operation On Windows ===
 
