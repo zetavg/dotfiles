@@ -16,15 +16,19 @@
   ],
   // Editing
   "files.trimTrailingWhitespace": true,
+  // Diff Editor
+  "diffEditor.hideUnchangedRegions.enabled": true,
+  "diffEditor.hideUnchangedRegions.minimumLineCount": 4,
+  "diffEditor.hideUnchangedRegions.contextLineCount": 8,
+  // Git
+  "git.autofetch": true,
+  "git.blame.statusBarItem.enabled": true,
+  "git.blame.editorDecoration.enabled": false,
   // Terminal
   "terminal.integrated.commandsToSkipShell": [ // Prevents the terminal from taking over certain keybindings
     "workbench.action.cyclePanel",
     "workbench.action.cycleAuxiliaryBar"
   ],
-  // Git
-  "git.autofetch": true,
-  "git.blame.statusBarItem.enabled": true,
-  "git.blame.editorDecoration.enabled": false,
   // Copilot Completions
   "github.copilot.enable": {
     "*": true,
@@ -40,4 +44,34 @@
   "github.copilot.chat.languageContext.fix.typescript.enabled": true,
   "github.copilot.chat.languageContext.inline.typescript.enabled": true,
   "github.copilot.chat.languageContext.typescript.enabled": true,
+  // More Layout Settings
+  "workbench.views.forceCollapsed": ["bookmarksExplorer"],
+  "workbench.secondarySideBar.cycleWidths": [
+    0,
+    {
+      "0": 265, // iPad 13-inch, smaller window
+      "1362": 270, // iPad 13-inch, full-screen window (w1366)
+      "1380": 300, // MacBook 13-inch (w1470)
+      "1480": 320,
+    },
+    {
+      "0": 550, // iPad 13-inch (w1366)
+      "1450": 580, // MacBook 13-inch (w1470)
+      "1600": 720,
+    },
+  ],
+  "workbench.sideBar.cycleWidths": [
+    {
+      "0": 240, // iPad 13-inch, smaller window
+      "1362": 250, // iPad 13-inch, full-screen window (w1366)
+      "1380": 280, // MacBook 13-inch (w1470)
+      "1480": 320,
+    },
+    {
+      "0": 420,
+      "1450": 450,
+      "1600": 470,
+    },
+  ],
+  // Uncategorized
 }

@@ -207,6 +207,10 @@
     "command": "workbench.action.cycleAuxiliaryBar"
   },
   {
+    "key": "ctrl+e",
+    "command": "workbench.action.cycleSideBar"
+  },
+  {
     "key": "ctrl+a",
     "command": "workbench.action.cyclePanel"
   },
