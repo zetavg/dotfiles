@@ -9,16 +9,18 @@
 # 3. All commits will be automatically logged as highlight events.
 #
 
-API_KEY=$(defaults read com.rescuetime api.key)
+# DISABLED
 
-# REQUIRED FIELDS - Today's date and commit message
-MESSAGE=$(git log -1 HEAD --pretty=format:%s)
-DATE_TODAY=$(date +"%Y-%m-%d %H:%M:%S")
+# API_KEY=$(defaults read com.rescuetime api.key)
 
-# OPTIONAL - Label
-LABEL='Git'
+# # REQUIRED FIELDS - Today's date and commit message
+# MESSAGE=$(git log -1 HEAD --pretty=format:%s)
+# DATE_TODAY=$(date +"%Y-%m-%d %H:%M:%S")
 
-if [[ ${#MESSAGE} -gt 20 ]]; then
-  response="$(curl --silent --data "key=$API_KEY&highlight_date=$DATE_TODAY&description=$MESSAGE&source=$LABEL" https://www.rescuetime.com/anapi/highlights_post)"
-  echo "RescueTime Git Hook: $response"
-fi
+# # OPTIONAL - Label
+# LABEL='Git'
+
+# if [[ ${#MESSAGE} -gt 20 ]]; then
+#   response="$(curl --silent --data "key=$API_KEY&highlight_date=$DATE_TODAY&description=$MESSAGE&source=$LABEL" https://www.rescuetime.com/anapi/highlights_post)"
+#   echo "RescueTime Git Hook: $response"
+# fi
