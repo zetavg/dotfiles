@@ -1,0 +1,85 @@
+# hdel: delete specific zsh history entry by ID (deletes all matching content)
+hdel() {
+  echo 'This is not working since zsh does not support `history -d`'
+  return 1
+
+  emulate -L zsh
+  setopt pipefail
+
+  local usage_msg="Usage: hdel <history-id>"
+  local usage_desc="Deletes the specified history entry and all entries with the same content.\nTo show the recent 20 history entries: fc -l -20"
+
+  # Check if exactly one argument is provided
+  if (( $# != 1 )); then
+    print -ru2 -- "$usage_msg"
+    print -ru2 -- "$usage_desc"
+    return 1
+  fi
+
+  local target_id="$1"
+
+  # Validate that the argument is a number
+  if [[ ! $target_id == <-> ]]; then
+    print -ru2 -- "Error: Invalid history ID '$target_id'. Must be a number."
+    print -ru2 -- "$usage_msg"
+    return 1
+  fi
+
+  # Get the command content for the specified ID
+  local target_cmd
+  target_cmd=$(fc -l "$target_id" "$target_id" 2>/dev/null | awk '{$1=""; sub(/^ /,""); print}')
+
+  if [[ -z "$target_cmd" ]]; then
+    print -ru2 -- "Error: History ID '$target_id' not found."
+    print -ru2 -- "$usage_msg"
+    return 1
+  fi
+
+  # Find all history entries with the same content
+  local -a matching_ids=()
+  while IFS= read -r line; do
+    local id cmd
+    id="${line%% *}"
+    cmd="${line#* }"
+    if [[ "$cmd" == "$target_cmd" ]]; then
+      matching_ids+=("$id")
+    fi
+  done < <(fc -l 1 2>/dev/null | awk '{id=$1; $1=""; sub(/^ /,""); print id, $0}')
+
+  if (( ${#matching_ids[@]} == 0 )); then
+    print -ru2 -- "Error: No matching entries found for ID '$target_id'."
+    return 1
+  fi
+
+  # Show what will be deleted
+  print -r -- "Deleting ${#matching_ids[@]} history entry/entries:"
+  echo 'preview'
+  local d
+  for d in "${matching_ids[@]}"; do
+    local preview
+    preview="${target_cmd%%$'\n'*}" # first line only
+
+    if (( ${#preview} > 80 )); then
+      preview="${preview:0:80}..."
+    elif [[ "$target_cmd" == *$'\n'* ]]; then
+      preview+="..."
+    fi
+
+    print -r -- "  $d: $preview"
+  done
+  echo 'preview end'
+
+  echo 'doing delete'
+  # Delete all matching entries
+  for d in "${matching_ids[@]}"; do
+    history -d "$d" &>/dev/null || print -ru2 -- "Failed to delete id: $d"
+  done
+  echo 'doing delete done'
+
+  echo 'write'
+  # Write changes to history file
+  fc -W
+  echo 'write done'
+
+  print -r -- "Done"
+}

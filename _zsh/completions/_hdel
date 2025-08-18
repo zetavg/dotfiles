@@ -1,0 +1,28 @@
+#compdef hdel
+
+_hdel() {
+  emulate -L zsh
+  setopt pipefail
+
+  local -A cmd_to_id
+  local -a items
+  local id desc
+
+  # First pass: collect all entries and keep only the highest ID for each command
+  while read -r id desc; do
+    if [[ -z "${cmd_to_id[$desc]}" ]] || (( id > cmd_to_id[$desc] )); then
+      cmd_to_id[$desc]="$id"
+    fi
+  done < <(fc -l -20 | awk '{id=$1; $1=""; sub(/^ /,""); print id, $0}')
+
+  # Second pass: build items array in reverse ID order (newest first)
+  local cmd
+  for cmd in "${(@k)cmd_to_id}"; do
+    items+=("${cmd_to_id[$cmd]}:$cmd")
+  done
+
+  # Sort by ID in descending order (newest first)
+  items=(${(On)items})
+
+  _describe -V 'history entries' items
+}
