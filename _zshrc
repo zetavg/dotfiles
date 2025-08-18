@@ -125,13 +125,13 @@ precmd_postprocessing() {
 
 # Load plugins
 # zinit light mafredri/zsh-async # we are using zsh-async library bundled with the pure theme instead
-zinit light zdharma/fast-syntax-highlighting
+zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-history-substring-search
-zinit light psprint/zsh-navigation-tools
-zinit light zdharma/history-search-multi-word
-zinit light jreese/zsh-titles
+zinit light z-shell/zsh-navigation-tools
+zinit light zdharma-continuum/history-search-multi-word
+zinit light amyreese/zsh-titles
 zinit light paulirish/git-open
 zinit light conda-incubator/conda-zsh-completion
 
