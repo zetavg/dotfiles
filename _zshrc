@@ -11,19 +11,19 @@ WORDCHARS='_'
 
 
 ##
-# Append fpath
+# `fpath`
 ##
 
+if type brew &>/dev/null; then
+  fpath=("$(brew --prefix)/share/zsh/site-functions" $fpath)  # prepend to override zsh built-in completions (such as using /opt/homebrew/share/zsh/site-functions/_git over /usr/share/zsh/5.9/functions/_git)
+fi
+
 if [[ -d $HOME/.zsh/functions ]]; then
-  fpath=($fpath $HOME/.zsh/functions)
+  fpath=($HOME/.zsh/functions $fpath)
 fi
 
 if [[ -d $HOME/.zsh/completions ]]; then
-  fpath=($fpath $HOME/.zsh/completions)
-fi
-
-if type brew &>/dev/null; then
-  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+  fpath=($HOME/.zsh/completions $fpath)
 fi
 
 
@@ -54,37 +54,35 @@ ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 source "${ZINIT_HOME}/zinit.zsh"
 
-# Workaround for zinit issue#504: remove subversion dependency. Function clones all files in plugin
-# directory (on github) that might be useful to zinit snippet directory. Should only be invoked
-# via zinit atclone"_fix-omz-plugin"
-# From: https://github.com/zdharma-continuum/zinit/discussions/651#discussioncomment-11442498
-_fix-omz-plugin() {
-    [[ -f ./._zinit/teleid ]] || return 1
-    local teleid="$(<./._zinit/teleid)"
-    local pluginid
-    for pluginid (${teleid#OMZ::plugins/} ${teleid#OMZP::}) {
-        [[ $pluginid != $teleid ]] && break
-    }
-    (($?)) && return 1
-    print "Fixing $teleid..."
-    git clone --quiet --no-checkout --depth=1 --filter=tree:0 https://github.com/ohmyzsh/ohmyzsh
-    cd ./ohmyzsh
-    git sparse-checkout set --no-cone /plugins/$pluginid
-    git checkout --quiet
-    cd ..
-    local file
-    for file (./ohmyzsh/plugins/$pluginid/*~(.gitignore|*.plugin.zsh)(D)) {
-        print "Copying ${file:t}..."
-        cp -R $file ./${file:t}
-    }
-    rm -rf ./ohmyzsh
-}
+# # Workaround for zinit issue#504: remove subversion dependency. Function clones all files in plugin
+# # directory (on github) that might be useful to zinit snippet directory. Should only be invoked
+# # via zinit atclone"_fix-omz-plugin"
+# # From: https://github.com/zdharma-continuum/zinit/discussions/651#discussioncomment-11442498
+# _fix-omz-plugin() {
+#     [[ -f ./._zinit/teleid ]] || return 1
+#     local teleid="$(<./._zinit/teleid)"
+#     local pluginid
+#     for pluginid (${teleid#OMZ::plugins/} ${teleid#OMZP::}) {
+#         [[ $pluginid != $teleid ]] && break
+#     }
+#     (($?)) && return 1
+#     print "Fixing $teleid..."
+#     git clone --quiet --no-checkout --depth=1 --filter=tree:0 https://github.com/ohmyzsh/ohmyzsh
+#     cd ./ohmyzsh
+#     git sparse-checkout set --no-cone /plugins/$pluginid
+#     git checkout --quiet
+#     cd ..
+#     local file
+#     for file (./ohmyzsh/plugins/$pluginid/*~(.gitignore|*.plugin.zsh)(D)) {
+#         print "Copying ${file:t}..."
+#         cp -R $file ./${file:t}
+#     }
+#     rm -rf ./ohmyzsh
+# }
 
 # This is needed if we source `zinit.zsh` after `compinit`
 # autoload -Uz _zinit
 # (( ${+_comps} )) && _comps[zinit]=_zinit
-
-# Load pure theme
 
 
 ##
@@ -123,19 +121,44 @@ precmd_postprocessing() {
 # Plugins
 ##
 
-# Load plugins
-# zinit light mafredri/zsh-async # we are using zsh-async library bundled with the pure theme instead
-zinit light zdharma-continuum/fast-syntax-highlighting
-zinit light zsh-users/zsh-completions
-zinit light zsh-users/zsh-autosuggestions
-zinit light zsh-users/zsh-history-substring-search
-zinit light z-shell/zsh-navigation-tools
-zinit light zdharma-continuum/history-search-multi-word
-zinit light amyreese/zsh-titles
-zinit light paulirish/git-open
-zinit light conda-incubator/conda-zsh-completion
+# Note: Need to run `zinit delete --clean` to remove old plugins that are no longer used.
+# Note: Sometimes even need to run `zinit delete --all` to remove stale completions.
 
-zinit wait lucid atpull"%atclone" atclone"_fix-omz-plugin" for OMZ::plugins/gitfast
+# zinit light mafredri/zsh-async # we are using zsh-async library bundled with the pure theme instead
+
+# Syntax highlighting
+zinit ice wait lucid \
+  atload"FAST_HIGHLIGHT_STYLES[unknown-token]='fg=red'"  # do not make the unknown tokens bold (default is bold red)
+zinit light zdharma-continuum/fast-syntax-highlighting
+
+# "Auto complete" commands from history
+zinit ice wait lucid
+zinit light zsh-users/zsh-autosuggestions
+
+# "Fuzzy" history search when pressing up/down arrow keys
+zinit light zsh-users/zsh-history-substring-search
+HISTORY_SUBSTRING_SEARCH_FUZZY=true          # "ab c" will match "*ab*c*""
+HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=true  # only return unique search results
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
+
+# Better Ctrl-R
+zinit light zdharma-continuum/history-search-multi-word
+
+# Terminal titles
+zinit ice wait lucid
+zinit light amyreese/zsh-titles
+
+# Completions
+# zinit light conda-incubator/conda-zsh-completion
+# zinit wait lucid atpull"%atclone" atclone"_fix-omz-plugin" for OMZ::plugins/gitfast
+# zinit light zsh-users/zsh-completions
+
+# Other
+# zinit light z-shell/zsh-navigation-tools
+# zinit light paulirish/git-open
 
 
 ##
@@ -147,27 +170,7 @@ zstyle ':completion:*' menu select
 
 
 ##
-# zsh-users/zsh-history-substring-search
-##
-
-HISTORY_SUBSTRING_SEARCH_FUZZY=true          # "ab c" will match "*ab*c*""
-HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=true  # only return unique search results
-
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
-bindkey "$terminfo[kcuu1]" history-substring-search-up
-bindkey "$terminfo[kcud1]" history-substring-search-down
-
-
-##
-# zdharma/fast-syntax-highlighting
-##
-
-FAST_HIGHLIGHT_STYLES[unknown-token]='fg=red'
-
-
-##
-# mise
+# mise-en-place
 ##
 
 if type mise &>/dev/null; then
