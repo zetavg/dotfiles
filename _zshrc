@@ -163,15 +163,6 @@ zinit light amyreese/zsh-titles
 
 
 ##
-# mise-en-place
-##
-
-if type mise &>/dev/null; then
-  eval "$(mise activate zsh)"
-fi
-
-
-##
 # Load Shared Profile
 ##
 

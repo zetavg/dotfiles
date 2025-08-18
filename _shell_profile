@@ -434,6 +434,13 @@ if [[ "$(command -v go)" == *".asdf"* ]]; then
 fi
 
 
+# mise-en-place
+
+if type mise &>/dev/null; then
+  eval "$(mise activate $(ps -p $$ -o 'comm='))"
+fi
+
+
 # ERLANG
 
 # Persist erl/iex history
