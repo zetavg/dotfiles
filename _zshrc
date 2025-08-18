@@ -27,6 +27,9 @@ if [[ -d $HOME/.zsh/completions ]]; then
   fpath=($HOME/.zsh/completions $fpath)
 fi
 
+# Mark every plain file in the functions dir as autoload-able
+autoload -Uz ~/.zsh/functions/*(N.:t)
+
 
 ##
 # History
