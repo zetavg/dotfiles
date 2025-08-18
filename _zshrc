@@ -14,9 +14,10 @@ WORDCHARS='_'
 # `fpath`
 ##
 
-if type brew &>/dev/null; then
-  fpath=("$(brew --prefix)/share/zsh/site-functions" $fpath)  # prepend to override zsh built-in completions (such as using /opt/homebrew/share/zsh/site-functions/_git over /usr/share/zsh/5.9/functions/_git)
-fi
+# Not needed because `eval "$(/opt/homebrew/bin/brew shellenv)"` called in `_shell_profile` will also do this too.
+# if type brew &>/dev/null; then
+#   fpath=("$(brew --prefix)/share/zsh/site-functions" $fpath)  # prepend to override zsh built-in completions (such as using /opt/homebrew/share/zsh/site-functions/_git over /usr/share/zsh/5.9/functions/_git)
+# fi
 
 if [[ -d $HOME/.zsh/functions ]]; then
   fpath=($HOME/.zsh/functions $fpath)
@@ -162,14 +163,6 @@ zinit light amyreese/zsh-titles
 
 
 ##
-# Completions
-##
-
-autoload -U compinit && compinit
-zstyle ':completion:*' menu select
-
-
-##
 # mise-en-place
 ##
 
@@ -182,4 +175,15 @@ fi
 # Load Shared Profile
 ##
 
-. "$HOME/.shell_profile"
+# Need to do this before compinit because it may contain `fpath` changes.
+if [[ -f "$HOME/.shell_profile" ]]; then
+  source "$HOME/.shell_profile"
+fi
+
+
+##
+# Completions
+##
+
+autoload -U compinit && compinit
+zstyle ':completion:*' menu select
