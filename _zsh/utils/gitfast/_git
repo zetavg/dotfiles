@@ -128,19 +128,22 @@ __git_complete_command ()
 			esac
 		done
 
-		# Check if we're in a position where stash references should be completed
+		# If we found a subcommand that takes stash references, provide enhanced completion
 		case "$subcommand" in
 		show|apply|drop|pop)
-			# Check if we're completing a stash reference
-			# Either the current word or the last word in the array starts with "stash@{"
-			local cur="${words[CURRENT]}"
-			local last_word="${words[-1]}"
-
-			if [[ "$cur" == stash@* ]] || [[ "$last_word" == stash@* ]]; then
-				_git_stash_with_descriptions
-				return 0
-			fi
+			# These commands take a stash reference as the next argument
+			_git_stash_with_descriptions
+			return 0
 			;;
+    # Not working properly, commented out for now
+		# branch)
+		# 	# branch takes branch name first, then stash reference
+		# 	# Only complete stash if we're past the branch name
+		# 	if (( ${#words[@]} > 4 )); then
+		# 		_git_stash_with_descriptions
+		# 		return 0
+		# 	fi
+		# 	;;
 		esac
 	fi
 
@@ -306,7 +309,7 @@ _git ()
 # Enhanced stash completion with descriptions
 _git_stash_with_descriptions ()
 {
-	local -a stash_list stash_refs stash_descs
+	local -a stash_list
 	local line ref desc
 
 	# Parse git stash list output and create completion with descriptions
@@ -314,15 +317,12 @@ _git_stash_with_descriptions ()
 		if [[ "$line" == stash@{[0-9]*}:* ]]; then
 			ref="${line%%: *}"
 			desc="${line#*: }"
-			stash_refs+=("$ref")
-			stash_descs+=("$desc")
+			stash_list+=("$ref:$desc")
 		fi
-	done < <(git stash list 2>/dev/null)
+	done < <(git stash list | head -n 40 2>/dev/null)
 
-	if (( ${#stash_refs[@]} > 0 )); then
-		# Use compadd directly for better control over completion
-		# -d provides descriptions, -a uses array elements
-		compadd -d stash_descs -a stash_refs
+	if (( ${#stash_list[@]} > 0 )); then
+		_describe -V -t stashes 'stashes' stash_list
 	fi
 }
 
