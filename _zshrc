@@ -136,7 +136,6 @@ zinit ice wait lucid \
 zinit light zdharma-continuum/fast-syntax-highlighting
 
 # "Auto complete" commands from history
-zinit ice wait lucid
 zinit light zsh-users/zsh-autosuggestions
 
 # "Fuzzy" history search when pressing up/down arrow keys
