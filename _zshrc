@@ -11,27 +11,6 @@ WORDCHARS='_'
 
 
 ##
-# `fpath`
-##
-
-# Not needed because `eval "$(/opt/homebrew/bin/brew shellenv)"` called in `_shell_profile` will also do this too.
-# if type brew &>/dev/null; then
-#   fpath=("$(brew --prefix)/share/zsh/site-functions" $fpath)  # prepend to override zsh built-in completions (such as using /opt/homebrew/share/zsh/site-functions/_git over /usr/share/zsh/5.9/functions/_git)
-# fi
-
-if [[ -d $HOME/.zsh/functions ]]; then
-  fpath=($HOME/.zsh/functions $fpath)
-fi
-
-if [[ -d $HOME/.zsh/completions ]]; then
-  fpath=($HOME/.zsh/completions $fpath)
-fi
-
-# Mark every plain file in the functions dir as autoload-able
-autoload -Uz ~/.zsh/functions/*(N.:t)
-
-
-##
 # History
 ##
 
@@ -156,7 +135,8 @@ zinit light amyreese/zsh-titles
 
 # Completions
 # zinit light conda-incubator/conda-zsh-completion
-# zinit wait lucid atpull"%atclone" atclone"_fix-omz-plugin" for OMZ::plugins/gitfast
+# Completions from homebrew is broken for `git stash apply`. See: https://github.com/ohmyzsh/ohmyzsh/issues/5754#issuecomment-278968514
+# zinit wait lucid atpull"%atclone" atclone"_fix-omz-plugin" for OMZ::plugins/gitfast  # We copied gitfast to our `.zsh/utils` directory to patch it
 # zinit light zsh-users/zsh-completions
 
 # Other
@@ -172,6 +152,29 @@ zinit light amyreese/zsh-titles
 if [[ -f "$HOME/.shell_profile" ]]; then
   source "$HOME/.shell_profile"
 fi
+
+
+##
+# `fpath`
+##
+
+# We do this here to let user's `_zsh/functions` and `_zsh/completions` override any other completions.
+
+# Not needed because `eval "$(/opt/homebrew/bin/brew shellenv)"` called in `_shell_profile` will also do this too.
+# if type brew &>/dev/null; then
+#   fpath=("$(brew --prefix)/share/zsh/site-functions" $fpath)  # prepend to override zsh built-in completions (such as using /opt/homebrew/share/zsh/site-functions/_git over /usr/share/zsh/5.9/functions/_git)
+# fi
+
+if [[ -d $HOME/.zsh/functions ]]; then
+  fpath=($HOME/.zsh/functions $fpath)
+fi
+
+if [[ -d $HOME/.zsh/completions ]]; then
+  fpath=($HOME/.zsh/completions $fpath)
+fi
+
+# Mark every plain file in the functions dir as autoload-able
+autoload -Uz ~/.zsh/functions/*(N.:t)
 
 
 ##
