@@ -113,6 +113,40 @@ __git_complete_command ()
 	compset -P '*[=:]'
 
 	local command="$1"
+
+	# Special handling for stash command - provide descriptions for stash references
+	if [[ "$command" == "stash" ]]; then
+		# Find the stash subcommand in the words array
+		local subcommand=""
+		local i
+		for (( i = 2; i <= ${#words[@]}; i++ )); do
+			case "${words[$i]}" in
+			push|list|show|apply|clear|drop|pop|create|branch|save)
+				subcommand="${words[$i]}"
+				break
+				;;
+			esac
+		done
+
+		# If we found a subcommand that takes stash references, provide enhanced completion
+		case "$subcommand" in
+		show|apply|drop|pop)
+			# These commands take a stash reference as the next argument
+			_git_stash_with_descriptions
+			return 0
+			;;
+    # Not working properly, commented out for now
+		# branch)
+		# 	# branch takes branch name first, then stash reference
+		# 	# Only complete stash if we're past the branch name
+		# 	if (( ${#words[@]} > 4 )); then
+		# 		_git_stash_with_descriptions
+		# 		return 0
+		# 	fi
+		# 	;;
+		esac
+	fi
+
 	local completion_func="_git_${command//-/_}"
 	if (( $+functions[$completion_func] )); then
 		emulate ksh -c $completion_func
@@ -166,6 +200,7 @@ __git_zsh_cmd_common ()
 	show:'show various types of objects'
 	status:'show the working tree status'
 	switch:'switch branches'
+	stash:'stash the changes in a dirty working directory away'
 	tag:'create, list, delete or verify a tag object signed with GPG')
 	_describe -t common-commands 'common commands' list && _ret=0
 }
@@ -269,6 +304,26 @@ _git ()
 
 	let _ret && _default && _ret=0
 	return _ret
+}
+
+# Enhanced stash completion with descriptions
+_git_stash_with_descriptions ()
+{
+	local -a stash_list
+	local line ref desc
+
+	# Parse git stash list output and create completion with descriptions
+	while IFS= read -r line; do
+		if [[ "$line" == stash@{[0-9]*}:* ]]; then
+			ref="${line%%: *}"
+			desc="${line#*: }"
+			stash_list+=("$ref:$desc")
+		fi
+	done < <(git stash list | head -n 40 2>/dev/null)
+
+	if (( ${#stash_list[@]} > 0 )); then
+		_describe -V -t stashes 'stashes' stash_list
+	fi
 }
 
 _git
