@@ -437,7 +437,7 @@ fi
 # mise-en-place
 
 if type mise &>/dev/null; then
-  eval "$(mise activate $(ps -p $$ -o 'comm='))"
+  eval "$(mise activate $(ps -p $$ -o comm= | sed 's:.*/::; s/^-//'))"
 fi
 
 
