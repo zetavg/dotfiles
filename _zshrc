@@ -120,6 +120,7 @@ zinit light zsh-users/zsh-autosuggestions
 # "Fuzzy" history search when pressing up/down arrow keys
 zinit light zsh-users/zsh-history-substring-search
 HISTORY_SUBSTRING_SEARCH_FUZZY=true          # "ab c" will match "*ab*c*""
+HISTORY_SUBSTRING_SEARCH_PREFIXED=true       # For example, let `zsh` only match commands starting with `zsh`, not something like `gh completion -s zsh > ~/.zsh/completions/_gh` (`zsh awesome` can still match `zsh my_awesome_script.sh` if HISTORY_SUBSTRING_SEARCH_PREFIXED is enabled)
 HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=true  # only return unique search results
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
