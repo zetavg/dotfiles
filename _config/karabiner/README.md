@@ -30,7 +30,7 @@ Pressing the <kbd>delete</kbd> key while holding the <kbd>⇧</kbd> (Shift) key 
 
 This is a combination of rules for achieving an OS-wide `vi` experience, i.e. using the <kbd>H</kbd>, <kbd>J</kbd>, <kbd>K</kbd> and <kbd>L</kbd> key as <kbd>←</kbd>, <kbd>↓</kbd>, <kbd>↑</kbd> and <kbd>→</kbd>, keeping your right hand from continuously moving away and back to the typing position, only for pressing the arrow keys on the far-lower-left-corner of the keyboard.
 
-The general rule is to press and hold the <kbd>;</kbd> key with the little finger to activate vi mode. With the <kbd>;</kbd> key pressed down, the <kbd>H</kbd>, <kbd>J</kbd>, <kbd>K</kbd> and <kbd>L</kbd> key will be binded to arrow keys, <kbd>←</kbd>, <kbd>↓</kbd>, <kbd>↑</kbd> and <kbd>→</kbd>. If the <kbd>;</kbd> is not pressed down, then the vi mode will be deactivated and everything acts as normal. Pressing the <kbd>;</kbd> once, or with other combinations such as the shift key remains the same behavior, so it's totaly compatible to normal typing habits.
+The general rule is to press and hold the <kbd>;</kbd> key with the little finger to activate vi mode. With the <kbd>;</kbd> key pressed down, the <kbd>H</kbd>, <kbd>J</kbd>, <kbd>K</kbd> and <kbd>L</kbd> key will be binded to arrow keys, <kbd>←</kbd>, <kbd>↓</kbd>, <kbd>↑</kbd> and <kbd>→</kbd>. If the <kbd>;</kbd> is not pressed down, then the vi mode will be deactivated and everything acts as normal. Pressing the <kbd>;</kbd> once, or with other combinations such as the shift key remains the same behavior, so it's totally compatible to normal typing habits.
 
 The reason of choosing the <kbd>;</kbd> as the vi mode activation key is because of these reasons:
 
@@ -65,8 +65,8 @@ These are fixups for fast typing, sometimes pressing down the next key before re
 
 ### ⌘ Key Sequences
 
-Because most combinations with ⌘, ⌥, ⌃ and ⇧ are already be occupied, it's hard for us to define new, especially system-global hotkeys that are eazy to press. (e.g. `⌘⌥⌃⇧A` is really not a eazy-to-press hotkey!)
+Because most combinations with ⌘, ⌥, ⌃ and ⇧ are already be occupied, it's hard for us to define new, especially system-global hotkeys that are easy to press. (e.g. `⌘⌥⌃⇧A` is really not a easy-to-press hotkey!)
 
 So there comes *key sequences*.
 
-This modification rule binds pressing <kbd>⌘</kbd> twice, following with any letter keys (i.e. `A-Z`) in a row, to <kbd>⌘</kbd> + <kbd>⌥</kbd> + <kbd>⌃</kbd> + <kbd>⇧</kbd> + <kbd>[the letter key you pressed]</kbd>. So you can define the key combination `⌘⌥⌃⇧[A-Z]`, which will definatly not conflict with any hotkey you will actually use, in your application, and invoke them with the "⌘" key sequences.
+This modification rule binds pressing <kbd>⌘</kbd> twice, following with any letter keys (i.e. `A-Z`) in a row, to <kbd>⌘</kbd> + <kbd>⌥</kbd> + <kbd>⌃</kbd> + <kbd>⇧</kbd> + <kbd>[the letter key you pressed]</kbd>. So you can define the key combination `⌘⌥⌃⇧[A-Z]`, which will definitely not conflict with any hotkey you will actually use, in your application, and invoke them with the "⌘" key sequences.
