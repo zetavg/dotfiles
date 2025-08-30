@@ -1,0 +1,8 @@
+{
+    "scripts": {
+        "build": "npm run build-rules && npm run build-profiles && npm run build-config",
+        "build-rules": "node scripts/build-rules.mjs",
+        "build-profiles": "node scripts/build-profiles.mjs",
+        "build-config": "node scripts/build-config.mjs"
+    }
+}

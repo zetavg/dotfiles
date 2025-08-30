@@ -2,17 +2,17 @@
 
 Configurations for [Karabiner-Elements](https://pqrs.org/osx/karabiner/), a powerful keyboard customizer for macOS. You can [download](karabiner.json) the standalone configurations and place it under `~/.config/karabiner` to git them work.
 
-**Important:** the config file `karabiner.json` is rendered from the ERB file `karabiner.json.erb`. **DO NOT EDIT `karabiner.json` DIRECTLY.**
+**Important:** the config file `karabiner.json` is generated from the JS sources under `./src`. **DO NOT EDIT `karabiner.json` DIRECTLY.**
 
 ## Build Config
 
 Run:
 
 ```bash
-make
+npm run build
 ```
 
-after editing `karabiner.json.erb` to generate the new config file.
+after editing files under `./src` to generate the new config file.
 
 ## Modifications
 
