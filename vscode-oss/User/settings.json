@@ -26,8 +26,9 @@
   "git.blame.editorDecoration.enabled": false,
   // Terminal
   "terminal.integrated.commandsToSkipShell": [ // Prevents the terminal from taking over certain keybindings
+    "workbench.action.cycleAuxiliaryBar",
     "workbench.action.cyclePanel",
-    "workbench.action.cycleAuxiliaryBar"
+    "workbench.action.cycleSideBar"
   ],
   // Copilot Completions
   "github.copilot.enable": {
