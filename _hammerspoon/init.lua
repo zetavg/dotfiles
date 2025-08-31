@@ -356,6 +356,12 @@ hs.hotkey.bind({"cmd", "alt", "ctrl", "shift"}, "R", function()
   hs.notify.new({title="Hammerspoon", informativeText="Reloading"}):send()
 end)
 
+--- === Auto Mute On Sleep ===
+
+hs.loadSpoon("AutoMuteOnSleep")
+spoon.AutoMuteOnSleep:init()
+spoon.AutoMuteOnSleep:start()
+
 --- === Auto Reload Configuration ===
 
 hs.loadSpoon("ReloadConfiguration")
