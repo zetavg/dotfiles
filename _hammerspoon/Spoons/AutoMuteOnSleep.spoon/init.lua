@@ -22,10 +22,18 @@ obj.sleepWatcher = nil
 local function muteNonBluetoothOutputDevices(state)
     if state == hs.caffeinate.watcher.systemDidWake or state == hs.caffeinate.watcher.systemWillSleep then
         local devices = hs.audiodevice.allOutputDevices()
-    
+
         for _, device in ipairs(devices) do
-            if device and device:transportType() ~= 'Bluetooth' then
-                _ = device:setVolume(0) or device:setMuted(true)
+            if device then
+              if device:transportType() == 'Bluetooth' then
+                print("[AutoMuteOnSleep] Skipping Bluetooth device: " .. device:name())
+              elseif not string.find(device:name(), "MacBook") then
+                print("[AutoMuteOnSleep] Skipping non-MacBook device: " .. device:name())
+              else
+                print("[AutoMuteOnSleep] Muting device: " .. device:name())
+                _ = device:setVolume(0)
+                _ = device:setMuted(true)
+              end
             end
         end
     end
