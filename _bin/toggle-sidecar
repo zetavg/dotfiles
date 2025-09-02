@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+
+if [ -f ~/.shell_profile ]; then
+  source ~/.shell_profile
+else
+  notify "Warning: ~/.shell_profile not found, things may not work as expected."
+fi
+
+show_alert() {
+  osascript -e "display alert \"[toggle-sidecar] $1\""
+}
+
+notify() {
+  osascript -e "display notification \"$1\" with title \"Toggle Sidecar\""
+  # if command -v alerter >/dev/null 2>&1; then
+  #   alerter -group toggle-sidecar -title "Toggle Sidecar" -message "$1"
+  # else
+  #   show_alert "Alerter is not installed. Please download it from https://github.com/vjeantet/alerter and place it under the \$PATH so notifications can be shown.\n\n---\n\nThis is the original nonfiction: $1\n\n---\n\nCurrent \$PATH: $PATH"
+  # fi
+}
+
+if ! command -v betterdisplaycli >/dev/null 2>&1; then
+  show_alert "Cannot find BetterDisplay CLI (betterdisplaycli), please ensure both BetterDisplay (https://betterdisplay.pro) and BetterDisplay CLI (https://github.com/waydabber/betterdisplaycli) are installed, and that betterdisplaycli is placed under the \$PATH so it can be found.\n\n---\n\nCurrent \$PATH: $PATH"
+  exit 1
+fi
+
+if [ -n "$DEFAULT_SIDECAR_DEVICE_NAME" ]; then
+  specifier="$DEFAULT_SIDECAR_DEVICE_NAME"
+else
+  specifier=$(betterdisplaycli get -sidecarList --help | awk -F', ' '{print $1}')
+fi
+
+if [ -n "$specifier" ]; then
+  status=$(betterdisplaycli get -sidecarConnected -specifier="$specifier")
+  if [ "$status" = "on" ]; then
+    notify "Disconnecting Sidecar display: $specifier..."
+  else
+    notify "Connecting Sidecar display: $specifier..."
+  fi
+
+  if ! output=$(betterdisplaycli toggle -sidecarConnected -specifier="$specifier" 2>&1); then
+    show_alert "Failed to toggle Sidecar display:\n$output\n\nYou may want to check if \\\"$specifier\\\" is an available Sidecar display by listing available Sidecar displays using:\n\n$ betterdisplaycli get -sidecarList"
+  fi
+else
+  show_alert "No Sidecar display found."
+  exit 1
+fi
