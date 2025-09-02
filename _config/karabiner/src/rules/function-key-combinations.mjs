@@ -80,6 +80,8 @@ export default {
     //     },
     //   ])
     //   .flat(),
+
+    // MARK: F10 Combinations
     {
       from: {
         key_code: 'f10',
@@ -162,7 +164,73 @@ export default {
       ],
       type: 'basic',
     },
-    // For ThinkPad TrackPoint Keyboard II
+
+    // MARK: F3 Combinations
+    {
+      from: {
+        key_code: 'f3',
+      },
+      to: [
+        {
+          set_variable: {
+            name: 'f3_flag',
+            value: 1,
+          },
+        },
+      ],
+      to_after_key_up: [
+        {
+          set_variable: {
+            name: 'f3_flag',
+            value: 0,
+          },
+        },
+      ],
+      to_if_alone: [
+        {
+          // Note: It's not `consumer_key_code: 'mission_control'` here!
+          apple_vendor_keyboard_key_code: 'mission_control',
+        },
+      ],
+      type: 'basic',
+    },
+    // Auto-layout provided by Hammerspoon
+    {
+      conditions: [
+        {
+          name: 'f3_flag',
+          type: 'variable_if',
+          value: 1,
+        },
+      ],
+      from: {
+        key_code: 'l',
+      },
+      to: [
+        {
+          key_code: 'l',
+          modifiers: ['command', 'option', 'control', 'shift'],
+        },
+      ],
+      type: 'basic',
+    },
+    // Toggle Sidecar display
+    {
+      conditions: [
+        {
+          name: 'f3_flag',
+          type: 'variable_if',
+          value: 1,
+        },
+      ],
+      from: {
+        key_code: 'f4',
+      },
+      to: [{ shell_command: '~/.bin/toggle-sidecar' }],
+      type: 'basic',
+    },
+
+    // MARK: For ThinkPad TrackPoint Keyboard II
     {
       conditions: [
         {
