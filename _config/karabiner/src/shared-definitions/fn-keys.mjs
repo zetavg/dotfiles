@@ -20,7 +20,7 @@ export default [
       key_code: 'f3',
     },
     to: {
-      key_code: 'mission_control',
+      apple_vendor_keyboard_key_code: 'mission_control',
     },
   },
   {

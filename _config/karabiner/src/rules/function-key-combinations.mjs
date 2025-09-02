@@ -1,85 +1,85 @@
 export default {
   description: 'Function Key Combinations',
   manipulators: [
-    {
-      type: 'basic',
-      from: {
-        key_code: 'f1',
-        modifiers: {
-          mandatory: ['control'],
-        },
-      },
-      to: [
-        {
-          key_code: 'f1',
-          modifiers: ['control'],
-        },
-      ],
-    },
-    {
-      type: 'basic',
-      from: {
-        key_code: 'f2',
-        modifiers: {
-          mandatory: ['control'],
-        },
-      },
-      to: [
-        {
-          key_code: 'f2',
-          modifiers: ['control'],
-        },
-      ],
-    },
-    {
-      type: 'basic',
-      from: {
-        key_code: 'f3',
-        modifiers: {
-          mandatory: ['control'],
-        },
-      },
-      to: [
-        {
-          key_code: 'f3',
-          modifiers: ['control'],
-        },
-      ],
-    },
-    ...['f3', 'f10', 'f11', 'f12']
-      .map((k) => [
-        {
-          type: 'basic',
-          from: {
-            key_code: k,
-            modifiers: {
-              mandatory: ['command', 'shift'],
-            },
-          },
-          to: [
-            {
-              key_code: k,
-              modifiers: ['command', 'shift'],
-            },
-          ],
-        },
-        {
-          type: 'basic',
-          from: {
-            key_code: k,
-            modifiers: {
-              mandatory: ['command'],
-            },
-          },
-          to: [
-            {
-              key_code: k,
-              modifiers: ['command'],
-            },
-          ],
-        },
-      ])
-      .flat(),
+    // {
+    //   type: 'basic',
+    //   from: {
+    //     key_code: 'f1',
+    //     modifiers: {
+    //       mandatory: ['control'],
+    //     },
+    //   },
+    //   to: [
+    //     {
+    //       key_code: 'f1',
+    //       modifiers: ['control'],
+    //     },
+    //   ],
+    // },
+    // {
+    //   type: 'basic',
+    //   from: {
+    //     key_code: 'f2',
+    //     modifiers: {
+    //       mandatory: ['control'],
+    //     },
+    //   },
+    //   to: [
+    //     {
+    //       key_code: 'f2',
+    //       modifiers: ['control'],
+    //     },
+    //   ],
+    // },
+    // {
+    //   type: 'basic',
+    //   from: {
+    //     key_code: 'f3',
+    //     modifiers: {
+    //       mandatory: ['control'],
+    //     },
+    //   },
+    //   to: [
+    //     {
+    //       key_code: 'f3',
+    //       modifiers: ['control'],
+    //     },
+    //   ],
+    // },
+    // ...['f3', 'f10', 'f11', 'f12']
+    //   .map((k) => [
+    //     {
+    //       type: 'basic',
+    //       from: {
+    //         key_code: k,
+    //         modifiers: {
+    //           mandatory: ['command', 'shift'],
+    //         },
+    //       },
+    //       to: [
+    //         {
+    //           key_code: k,
+    //           modifiers: ['command', 'shift'],
+    //         },
+    //       ],
+    //     },
+    //     {
+    //       type: 'basic',
+    //       from: {
+    //         key_code: k,
+    //         modifiers: {
+    //           mandatory: ['command'],
+    //         },
+    //       },
+    //       to: [
+    //         {
+    //           key_code: k,
+    //           modifiers: ['command'],
+    //         },
+    //       ],
+    //     },
+    //   ])
+    //   .flat(),
     {
       from: {
         key_code: 'f10',
