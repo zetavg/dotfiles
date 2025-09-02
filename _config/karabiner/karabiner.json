@@ -1026,223 +1026,6 @@
                         "description": "Function Key Combinations",
                         "manipulators": [
                             {
-                                "type": "basic",
-                                "from": {
-                                    "key_code": "f1",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "control"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "f1",
-                                        "modifiers": [
-                                            "control"
-                                        ]
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "basic",
-                                "from": {
-                                    "key_code": "f2",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "control"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "f2",
-                                        "modifiers": [
-                                            "control"
-                                        ]
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "basic",
-                                "from": {
-                                    "key_code": "f3",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "control"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "f3",
-                                        "modifiers": [
-                                            "control"
-                                        ]
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "basic",
-                                "from": {
-                                    "key_code": "f3",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "command",
-                                            "shift"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "f3",
-                                        "modifiers": [
-                                            "command",
-                                            "shift"
-                                        ]
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "basic",
-                                "from": {
-                                    "key_code": "f3",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "command"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "f3",
-                                        "modifiers": [
-                                            "command"
-                                        ]
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "basic",
-                                "from": {
-                                    "key_code": "f10",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "command",
-                                            "shift"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "f10",
-                                        "modifiers": [
-                                            "command",
-                                            "shift"
-                                        ]
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "basic",
-                                "from": {
-                                    "key_code": "f10",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "command"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "f10",
-                                        "modifiers": [
-                                            "command"
-                                        ]
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "basic",
-                                "from": {
-                                    "key_code": "f11",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "command",
-                                            "shift"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "f11",
-                                        "modifiers": [
-                                            "command",
-                                            "shift"
-                                        ]
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "basic",
-                                "from": {
-                                    "key_code": "f11",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "command"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "f11",
-                                        "modifiers": [
-                                            "command"
-                                        ]
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "basic",
-                                "from": {
-                                    "key_code": "f12",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "command",
-                                            "shift"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "f12",
-                                        "modifiers": [
-                                            "command",
-                                            "shift"
-                                        ]
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "basic",
-                                "from": {
-                                    "key_code": "f12",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "command"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "f12",
-                                        "modifiers": [
-                                            "command"
-                                        ]
-                                    }
-                                ]
-                            },
-                            {
                                 "from": {
                                     "key_code": "f10"
                                 },
@@ -1323,6 +1106,75 @@
                                             "control",
                                             "option"
                                         ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "f3"
+                                },
+                                "to": [
+                                    {
+                                        "set_variable": {
+                                            "name": "f3_flag",
+                                            "value": 1
+                                        }
+                                    }
+                                ],
+                                "to_after_key_up": [
+                                    {
+                                        "set_variable": {
+                                            "name": "f3_flag",
+                                            "value": 0
+                                        }
+                                    }
+                                ],
+                                "to_if_alone": [
+                                    {
+                                        "apple_vendor_keyboard_key_code": "mission_control"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "f3_flag",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "l"
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "l",
+                                        "modifiers": [
+                                            "command",
+                                            "option",
+                                            "control",
+                                            "shift"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "f3_flag",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "f4"
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "~/.bin/toggle-sidecar"
                                     }
                                 ],
                                 "type": "basic"
@@ -1788,7 +1640,7 @@
                                     }
                                 },
                                 "to": {
-                                    "key_code": "mission_control"
+                                    "apple_vendor_keyboard_key_code": "mission_control"
                                 },
                                 "conditions": [
                                     {
@@ -2084,49 +1936,6 @@
                                         "pointing_button": "button2"
                                     }
                                 ]
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Keyboard brightness/illumination control",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "f1",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_command"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "halt": false,
-                                        "key_code": "illumination_decrement",
-                                        "lazy": true,
-                                        "repeat": true
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "f2",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_command"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "halt": false,
-                                        "key_code": "illumination_increment",
-                                        "lazy": true,
-                                        "repeat": true
-                                    }
-                                ],
-                                "type": "basic"
                             }
                         ]
                     },
@@ -126104,7 +125913,7 @@
                         "key_code": "f3"
                     },
                     "to": {
-                        "key_code": "mission_control"
+                        "apple_vendor_keyboard_key_code": "mission_control"
                     }
                 },
                 {
