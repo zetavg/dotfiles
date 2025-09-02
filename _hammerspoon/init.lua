@@ -238,7 +238,7 @@ function franzWatchFunction(appName, eventType, appObject)
     elseif eventType == hs.application.watcher.deactivated then
       local activatedApp = hs.application.frontmostApplication()
       if not isFloatingApp(activatedApp) then
-        if debug then hs.alert.show("Franz lose focus, hidding") end
+        if debug then hs.alert.show("Franz lose focus, hiding") end
         appObject:hide()
       end
     end
@@ -355,6 +355,12 @@ hs.hotkey.bind({"cmd", "alt", "ctrl", "shift"}, "R", function()
   hs.reload()
   hs.notify.new({title="Hammerspoon", informativeText="Reloading"}):send()
 end)
+
+--- === Auto Window Layout ===
+
+hs.loadSpoon("AutoWindowLayout")
+spoon.AutoWindowLayout:bindHotkey({"cmd", "alt", "ctrl", "shift"}, "L")
+spoon.AutoWindowLayout:bindHotkey(winMdMods, ';')
 
 --- === Auto Mute On Sleep ===
 
