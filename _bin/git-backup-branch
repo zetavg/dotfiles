@@ -1,0 +1,88 @@
+#!/usr/bin/env bash
+# -------------------------------------------------------------------
+# git-backup-branch
+# -------------------------------------------------------------------
+
+SUBJECT=git-backup-branch
+VERSION=0.0.1
+USAGE="git-backup-branch [-p|--push]"
+HELP="
+$USAGE
+
+    Creates a backup branch from the current branch.
+    The backup branch name will be <current-branch>-backup-<YYYYMMDDHHMMSS>.
+
+    Options:
+      -p, --push    Push the backup branch using git-push-match
+      -h, --help    Show this help message
+      -v            Show version
+"
+
+# --- Option Processing ---------------------------------------------
+
+push=false
+
+# Transform long options to short ones
+for arg in "$@"; do
+  shift
+  case "$arg" in
+    "--help") set -- "$@" "-h" ;;
+    "--push") set -- "$@" "-p" ;;
+    *)        set -- "$@" "$arg"
+  esac
+done
+
+while getopts ":vhp" optname
+  do
+    case "$optname" in
+      "v")
+        echo "$SUBJECT version $VERSION"
+        exit 0;
+        ;;
+      "h")
+        echo "$HELP"
+        exit 0;
+        ;;
+      "p")
+        push=true
+        ;;
+      "?")
+        echo "Unknown option: -$OPTARG" >&2
+        echo "Usage: $USAGE"
+        exit 1;
+        ;;
+      ":")
+        echo "No argument value for option $OPTARG" >&2
+        echo "Usage: $USAGE"
+        exit 1;
+        ;;
+    esac
+  done
+
+shift $(($OPTIND - 1))
+
+# --- Script Body ---------------------------------------------------
+
+set -e
+
+# Check if working directory is clean
+if ! git diff --quiet || ! git diff --cached --quiet; then
+  echo "Error: Working directory is not clean. Please commit or stash your changes first." >&2
+  exit 1
+fi
+
+current_branch="$(git rev-parse --abbrev-ref HEAD)"
+timestamp="$(date +%Y%m%d%H%M%S)"
+backup_branch="${current_branch}-backup-${timestamp}"
+
+echo "Creating backup branch: $backup_branch"
+
+git checkout -b "$backup_branch"
+
+if [ "$push" = true ]; then
+  git push-match
+fi
+
+git checkout "$current_branch"
+
+echo "Backup branch '$backup_branch' created successfully."
