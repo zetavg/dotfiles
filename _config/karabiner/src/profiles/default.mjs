@@ -6,6 +6,7 @@ import game_modifications from '../rules/game-modifications.mjs';
 // import keyboard_brightness_control from '../rules/keyboard-brightness-control.mjs';
 import caps_lock_as_control_or_change_input_source_when_pressed_alone from '../rules/caps-lock-as-control-or-change-input-source-when-pressed-alone.mjs';
 import shift_backspace_to_forward_delete from '../rules/shift-backspace-to-forward-delete.mjs';
+import space_switching from '../rules/space-switching.mjs';
 import thinkpad_trackpoint_keyboard_ii_middle_mouse_button_remap from '../rules/thinkpad-trackpoint-keyboard-ii-middle-mouse-button-remap.mjs';
 import vi_mode_hjkl from '../rules/vi-mode-hjkl.mjs';
 import vi_mode_modifier_key_semicolon from '../rules/vi-mode-modifier-key-semicolon.mjs';
@@ -26,6 +27,7 @@ export default {
       game_modifications,
       // keyboard_brightness_control,
       shift_backspace_to_forward_delete,
+      space_switching,
       thinkpad_trackpoint_keyboard_ii_middle_mouse_button_remap,
       vi_mode_hjkl,
       vi_mode_modifier_key_semicolon_fast_typing_fixups,
