@@ -1,5 +1,4 @@
-# compdef tailscale
-compdef _tailscale tailscale
+#compdef tailscale
 
 # Copyright 2013-2023 The Cobra Authors
 #
@@ -59,8 +58,31 @@ _tailscale()
         flagPrefix="-P ${BASH_REMATCH}"
     fi
 
+    # Resolve the actual binary path for the completion command.
+    # Some programs (e.g. Tailscale) fail when invoked via symlink or alias
+    # because they check their bundle identifier, which requires the binary
+    # to be called from its original location within the .app bundle.
+    # We resolve symlinks and aliases to find the real path so that the
+    # completion subcommand works correctly.
+    local tailscale_cmd="${words[1]}"
+    # Resolve alias: extract the target command
+    local alias_val="$(alias -- "$tailscale_cmd" 2>/dev/null)"
+    if [[ -n "$alias_val" ]]; then
+        # alias output is like "tailscale=/path/to/bin" or "tailscale='...'"
+        tailscale_cmd="${alias_val#*=}"
+        # Strip surrounding quotes if present
+        tailscale_cmd="${tailscale_cmd#[\'\"]}"
+        tailscale_cmd="${tailscale_cmd%[\'\"]}"
+    fi
+    # Resolve to absolute path (handles PATH lookup)
+    tailscale_cmd="$(command -v "$tailscale_cmd" 2>/dev/null || echo "$tailscale_cmd")"
+    # Resolve symlinks to the real path
+    if [[ -L "$tailscale_cmd" ]]; then
+        tailscale_cmd="$(readlink -f "$tailscale_cmd" 2>/dev/null || realpath "$tailscale_cmd" 2>/dev/null || echo "$tailscale_cmd")"
+    fi
+
     # Prepare the command to obtain completions
-    requestComp="${words[1]} completion __complete --descs=true --flags=true -- ${words[2,-1]}"
+    requestComp="${tailscale_cmd} completion __complete --descs=true --flags=true -- ${words[2,-1]}"
     if [ "${lastChar}" = "" ]; then
         # If the last parameter is complete (there is a space following it)
         # We add an extra empty parameter so we can indicate this to the go completion code.
