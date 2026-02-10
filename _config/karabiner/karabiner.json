@@ -241,7 +241,8 @@
                                     {
                                         "key_code": "spacebar",
                                         "modifiers": [
-                                            "control"
+                                            "control",
+                                            "option"
                                         ]
                                     }
                                 ]

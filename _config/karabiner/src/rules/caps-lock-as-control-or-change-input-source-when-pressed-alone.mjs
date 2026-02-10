@@ -40,9 +40,14 @@ export default {
         //     input_source_id: 'com.apple.inputmethod.TCIM.Zhuyin',
         //   },
         // },
+        // I use Ctrl + Option + Space (and disabled Ctrl + Space) to change input source to avoid conflicting with Ctrl + Space, which is probably the most common "trigger completion / suggestions" shortcut across IDEs
+        // {
+        //   key_code: 'spacebar',
+        //   modifiers: ['control'],
+        // },
         {
           key_code: 'spacebar',
-          modifiers: ['control'],
+          modifiers: ['control', 'option'],
         },
       ],
     },
