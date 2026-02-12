@@ -230,6 +230,100 @@ export default {
       type: 'basic',
     },
 
+    // MARK: F5 (Dictation) Combinations
+    {
+      from: {
+        key_code: 'f5',
+      },
+      to: [
+        {
+          set_variable: {
+            name: 'f5_flag',
+            value: 1,
+          },
+        },
+      ],
+      to_after_key_up: [
+        {
+          set_variable: {
+            name: 'f5_flag',
+            value: 0,
+          },
+        },
+      ],
+      to_if_alone: [
+        {
+          consumer_key_code: 'dictation',
+        },
+      ],
+      // Not working - will break the entire rule.
+      // Since we didn't actually use Siri for now, we just ignore this and leave the default behavior broken.
+      // to_if_held_down: [
+      //   { apple_vendor_keyboard_key_code: 'siri' },
+      // ],
+      type: 'basic',
+    },
+    // Dictate (Typeless, default is just fn but we changed it to fn+T)
+    {
+      conditions: [
+        {
+          name: 'f5_flag',
+          type: 'variable_if',
+          value: 1,
+        },
+      ],
+      from: {
+        key_code: 'spacebar',
+      },
+      to: [
+        {
+          key_code: 't',
+          modifiers: ['fn'],
+        },
+      ],
+      type: 'basic',
+    },
+    // Ask anything (Typeless)
+    {
+      conditions: [
+        {
+          name: 'f5_flag',
+          type: 'variable_if',
+          value: 1,
+        },
+      ],
+      from: {
+        key_code: 'f4',
+      },
+      to: [
+        {
+          key_code: 'spacebar',
+          modifiers: ['fn'],
+        },
+      ],
+      type: 'basic',
+    },
+    // Translate (Typeless)
+    {
+      conditions: [
+        {
+          name: 'f5_flag',
+          type: 'variable_if',
+          value: 1,
+        },
+      ],
+      from: {
+        key_code: 't',
+      },
+      to: [
+        {
+          key_code: 'left_shift',
+          modifiers: ['fn'],
+        },
+      ],
+      type: 'basic',
+    },
+
     // MARK: For ThinkPad TrackPoint Keyboard II
     {
       conditions: [
