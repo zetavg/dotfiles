@@ -144,6 +144,20 @@ zinit light amyreese/zsh-titles
 # zinit light z-shell/zsh-navigation-tools
 # zinit light paulirish/git-open
 
+# Abbreviations
+
+# See: https://github.com/olets/zsh-abbr/issues/188
+local zsh_abbr_job_queue_dir="${${TMPDIR:-/tmp}%/}/zsh-job-queue/zsh-abbr"
+if [[ ! -d $zsh_abbr_job_queue_dir ]]; then
+  rm -rf "$zsh_abbr_job_queue_dir" &>/dev/null
+fi
+ABBR_SET_EXPANSION_CURSOR=1
+ABBR_DEFAULT_BINDINGS=0  # do not use default bindings
+bindkey " " abbr-expand-and-insert
+# bindkey "^I" abbr-expand-and-insert  # Tab key, do not use this as it will conflict with completions
+zi ice ver"v6"
+zinit light olets/zsh-abbr
+
 
 ##
 # Load Shared Profile
