@@ -480,6 +480,10 @@ fi
 PATH="$HOME/.bin:$PATH"
 PATH="$HOME/.sbin:$PATH"
 
+if [ -f "$HOME/.local/bin/env" ]; then
+  source "$HOME/.local/bin/env"
+fi
+
 if [ -d "$HOME/Library/bin" ]; then
   PATH="$HOME/Library/bin:$PATH"
 fi
