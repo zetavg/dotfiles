@@ -1,0 +1,222 @@
+#!/usr/bin/env bash
+# -------------------------------------------------------------------
+# gh-bump-release
+# -------------------------------------------------------------------
+
+SUBJECT=gh-bump-release
+VERSION=0.0.1
+USAGE="gh-bump-release [--patch|--minor|--major] [--pre [identifier]] [--dry-run]"
+HELP="
+$USAGE
+
+    Creates a draft GitHub release with a bumped version number.
+
+    Determines the next version from the latest stable release,
+    bumps the appropriate version component, and creates a draft
+    release using 'gh release create'.
+
+    Options:
+      --patch       Bump the patch version (default)
+      --minor       Bump the minor version
+      --major       Bump the major version
+      --pre [id]    Mark as pre-release with optional identifier
+                    (default: pre). e.g. --pre alpha, --pre beta
+      --dry-run     Print the command that creates the release without executing it
+      -h, --help    Show this help message
+      -v            Show version
+"
+
+# --- Option Processing ---------------------------------------------
+
+bump_type=""
+pre=false
+pre_identifier="pre"
+dry_run=false
+
+args=()
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    -h|--help)
+      echo "$HELP"
+      exit 0
+      ;;
+    -v)
+      echo "$SUBJECT version $VERSION"
+      exit 0
+      ;;
+    --patch)
+      if [ -n "$bump_type" ]; then
+        echo "Error: Cannot use --patch with --$bump_type" >&2
+        echo "Usage: $USAGE"
+        exit 1
+      fi
+      bump_type="patch"
+      shift
+      ;;
+    --minor)
+      if [ -n "$bump_type" ]; then
+        echo "Error: Cannot use --minor with --$bump_type" >&2
+        echo "Usage: $USAGE"
+        exit 1
+      fi
+      bump_type="minor"
+      shift
+      ;;
+    --major)
+      if [ -n "$bump_type" ]; then
+        echo "Error: Cannot use --major with --$bump_type" >&2
+        echo "Usage: $USAGE"
+        exit 1
+      fi
+      bump_type="major"
+      shift
+      ;;
+    --pre)
+      pre=true
+      # Check if next argument exists and is not a flag
+      if [[ $# -gt 1 && ! "$2" =~ ^- ]]; then
+        pre_identifier="$2"
+        shift
+      fi
+      shift
+      ;;
+    --dry-run)
+      dry_run=true
+      shift
+      ;;
+    *)
+      echo "Unknown option: $1" >&2
+      echo "Usage: $USAGE"
+      exit 1
+      ;;
+  esac
+done
+
+# Default to patch if no bump type specified
+if [ -z "$bump_type" ]; then
+  bump_type="patch"
+fi
+
+# --- Script Body ---------------------------------------------------
+
+set -e
+
+# Fetch releases
+releases="$(gh release list --exclude-drafts --json tagName,isDraft,isLatest,isPrerelease)"
+
+# Find the latest stable release tag
+latest_stable_tag="$(echo "$releases" | jq -r '
+  [ .[] | select(.isPrerelease == false) ] |
+  sort_by(.tagName) |
+  reverse |
+  .[0].tagName // empty
+')"
+
+# Determine the version prefix convention (v prefix or not)
+has_v_prefix=true
+if [ -n "$latest_stable_tag" ]; then
+  if [[ "$latest_stable_tag" != v* ]]; then
+    has_v_prefix=false
+  fi
+else
+  # No stable release found, assume v prefix and version 0.0.0
+  has_v_prefix=true
+fi
+
+# Strip v prefix for version parsing
+version_str="$latest_stable_tag"
+if [ -z "$version_str" ]; then
+  version_str="0.0.0"
+else
+  version_str="${version_str#v}"
+fi
+
+# Parse major.minor.patch
+major="$(echo "$version_str" | cut -d. -f1)"
+minor="$(echo "$version_str" | cut -d. -f2)"
+patch="$(echo "$version_str" | cut -d. -f3)"
+
+# Bump version
+case "$bump_type" in
+  major)
+    major=$((major + 1))
+    minor=0
+    patch=0
+    ;;
+  minor)
+    minor=$((minor + 1))
+    patch=0
+    ;;
+  patch)
+    patch=$((patch + 1))
+    ;;
+esac
+
+next_version="${major}.${minor}.${patch}"
+
+# Add v prefix if convention uses it
+if [ "$has_v_prefix" = true ]; then
+  next_tag="v${next_version}"
+else
+  next_tag="${next_version}"
+fi
+
+# Handle pre-release
+prerelease_flag=""
+if [ "$pre" = true ]; then
+  prerelease_flag="--prerelease"
+
+  # Build the pre-release base (e.g. v1.0.0-beta)
+  pre_base="${next_tag}-${pre_identifier}"
+
+  # Find the next pre-release number by checking existing releases
+  existing_pre="$(echo "$releases" | jq -r --arg base "$pre_base" '
+    [ .[] | .tagName | select(startswith($base + ".")) ] |
+    map(split(".") | last | tonumber) |
+    sort |
+    reverse |
+    .[0] // 0
+  ')"
+
+  next_pre_num=$((existing_pre + 1))
+  next_tag="${pre_base}.${next_pre_num}"
+fi
+
+echo "Latest stable release: ${latest_stable_tag:-"(none)"}"
+echo "Bump type: $bump_type"
+if [ "$pre" = true ]; then
+  echo "Pre-release identifier: $pre_identifier"
+fi
+echo "Next release tag: $next_tag"
+echo ""
+
+# Check if a release with the same tag already exists (including drafts)
+existing_release="$(gh release view "$next_tag" --json tagName,name,isDraft,url 2>/dev/null)" && {
+  existing_name="$(echo "$existing_release" | jq -r '.name')"
+  existing_url="$(echo "$existing_release" | jq -r '.url')"
+  existing_is_draft="$(echo "$existing_release" | jq -r '.isDraft')"
+  if [ "$existing_is_draft" = "true" ]; then
+    echo "Error: A draft release with tag '$next_tag' already exists." >&2
+  else
+    echo "Error: A release with tag '$next_tag' already exists." >&2
+  fi
+  echo "  Name: $existing_name" >&2
+  echo "  URL:  $existing_url" >&2
+  exit 1
+}
+
+# Build the command
+cmd="gh release create --draft --generate-notes"
+if [ -n "$prerelease_flag" ]; then
+  cmd="$cmd $prerelease_flag"
+fi
+cmd="$cmd $next_tag"
+
+if [ "$dry_run" = true ]; then
+  echo "[dry-run] The following command will not be executed:"
+  echo "$cmd"
+else
+  eval "$cmd"
+  echo ""
+  echo "Draft release '$next_tag' created successfully."
+fi
