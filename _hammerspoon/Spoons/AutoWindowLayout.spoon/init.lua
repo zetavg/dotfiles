@@ -9,9 +9,15 @@ obj.__index = obj
 obj.name = "AutoWindowLayout"
 obj.version = "0.1"
 
-local function autoWindowLayout()
-  -- hs.notify.new({title="AutoWindowLayout", informativeText="autoWindowLayout called"}):send()
+-- Multiple passes let the macOS window server settle between AX API calls,
+-- ensuring windows reach their final position in a single hotkey press.
+local totalPasses = 1
+local delayBetweenPasses = 0.01 -- seconds
 
+-- State for the in-progress overlay
+local activeAlertUUID = nil
+
+local function layoutWindows()
   -- Get the current focused space
   local currentSpaceId = hs.spaces.focusedSpace()
 
@@ -59,7 +65,7 @@ local function autoWindowLayout()
             y = y,
             w = width,
             h = height
-          })
+          }, 0)
 
         elseif appName == "iTerm2" or appName == "iTerm" then
           -- Do not resize, only position
@@ -86,7 +92,7 @@ local function autoWindowLayout()
             y = y,
             w = currentFrame.w,
             h = currentFrame.h
-          })
+          }, 0)
 
         elseif appName == "Tower" then
           -- Do not resize, only position
@@ -113,11 +119,63 @@ local function autoWindowLayout()
             y = y,
             w = currentFrame.w,
             h = currentFrame.h
-          })
+          }, 0)
         end
       end
     end
   end
+end
+
+local function autoWindowLayout()
+  -- Close any existing overlay from a previous invocation
+  if activeAlertUUID then
+    hs.alert.closeSpecific(activeAlertUUID)
+    activeAlertUUID = nil
+  end
+
+  -- Show overlay to indicate work in progress
+  activeAlertUUID = hs.alert.show(
+    "Arranging windows…",
+    {
+      strokeWidth  = 0,
+      strokeColor = { white = 0, alpha = 0 },
+      fillColor   = { white = 0, alpha = 0.9 },
+      textColor = { white = 1, alpha = 0.9 },
+      textFont  = ".AppleSystemUIFont",
+      textSize  = 28,
+      radius = 24,
+      atScreenEdge = 0,
+      fadeInDuration = 0.04,
+      fadeOutDuration = 0.04,
+      padding = 20,
+    },
+    hs.screen.mainScreen(),
+    10
+  )
+
+  print("Starting AutoWindowLayout with " .. totalPasses .. " passes and " .. delayBetweenPasses .. "s delay between passes. Alert UUID: " .. activeAlertUUID)
+
+  local passesRemaining = totalPasses
+
+  local function runPass()
+    print("Running pass, remaining: " .. passesRemaining)
+    layoutWindows()
+    passesRemaining = passesRemaining - 1
+
+    if passesRemaining > 0 then
+      hs.timer.doAfter(delayBetweenPasses, runPass)
+    else
+      -- All passes complete, dismiss overlay
+      if activeAlertUUID then
+        print("All passes complete, closing alert")
+        hs.alert.closeSpecific(activeAlertUUID)
+        activeAlertUUID = nil
+      end
+    end
+  end
+
+  -- Defer the first pass so the run loop can render the alert first
+  hs.timer.doAfter(0.05, runPass)
 end
 
 
