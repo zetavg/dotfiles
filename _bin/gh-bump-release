@@ -216,7 +216,10 @@ if [ "$dry_run" = true ]; then
   echo "[dry-run] The following command will not be executed:"
   echo "$cmd"
 else
-  eval "$cmd"
+  release_url="$(eval "$cmd")"
+  echo "$release_url"
+  edit_url="$(echo "$release_url" | sed 's|/tag/|/edit/|')"
   echo ""
   echo "Draft release '$next_tag' created successfully."
+  printf 'Go to \033[4;34m%s\033[0m to edit and publish it.\n' "$edit_url"
 fi
