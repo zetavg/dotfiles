@@ -184,6 +184,11 @@
   //
 
   {
+    "key": "shift+cmd+g",
+    "command": "workbench.view.scm",
+    "when": "workbench.scm.active"
+  },
+  {
     "key": "shift+cmd+r",
     "command": "workbench.view.debug",
     "when": "viewContainer.workbench.view.debug.enabled"
