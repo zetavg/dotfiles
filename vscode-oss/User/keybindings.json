@@ -356,10 +356,11 @@
   // MARK: Format & Auto-fix
   //
 
+  // For some languages, bind Shift+Alt+F to not only format but also auto-fix lint errors.
   // ESLint autofix
   {
     "key": "shift+alt+f",
-    "when": "editorTextFocus && !inBiomeProject && (editorLangId == typescript || editorLangId == typescriptreact || editorLangId == javascript || editorLangId == javascriptreact)",
+    "when": "editorTextFocus && config.eslint.enabled && (editorLangId == typescript || editorLangId == typescriptreact || editorLangId == javascript || editorLangId == javascriptreact)",
     "command": "runCommands",
     "args": {
       "commands": [
@@ -368,11 +369,10 @@
       ]
     }
   },
-
   // Biome autofix
   {
     "key": "shift+alt+f",
-    "when": "editorTextFocus && inBiomeProject && (editorLangId == typescript || editorLangId == typescriptreact || editorLangId == javascript || editorLangId == javascriptreact)",
+    "when": "editorTextFocus && config.biome.enabled && (editorLangId == typescript || editorLangId == typescriptreact || editorLangId == javascript || editorLangId == javascriptreact)",
     "command": "runCommands",
     "args": {
       "commands": [
