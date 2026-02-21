@@ -46,7 +46,9 @@
   "github.copilot.chat.languageContext.inline.typescript.enabled": true,
   "github.copilot.chat.languageContext.typescript.enabled": true,
   // More Layout Settings
-  "workbench.views.forceCollapsed": ["bookmarksExplorer"],
+  "workbench.views.forceCollapsed": [
+    "bookmarksExplorer"
+  ],
   "workbench.secondarySideBar.cycleWidths": [
     0,
     {
@@ -74,5 +76,25 @@
       "1600": 470,
     },
   ],
+  // Language Specific
+  // Override these in workspace settings (`.vscode/settings.json`) if needed.
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  // Workspace Specific Extensions
+  // JavaScript/TypeScript Linters - only one should be enabled at a time to avoid conflicts (also see `keybindings.json`).
+  // Override these in workspace settings (`.vscode/settings.json`) for projects that uses a specific linter.
+  "eslint.enabled": true,
+  "biome.enabled": false,
+  // Misc
+  "editor.accessibilitySupport": "off", // So we won't be asked
   // Uncategorized
+  // `"foo": "bar"` is just a placeholder to ensure new settings changed from the UI will be correctly inserted after it.
+  "foo": "bar"
 }
