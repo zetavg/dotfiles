@@ -1,10 +1,10 @@
 {
-  // Layout
+  // == Layout ==
   "workbench.activityBar.location": "top",
   "workbench.secondarySideBar.showLabels": false,
-  // Keys
+  // == Keys ==
   "editor.multiCursorModifier": "ctrlCmd",
-  // Editor
+  // == Editor ==
   "editor.cursorBlinking": "smooth",
   "editor.wordWrap": "on",
   "editor.lightbulb.enabled": "off",
@@ -14,38 +14,56 @@
     100,
     120
   ],
-  // Editing
+  // == Editing ==
   "files.trimTrailingWhitespace": true,
-  // Diff Editor
+  // == Diff Editor ==
   "diffEditor.hideUnchangedRegions.enabled": true,
   "diffEditor.hideUnchangedRegions.minimumLineCount": 4,
   "diffEditor.hideUnchangedRegions.contextLineCount": 8,
-  // Git
+  // == Git ==
   "git.autofetch": true,
   "git.blame.statusBarItem.enabled": true,
   "git.blame.editorDecoration.enabled": false,
-  // Terminal
+  // == Terminal ==
   "terminal.integrated.commandsToSkipShell": [ // Prevents the terminal from taking over certain keybindings
     "workbench.action.cycleAuxiliaryBar",
     "workbench.action.cyclePanel",
     "workbench.action.cycleSideBar"
   ],
-  // Copilot Completions
+  // == Copilot Completions ==
   "github.copilot.enable": {
     "*": true,
     "plaintext": false,
     "markdown": true,
     "scminput": true,
   },
-  // Copilot Chat
-  "chat.todoListTool.enabled": true,
+  // == Copilot Chat ==
   "github.copilot.chat.agent.thinkingTool": true,
   "github.copilot.chat.editor.temporalContext.enabled": true,
   "github.copilot.chat.edits.temporalContext.enabled": true,
   "github.copilot.chat.languageContext.fix.typescript.enabled": true,
   "github.copilot.chat.languageContext.inline.typescript.enabled": true,
   "github.copilot.chat.languageContext.typescript.enabled": true,
-  // More Layout Settings
+  // Chat input
+  "chat.editing.HoldCmdKeyAction": "switchModel:copilot/claude-opus-4.6",
+  "chat.editing.holdOptionKeyAction": "switchMode:vscode-userdata:./prompts/rubber-duck.agent.md",
+  // Agent settings
+  "chat.todoListTool.enabled": true,
+  "chat.agent.maxRequests": 50,
+  // Auto-approve
+  "chat.tools.terminal.autoApprove": {
+    // Generating random hex or base64 strings, with optional uppercase transformation
+    "/^openssl rand (-hex|-base64) [0-9]{1,4}( \\| tr '\\[:lower:\\]' '\\[:upper:\\]')?$/": {
+      "approve": true,
+      "matchCommandLine": true
+    },
+    // Finding top N most used Conventional Commits prefix
+    "/^git log -[0-9]{1,4} --format='%s' \\| sed -nE 's/\\^\\(\\(\\[a-z\\]\\+\\)\\?\\(\\\\\\(\\[\\^\\)\\]\\+\\\\\\)\\|\\\\\\[\\[\\^\\]\\]\\+\\\\\\]\\)\\?\\):\\.\\*/\\\\1/p' \\| grep \\. \\| sort \\| uniq -c \\| sort -rn \\| head -[0-9]{1,3}$/": {
+      "approve": true,
+      "matchCommandLine": true
+    }
+  },
+  // == Auto-Layout Settings ==
   "workbench.views.forceCollapsed": [
     "bookmarksExplorer"
   ],
@@ -76,25 +94,39 @@
       "1600": 470,
     },
   ],
-  // Language Specific
+  // == Workspace Specific Extensions ==
+  // JavaScript/TypeScript Linters - only one should be enabled at a time to avoid conflicts (also see `keybindings.json`).
+  // Override these in workspace settings (`.vscode/settings.json`) for projects that uses a specific linter.
+  "eslint.enabled": true,
+  "biome.enabled": false,
+  // == Language Specific Defaults ==
   // Override these in workspace settings (`.vscode/settings.json`) if needed.
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
   "[jsonc]": {
     "editor.defaultFormatter": "vscode.json-language-features"
   },
   "[javascript]": {
     "editor.defaultFormatter": "vscode.typescript-language-features"
   },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
   "[typescript]": {
     "editor.defaultFormatter": "vscode.typescript-language-features"
   },
-  // Workspace Specific Extensions
-  // JavaScript/TypeScript Linters - only one should be enabled at a time to avoid conflicts (also see `keybindings.json`).
-  // Override these in workspace settings (`.vscode/settings.json`) for projects that uses a specific linter.
-  "eslint.enabled": true,
-  "biome.enabled": false,
-  // Misc
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  // == Custom Extensions ==
+  // Commit message generation
+  "commitMessageAssistant.model.custom.endpoint": "https://gateway.ai.cloudflare.com/v1/7ec702ef05de4d05ccfcafe6fa2552a2/vscode/compat/chat/completions",
+  "commitMessageAssistant.modelProvider": "custom",
+  "commitMessageAssistant.model.custom.id": "anthropic/claude-opus-4-6",
+  // == Misc ==
   "editor.accessibilitySupport": "off", // So we won't be asked
-  // Uncategorized
+  // == Uncategorized ==
   // `"foo": "bar"` is just a placeholder to ensure new settings changed from the UI will be correctly inserted after it.
   "foo": "bar"
 }
