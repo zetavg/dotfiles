@@ -58,7 +58,7 @@
       "matchCommandLine": true
     },
     // Finding top N most used Conventional Commits prefix
-    "/^git log -[0-9]{1,4} --format='%s' \\| sed -nE 's/\\^\\(\\(\\[a-z\\]\\+\\)\\?\\(\\\\\\(\\[\\^\\)\\]\\+\\\\\\)\\|\\\\\\[\\[\\^\\]\\]\\+\\\\\\]\\)\\?\\):\\.\\*/\\\\1/p' \\| grep \\. \\| sort \\| uniq -c \\| sort -rn \\| head -[0-9]{1,3}$/": {
+    "/^git log -[0-9]{1,4} --format='%s' \\| sed -nE 's/\\^\\(\\(\\[a-z\\]\\+\\)\\?\\(\\\\\\(\\[\\^\\)\\]\\+\\\\\\)\\|\\\\\\[\\[\\^\\]\\]\\+\\\\\\]\\)\\?\\)!\\?:\\.\\*/\\\\1/p' \\| grep \\. \\| sort \\| uniq -c \\| sort -rn \\| head -[0-9]{1,3}$/": {
       "approve": true,
       "matchCommandLine": true
     }
