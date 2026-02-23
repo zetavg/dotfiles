@@ -216,11 +216,11 @@
     "command": "workbench.action.cycleSideBar"
   },
   {
-    "key": "ctrl+x",
+    "key": "ctrl+a",
     "command": "workbench.action.cycleSideBar"
   },
   {
-    "key": "ctrl+a",
+    "key": "ctrl+x",
     "command": "workbench.action.cyclePanel"
   },
 
