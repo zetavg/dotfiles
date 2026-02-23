@@ -1,0 +1,3 @@
+{
+  "editor.minimap.markSectionHeaderRegex": "(?:\\bMARK:\\s*(?<separator>-?)\\s*|={2,}\\s*)(?<label>.+?)\\s*(?:={2,})?$"
+}
