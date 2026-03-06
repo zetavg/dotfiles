@@ -263,7 +263,7 @@ export default {
       // ],
       type: 'basic',
     },
-    // Dictate (Typeless, default is just fn but we changed it to fn+T)
+    // Dictate (Typeless, default is just fn but we changed it to fn+T, or VoiceInk)
     {
       conditions: [
         {
@@ -277,8 +277,8 @@ export default {
       },
       to: [
         {
-          key_code: 't',
-          modifiers: ['fn'],
+          key_code: 'd',
+          modifiers: ['left_control', 'right_option'],
         },
       ],
       type: 'basic',
@@ -297,8 +297,8 @@ export default {
       },
       to: [
         {
-          key_code: 'spacebar',
-          modifiers: ['fn'],
+          key_code: 'a',
+          modifiers: ['left_control', 'right_option'],
         },
       ],
       type: 'basic',
@@ -317,8 +317,48 @@ export default {
       },
       to: [
         {
-          key_code: 'left_shift',
-          modifiers: ['fn'],
+          key_code: 't',
+          modifiers: ['left_control', 'right_option'],
+        },
+      ],
+      type: 'basic',
+    },
+    // Toggle enhancement (patched version of VoiceInk)
+    {
+      conditions: [
+        {
+          name: 'f5_flag',
+          type: 'variable_if',
+          value: 1,
+        },
+      ],
+      from: {
+        key_code: 'y',
+      },
+      to: [
+        {
+          key_code: 'y',
+          modifiers: ['left_control', 'right_option'],
+        },
+      ],
+      type: 'basic',
+    },
+    // History (VoiceInk)
+    {
+      conditions: [
+        {
+          name: 'f5_flag',
+          type: 'variable_if',
+          value: 1,
+        },
+      ],
+      from: {
+        key_code: 'h',
+      },
+      to: [
+        {
+          key_code: 'h',
+          modifiers: ['left_control', 'right_option'],
         },
       ],
       type: 'basic',

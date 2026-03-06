@@ -1220,9 +1220,10 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "t",
+                                        "key_code": "d",
                                         "modifiers": [
-                                            "fn"
+                                            "left_control",
+                                            "right_option"
                                         ]
                                     }
                                 ],
@@ -1241,9 +1242,10 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "spacebar",
+                                        "key_code": "a",
                                         "modifiers": [
-                                            "fn"
+                                            "left_control",
+                                            "right_option"
                                         ]
                                     }
                                 ],
@@ -1262,9 +1264,54 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "left_shift",
+                                        "key_code": "t",
                                         "modifiers": [
-                                            "fn"
+                                            "left_control",
+                                            "right_option"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "f5_flag",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "y"
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "y",
+                                        "modifiers": [
+                                            "left_control",
+                                            "right_option"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "f5_flag",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "h"
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "h",
+                                        "modifiers": [
+                                            "left_control",
+                                            "right_option"
                                         ]
                                     }
                                 ],
