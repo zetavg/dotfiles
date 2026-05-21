@@ -1,10 +1,11 @@
 import arc_browser_modifications from '../rules/arc-browser-modifications.mjs';
 import blender_modifications from '../rules/blender-modifications.mjs';
+// import keyboard_brightness_control from '../rules/keyboard-brightness-control.mjs';
+import caps_lock_as_control_or_change_input_source_when_pressed_alone from '../rules/caps-lock-as-control-or-change-input-source-when-pressed-alone.mjs';
 import command_key_sequences from '../rules/command-key-sequences.mjs';
 import function_key_combinations from '../rules/function-key-combinations.mjs';
 import game_modifications from '../rules/game-modifications.mjs';
-// import keyboard_brightness_control from '../rules/keyboard-brightness-control.mjs';
-import caps_lock_as_control_or_change_input_source_when_pressed_alone from '../rules/caps-lock-as-control-or-change-input-source-when-pressed-alone.mjs';
+import iso_ansi_universal from '../rules/iso-ansi-universal.mjs';
 import shift_backspace_to_forward_delete from '../rules/shift-backspace-to-forward-delete.mjs';
 import space_switching from '../rules/space-switching.mjs';
 import thinkpad_trackpoint_keyboard_ii_middle_mouse_button_remap from '../rules/thinkpad-trackpoint-keyboard-ii-middle-mouse-button-remap.mjs';
@@ -25,6 +26,7 @@ export default {
       command_key_sequences,
       function_key_combinations,
       game_modifications,
+      iso_ansi_universal,
       // keyboard_brightness_control,
       shift_backspace_to_forward_delete,
       space_switching,
