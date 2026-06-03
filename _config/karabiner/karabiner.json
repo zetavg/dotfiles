@@ -1501,6 +1501,33 @@
                         ]
                     },
                     {
+                        "description": "ISO-ANSI Universal",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "quote",
+                                    "modifiers": {
+                                        "mandatory": ["fn"],
+                                        "optional": ["shift", "option"]
+                                    }
+                                },
+                                "to": [{ "key_code": "backslash" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "close_bracket",
+                                    "modifiers": {
+                                        "mandatory": ["option"],
+                                        "optional": ["shift"]
+                                    }
+                                },
+                                "to": [{ "key_code": "backslash" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "⇧⌫ → ⌦",
                         "manipulators": [
                             {
@@ -55060,22 +55087,6 @@
                                 "type": "basic"
                             }
                         ]
-                    },
-                    {
-                        "description": "ISO-ANSI Universal",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "quote",
-                                    "modifiers": {
-                                        "mandatory": ["fn"],
-                                        "optional": ["shift", "option"]
-                                    }
-                                },
-                                "to": [{ "key_code": "backslash" }],
-                                "type": "basic"
-                            }
-                        ]
                     }
                 ]
             },
@@ -55221,7 +55232,6 @@
                 }
             ],
             "name": "Default profile",
-            "selected": true,
             "virtual_hid_keyboard": {
                 "caps_lock_delay_milliseconds": 0,
                 "country_code": 0,
@@ -56730,6 +56740,33 @@
                         ]
                     },
                     {
+                        "description": "ISO-ANSI Universal",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "quote",
+                                    "modifiers": {
+                                        "mandatory": ["fn"],
+                                        "optional": ["shift", "option"]
+                                    }
+                                },
+                                "to": [{ "key_code": "backslash" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "close_bracket",
+                                    "modifiers": {
+                                        "mandatory": ["option"],
+                                        "optional": ["shift"]
+                                    }
+                                },
+                                "to": [{ "key_code": "backslash" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "⇧⌫ → ⌦",
                         "manipulators": [
                             {
@@ -110291,22 +110328,6 @@
                         ]
                     },
                     {
-                        "description": "ISO-ANSI Universal",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "quote",
-                                    "modifiers": {
-                                        "mandatory": ["fn"],
-                                        "optional": ["shift", "option"]
-                                    }
-                                },
-                                "to": [{ "key_code": "backslash" }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
                         "description": "ISO Keyboard to ANSI (Built in Keyboard)",
                         "manipulators": [
                             {
@@ -110516,6 +110537,7 @@
                 }
             ],
             "name": "Default profile (ISO Keyboard)",
+            "selected": true,
             "virtual_hid_keyboard": {
                 "caps_lock_delay_milliseconds": 0,
                 "country_code": 0,

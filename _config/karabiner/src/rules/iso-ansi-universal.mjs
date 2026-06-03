@@ -18,5 +18,20 @@ export default {
         },
       ],
     },
+    {
+      type: 'basic',
+      from: {
+        key_code: 'close_bracket',
+        modifiers: {
+          mandatory: ['option'],
+          optional: ['shift'],
+        },
+      },
+      to: [
+        {
+          key_code: 'backslash',
+        },
+      ],
+    },
   ],
 };
