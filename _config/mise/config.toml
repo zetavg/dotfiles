@@ -8,3 +8,6 @@ ruby = "3.4.5"
 
 [settings]
 idiomatic_version_file_enable_tools = ["node", "python", "ruby"]
+
+[settings.ruby]
+compile = false
