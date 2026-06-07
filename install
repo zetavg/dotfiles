@@ -31,14 +31,23 @@ link() {
   local target="$2"
   echo "[Link] $source → $target"
 
-  if [[ -e "$target" ]] && [[ ! -L "$target" ]]; then
+  if [[ -L "$target" ]]; then
+    # Already a symbolic link: skip if it already points to the expected source
+    local current_target
+    current_target="$(readlink "$target")"
+    if [[ "$current_target" == "$source" ]]; then
+      echo "  already linked to the expected source, skipping"
+      return
+    fi
+    echo "  overriding existing symbolic link"
+    run_command "rm '$target'"
+  elif [[ -e "$target" ]]; then
+    # An actual file/directory exists (not a symlink), so it still needs to be
+    # replaced with the link
     local backup_name
     backup_name="$target.$(date +%Y%m%d_%H%M%S).bak"
     echo "  creating backup: $backup_name"
     run_command "mv -f '$target' '$backup_name'"
-  elif [[ -L "$target" ]]; then
-    echo "  overriding existing symbolic link"
-    run_command "rm '$target'"
   fi
 
   local target_dir
