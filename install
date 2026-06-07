@@ -164,6 +164,19 @@ if [[ -d "$BASEDIR/vscode-oss/User" ]]; then
   link "$source" "$target_3"
 fi
 
+phase "Link User Directory for Cursor"
+
+if [[ -d "$BASEDIR/cursor/User" ]]; then
+  source="$BASEDIR/cursor/User"
+  if [[ $(uname) == "Darwin" ]]; then
+    target="$HOME/Library/Application Support/Cursor/User"
+  else
+    # TODO: Support other OS?
+    target="/tmp/null"
+  fi
+  link "$source" "$target"
+fi
+
 phase "Process Secret Dotfiles"
 
 if [[ -d "$BASEDIR/secret" ]]; then
