@@ -1,0 +1,709 @@
+#!/usr/bin/env bash
+# -------------------------------------------------------------------
+# send-apns
+# -------------------------------------------------------------------
+
+SUBJECT=send-apns
+VERSION=0.0.3
+USAGE="send-apns (--p8-key file --key-id id --team-id id | --cert-pem file --key-pem file) -b bundle-id -d device-token -p payload [options]"
+HELP="
+$USAGE
+
+    Send an iOS APNs push notification using curl and openssl.
+
+Authentication (choose exactly one mode; the two modes are mutually exclusive):
+
+  Token-based (JWT signed with a .p8 key):
+
+    -k, --p8-key         Path to AuthKey_XXXXXXXXXX.p8
+    -i, --key-id         APNs key ID
+    -t, --team-id        Apple Developer Team ID
+
+  Certificate-based (TLS client certificate):
+
+    -C, --cert-pem       Path to the APNs certificate PEM, e.g. apns-cert.pem
+    -K, --key-pem        Path to the certificate's private key PEM, e.g. apns-key.pem
+
+Required:
+
+    -b, --bundle-id      App bundle ID, e.g. com.example.app
+    -d, --device-token   APNs device token
+
+Payload:
+
+    -p, --payload        Raw APNs JSON payload.
+                         Use '-' to read JSON from stdin.
+
+    -f, --payload-file   Path to JSON payload file.
+
+                         Exactly one of --payload or --payload-file is required.
+
+Transport Options:
+
+    -e, --env            APNs environment: sandbox or production
+                         Default: sandbox
+
+    -y, --push-type      APNs push type
+                         Default: alert
+
+    -r, --priority       APNs priority
+                         Default: 10
+
+    -x, --expiration     APNs expiration timestamp
+                         Optional
+
+    -c, --collapse-id    APNs collapse ID
+                         Optional
+
+    -H, --header         Extra raw HTTP header.
+                         Repeatable.
+                         Example: --header 'apns-id: UUID'
+
+General:
+
+    -v, --version        Show version
+    -h, --help           Show help
+
+Examples:
+
+    # Token-based (.p8)
+    send-apns \\
+      --p8-key ./AuthKey_XXXXXXXXXX.p8 \\
+      --key-id XXXXXXXXXX \\
+      --team-id XXXXXXXXXX \\
+      --bundle-id com.example.app \\
+      --device-token abc123 \\
+      --payload '{\"aps\":{\"alert\":{\"title\":\"Hello\",\"body\":\"World\"},\"sound\":\"default\"}}'
+
+    # Certificate-based (.pem)
+    send-apns \\
+      --cert-pem ./apns-cert.pem \\
+      --key-pem ./apns-key.pem \\
+      --bundle-id com.example.app \\
+      --device-token abc123 \\
+      --payload '{\"aps\":{\"alert\":{\"title\":\"Hello\",\"body\":\"World\"},\"sound\":\"default\"}}'
+
+    # Payload from file
+    send-apns \\
+      --p8-key ./AuthKey_XXXXXXXXXX.p8 \\
+      --key-id XXXXXXXXXX \\
+      --team-id XXXXXXXXXX \\
+      --bundle-id com.example.app \\
+      --device-token abc123 \\
+      --payload-file ./push.json
+
+    # Payload from stdin
+    cat ./push.json | send-apns \\
+      --p8-key ./AuthKey_XXXXXXXXXX.p8 \\
+      --key-id XXXXXXXXXX \\
+      --team-id XXXXXXXXXX \\
+      --bundle-id com.example.app \\
+      --device-token abc123 \\
+      --payload -
+"
+
+# --- Long Option Helpers -------------------------------------------
+
+require_long_option_value() {
+  option="$1"
+  value="${2-}"
+
+  if [ -z "$value" ] || [ "${value#--}" != "$value" ]; then
+    echo "No argument value for option $option" >&2
+    echo "Usage: $USAGE" >&2
+    exit 1
+  fi
+}
+
+# --- Option Processing ---------------------------------------------
+
+args=()
+
+while [ "$#" -gt 0 ]; do
+  case "$1" in
+    "--help")
+      args+=("-h")
+      shift
+      ;;
+
+    "--version")
+      args+=("-v")
+      shift
+      ;;
+
+    "--p8-key")
+      require_long_option_value "$1" "${2-}"
+      args+=("-k" "$2")
+      shift 2
+      ;;
+
+    "--p8-key="*)
+      args+=("-k" "${1#*=}")
+      shift
+      ;;
+
+    "--cert-pem")
+      require_long_option_value "$1" "${2-}"
+      args+=("-C" "$2")
+      shift 2
+      ;;
+
+    "--cert-pem="*)
+      args+=("-C" "${1#*=}")
+      shift
+      ;;
+
+    "--key-pem")
+      require_long_option_value "$1" "${2-}"
+      args+=("-K" "$2")
+      shift 2
+      ;;
+
+    "--key-pem="*)
+      args+=("-K" "${1#*=}")
+      shift
+      ;;
+
+    "--key-id")
+      require_long_option_value "$1" "${2-}"
+      args+=("-i" "$2")
+      shift 2
+      ;;
+
+    "--key-id="*)
+      args+=("-i" "${1#*=}")
+      shift
+      ;;
+
+    "--team-id")
+      require_long_option_value "$1" "${2-}"
+      args+=("-t" "$2")
+      shift 2
+      ;;
+
+    "--team-id="*)
+      args+=("-t" "${1#*=}")
+      shift
+      ;;
+
+    "--bundle-id")
+      require_long_option_value "$1" "${2-}"
+      args+=("-b" "$2")
+      shift 2
+      ;;
+
+    "--bundle-id="*)
+      args+=("-b" "${1#*=}")
+      shift
+      ;;
+
+    "--device-token")
+      require_long_option_value "$1" "${2-}"
+      args+=("-d" "$2")
+      shift 2
+      ;;
+
+    "--device-token="*)
+      args+=("-d" "${1#*=}")
+      shift
+      ;;
+
+    "--payload")
+      require_long_option_value "$1" "${2-}"
+      args+=("-p" "$2")
+      shift 2
+      ;;
+
+    "--payload="*)
+      args+=("-p" "${1#*=}")
+      shift
+      ;;
+
+    "--payload-file")
+      require_long_option_value "$1" "${2-}"
+      args+=("-f" "$2")
+      shift 2
+      ;;
+
+    "--payload-file="*)
+      args+=("-f" "${1#*=}")
+      shift
+      ;;
+
+    "--env")
+      require_long_option_value "$1" "${2-}"
+      args+=("-e" "$2")
+      shift 2
+      ;;
+
+    "--env="*)
+      args+=("-e" "${1#*=}")
+      shift
+      ;;
+
+    "--sandbox")
+      args+=("-e" "sandbox")
+      shift
+      ;;
+
+    "--production")
+      args+=("-e" "production")
+      shift
+      ;;
+
+    "--push-type")
+      require_long_option_value "$1" "${2-}"
+      args+=("-y" "$2")
+      shift 2
+      ;;
+
+    "--push-type="*)
+      args+=("-y" "${1#*=}")
+      shift
+      ;;
+
+    "--priority")
+      require_long_option_value "$1" "${2-}"
+      args+=("-r" "$2")
+      shift 2
+      ;;
+
+    "--priority="*)
+      args+=("-r" "${1#*=}")
+      shift
+      ;;
+
+    "--expiration")
+      require_long_option_value "$1" "${2-}"
+      args+=("-x" "$2")
+      shift 2
+      ;;
+
+    "--expiration="*)
+      args+=("-x" "${1#*=}")
+      shift
+      ;;
+
+    "--collapse-id")
+      require_long_option_value "$1" "${2-}"
+      args+=("-c" "$2")
+      shift 2
+      ;;
+
+    "--collapse-id="*)
+      args+=("-c" "${1#*=}")
+      shift
+      ;;
+
+    "--header")
+      require_long_option_value "$1" "${2-}"
+      args+=("-H" "$2")
+      shift 2
+      ;;
+
+    "--header="*)
+      args+=("-H" "${1#*=}")
+      shift
+      ;;
+
+    "--")
+      shift
+      args+=("$@")
+      break
+      ;;
+
+    *)
+      args+=("$1")
+      shift
+      ;;
+  esac
+done
+
+set -- "${args[@]}"
+
+# --- Arguments and Default Values ----------------------------------
+
+p8_key=''
+cert_pem=''
+key_pem=''
+key_id=''
+team_id=''
+bundle_id=''
+device_token=''
+payload=''
+payload_file=''
+
+apns_env='sandbox'
+push_type='alert'
+priority='10'
+expiration=''
+collapse_id=''
+
+extra_headers=()
+extra_headers_count=0
+
+while getopts ":vhk:C:K:i:t:b:d:p:f:e:y:r:x:c:H:" optname
+  do
+    case "$optname" in
+      "v")
+        echo "$SUBJECT version $VERSION"
+        exit 0
+        ;;
+
+      "h")
+        echo "$HELP"
+        exit 0
+        ;;
+
+      "k")
+        p8_key="$OPTARG"
+        ;;
+
+      "C")
+        cert_pem="$OPTARG"
+        ;;
+
+      "K")
+        key_pem="$OPTARG"
+        ;;
+
+      "i")
+        key_id="$OPTARG"
+        ;;
+
+      "t")
+        team_id="$OPTARG"
+        ;;
+
+      "b")
+        bundle_id="$OPTARG"
+        ;;
+
+      "d")
+        device_token="$OPTARG"
+        ;;
+
+      "p")
+        payload="$OPTARG"
+        ;;
+
+      "f")
+        payload_file="$OPTARG"
+        ;;
+
+      "e")
+        apns_env="$OPTARG"
+        ;;
+
+      "y")
+        push_type="$OPTARG"
+        ;;
+
+      "r")
+        priority="$OPTARG"
+        ;;
+
+      "x")
+        expiration="$OPTARG"
+        ;;
+
+      "c")
+        collapse_id="$OPTARG"
+        ;;
+
+      "H")
+        extra_headers+=("$OPTARG")
+        extra_headers_count=$((extra_headers_count + 1))
+        ;;
+
+      "?")
+        echo "Unknown option: -$OPTARG" >&2
+        echo "Usage: $USAGE" >&2
+        exit 1
+        ;;
+
+      ":")
+        echo "No argument value for option -$OPTARG" >&2
+        echo "Usage: $USAGE" >&2
+        exit 1
+        ;;
+    esac
+  done
+
+shift $(($OPTIND - 1))
+
+# --- Script Body ---------------------------------------------------
+
+set -euo pipefail
+
+if [ "$#" -gt 0 ]; then
+  echo "Unknown argument: $1" >&2
+  echo "Usage: $USAGE" >&2
+  exit 1
+fi
+
+require_value() {
+  name="$1"
+  value="$2"
+
+  if [ -z "$value" ]; then
+    echo "Missing required option: $name" >&2
+    echo "Usage: $USAGE" >&2
+    exit 1
+  fi
+}
+
+absolute_path_from_pwd() {
+  path="$1"
+
+  case "$path" in
+    /*)
+      echo "$path"
+      ;;
+    *)
+      echo "$(pwd)/$path"
+      ;;
+  esac
+}
+
+base64url() {
+  openssl base64 -A | tr '+/' '-_' | tr -d '='
+}
+
+hex_to_dec() {
+  printf '%d' "0x$1"
+}
+
+der_sig_hex_to_raw_b64url() {
+  der_hex="$1"
+  pos=0
+
+  byte="${der_hex:$pos:2}"
+  pos=$((pos + 2))
+
+  if [ "$byte" != "30" ]; then
+    echo "Invalid ECDSA DER signature: expected SEQUENCE." >&2
+    exit 1
+  fi
+
+  len_byte="${der_hex:$pos:2}"
+  pos=$((pos + 2))
+
+  case "$len_byte" in
+    81)
+      pos=$((pos + 2))
+      ;;
+
+    82)
+      pos=$((pos + 4))
+      ;;
+
+    *)
+      if [ "$(hex_to_dec "$len_byte")" -ge 128 ]; then
+        echo "Unsupported DER length encoding." >&2
+        exit 1
+      fi
+      ;;
+  esac
+
+  byte="${der_hex:$pos:2}"
+  pos=$((pos + 2))
+
+  if [ "$byte" != "02" ]; then
+    echo "Invalid ECDSA DER signature: expected INTEGER r." >&2
+    exit 1
+  fi
+
+  r_len="$(hex_to_dec "${der_hex:$pos:2}")"
+  pos=$((pos + 2))
+  r="${der_hex:$pos:$((r_len * 2))}"
+  pos=$((pos + r_len * 2))
+
+  byte="${der_hex:$pos:2}"
+  pos=$((pos + 2))
+
+  if [ "$byte" != "02" ]; then
+    echo "Invalid ECDSA DER signature: expected INTEGER s." >&2
+    exit 1
+  fi
+
+  s_len="$(hex_to_dec "${der_hex:$pos:2}")"
+  pos=$((pos + 2))
+  s="${der_hex:$pos:$((s_len * 2))}"
+
+  # JWT ES256 wants raw r || s, each exactly 32 bytes.
+  while [ "${#r}" -gt 64 ] && [ "${r:0:2}" = "00" ]; do
+    r="${r:2}"
+  done
+
+  while [ "${#s}" -gt 64 ] && [ "${s:0:2}" = "00" ]; do
+    s="${s:2}"
+  done
+
+  if [ "${#r}" -gt 64 ] || [ "${#s}" -gt 64 ]; then
+    echo "Invalid ES256 signature size." >&2
+    exit 1
+  fi
+
+  r="$(printf '%064s' "$r" | tr ' ' '0')"
+  s="$(printf '%064s' "$s" | tr ' ' '0')"
+
+  printf '%s' "$r$s" | xxd -r -p | base64url
+}
+
+require_value "-b, --bundle-id" "$bundle_id"
+require_value "-d, --device-token" "$device_token"
+
+if [ -n "$payload" ] && [ -n "$payload_file" ]; then
+  echo "Use either --payload or --payload-file, not both." >&2
+  exit 1
+fi
+
+if [ -z "$payload" ] && [ -z "$payload_file" ]; then
+  echo "Missing required option: -p, --payload or -f, --payload-file" >&2
+  echo "Usage: $USAGE" >&2
+  exit 1
+fi
+
+# --- Authentication Mode Resolution --------------------------------
+#
+# Two mutually exclusive authentication modes are supported:
+#   - Token-based:       a JWT signed with a .p8 key
+#                        (--p8-key / --key-id / --team-id).
+#   - Certificate-based: a TLS client certificate
+#                        (--cert-pem / --key-pem).
+#
+# A mode is "used" if any of its options is set. Supplying options from both
+# modes, or from neither, is an error. The chosen mode is then validated for
+# completeness so a partial set reports the exact missing option.
+
+token_used=false
+if [ -n "$p8_key" ] || [ -n "$key_id" ] || [ -n "$team_id" ]; then
+  token_used=true
+fi
+
+cert_used=false
+if [ -n "$cert_pem" ] || [ -n "$key_pem" ]; then
+  cert_used=true
+fi
+
+if [ "$token_used" = true ] && [ "$cert_used" = true ]; then
+  echo "Use either token-based (--p8-key/--key-id/--team-id) or certificate-based (--cert-pem/--key-pem) authentication, not both." >&2
+  exit 1
+fi
+
+if [ "$token_used" = false ] && [ "$cert_used" = false ]; then
+  echo "Missing authentication: provide token-based (--p8-key/--key-id/--team-id) or certificate-based (--cert-pem/--key-pem) options." >&2
+  echo "Usage: $USAGE" >&2
+  exit 1
+fi
+
+if [ "$token_used" = true ]; then
+  require_value "-k, --p8-key" "$p8_key"
+  require_value "-i, --key-id" "$key_id"
+  require_value "-t, --team-id" "$team_id"
+
+  p8_key="$(absolute_path_from_pwd "$p8_key")"
+
+  if [ ! -f "$p8_key" ]; then
+    echo "Key file not found: $p8_key" >&2
+    exit 1
+  fi
+else
+  require_value "-C, --cert-pem" "$cert_pem"
+  require_value "-K, --key-pem" "$key_pem"
+
+  cert_pem="$(absolute_path_from_pwd "$cert_pem")"
+  key_pem="$(absolute_path_from_pwd "$key_pem")"
+
+  if [ ! -f "$cert_pem" ]; then
+    echo "Certificate file not found: $cert_pem" >&2
+    exit 1
+  fi
+
+  if [ ! -f "$key_pem" ]; then
+    echo "Certificate key file not found: $key_pem" >&2
+    exit 1
+  fi
+fi
+
+case "$apns_env" in
+  sandbox | development | dev)
+    apns_host="https://api.sandbox.push.apple.com"
+    ;;
+
+  production | prod)
+    apns_host="https://api.push.apple.com"
+    ;;
+
+  *)
+    echo "Invalid APNs environment: $apns_env" >&2
+    echo "Use: sandbox or production" >&2
+    exit 1
+    ;;
+esac
+
+if [ -n "$payload_file" ]; then
+  payload_file="$(absolute_path_from_pwd "$payload_file")"
+
+  if [ ! -f "$payload_file" ]; then
+    echo "Payload file not found: $payload_file" >&2
+    exit 1
+  fi
+
+  payload_json="$(cat "$payload_file")"
+elif [ "$payload" = "-" ]; then
+  payload_json="$(cat)"
+else
+  payload_json="$payload"
+fi
+
+curl_args=(
+  -i
+  --http2
+  -X POST "$apns_host/3/device/$device_token"
+  -H "apns-topic: $bundle_id"
+  -H "apns-push-type: $push_type"
+  -H "apns-priority: $priority"
+  -H "content-type: application/json"
+)
+
+if [ "$token_used" = true ]; then
+  # Token-based auth: build a short-lived ES256 JWT and send it as a bearer token.
+  now="$(date +%s)"
+
+  header="$(printf '{"alg":"ES256","kid":"%s"}' "$key_id" | base64url)"
+  jwt_payload="$(printf '{"iss":"%s","iat":%s}' "$team_id" "$now" | base64url)"
+  signing_input="$header.$jwt_payload"
+
+  sig_der_hex="$(
+    printf '%s' "$signing_input" |
+      openssl dgst -sha256 -sign "$p8_key" -binary |
+      xxd -p -c 256 |
+      tr -d '\n'
+  )"
+
+  signature="$(der_sig_hex_to_raw_b64url "$sig_der_hex")"
+  jwt="$signing_input.$signature"
+
+  curl_args+=(-H "authorization: bearer $jwt")
+else
+  # Certificate-based auth: authenticate the TLS connection with the client cert.
+  curl_args+=(--cert "$cert_pem" --key "$key_pem")
+fi
+
+if [ -n "$expiration" ]; then
+  curl_args+=(-H "apns-expiration: $expiration")
+fi
+
+if [ -n "$collapse_id" ]; then
+  curl_args+=(-H "apns-collapse-id: $collapse_id")
+fi
+
+if [ "$extra_headers_count" -gt 0 ]; then
+  for header in "${extra_headers[@]}"; do
+    curl_args+=(-H "$header")
+  done
+fi
+
+curl "${curl_args[@]}" -d "$payload_json"
