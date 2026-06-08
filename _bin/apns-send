@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 # -------------------------------------------------------------------
-# send-apns
+# apns-send
 # -------------------------------------------------------------------
 
-SUBJECT=send-apns
+SUBJECT=apns-send
 VERSION=0.0.3
-USAGE="send-apns (--p8-key file --key-id id --team-id id | --cert-pem file --key-pem file) -b bundle-id -d device-token -p payload [options]"
+USAGE="apns-send (--p8-key file --key-id id --team-id id | --cert-pem file --key-pem file) -b bundle-id -d device-token -p payload [options]"
 HELP="
 $USAGE
 
@@ -67,7 +67,7 @@ General:
 Examples:
 
     # Token-based (.p8)
-    send-apns \\
+    apns-send \\
       --p8-key ./AuthKey_XXXXXXXXXX.p8 \\
       --key-id XXXXXXXXXX \\
       --team-id XXXXXXXXXX \\
@@ -76,7 +76,7 @@ Examples:
       --payload '{\"aps\":{\"alert\":{\"title\":\"Hello\",\"body\":\"World\"},\"sound\":\"default\"}}'
 
     # Certificate-based (.pem)
-    send-apns \\
+    apns-send \\
       --cert-pem ./apns-cert.pem \\
       --key-pem ./apns-key.pem \\
       --bundle-id com.example.app \\
@@ -84,7 +84,7 @@ Examples:
       --payload '{\"aps\":{\"alert\":{\"title\":\"Hello\",\"body\":\"World\"},\"sound\":\"default\"}}'
 
     # Payload from file
-    send-apns \\
+    apns-send \\
       --p8-key ./AuthKey_XXXXXXXXXX.p8 \\
       --key-id XXXXXXXXXX \\
       --team-id XXXXXXXXXX \\
@@ -93,7 +93,7 @@ Examples:
       --payload-file ./push.json
 
     # Payload from stdin
-    cat ./push.json | send-apns \\
+    cat ./push.json | apns-send \\
       --p8-key ./AuthKey_XXXXXXXXXX.p8 \\
       --key-id XXXXXXXXXX \\
       --team-id XXXXXXXXXX \\
