@@ -35,7 +35,7 @@ local function layoutWindows()
         local screen = win:screen()
         local screenFrame = screen:frame()
 
-        if appName == "Code" then
+        if appName == "Code" or appName == "Cursor" then
           -- Calculate width
           local width = screenFrame.w - 8
           width = math.min(width, 1600)
